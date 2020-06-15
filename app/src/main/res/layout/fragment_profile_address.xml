@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/TitleText.Dark"
+            android:text="@string/address"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/default_margin_xlarge"
+            android:paddingBottom="@dimen/default_padding">
+
+            <TextView
+                android:id="@+id/txtAddress"
+                android:hint="@string/address"
+                style="@style/SettingInputTransparent"/>
+            <TextView
+                android:id="@+id/txtCity"
+                android:hint="@string/city"
+                style="@style/SettingInputTransparent"/>
+            <TextView
+                android:id="@+id/txtState"
+                android:hint="@string/state"
+                style="@style/SettingInputTransparent"/>
+            <TextView
+                android:id="@+id/txtZipCode"
+                android:hint="@string/zipcode"
+                style="@style/SettingInputTransparent"/>
+            <TextView
+                android:id="@+id/txtCountry"
+                android:hint="@string/country"
+                style="@style/SettingInputTransparent"/>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/ItemText"
+            android:alpha="0.5"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/contact_description"
+            android:textAlignment="center"/>
+        <Button
+            android:id="@+id/btnContact"
+            android:layout_margin="@dimen/default_margin_2x"
+            style="@style/DefaultButton.Dark"
+            android:text="@string/contact"/>
+    </LinearLayout>
+</LinearLayout>

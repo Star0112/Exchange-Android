@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                style="@style/TitleText.Dark"
+                android:text="@string/account_verification"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginTop="@dimen/default_margin_3x"
+                    style="@style/TitleText"
+                    android:text="@string/verify_information"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_title"/>
+                <TextView
+                    android:layout_marginTop="@dimen/default_margin_small"
+                    style="@style/ItemText"
+                    android:alpha="0.5"
+                    android:lineSpacingExtra="8dp"
+                    android:text="@string/verify_identity"
+                    android:textAlignment="center"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/default_margin_3x">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/default_margin_large"
+                        style="@style/DefaultText"
+                        android:alpha="0.3"
+                        android:text="@string/country"/>
+                    <EditText
+                        android:id="@+id/editCountry"
+                        android:hint="@string/country"
+                        style="@style/LoginInput"
+                        android:visibility="gone"/>
+                    <com.hbb20.CountryCodePicker
+                        android:id="@+id/ccp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/default_padding"
+                        android:paddingEnd="@dimen/default_padding"
+                        style="@style/LoginInput"
+                        app:ccp_arrowColor="@color/colorAccent"
+                        app:ccp_autoDetectCountry="true"
+                        app:ccp_contentColor="@color/textColorDefault"
+                        app:ccp_defaultNameCode="ca"
+                        app:ccp_showArrow="false"
+                        app:ccp_showFlag="true"
+                        app:ccp_showFullName="true"
+                        app:ccp_showNameCode="false"
+                        app:ccp_showPhoneCode="false"
+                        app:ccp_textSize="@dimen/text_default"
+                        app:ccpDialog_textColor="@color/textColorDefault"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/default_margin_small">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/default_margin_large"
+                        style="@style/DefaultText"
+                        android:alpha="0.3"
+                        android:text="@string/address"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/txtAddress"
+                            android:gravity="center_vertical"
+                            android:hint="@string/address"
+                            style="@style/LoginInput"/>
+                        <ImageView
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginEnd="@dimen/default_margin_3x"
+                            android:elevation="3dp"
+                            android:onClick="onGoogleAddress"
+                            android:src="@mipmap/ic_map"/>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/default_margin_small">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/default_margin_large"
+                        style="@style/DefaultText"
+                        android:alpha="0.3"
+                        android:text="@string/city"/>
+                    <EditText
+                        android:id="@+id/txtCity"
+                        android:gravity="center_vertical"
+                        android:hint="@string/city"
+                        style="@style/LoginInput"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/default_margin_small">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/default_margin_large"
+                        style="@style/DefaultText"
+                        android:alpha="0.3"
+                        android:text="@string/state"/>
+                    <TextView
+                        android:id="@+id/txtState"
+                        android:gravity="center_vertical"
+                        android:hint="@string/state"
+                        style="@style/LoginInput"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/default_margin_small">
+
+                    <TextView
+                        android:layout_marginStart="@dimen/default_margin_large"
+                        style="@style/DefaultText"
+                        android:alpha="0.3"
+                        android:text="@string/zipcode"/>
+                    <EditText
+                        android:id="@+id/txtZipCode"
+                        android:gravity="center_vertical"
+                        android:hint="@string/zipcode"
+                        style="@style/LoginInput"/>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnNext"
+                    android:onClick="onNext"
+                    android:layout_marginTop="@dimen/default_margin_2x"
+                    android:layout_marginBottom="@dimen/default_margin_2x"
+                    style="@style/DefaultButton.Dark"
+                    android:text="@string/button_complete"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include layout="@layout/progress" />
+
+</FrameLayout>

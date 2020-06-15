@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            style="@style/NewTitleText"
+            android:text="@string/card_status"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:padding="@dimen/default_padding"
+                style="@style/TitleText"
+                android:text="URNC Card"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/text_title"/>
+
+            <!-- Card View -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_height">
+
+                <include layout="@layout/pager_card"/>
+            </FrameLayout>
+
+            <!-- Bottom View -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/llLock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:contentPaddingLeft="@dimen/default_padding_2x"
+                    app:contentPaddingRight="@dimen/default_margin_small"
+                    app:contentPaddingTop="@dimen/default_padding_2x"
+                    app:contentPaddingBottom="@dimen/default_padding_2x">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/spinner_size"
+                            android:layout_height="@dimen/spinner_size"
+                            android:src="@mipmap/new_lock"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/default_margin_small"
+                            style="@style/SettingItemText"
+                            android:text="@string/lock_up"/>
+                        <TextView
+                            android:layout_width="@dimen/item_title_width"
+                            android:layout_height="@dimen/status_height"
+                            android:gravity="center"
+                            android:background="@drawable/bg_status"
+                            android:backgroundTint="@color/colorGreenTransparent"
+                            style="@style/SettingItemText"
+                            android:text="@string/button_complete"
+                            android:textColor="@color/colorGreen"
+                            android:textSize="@dimen/text_item"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:contentPaddingLeft="@dimen/default_padding_2x"
+                    app:contentPaddingRight="@dimen/default_margin_small"
+                    app:contentPaddingTop="@dimen/default_padding_2x"
+                    app:contentPaddingBottom="@dimen/default_padding_2x">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/spinner_size"
+                            android:layout_height="@dimen/spinner_size"
+                            android:src="@mipmap/new_kyc"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/default_margin_small"
+                            style="@style/SettingItemText"
+                            android:text="@string/bank_verification"/>
+                        <TextView
+                            android:id="@+id/txtKycStatus"
+                            android:layout_width="@dimen/item_title_width"
+                            android:layout_height="@dimen/status_height"
+                            android:gravity="center"
+                            android:background="@drawable/bg_status"
+                            android:backgroundTint="@color/colorPendingTransparent"
+                            style="@style/SettingItemText"
+                            android:text="@string/processing"
+                            android:textColor="@color/colorPending"
+                            android:textSize="@dimen/text_item"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/txtOrderStatus"
+                    android:paddingTop="@dimen/default_padding_2x"
+                    style="@style/ItemHeaderText"
+                    android:text="@string/order_status"/>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp"
+                    app:contentPaddingLeft="@dimen/default_padding_2x"
+                    app:contentPaddingRight="@dimen/default_margin_small"
+                    app:contentPaddingTop="@dimen/default_padding_2x"
+                    app:contentPaddingBottom="@dimen/default_padding_2x">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/spinner_size"
+                            android:layout_height="@dimen/spinner_size"
+                            android:src="@mipmap/new_card"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/default_margin_small"
+                            style="@style/SettingItemText"
+                            android:text="@string/card_status"/>
+                        <TextView
+                            android:id="@+id/txtCardStatus"
+                            android:layout_width="@dimen/item_title_width"
+                            android:layout_height="@dimen/status_height"
+                            android:gravity="center"
+                            android:background="@drawable/bg_status"
+                            android:backgroundTint="@color/colorGreenTransparent"
+                            style="@style/SettingItemText"
+                            android:text="@string/shipped"
+                            android:textColor="@color/colorGreen"
+                            android:textSize="@dimen/text_item"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/txtHelp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/default_margin_2x"
+                    android:layout_marginEnd="@dimen/default_margin_2x"
+                    android:layout_marginTop="@dimen/default_padding_small"
+                    android:layout_marginBottom="@dimen/default_padding_2x"
+                    style="@style/ItemText"
+                    android:alpha="0.5"
+                    android:lineSpacingExtra="8dp"
+                    android:text="@string/card_activate_help"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_item"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnActivate"
+        android:layout_marginBottom="@dimen/default_margin"
+        style="@style/DefaultButton.Dark"
+        android:text="@string/activate_card"/>
+</LinearLayout>

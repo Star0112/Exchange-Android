@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <com.fxn769.Numpad
+        android:id="@+id/padView"
+        android:layout_width="206dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/colorWhite"
+        app:numpad_background_resource="@drawable/numpad_background"
+        app:numpad_grid_background_color="@color/colorTransparent"
+        app:numpad_grid_line_thickness_horizontal="28dp"
+        app:numpad_grid_line_thickness_vertical="10dp"
+        app:numpad_grid_visible="true"
+        app:numpad_image_resource="@mipmap/ic_backspace"
+        app:numpad_comma="."/>
+</FrameLayout>

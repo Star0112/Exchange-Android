@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            style="@style/TitleText.Dark"
+            android:text="@string/account_verification"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/default_margin_3x"
+                style="@style/TitleText"
+                android:text="@string/verify_information"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_title"/>
+            <TextView
+                android:layout_marginTop="@dimen/default_margin_small"
+                style="@style/ItemText"
+                android:alpha="0.5"
+                android:lineSpacingExtra="8dp"
+                android:text="@string/verify_identity"
+                android:textAlignment="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_3x">
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/first_name"/>
+                <EditText
+                    android:id="@+id/editFirstName"
+                    android:inputType="textPersonName"
+                    style="@style/LoginInput"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_small">
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/last_name"/>
+                <EditText
+                    android:id="@+id/editLastName"
+                    android:inputType="textPersonName"
+                    style="@style/LoginInput"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_small">
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/choose_birth"/>
+                <TextView
+                    android:id="@+id/txtBirth"
+                    android:gravity="center_vertical"
+                    style="@style/LoginInput"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_small">
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/select_type"/>
+                <TextView
+                    android:id="@+id/txtNinType"
+                    android:gravity="center_vertical"
+                    style="@style/LoginInput"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_small">
+
+                <TextView
+                    android:id="@+id/txtNin"
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/ssn_nin"/>
+                <EditText
+                    android:id="@+id/editSSN"
+                    style="@style/LoginInput"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llExpiryDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_small">
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/choose_expiry_date"/>
+                <TextView
+                    android:id="@+id/txtExpiryDate"
+                    android:gravity="center_vertical"
+                    style="@style/LoginInput"/>
+            </LinearLayout>
+            <Button
+                android:onClick="onNext"
+                android:layout_marginTop="@dimen/default_margin_2x"
+                android:layout_marginBottom="@dimen/default_margin_2x"
+                style="@style/DefaultButton.Dark"
+                android:text="@string/button_next"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

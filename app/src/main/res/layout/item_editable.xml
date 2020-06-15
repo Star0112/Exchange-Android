@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/button_height"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/default_padding_3x">
+
+    <ImageView
+        android:id="@+id/imgCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin_small"
+        android:src="@mipmap/ic_add_green"/>
+    <TextView
+        android:id="@+id/txtButton"
+        style="@style/SettingItemText"
+        android:text="@string/button_delete"/>
+    <EditText
+        android:id="@+id/editValue"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/default_margin"
+        android:backgroundTint="@drawable/input"
+        style="@style/DefaultInput"
+        android:textSize="@dimen/text_title_default"/>
+</LinearLayout>

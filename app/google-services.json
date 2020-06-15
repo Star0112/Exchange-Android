@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1017648262797",
+    "firebase_url": "https://swipe-ccd82.firebaseio.com",
+    "project_id": "swipe-ccd82",
+    "storage_bucket": "swipe-ccd82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017648262797:android:ab96f894e87970e4",
+        "android_client_info": {
+          "package_name": "com.urgentrn.urncexchange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017648262797-rjt73j94h83vdkqqkkgh3uv883gm49ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE308_OOQmv1lEq4ugkwd1MXouFELi0RQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017648262797-rjt73j94h83vdkqqkkgh3uv883gm49ul.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1017648262797-5f0b3r3f4jcdf8s1q9qltmsfebdfbh5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.urgentrn.urncexchange"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

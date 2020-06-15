@@ -1,0 +1,114 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion project.compileSdkVersion
+    defaultConfig {
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode project.versionCode
+        versionName project.versionName
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "androidManifestFile": "$projectDir/src/main/AndroidManifest.xml".toString()
+                ]
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            FirebasePerformance {
+                // Set this flag to 'false' to disable @AddTrace annotation processing and
+                // automatic HTTP/S network request monitoring
+                // for a specific build variant at compile time.
+                instrumentationEnabled false
+            }
+            manifestPlaceholders = [enableCrashReporting: false, enablePerformanceLogging: false]
+        }
+        release {
+            FirebasePerformance {
+                instrumentationEnabled false
+            }
+            manifestPlaceholders = [enableCrashReporting: true, enablePerformanceLogging: true]
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            applicationId "com.urgentrn.urncexchange"
+            buildConfigField 'boolean', 'PRODUCTION', "true"
+            buildConfigField 'String', 'ENVIRONMENT', "\"production\""
+        }
+        development {
+            applicationId "com.urgentrn.urncexchange"
+            buildConfigField 'boolean', 'PRODUCTION', "false"
+            buildConfigField 'String', 'ENVIRONMENT', "\"sandbox\""
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "Urncexchange-${variant.name}-v${variant.versionName}(${variant.versionCode}).apk"
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+def annotationsVersion = '4.6.0'
+def retrofitVersion = '2.5.0'
+
+dependencies {
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    annotationProcessor "org.androidannotations:androidannotations:$annotationsVersion"
+
+    implementation 'androidx.biometric:biometric:1.0.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    implementation 'com.github.jakob-grabner:Circle-Progress-View:1.4'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.yalantis:ucrop:2.2.2-native'
+    implementation 'com.google.android.libraries.places:places:2.2.0'
+    implementation 'com.google.android.play:core:1.7.3'
+    implementation 'com.google.firebase:firebase-core:17.2.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.0'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-perf:19.0.0'
+    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
+    implementation 'com.redmadrobot:input-mask-android:5.0.0'
+    implementation 'com.scottyab:rootbeer-lib:0.0.8'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    implementation 'com.stripe:stripe-android:12.2.0'
+    implementation group: 'com.zopim.android', name: 'sdk', version: '1.4.5'
+    implementation 'io.card:android-sdk:5.5.1'
+    implementation 'nl.dionsegijn:konfetti:1.1.3'
+    implementation "org.androidannotations:androidannotations-api:$annotationsVersion"
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.41'
+    implementation 'com.otaliastudios:cameraview:2.6.2'
+
+
+    implementation project(':cameraview')
+    implementation project(':ccp')
+    implementation project(':circleimageview')
+    implementation project(':fingerprint')
+    implementation project(':keyboardvisibilityevent')
+//    implementation project(':marqetakit')
+    implementation project(':numpad')
+    implementation project(':otpview')
+    implementation project(':ultimaterecyclerview')
+}
+
+apply plugin: 'com.google.gms.google-services'

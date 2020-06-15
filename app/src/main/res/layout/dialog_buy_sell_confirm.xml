@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llConfirm"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:visibility="visible">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_header_height">
+
+        <ImageView
+            android:id="@+id/btnBackConfirm"
+            style="@style/DialogCancelButton.Back"/>
+        <TextView
+            style="@style/DialogTitleText"
+            android:text="@string/confirm"/>
+        <ImageView
+            android:id="@+id/btnCloseConfirm"
+            style="@style/DialogCancelButton"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/colorBackground"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:id="@+id/imgConfirmCoin"
+                android:layout_width="@dimen/coin_size"
+                android:layout_height="@dimen/coin_size" />
+            <TextView
+                android:id="@+id/txtConfirmCoin"
+                android:layout_marginTop="@dimen/default_padding"
+                style="@style/TitleText"
+                android:text="0.1 SXP"
+                android:textSize="@dimen/text_title_large"/>
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding_2x"
+            android:layout_marginEnd="@dimen/default_padding_2x"
+            android:layout_marginTop="@dimen/default_padding_tiny"
+            android:layout_marginBottom="@dimen/default_padding_small"
+            app:cardCornerRadius="8dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:id="@+id/txtRateLabel"
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/rate"/>
+                        <TextView
+                            android:id="@+id/txtRate"
+                            style="@style/DefaultText"
+                            android:text="$0.00"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llConfirmPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:id="@+id/txtConfirmPriceLabel"
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/amount"/>
+                        <TextView
+                            android:id="@+id/txtConfirmPrice"
+                            style="@style/DefaultText"
+                            android:text="$0.00"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/fee"/>
+                        <TextView
+                            android:id="@+id/txtFee"
+                            style="@style/DefaultText"
+                            android:text="$0.00"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/total"/>
+                        <TextView
+                            android:id="@+id/txtTotal"
+                            style="@style/SettingItemText"
+                            android:text="$0.00"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDepositTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/deposit_to"/>
+                        <TextView
+                            android:id="@+id/txtDepositTo"
+                            style="@style/DefaultText"
+                            android:text="$0.00"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:id="@+id/txtPaymentMethodLabel"
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/payment_method"/>
+                        <TextView
+                            android:id="@+id/txtPaymentMethod"
+                            style="@style/DefaultText"
+                            android:text="USD"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAvailable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/DialogItem">
+
+                        <TextView
+                            android:id="@+id/txtAvailableLabel"
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/available_in"/>
+                        <TextView
+                            android:id="@+id/txtAvailable"
+                            style="@style/DefaultText"
+                            android:text="Instantly"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <include layout="@layout/group_pass"/>
+    </LinearLayout>
+</LinearLayout>

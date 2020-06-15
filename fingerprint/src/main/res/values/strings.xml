@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fingerprint_state_scanning">Touch sensor</string>
+    <string name="fingerprint_state_success">Fingerprint recognized</string>
+    <string name="fingerprint_state_failure">Fingerprint not recognized.\nTry again.</string>
+    <string name="fingerprint_cancel">Cancel</string>
+    <string name="fingerprint_use_password">Use Password</string>
+
+    <string name="password_confirm">Confirm</string>
+    <string name="password_cancel">Cancel</string>
+    <string name="password_incorrect">Incorrect Password</string>
+</resources>

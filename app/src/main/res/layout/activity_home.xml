@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/new_logo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                style="@style/LoginText"
+                android:text="@string/home_easy"
+                android:textSize="@dimen/text_title"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/default_margin_large">
+
+            <Button
+                android:layout_marginBottom="@dimen/default_padding_small"
+                android:onClick="onLogin"
+                style="@style/DefaultButton.Transparent"
+                android:text="@string/enter_login"
+                android:visibility="visible"/>
+            <Button
+                android:layout_marginBottom="@dimen/default_padding_small"
+                android:onClick="onSignUp"
+                style="@style/DefaultButton"
+                android:text="@string/home_register"/>
+            <Button
+                android:onClick="onSignIn"
+                style="@style/DefaultButton.Transparent"
+                android:text="@string/home_login"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

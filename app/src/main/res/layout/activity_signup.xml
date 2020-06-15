@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/default_margin_xxxlarge">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/logo_dark"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_marginTop="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:lineSpacingExtra="4dp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_title"
+                    android:text="@string/signup_title"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/default_margin_2x"
+                    android:layout_marginBottom="@dimen/default_margin_large">
+
+                    <EditText
+                        android:id="@+id/editUsername"
+                        android:imeActionLabel="@string/button_next"
+                        android:imeOptions="actionNext"
+                        android:hint="@string/signup_username"
+                        style="@style/LoginInput"/>
+                    <EditText
+                        android:id="@+id/editFullname"
+                        android:imeActionLabel="@string/button_next"
+                        android:imeOptions="actionNext"
+                        android:hint="@string/signup_fullname"
+                        style="@style/LoginInput"/>
+                    <EditText
+                        android:id="@+id/editEmail"
+                        android:imeActionLabel="@string/button_next"
+                        android:imeOptions="actionNext"
+                        android:hint="@string/signup_email"
+                        style="@style/LoginInput"/>
+
+                    <EditText
+                        android:id="@+id/editPassword"
+                        android:imeActionLabel="@string/button_go"
+                        android:imeOptions="actionGo"
+                        android:inputType="textPassword"
+                        android:paddingEnd="@dimen/default_margin_3x"
+                        android:hint="@string/signup_password"
+                        style="@style/LoginInput">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/editPasswordConfirm"
+                        android:imeActionLabel="@string/button_go"
+                        android:imeOptions="actionGo"
+                        android:inputType="textPassword"
+                        android:paddingEnd="@dimen/default_margin_3x"
+                        android:hint="@string/signup_password_confirm"
+                        style="@style/LoginInput">
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/editPhone"
+                        android:imeActionLabel="@string/button_next"
+                        android:imeOptions="actionNext"
+                        android:hint="@string/signup_phone"
+                        style="@style/LoginInput"/>
+                </LinearLayout>
+                <Button
+                    android:id="@+id/btnSignUp"
+                    android:onClick="onSignUp"
+                    style="@style/DefaultButton.Blue"
+                    android:text="@string/signup_button_label"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include layout="@layout/progress"/>
+</FrameLayout>

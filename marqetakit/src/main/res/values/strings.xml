@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MarqetaKit</string>
+    <string name="retrieve_wallet_id_fail">Failed retrieving WalletID: </string>
+    <string name="connection_failed">Connection failed: </string>
+    <string name="retrieve_hardware_id_fail">Failed to retrieve hardware ID</string>
+    <string name="account_type">com.marqeta.dwdemo</string>
+    <string name="added_to_android_pay">Card successfully added to Android Pay</string>
+    <string name="no_cards">No Cards to Display</string>
+    <string name="failed_to_provision">Failed to add card to Android Pay</string>
+</resources>

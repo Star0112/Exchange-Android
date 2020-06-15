@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                style="@style/TitleText.Dark"
+                android:text="@string/new_contact"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:paddingStart="@dimen/default_padding_3x"
+                        android:paddingTop="@dimen/default_padding_3x"
+                        android:paddingBottom="@dimen/default_padding_3x">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="@dimen/default_padding_3x"
+                            android:onClick="onAvatarClicked">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imgAvatar"
+                                    android:layout_width="@dimen/avatar_size_small"
+                                    android:layout_height="@dimen/avatar_size_small"
+                                    android:background="@drawable/avatar"
+                                    app:civ_corner_radius="16dp"/>
+                                <TextView
+                                    android:id="@+id/txtAdd"
+                                    android:layout_gravity="center"
+                                    style="@style/ItemText"
+                                    android:alpha="0.3"
+                                    android:text="@string/add_photo"
+                                    android:textAlignment="center"/>
+                            </FrameLayout>
+                            <TextView
+                                android:id="@+id/txtEdit"
+                                android:layout_marginTop="@dimen/default_padding_small"
+                                style="@style/ItemText"
+                                android:alpha="0.3"
+                                android:text="@string/button_edit"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/default_margin_small">
+
+                            <EditText
+                                android:id="@+id/editFirstName"
+                                android:backgroundTint="@drawable/input"
+                                android:hint="@string/first_name"
+                                android:inputType="textPersonName"
+                                style="@style/DefaultInput"
+                                android:textSize="@dimen/text_title_default"/>
+                            <EditText
+                                android:id="@+id/editLastName"
+                                android:backgroundTint="@drawable/input"
+                                android:hint="@string/last_name"
+                                android:inputType="textPersonName"
+                                style="@style/DefaultInput"
+                                android:textSize="@dimen/text_title_default"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <com.urgentrn.urncexchange.ui.view.EditableItemView
+                        android:id="@+id/itemUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margin_small"
+                        app:title="@string/add_user_name"/>
+                    <include layout="@layout/divider_full"/>
+                    <com.urgentrn.urncexchange.ui.view.EditableItemView
+                        android:id="@+id/itemPhoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_padding"
+                        app:title="@string/add_phone_number"/>
+                    <include layout="@layout/divider_full"/>
+                    <com.urgentrn.urncexchange.ui.view.EditableItemView
+                        android:id="@+id/itemEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_padding"
+                        app:title="@string/add_email"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtDelete"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="@dimen/default_margin_large"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:onClick="onDelete"
+                    android:paddingStart="@dimen/default_padding_3x"
+                    style="@style/SettingButton"
+                    android:fontFamily="@font/codec_pro_bold"
+                    android:text="@string/delete_contact"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_default"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include layout="@layout/progress"/>
+</FrameLayout>

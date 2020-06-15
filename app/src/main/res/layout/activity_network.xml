@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorYellow">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin_2x"
+                app:backgroundTint="@color/colorWhite"
+                app:fabCustomSize="@dimen/circle_size_large"
+                app:maxImageSize="@dimen/fab_size"/>
+            <ImageView
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="6dp"
+                android:src="@mipmap/indicator"/>
+        </FrameLayout>
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_marginStart="@dimen/default_margin_2x"
+            android:layout_marginEnd="@dimen/default_margin_2x"
+            style="@style/DefaultText"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/network_activate_hint"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_title_default"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin_2x"
+            android:layout_marginEnd="@dimen/default_margin_2x"
+            android:layout_marginTop="@dimen/default_margin_2x"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/default_margin_2x"
+                    style="@style/ItemTextBold"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_item_3x"/>
+                <Button
+                    android:layout_marginStart="@dimen/default_margin_2x"
+                    android:layout_marginEnd="@dimen/default_margin_2x"
+                    android:onClick="onCopy"
+                    style="@style/DefaultButton.Dark"
+                    android:text="@string/copy"/>
+                <Button
+                    android:id="@+id/btnShare"
+                    android:background="@drawable/bg_button"
+                    android:layout_marginStart="@dimen/default_margin_2x"
+                    android:layout_marginEnd="@dimen/default_margin_2x"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin_2x"
+                    android:onClick="onShare"
+                    style="@style/DefaultButton"
+                    android:text="@string/share"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <ImageView
+            android:onClick="onClose"
+            style="@style/DialogCancelButton"/>
+    </androidx.appcompat.widget.Toolbar>
+</FrameLayout>

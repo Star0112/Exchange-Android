@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleText.Dark"
+                android:text="@string/your_cards"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height_small"
+            android:background="@drawable/bg_search"
+            android:backgroundTint="#da6f66"
+            android:drawableStart="@mipmap/ic_search"
+            android:drawablePadding="@dimen/default_margin_small"
+            android:drawableTint="@color/colorWhite"
+            android:imeOptions="actionSearch"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin_small"
+            android:paddingStart="@dimen/default_padding_2x"
+            android:paddingEnd="@dimen/default_padding_2x"
+            android:maxLines="1"
+            style="@style/DefaultInput"
+            android:hint="@string/search_gift_cards"
+            android:textColor="@color/textColorWhite"
+            android:textColorHint="@color/colorWhiteTransparent"
+            android:textSize="@dimen/text_button"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/default_padding"/>
+</LinearLayout>

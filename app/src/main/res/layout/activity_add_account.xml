@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                style="@style/TitleText.Dark"
+                android:text="@string/my_account"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginStart="@dimen/default_padding_2x"
+                android:layout_marginEnd="@dimen/default_padding_2x"
+                android:layout_marginTop="@dimen/default_padding_2x"
+                android:onClick="onBankAccount"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:contentPadding="@dimen/default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_new_bank"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="@dimen/default_margin">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/SettingItemText"
+                                android:text="@string/bank_account"/>
+                            <TextView
+                                android:layout_marginStart="@dimen/default_margin_small"
+                                style="@style/DefaultText"
+                                android:text="@string/recommended"
+                                android:textColor="@color/colorAccent"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="@dimen/default_margin_small"
+                            style="@style/ItemText"
+                            android:lineSpacingExtra="4dp"
+                            android:text="@string/bank_account_description"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_padding_small"
+                        android:src="@mipmap/ic_forward"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginStart="@dimen/default_padding_2x"
+                android:layout_marginEnd="@dimen/default_padding_2x"
+                android:layout_marginTop="@dimen/default_padding_2x"
+                android:onClick="onDebitCard"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="true"
+                app:contentPadding="@dimen/default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_new_card"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="@dimen/default_margin">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="@style/SettingItemText"
+                                android:text="@string/debit_card"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="@dimen/default_margin_small"
+                            style="@style/DefaultText"
+                            android:lineSpacingExtra="4dp"
+                            android:text="@string/debit_card_description"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_padding_small"
+                        android:src="@mipmap/ic_forward"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/progress" />
+
+</FrameLayout>

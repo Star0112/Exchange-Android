@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:contentInsetStartWithNavigation="0dp">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/TitleText.Dark"
+            android:text="@string/touch_id"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:weightSum="3">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fingerprint"/>
+        <TextView
+            android:layout_marginTop="@dimen/default_margin"
+            style="@style/TitleText"
+            android:text="@string/touch_id"
+            android:textSize="@dimen/text_title"/>
+        <TextView
+            android:layout_marginStart="@dimen/default_margin_large"
+            android:layout_marginEnd="@dimen/default_margin_large"
+            android:layout_marginTop="@dimen/default_padding_small"
+            style="@style/DefaultText"
+            android:alpha="0.5"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/touch_id_hint"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <Button
+        android:onClick="onEnable"
+        style="@style/DefaultButton.Dark"
+        android:text="@string/enable_touch_id"/>
+    <Button
+        android:layout_marginTop="@dimen/default_padding_small"
+        android:layout_marginBottom="@dimen/default_margin_2x"
+        android:onClick="onNext"
+        style="@style/DefaultButton.Transparent"
+        android:text="@string/do_later"
+        android:textColor="@color/colorPink"/>
+</LinearLayout>

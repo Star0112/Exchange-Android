@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            style="@style/TitleText.Dark"
+            android:text="@string/submit_card_report"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin">
+
+            <TextView
+                style="@style/DefaultText"
+                android:text="@string/details"
+                android:textColor="@color/textColorGray"/>
+            <Spinner
+                android:id="@+id/spinnerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/editMessage"
+                android:hint="@string/enter_message"
+                android:singleLine="false"
+                style="@style/DefaultInput"/>
+        </LinearLayout>
+        <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_marginBottom="@dimen/default_margin_2x"
+        style="@style/DefaultButton.Dark"
+        android:text="@string/button_submit"/>
+</LinearLayout>

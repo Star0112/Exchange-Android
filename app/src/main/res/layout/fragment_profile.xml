@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtUserName"
+                style="@style/TitleText.Dark"
+                android:text="@string/username"/>
+            <TextView
+                android:id="@+id/txtTierLevel"
+                style="@style/DefaultText"
+                android:alpha="0.5"
+                android:text="@string/tier_level"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/text_item"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llVerify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:src="@mipmap/wallet"/>
+                <TextView
+                    android:id="@+id/txtVerifyTitle"
+                    android:layout_marginTop="@dimen/default_padding"
+                    style="@style/TitleText"
+                    android:text="@string/access_wallet"/>
+                <TextView
+                    android:id="@+id/txtVerifyDescription"
+                    android:layout_marginTop="@dimen/default_padding"
+                    style="@style/ItemText"
+                    android:alpha="0.5"
+                    android:text="@string/complete_profile"
+                    android:textAlignment="center"/>
+                <Button
+                    android:id="@+id/btnVerify"
+                    android:layout_height="@dimen/button_height_small"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    style="@style/ActionButtonDark"
+                    android:text="@string/verify_account"/>
+            </LinearLayout>
+            <FrameLayout
+                android:id="@+id/llBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/card_height"/>
+                <com.urgentrn.urncexchange.ui.view.CircleIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/indicator_height"
+                    android:layout_gravity="bottom"
+                    app:ci_width="@dimen/indicator_size"
+                    app:ci_height="@dimen/indicator_size"
+                    app:ci_animator="@animator/indicator"
+                    app:ci_drawable="@drawable/indicator_selected"
+                    app:ci_drawable_unselected="@drawable/indicator_unselected"/>
+            </FrameLayout>
+
+            <TextView
+                style="@style/ItemHeaderText"
+                android:text="@string/linked_accounts"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding_3x"
+                android:layout_marginEnd="@dimen/default_padding_3x"
+                app:cardCornerRadius="8dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding_3x"
+                android:layout_marginEnd="@dimen/default_padding_3x"
+                android:layout_marginTop="@dimen/default_padding"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:id="@+id/llAddPayment"
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:src="@mipmap/add"/>
+                    <TextView
+                        android:layout_weight="1"
+                        style="@style/NewSettingItemText"
+                        android:text="@string/add_payment_method"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_forward"
+                        android:tint="@color/colorGrayLight2"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                style="@style/ItemHeaderText"
+                android:text="@string/account"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding_3x"
+                android:layout_marginEnd="@dimen/default_padding_3x"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/llTierLevel"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_tier"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/NewSettingItemText"
+                                android:text="@string/tier_level"/>
+                            <TextView
+                                android:layout_marginTop="@dimen/default_padding_tiny"
+                                style="@style/ItemText"
+                                android:text="@string/click_details"
+                                android:textColor="@color/colorAccent"
+                                android:visibility="gone"/>
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/txtLevel"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            style="@style/DefaultText"
+                            android:text="Level 0"
+                            android:textColor="@color/textColorGray1"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_rewards"/>
+                        <LinearLayout
+                            android:id="@+id/llRewards"
+                            style="@style/SettingButton">
+
+                            <TextView
+                                android:layout_weight="1"
+                                style="@style/NewSettingItemText"
+                                android:text="@string/rewards"
+                                android:textAlignment="viewStart"/>
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/ic_forward"
+                                android:tint="@color/colorGrayLight2"/>
+                        </LinearLayout>
+                        <include layout="@layout/divider"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/llNetwork"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            style="@style/SettingButton">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/default_margin"
+                                android:src="@mipmap/ic_setting_network"/>
+                            <TextView
+                                android:layout_weight="1"
+                                style="@style/NewSettingItemText"
+                                android:text="@string/discounts"
+                                android:textAlignment="viewStart"/>
+                            <LinearLayout
+                                android:id="@+id/llNetworkPending"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_margin="@dimen/default_padding">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/circle_status"
+                                    android:tint="@color/colorPendingLight"/>
+                                <TextView
+                                    android:layout_marginStart="@dimen/default_padding"
+                                    style="@style/ItemText"
+                                    android:text="@string/processing"
+                                    android:textColor="@color/colorPendingLight"/>
+                            </LinearLayout>
+                            <Switch
+                                android:id="@+id/switchDiscounts"
+                                style="@style/GreenSwitch"/>
+                        </LinearLayout>
+                        <include layout="@layout/divider"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llAddress"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_address"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/address"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:id="@+id/llPhone"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_phone"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/phone_number"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:id="@+id/llContacts"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_contacts"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/manage_contacts"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:id="@+id/llDocs"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_docs"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/my_docs"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:id="@+id/llCurrency"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_currency"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/multi_currency"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                style="@style/ItemHeaderText"
+                android:text="@string/security"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding_3x"
+                android:layout_marginEnd="@dimen/default_padding_3x"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_passcode"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/passcode"
+                            android:textAlignment="viewStart"/>
+                        <Switch
+                            android:id="@+id/switchPasscode"
+                            style="@style/GreenSwitch"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_biometrics"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/biometrics"
+                            android:textAlignment="viewStart"/>
+                        <Switch
+                            android:id="@+id/switchBiometrics"
+                            style="@style/GreenSwitch"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_tfa"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/tfa_authentication"
+                            android:textAlignment="viewStart"/>
+                        <Switch
+                            android:id="@+id/switch2fa"
+                            style="@style/GreenSwitch"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                style="@style/ItemHeaderText"
+                android:text="@string/support"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding_3x"
+                android:layout_marginEnd="@dimen/default_padding_3x"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/llHelp"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_help"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/help"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:id="@+id/llSupport"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_support"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/support"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        android:id="@+id/llChat"
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:src="@mipmap/ic_setting_chat"/>
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/NewSettingItemText"
+                            android:text="@string/live_chat"
+                            android:textAlignment="viewStart"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"
+                            android:tint="@color/colorGrayLight2"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/llSignOut"
+                android:layout_margin="@dimen/default_padding_3x"
+                style="@style/SettingButton">
+
+                <TextView
+                    android:layout_weight="1"
+                    style="@style/SettingItemText"
+                    android:text="@string/sign_out"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,709 @@
+<resources>
+    <string name="app_name">URNC</string>
+    <string name="app_name2">URNC Wallet</string>
+    <string name="no_internet_connection">There\'s no internet connection</string>
+    <string name="warning_rooted_device">We have detected that you are using a rooted phone. Please be aware that URNC does not support rooted devices.</string>
+    <string name="zopim_account_id">Djkq9NU7Vb209vw0DMoU3FjBUmN4Fd9A</string>
+
+    <string name="button_next">Next</string>
+    <string name="button_go">Go</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_ok">OK</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_resend">Resend</string>
+    <string name="button_complete">Complete</string>
+    <string name="button_search">Search</string>
+    <string name="button_edit">Edit</string>
+    <string name="button_done">Done</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_upgrade">Upgrade</string>
+
+
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+    <string name="error_fullname_empty">Fullname is empty</string>
+    <string name="error_phone_empty">Phone Number is empty</string>
+    <string name="error_email_empty">Email is empty</string>
+    <string name="error_email_invalid">Email is invalid</string>
+    <string name="error_email_not_match">Email doesn\'t match</string>
+    <string name="error_username_empty">Username is empty</string>
+    <string name="error_username_short">Username is too short</string>
+    <string name="error_password_empty">Password is empty</string>
+    <string name="error_password_short">Password is too short</string>
+    <string name="error_phone_invalid">Phone number is invalid</string>
+    <string name="error_password_not_match">Password doesn\'t match</string>
+    <string name="error_code_empty">Code is empty</string>
+    <string name="error_field_empty">This field is required</string>
+    <string name="error_field_invalid">This field is invalid</string>
+    <string name="error_invalid_birth">You must be 18 years or older to use URNC.</string>
+    <string name="error_ssn_short">TIN is too short</string>
+
+    <string name="home_easy">It\'s easy to URNC</string>
+    <string name="home_register">Create An Account</string>
+    <string name="home_login">Sign In</string>
+
+    <string-array name="tutorial_title">
+        <item>Welcome\n</item>
+        <item>RECIEVE $1000 UPON SIGN UP</item>
+    </string-array>
+    <string-array name="tutorial_description">
+        <item>A SIMPLE STRAIGHTFORWARD SOLUTION WITH NO RISK</item>
+        <item>Donated to your choice between...</item>
+    </string-array>
+
+    <string name="sign_up">Sign Up</string>
+    <string name="title_email">Your e-mail address</string>
+    <string name="email_input_label">Your e-mail</string>
+    <string name="email_input_hint">example@email.com</string>
+    <string name="email_input_hint2">you@example.com</string>
+    <string name="title_username">Pick your username</string>
+    <string name="username_input_description">This is how other Wallet users can find you and send you payments.</string>
+    <string name="username_input_label">Your username</string>
+    <string name="username_input_hint">Enter username</string>
+    <string name="username_validating">Checking&#8230;</string>
+    <string name="username_valid">Available</string>
+    <string name="username_invalid">Username is taken</string>
+    <string name="password_input_label">Your password</string>
+    <string name="password_input_hint">Enter password</string>
+    <string name="password_input_hint2">Minimum 8 characters</string>
+    <string name="check_email_hint">Please check your e-mail for the link to continue</string>
+    <string name="resend_email_success">Email sent again</string>
+    <string name="open_email">Open e-mail</string>
+    <string name="phone_input_label">Your phone number</string>
+    <string name="verify_phone_hint">We require your phone number to verify your account.</string>
+    <string name="send_code">Send Verification Code</string>
+    <string name="verification_code">Verification Code (SMS)</string>
+    <string name="resend_code_success">Code sent again</string>
+    <string name="thank_you">Thank you</string>
+    <string name="phone_verify_success">Your phone number has\nbeen verified</string>
+    <string name="referral_code">Referral Code</string>
+    <string name="enter_login">Enter Referral Code</string>
+
+    <string name="login">Login</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forgot_username">Forgot Username</string>
+    <string name="your_username">Your username is</string>
+    <string name="remember_username">Remember usernames are case sensitive</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_hint">To change your password please enter the code we sent to your mobile device.</string>
+    <string name="new_password_input_label">Change Password</string>
+    <string name="new_password_input_hint">Enter a new password</string>
+    <string name="confirm_new_password_input_label">Confirm Password</string>
+    <string name="confirm_new_password_input_hint">Re-enter new password</string>
+    <string name="password_change_success_title">Password Changed!</string>
+    <string name="password_change_success_description">Your password has been changed</string>
+    <string name="verification_code_2fa">Verification Code (2FA)</string>
+
+    <string name="create_passcode">Create Passcode</string>
+    <string name="enter_new_passcode">Enter New Passcode</string>
+    <string name="confirm_passcode">Re-enter Passcode</string>
+    <string name="do_later">I\'ll do this later</string>
+    <string name="touch_id">Touch ID</string>
+    <string name="touch_id_hint">Use Touch ID instead of PIN to authenticate URNC and access your wallet</string>
+    <string name="enable_touch_id">Enable Touch ID</string>
+    <string name="confirm_with">Confirm with</string>
+
+    <string name="welcome">Welcome</string>
+    <string name="review_policy_and_terms">Please review the URNC Wallet Privacy Policy and Terms Service.</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="accept_terms">I accept the Terms of Service and Privacy Policy</string>
+    <string name="accept_terms2">I certify that I am 18 years of age or older, and I agree to the User Agreement and Privacy Policy.</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="user_agreement">User Agreement</string>
+
+
+    <!-- Prices -->
+    <string name="title_price">Prices</string>
+    <string name="portfolio_balance">Main Portfolio Balance</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="deposit">Deposit</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="market_stats">Market Stats</string>
+    <string name="market_cap">Market Cap</string>
+    <string name="market_cap_description">The measure of the total market value of a traded asset, calculated by multiplying the outstanding number of assets in circulation by the current asset price.</string>
+    <string name="volume">Volume</string>
+    <string name="volume_description">The total value of the global trades of this assets in the past 24 hours.</string>
+    <string name="circulating_supply">Circulating Supply</string>
+    <string name="circulating_supply_description">The approximate total number of coins that are currently in circulation and in the possession of the general public.</string>
+    <string name="more_assets">More Assets</string>
+    <string name="more_fiats">More Fiats</string>
+
+    <!-- Select Wallet drawer -->
+    <string name="select_wallet">Select Wallet</string>
+    <string name="crypto">Crypto</string>
+    <string name="fiat">Fiat</string>
+    <string name="your_wallets">Your Wallets</string>
+    <string name="total_balance">Total Balance:</string>
+    <string name="search_coins">Search Coins&#8230;</string>
+
+    <!-- Wallet -->
+    <string name="title_wallet">Wallet</string>
+    <string name="card">Card</string>
+    <string name="transaction_history">Latest History</string>
+    <string name="no_transactions">No transactions found. Press the Buy button above or deposit your asset now to start using your Wallet.</string>
+    <string name="error_no_default_wallet">You must have at least one active asset/currency at all times.</string>
+    <string name="rate">Rate</string>
+    <string name="received">Received</string>
+    <string name="exchanged">Exchanged</string>
+    <string name="date">Date</string>
+    <string name="status">Status</string>
+    <string name="transaction_id">Transaction ID</string>
+    <string name="method">Method</string>
+    <string name="unlock">Unlock</string>
+    <string name="sent">Sent</string>
+    <string name="reward">Reward</string>
+    <string name="card_lock">Card Lock</string>
+    <string name="locked_amount">Locked Amount</string>
+    <string name="benefits">Benefits</string>
+    <string name="release_date">Card Lock\nRelease Date</string>
+    <string name="referral_rewards">Referral Rewards</string>
+    <string name="urnc_vip">URNC VIP</string>
+    <string name="keep_lock">Keep Lock</string>
+    <string name="no_favorite_wallets">The user has no favorite wallets. Please URNC favorite item to right side.</string>
+
+    <!-- Card Unavailable -->
+    <string name="card_unavailable_title">Sorry URNC Cards are not available in your region yet.</string>
+    <string name="card_unavailable_description">Please check back again later to see when your region becomes available. Thank you.</string>
+    <!-- Card Order / Upgrade -->
+    <string name="title_card">Cards</string>
+    <string name="your_card">Your Card</string>
+    <string name="view_details">View Details</string>
+    <string name="order_now">Order Now</string>
+    <string name="select_card_type">Select URNC Card Type</string>
+    <string name="physical_card">Physical Card</string>
+    <string name="virtual_card">Virtual Card (Instant)</string>
+    <string name="card_order_confirm">URNC Card Order Confirmation</string>
+    <string name="card_upgrade_confirm">URNC Card Upgrade Confirmation</string>
+    <string name="card_upgrade_help">Your initial %s lockup will be added to this\nupgrade and reset at 6 months</string>
+    <string name="swipe_lock">URNC Token Lock</string>
+    <string name="swipe_balance">URNC Token Balance</string>
+    <string name="low_balance">Low Balance. Click here to top up</string>
+    <string name="month_lock">6 Months Lock. Releases %s</string>
+    <string name="membership_fee">Membership Fee</string>
+    <string name="onetime_fee">One-Time Fee</string>
+    <string name="pay_with">Pay With</string>
+    <string name="change_method">Tap to change method</string>
+    <string name="cardholder_terms">Do you agree to the Terms &amp; Conditions and CardHolder agreement?</string>
+    <string name="cardholder_agreement">CardHolder agreement</string>
+    <string name="error_card_upgrade_not_available">This card is not available to upgrade.</string>
+    <string name="congrats">Congrats</string>
+    <string name="card_order_success">Your URNC card has been ordered</string>
+    <string name="card_upgrade_success">Your URNC card has been upgraded</string>
+    <!-- Card Activate -->
+    <string name="card_status">Card Status</string>
+    <string name="lock_up">Lock up SXP</string>
+    <string name="order_status">Order Status</string>
+    <string name="kyc_verification">KYC Verification</string>
+    <string name="bank_verification">Bank Verification</string>
+    <string name="activate_card">Activate my card</string>
+    <string name="shipped">Shipped</string>
+    <string name="card_activate_help">Your card will arrive within 5&#8211;7 business days once shipped.</string>
+    <string name="enter_cvv">Enter the CVV</string>
+    <string name="enter_cvv_description">Found on the back of your card</string>
+    <string name="error_input_digits">Please enter all digits</string>
+    <string name="error_invalid_pin">PIN code must be different for card security</string>
+    <string name="swipe_cardholder_agreement">URNC CardHolder Agreement</string>
+    <string name="cardholder_accept_terms">By checking this box you agree to the disclosure above and to URNC\'s Terms &amp; Conditions.</string>
+    <string name="card_activate_success">Your URNC Card has been activated!</string>
+    <string name="create_pin">Create Your PIN Code</string>
+    <string name="enter_digits">Enter 4 digits</string>
+    <string name="confirm_pin">Re-enter your PIN Code</string>
+    <string name="confirm_digits">Re-enter your 4 digits</string>
+    <string name="pin_set">PIN Set</string>
+    <string name="create_pin_success">Your URNC Card PIN is now active and ready for use!</string>
+    <!-- Card activated but not loadable -->
+    <string name="tap_card_numbers">Tap to view card numbers</string>
+    <string name="full_card_features">Full Card Features</string>
+    <string name="daily_limit">Daily Limit</string>
+    <string name="funding_source">Funding Source</string>
+    <string name="no_card_transactions">This card has no transactions</string>
+    <string name="purchase">Purchase</string>
+    <string name="vendor">Vendor</string>
+    <!-- Card Load Balance -->
+    <string name="load_card_balance">Load Card Balance</string>
+    <string name="load_balance">Load Balance</string>
+    <string name="card_balance">Card Balance</string>
+    <string name="pending_load">Pending Load</string>
+    <string name="load_balance_confirm">Total being loaded on URNC Card</string>
+    <string name="load_success">Your URNC Card has been successfully loaded with</string>
+    <!-- Card Setting -->
+    <string name="title_card_setting">%s Settings</string>
+    <string name="card_settings">Card Settings</string>
+    <string name="lock_unlock_card">Lock/Unlock Card</string>
+    <string name="report_card">Report Lost/Stolen Card</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="view_pin">View PIN</string>
+    <string name="your_card_pin">This is your URNC Card PIN Code</string>
+    <string name="card_history">Card History</string>
+    <string name="upgrade_card">Upgrade Card</string>
+    <string name="upgrade_card_status">Upgrade Card Status</string>
+    <string name="physical_card_status">Physical Card Status</string>
+    <string name="order_physical_card">Order Physical Card</string>
+    <string name="cardholder_docs">Cardholder Docs</string>
+    <string name="document_unavailable">This document is unavailable at this time. Please try again later.</string>
+    <string name="enter_new_pin">Enter your new PIN Code</string>
+    <string name="change_pin_success">Your PIN for your URNC Card has been changed</string>
+    <string name="report_card_help">Do you see any fraudulent or unauthorized transactions?\nIf so please select below. If not please press next.</string>
+    <string name="submit_card_report">Submit Lost/Stolen Card</string>
+    <string name="details">Details</string>
+    <string name="fraud">Fraud</string>
+    <string name="lost">Lost</string>
+    <string name="enter_message">Enter your message</string>
+    <string name="error_no_transaction_for_fraud">You need to select transaction for fraud. Could you select transactions?</string>
+    <string name="report_success">Your report has been submitted successfully.</string>
+    <string name="locked">Locked</string>
+    <!-- Card Order Physical -->
+    <string name="order_physical_card_help">By clicking below you will convert your URNC Virtual Card to a physical URNC Card.
+        Shipping takes 5&#8211;7 business days and is free. There is a one time conversion fee of $25.
+    </string>
+    <string name="physical_card_fee">Physical Card Fee</string>
+    <string name="error_card_order_physical_not_available">This card is not available to convert to a physical card.</string>
+    <string name="card_order_physical_success">You have now ordered a physical URNC Card. You can track its status in the Card Setting menu under "Physical Card Status".</string>
+
+    <!-- Gift -->
+    <string name="title_gift">Gifts</string>
+
+    <!-- Bank -->
+    <string name="title_bank">Bank</string>
+    <string name="swipe_financial">URNC Financial</string>
+    <string name="loans">Loans</string>
+    <string name="interest">Interest</string>
+    <string name="invest">Invest</string>
+    <string name="educate">Educate</string>
+    <string name="swipe_financial_description">URNC Financial offers banking and financial tools\nthrough our various service providers.\nSelect from an option above to get started.</string>
+    <string name="my_account">My Account</string>
+    <string name="cash_account">Cash Account</string>
+    <string name="view_wallet">Tap to View Wallet</string>
+    <string name="view_account">View Account Details</string>
+    <string name="bill_pay">Bill Pay</string>
+    <string name="direct_deposit">Direct Deposit</string>
+    <string name="exchange_cash">URNC Cash Visa Card</string>
+    <string name="bank_information">Bank Information</string>
+    <string name="get_paycheck">Get your paycheck early!</string>
+    <string name="get_paycheck_description">When you get your paycheck deposited in URNC, we’ll give it to you 2 days* earlier than most banks.</string>
+    <string name="get_dd_form">Get Direct Deposit Form</string>
+    <string name="give_pre_filled_form">Give your employer the pre-filled form or your account numbers below - it\'s that easy</string>
+    <string name="direct_deposit_form">Direct Deposit Form</string>
+
+    <!-- Profile -->
+    <string name="tier">Tier %d</string>
+    <string name="access_wallet">Get access to your Wallet</string>
+    <string name="access_order">Get access to order a URNC Card</string>
+    <string name="complete_profile">Complete your profile today by clicking below</string>
+    <string name="complete_tier2">Complete Tier 2 verification today by clicking below</string>
+    <string name="verify_account">Verify Your Account</string>
+    <string name="linked_accounts">Linked Accounts</string>
+    <string name="card_failed">Card Failed</string>
+    <string name="failed">Failed</string>
+    <string name="add_payment_method">Add a payment method</string>
+    <string name="account">Account</string>
+    <string name="tier_level">Tier Level</string>
+    <string name="level">Level</string>
+    <string name="click_details">Click to see details</string>
+    <string name="rewards">Rewards</string>
+    <string name="discounts">SXP Network</string>
+    <string name="network_activate_hint">Please deposit 1 SXP to the address below to activate your wallet</string>
+    <string name="network_pending">SXP Network is processing your activation right now</string>
+    <string name="network_activate_success">Your have successfully activated the SXP Network</string>
+    <string name="network_deactivate_success">Your have successfully deactivated the SXP Network</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="change_phone_number">Change Phone Number</string>
+    <string name="manage_contacts">Manage Contacts</string>
+    <string name="my_docs">My Docs</string>
+    <string name="multi_currency">Fiat Currency</string>
+    <string name="security">Security</string>
+    <string name="passcode">Passcode</string>
+    <string name="biometrics">Biometrics</string>
+    <string name="tfa_authentication">Two-Factor Authentication</string>
+    <string name="help">Helpdesk</string>
+    <string name="support">Support</string>
+    <string name="live_chat">Live Chat</string>
+    <string name="sign_out">Sign out</string>
+    <string name="requirements">Requirements</string>
+    <string name="no_limit">No limit</string>
+    <string name="docs">Docs</string>
+
+    <!-- Gift Cards -->
+    <string name="gift_cards">Gift Cards</string>
+    <string name="gift_card_option_view">View Gift Cards</string>
+    <string name="gift_card_option_buy">Buy Gift Cards</string>
+    <string name="search_gift_cards">Search gift cards&#8230;</string>
+    <string name="featured_brands">Featured Brands</string>
+    <string name="view_all">View All</string>
+    <string name="your_cards">Your Cards</string>
+    <string name="buy_gift_card">Buy %s Gift Card</string>
+    <string name="purchase_amounts">Purchase Amounts</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="gift_card">Gift Card</string>
+    <string name="buy_gift_success">You have purchased a</string>
+    <string name="claim_code">Claim Code</string>
+    <string name="view_gift_card">View Gift Card</string>
+    <string name="card_already_used">I\'ve used this card</string>
+    <string name="delete_card_confirm">Are you sure you want to remove this card? This action can\'t be undone.</string>
+    <string name="gift_still_processing">Your gift card is still processing. Please try again later.</string>
+    <string name="error_no_gift_cards">There are no gift cards for this user.</string>
+
+    <!-- Contacts -->
+    <string name="search_contacts">Search contacts&#8230;</string>
+    <string name="search_wallet_address">Search wallet address&#8230;</string>
+    <string name="contacts">Contacts</string>
+    <string name="wallet_address">Wallet Address</string>
+    <string name="new_contact">New Contact</string>
+    <string name="new_address">New Wallet Address</string>
+    <string name="add_photo">Add\nPhoto</string>
+    <string name="add_user_name">Add URNC Wallet Username</string>
+    <string name="add_phone_number">Add Phone Number</string>
+    <string name="add_email">Add Email</string>
+    <string name="error_empty_contact">One of the fields: phone, email, username has to be provided.</string>
+    <string name="wallet_name">Wallet Name</string>
+    <string name="memo_tag">Memo Tag</string>
+    <string name="add_more_assets">Add more assets</string>
+    <string name="assets">Assets</string>
+    <string name="error_empty_image">Please choose the image</string>
+    <string name="error_empty_wallet_address">Please input the wallet address</string>
+    <string name="error_empty_memo">Please input the memo</string>
+    <string name="edit_contact">Edit Contact</string>
+    <string name="edit_address">Edit Wallet Address</string>
+    <string name="delete_contact">Delete Contact</string>
+    <string name="delete_address">Delete Wallet Address</string>
+    <string name="delete_contact_confirm">Are you sure to delete contact?</string>
+    <string name="delete_address_confirm">Are you sure to delete wallet address?</string>
+    <string name="select_picture">Select Picture</string>
+    <string name="permission_read_storage_rationale">Storage read permission is needed to pick image.</string>
+    <string name="toast_cannot_retrieve_selected_image">Cannot retrieve selected image</string>
+    <string name="toast_cannot_retrieve_cropped_image">Cannot retrieve cropped image</string>
+    <string name="toast_unexpected_error">Unexpected error</string>
+
+    <!-- Account -->
+    <string name="account_verification">Account Verification</string>
+    <string name="verify_information">Please verify your information</string>
+    <string name="verify_identity">Financial regulations require us to collect this\ninformation to verify your identity.</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="choose_birth">Choose date of birth</string>
+    <string name="select_type">Select type</string>
+    <string-array name="nin_types">
+        <item>Passport</item>
+        <item>Driver License</item>
+        <item>SSN</item>
+        <item>NIN</item>
+    </string-array>
+    <string name="choose_expiry_date">Choose date of expiry</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="province">Province</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="ssn_nin">TIN #</string>
+    <string name="driver_license_password">Driver\'s License/Password #</string>
+    <string name="tier1_verify_success">Your account has now been\nTier 1 verified</string>
+    <string name="account_level">Account Level</string>
+    <string name="current_tier">Current Tier:</string>
+    <string name="upgrade_tier">Upgrade Tier</string>
+    <string name="tier_verification">Tier %d Verification</string>
+    <string name="processing">Processing</string>
+    <string name="check_in_3_days">Please check back again later.</string>
+    <string name="account_limits">Current Account Limits</string>
+    <string name="crypto_withdrawal">Crypto withdrawal</string>
+    <string name="crypto_deposit">Crypto deposit</string>
+    <string name="bank_withdrawal">Bank withdrawal</string>
+    <string name="bank_purchase">Bank purchase / deposits</string>
+    <string name="card_buys">Card buys</string>
+    <string name="card_purchases">Card purchases</string>
+    <string name="features">Features</string>
+    <string name="wire_transfer">Wire transfer</string>
+    <string name="receive_crypto">Receive crypto</string>
+    <string name="send_crypto">Send crypto</string>
+    <string name="order_card">Order URNC Card</string>
+    <string name="card_limits">Card Limits</string>
+    <string name="no_cards_available">No Cards Available.</string>
+    <string name="order_card_now">Order URNC Card Now</string>
+    <string name="type">Type</string>
+    <string name="atm_withdrawals">ATM withdrawals</string>
+    <string name="disabled">Disabled</string>
+    <string name="enabled">Enabled</string>
+    <string name="account_levels">Account Levels</string>
+    <!-- Rewards -->
+    <string name="card_rewards_back">Card Rewards Back</string>
+    <string name="wallet_rewards_back">Wallet Rewards Back</string>
+    <string name="referral_commission">Referral Commission</string>
+    <string name="sign_up_bonus">Sign Up Bonus</string>
+    <string name="unlocked">Unlocked</string>
+    <string name="rewards_description">You and your friend can earn %s rewards\nwhen your friend signs up, verifies, and orders a card.</string>
+    <string name="invite_friend">Invite a Friend</string>
+    <string name="referral_code_copied">Successfully copied!</string>
+    <!-- Address -->
+    <string name="contact">Contact</string>
+    <string name="contact_description">If you need to change your address please\ncontact support by clicking here</string>
+    <!-- KYC -->
+    <string name="doc_upload">Doc Upload</string>
+    <string name="step1">Tier 1</string>
+    <string name="step2">Tier 2</string>
+    <string name="document0">Financial regulations require us to collect personal information to verify your identity prior to opening an account at URNC.  You will first be required to provide:</string>
+    <string name="document0_1">Full Name</string>
+    <string name="document0_2">Address</string>
+    <string name="document0_3">Date of Birth</string>
+    <string name="document0_4">Social Security Number / TAX</string>
+    <string name="document0_5">Identification Number</string>
+    <string name="document1">Document #1 - Picture ID</string>
+    <string name="document1_1">A clear and legible picture of the account holders picture ID. Acceptable forms of ID’s include one of the following:</string>
+    <string name="document1_1_1">Passport</string>
+    <string name="document1_1_2">Government issued Identity Card</string>
+    <string name="document1_1_3">Driver License</string>
+    <string name="document1_2">The picture of the ID must include the following:</string>
+    <string name="document1_2_1">Clear and legible color scan</string>
+    <string name="document1_2_2">Front and back of the Government issued Identity Card</string>
+    <string name="document1_2_3">Expiration date that is not expired</string>
+    <string name="document1_2_4">Government issued Identification Number</string>
+    <string name="document1_2_5">Date of Birth</string>
+    <string name="document2">Document #2 - Please take a selfie of yourself</string>
+    <string name="document2_">Please take a picture of your face that will match to Document # 1. You must adhere to the following guidelines:</string>
+    <string name="document2_1">Your face must not be covered by anything</string>
+    <string name="document2_2">Do not wear any facial items such as: reading glasses, sunglasses, scarfs, masks, etc.</string>
+    <string name="document2_3">The selfie must be a live photo</string>
+    <string name="document3">Document #3 - Please prove your address</string>
+    <string name="document3_">Please take a picture of a utility bill or bank statement that proves your residence. You must adhere to the following guidelines:</string>
+    <string name="document3_1">The bill/statement must be no older than 60 days from today’s date</string>
+    <string name="document3_2">The address must match your address on your account</string>
+    <string name="document3_3">The name must match your name on the account</string>
+    <string name="get_started">Get Started</string>
+    <string name="kyc_success_title">Congrats!</string>
+    <string name="kyc_success_message">You have been approved for Tier 1</string>
+    <string name="kyc_failure_title">Sorry!</string>
+    <string name="kyc_failure_message">Your KYC details have been declined.</string>
+    <string name="kyc_continue">Continue to Tier 2</string>
+    <string name="kyc_skip">Complete Later</string>
+    <string name="contact_support">Contact Support</string>
+    <string name="permission_camera_rationale">The app needs camera permission to upload scanned image</string>
+    <!-- Step 1 -->
+    <string name="scan_driver_license_front">Scan Driver License Front</string>
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="front_card">Front Card</string>
+    <string name="select_document">Select Document</string>
+    <string-array name="document_types">
+        <item>Passport</item>
+        <item>Driving License</item>
+        <item>National Identity Card</item>
+<!--        <item>Voter Id</item>-->
+<!--        <item>Work Permit</item>-->
+    </string-array>
+    <string name="scan_hint1">Place your document within the frame until all 4 edges are aligned and it is shown in the animation above. Then press the white button below.\n\nEnsure that all data is readable and avoid reflections.</string>
+    <string name="scan_hint2">Make sure all data on your document is fully visible, glare free and not blurred.</string>
+    <string name="check_readability">Check readability</string>
+    <string name="retake">Retake</string>
+    <string name="readable">Readable</string>
+    <!-- Step 2 -->
+    <string name="scan_driver_license_back">Scan Driver License Back</string>
+    <string name="back_card">Back Card</string>
+    <string name="document">Document</string>
+    <string name="scan_hint3">Place the barcode in front of the camera as it is shown in the picture above. Then press the blue button above.</string>
+    <!-- Step 3 -->
+    <string name="take_selfie">Take a Selfie</string>
+    <string name="instructions">Instructions</string>
+    <string name="scan_hint4">Take a selfie without anything blocking your face.</string>
+    <string name="selfie_photo">Selfie Photo</string>
+    <string name="scan_hint5">Put your face in the frame to proceed.</string>
+    <string name="scan_hint6">Please ensure that your face is visible and both your ID/Passport and piece of paper are visible.</string>
+    <!-- Step 4 -->
+    <string name="scan_hint7">Take a picture of your utility bill or bank statement which must be from the last 60 days.\n\nPlease note, documents over 60 days old will not be accepted.</string>
+    <string name="scan_hint8">Put your bill into the frame to proceed.</string>
+    <string name="proof_of_address">Proof of Address</string>
+    <string name="scan_hint9">Please ensure that your bill is visible and all four corners are within the frame.</string>
+    <string name="tier2_verify_pending">We have received all of your\nverification documents and will\nprocess them within 3 business\ndays.</string>
+    <!-- Add Account -->
+    <string name="add_account">Add Account</string>
+    <string name="bank_account">Bank Account</string>
+    <string name="bank_account_description">Link your bank account to make purchases, withdrawals, and sales with electronic transfers such as SEPA, Swift wires and more.</string>
+    <string name="recommended">Recommended</string>
+    <string name="debit_card">Debit Card</string>
+    <string name="debit_card_description">Link your Visa or MasterCard debit or credit card to make small purchases or withdrawals.</string>
+    <string name="no_thanks">No Thanks</string>
+    <string name="connect_bank">Connect Bank</string>
+    <string name="verify_bank">Verify Bank with Deposits</string>
+    <string name="verify_bank_description">Since instant authorization was not successful, you can connect your bank by validating two small deposits (takes ~ 5 business days).</string>
+    <string name="connect_account">Connect Account</string>
+    <string name="choose_account_type">Choose your account type</string>
+    <string name="account_checking">Checking</string>
+    <string name="account_savings">Savings</string>
+    <string name="enter_full_data">Enter the full data</string>
+    <string name="activated">Activated</string>
+    <string name="your_pin">Your PIN Code is %s</string>
+    <string name="add_account_success">You have now linked your\nBank account</string>
+    <string name="add_card">Add Card</string>
+    <string name="full_name">Full Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <!-- Manage Account -->
+    <string name="manage_account">Manage Account</string>
+    <string name="remove">Remove</string>
+    <string name="remove_account_confirm">Are you sure you want to remove your bank account?</string>
+    <string name="verified">Verified</string>
+    <!-- Multi-Currency -->
+    <string name="set_default_currency">Set Default Currency</string>
+    <string name="add_currencies">Add Currencies</string>
+    <string name="default_currency">Default Currency</string>
+    <string name="select_default_currency">Select your default fiat currency</string>
+    <string name="currencies">Currencies</string>
+    <string name="activate_fiat_currency">Activate fiat currency wallets by clicking\non the currency you want enabled.</string>
+
+    <!-- Upgrade / Region Errors -->
+    <string name="error_external_exchange">Linking External Exchanges to your URNC Wallet is not available in your region yet. Please check again later.</string>
+    <string name="error_buy_gift">Buying Gift Cards with your URNC Wallet is not available in your region yet. Please check again later.</string>
+    <string name="error_tier3_upgrade">To request a Tier 3 upgrade please email us at kyc@URNC.io</string>
+    <string name="error_bank">Banking services are not available in your region yet. Please try again later.</string>
+    <string name="error_loans">Lend by URNC loans are not available in your region yet. Please try again later.</string>
+    <string name="error_interest">Interest Earning accounts are not available in your region yet. Please try again later.</string>
+    <string name="error_invest">URNC Educate is not available in your region yet. Please try again later.</string>
+    <string name="error_debit_card">Adding Debit or Credit Cards are not available in your region yet. Please check back again later.</string>
+    <string name="error_available_cards">Available Card List to your URNC Wallet is not available in your region. Please check again later.</string>
+
+    <!-- Transaction Errors -->
+    <string name="error_empty_amount">Please enter amount.</string>
+    <string name="error_larger_amount_transaction">You are trying to %s more than your balance. Please try again with a lesser amount.</string>
+    <string name="error_not_enough_funds">You do not have enough funds to perform this transaction.</string>
+    <string name="error_no_payment_method">Please select payment method.</string>
+    <string name="error_amount_empty">Please enter the amount.</string>
+    <string name="error_choose_same_asset">You can\'t choose the same asset.</string>
+    <string name="error_account_pending">Your bank verification is %s. Please try using this account when it is verified.</string>
+
+    <!-- Deposit Dialog -->
+    <string name="title_dialog_deposit">Deposit %s</string>
+    <string name="title_dialog_deposit_currency">Your %s Deposit Information</string>
+    <string name="your_deposit_address">Your %s Address</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="address_copied">Address copied to clipboard.</string>
+    <string name="memo_copied">%s copied to clipboard.</string>
+    <!-- Buy / Sell Dialog -->
+    <string name="title_dialog_buy_sell">%s %s</string>
+    <string name="wallets">Wallets</string>
+    <string name="limit">Limit</string>
+    <string name="payment_accounts">Payment Accounts</string>
+    <string name="add_bank_account">Add Bank Account</string>
+    <string name="electronic_transfer_accounts">Electronic Transfer Accounts</string>
+    <string name="wire_transfer_accounts">Wire Transfer Accounts</string>
+    <!-- Confirm Dialog -->
+    <string name="confirm">Confirm</string>
+    <string name="price">Price</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="deposit_to">Deposit To</string>
+    <string name="withdraw_to">Withdraw To</string>
+    <string name="funds_arrive">Funds will arrive</string>
+    <string name="available_in">Available In</string>
+    <string name="fee">Fee</string>
+    <string name="total">Total</string>
+    <!-- Verify Dialog -->
+    <string name="verify_account_description">To access this feature\nplease verify your account</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="pending">Pending</string>
+    <!-- Security Dialogs -->
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_passcode">Enter Passcode</string>
+    <string name="fingerprint_not_available">Fingerprint is not available</string>
+    <string name="biometrics_not_available">Biometrics is not available</string>
+    <string name="confirm_fingerprint">Confirm fingerprint to continue</string>
+    <string name="confirm_biometrics">Confirm biometrics to continue</string>
+    <string name="use_passcode">Use Passcode</string>
+    <string name="use_password">Use Password</string>
+
+    <!-- Dashboard -->
+    <string name="title_dashboard">Dashboard</string>
+    <!-- Buy -->
+    <string name="title_buy">Buy</string>
+    <!-- Order -->
+    <string name="title_order">Order</string>
+    <!-- Profile -->
+    <string name="title_profile">Profile</string>
+
+    <!-- Exchange -->
+    <string name="title_exchange">Exchange</string>
+    <string name="no_wallets_to_exchange">You have no wallets to exchange</string>
+    <string name="balance">Balance</string>
+    <string name="are_exchanging">You have</string>
+    <string name="will_receive">You want</string>
+    <string name="exchange_accept_terms">By checking this box you agree to the URNC Exchange Terms &amp; Conditions</string>
+    <string name="exchange_terms_conditions">URNC Exchange Terms &amp; Conditions</string>
+    <string name="amount">Amount</string>
+    <string name="exchanging_to">Exchanging To</string>
+    <string name="exchanging_from">Exchanging From</string>
+    <string name="success">Success</string>
+    <string name="exchange_success">You have exchanged:</string>
+    <string name="buy_success">You have bought</string>
+    <string name="sell_success">You have sold</string>
+    <string name="deposit_success">You have deposited</string>
+    <string name="withdraw_success">You have withdrawn</string>
+    <!-- Send -->
+    <string name="title_send">Send</string>
+    <string name="send_to">Send %s to a:</string>
+    <string name="send_option_username">Username (Free)</string>
+    <string name="send_option_email">Email (Free)</string>
+    <string name="send_option_mobile">Mobile Number (Free)</string>
+    <string name="send_option_address">Wallet Address (Fee: %s %s)</string>
+    <string name="available">Available</string>
+    <string name="send_to_hint">eg. username, %s address</string>
+    <string name="add_new_contact">Add New Contact</string>
+    <string name="add_new_wallet_address">Add New Wallet Address</string>
+    <string name="recent_used">Recently Used</string>
+    <string name="wallet_addresses">Wallet Addresses</string>
+    <string name="enter_if_required">Enter a %s if required</string>
+    <string name="title_scan">Scan</string>
+    <string name="scan_qr_title">Qr Code Scan</string>
+    <string name="scan_qr_hint">Place the code in the center of the square. It will be scanned automatically.</string>
+    <string name="wallet_address_required">Wallet Address required</string>
+    <string name="confirm_sending">Confirm Sending</string>
+    <string name="destination">Destination</string>
+    <string name="network_fee">Network Fee</string>
+    <string name="free">FREE</string>
+    <string name="send_success">Your transaction was successfully sent</string>
+    <!-- Receive -->
+    <string name="title_receive">Receive</string>
+    <string name="error_maintenance">%s is under maintenance. Please try again later.</string>
+
+    <!-- Home-->
+    <string name="exchange_login">LOG IN</string>
+    <string name="exchange_signup">SIGN UP</string>
+
+    <!-- first tutorial-->
+    <string name="welcome_title">WELCOME</string>
+    <string name="welcome_description">A SIMPLE STRAIGHTFORWARD SOLUTION WITH NO RISK</string>
+
+    <!-- second tutorial-->
+    <string name="receive_title_first">RECIEVE</string>
+    <string name="receive_title_second">$1000</string>
+    <string name="receive_title_third">UPON</string>
+    <string name="receive_title_forth">SIGN UP</string>
+    <string name="receive_description">Donated to your choice between...</string>
+
+    <!-- login page-->
+    <string name="login_title">Log Into Your Account</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_button_label">Sign In</string>
+    <string name="login_forgot_label">Forgot Your Password?</string>
+    <string name="login_forgot_link">Click Here</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_signup_link">Sign Up</string>
+
+    <!-- signup page-->
+    <string name="signup_title">Create Your Account</string>
+    <string name="signup_username">Username</string>
+    <string name="signup_fullname">Fullname</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_password_confirm">Confirm Password</string>
+    <string name="signup_phone">Phone Number</string>
+    <string name="signup_button_label">Sign Up</string>
+
+</resources>

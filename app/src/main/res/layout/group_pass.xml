@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btnPassword"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height_small"
+        android:layout_weight="1"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@drawable/button_selector"
+        android:fontFamily="@font/codec_pro_bold"
+        android:layout_marginStart="@dimen/default_padding_3x"
+        android:layout_marginEnd="@dimen/default_margin_small"
+        android:layout_marginTop="@dimen/default_padding_3x"
+        android:layout_marginBottom="@dimen/default_padding_3x"
+        android:text="@string/passcode"
+        android:textAllCaps="false"
+        android:textColor="@drawable/button_selector"
+        android:textSize="@dimen/text_button"/>
+    <Button
+        android:id="@+id/btnPin"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="@dimen/default_padding_3x"
+        android:layout_marginTop="@dimen/default_padding_3x"
+        android:layout_marginBottom="@dimen/default_padding_3x"
+        android:paddingStart="@dimen/default_margin"
+        android:paddingEnd="@dimen/default_margin"
+        style="@style/DefaultButton.Dark"
+        android:text="Confirm with Touch ID"
+        android:textColor="@color/textColorWhite"/>
+</LinearLayout>

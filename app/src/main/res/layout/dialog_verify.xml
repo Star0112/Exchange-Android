@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_header_height">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/DialogTitleText"
+            android:text="@string/verify_account"/>
+        <ImageView
+            android:id="@+id/btnClose"
+            style="@style/DialogCancelButton"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/colorBackground">
+
+        <ImageView
+            android:layout_width="@dimen/tab_with_icon_width"
+            android:layout_height="@dimen/tab_with_icon_width"
+            android:layout_marginTop="@dimen/default_margin_large"
+            android:src="@mipmap/user"/>
+        <TextView
+            android:id="@+id/txtSubtitle"
+            android:layout_marginTop="@dimen/default_padding_small"
+            style="@style/TitleText"
+            android:text="@string/verify_account"
+            android:textSize="@dimen/text_title"/>
+        <TextView
+            android:layout_marginTop="@dimen/default_padding_small"
+            style="@style/DefaultText"
+            android:alpha="0.5"
+            android:lineSpacingExtra="8dp"
+            android:text="@string/verify_account_description"
+            android:textAlignment="center"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnVerify"
+                android:layout_marginTop="@dimen/default_margin_xlarge"
+                android:layout_marginBottom="@dimen/default_margin_2x"
+                style="@style/DefaultButton.Dark"
+                android:text="@string/verify_now"
+                android:visibility="invisible"/>
+            <LinearLayout
+                android:id="@+id/llPending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:src="@drawable/circle_status"
+                    android:tint="@color/colorPendingLight"/>
+                <TextView
+                    style="@style/ItemText"
+                    android:text="@string/pending"
+                    android:textColor="@color/colorPendingLight"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

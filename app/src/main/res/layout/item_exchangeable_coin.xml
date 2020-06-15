@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.marshalchen.ultimaterecyclerview.exchange.ExchangeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/recyclerview_swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:clickToClose="true"
+    app:leftEdgeSwipeOffset="0dp"
+    app:rightEdgeSwipeOffset="0dp">
+
+    <LinearLayout
+        android:id="@+id/llFavorite"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="#a2d466">
+
+        <ImageView
+            android:id="@+id/imgFavorite"
+            android:layout_width="@dimen/circle_size"
+            android:layout_height="@dimen/circle_size"
+            android:src="@mipmap/ic_favorite"
+            android:tint="@color/textColorWhite"/>
+        <TextView
+            android:id="@+id/txtFavorite"
+            android:layout_marginTop="@dimen/default_padding_small"
+            style="@style/DefaultText"
+            android:text="Add to Favorites"
+            android:textAlignment="center"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/text_item"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llItem"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingStart="@dimen/default_padding_3x"
+        android:paddingEnd="@dimen/default_padding_3x">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/imgCoin"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"/>
+            <TextView
+                android:id="@+id/txtCoin"
+                android:layout_marginStart="@dimen/default_margin_small"
+                style="@style/DefaultText"
+                android:text="Bitcoin"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/text_tab"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chartView1"
+                android:layout_width="@dimen/item_select_width"
+                android:layout_height="@dimen/period_button_height"/>
+            <TextView
+                android:id="@+id/txtBalance"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                style="@style/ItemTextBold"
+                android:text="$4292.00"
+                android:textSize="@dimen/text_default"/>
+            <ImageView
+                android:id="@+id/imgReorder"
+                android:layout_width="?listPreferredItemHeight"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@mipmap/ic_reorder"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/imgCheck"
+                android:layout_width="@dimen/circle_size_small"
+                android:layout_height="@dimen/circle_size_small"
+                android:layout_marginStart="@dimen/default_margin"
+                android:src="@mipmap/ic_check"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.marshalchen.ultimaterecyclerview.exchange.ExchangeLayout>

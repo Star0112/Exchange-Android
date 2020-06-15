@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:gravity="center"
+            android:maxLines="2"
+            style="@style/TitleText"
+            android:text="@string/buy_gift_card"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/default_padding_3x"
+            android:layout_marginEnd="@dimen/default_padding_3x"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
+            app:cardBackgroundColor="@color/colorBlue"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/default_margin">
+
+                <ImageView
+                    android:id="@+id/imgCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/card_height_small"
+                    android:adjustViewBounds="true"
+                    android:layout_margin="@dimen/default_margin"/>
+                <TextView
+                    android:id="@+id/txtPrice"
+                    style="@style/TitleText.Dark"
+                    android:text="$0"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_xlarge"/>
+                <TextView
+                    android:id="@+id/txtPurchaseAmounts"
+                    android:layout_marginTop="@dimen/default_margin_2x"
+                    style="@style/SettingItemText"
+                    android:text="@string/purchase_amounts"
+                    android:textColor="@color/textColorWhite"/>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/txtPriceRange"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/indicator_height"
+                    android:layout_marginTop="@dimen/default_margin_small"
+                    app:tabBackground="@drawable/tab_round_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMaxWidth="@dimen/tab_with_icon_width"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@color/textColorDefault"
+                    app:tabTextAppearance="@style/DefaultText"
+                    app:tabTextColor="@color/textColorWhite"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/txtDescription"
+            android:layout_marginStart="@dimen/default_margin_small"
+            android:layout_marginEnd="@dimen/default_margin_small"
+            android:layout_marginTop="@dimen/default_margin"
+            style="@style/DefaultText"
+            android:alpha="0.45"
+            android:text="description"
+            android:textAlignment="center"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_marginBottom="@dimen/default_margin_2x"
+        style="@style/DefaultButton.Dark"
+        android:text="@string/button_continue"/>
+</LinearLayout>

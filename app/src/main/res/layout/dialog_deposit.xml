@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_header_height">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/DialogTitleText"
+            android:text="@string/title_dialog_deposit"/>
+        <ImageView
+            android:id="@+id/btnClose"
+            style="@style/DialogCancelButton"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/colorBackground"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:id="@+id/imgCoin"
+                android:layout_width="@dimen/coin_size"
+                android:layout_height="@dimen/coin_size" />
+            <TextView
+                android:id="@+id/txtCoin"
+                android:layout_marginTop="@dimen/default_padding"
+                style="@style/TitleText"
+                android:text="URNC Token"
+                android:textSize="@dimen/text_item_3x"/>
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding_2x"
+            android:layout_marginEnd="@dimen/default_padding_2x"
+            android:layout_marginBottom="@dimen/default_padding_2x"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_marginTop="@dimen/default_padding"
+                    style="@style/SettingItemText"
+                    android:text="Your BTC Address"/>
+                <TextView
+                    android:id="@+id/txtQRCode"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_padding_small"
+                    android:layout_marginBottom="@dimen/default_padding_small"
+                    style="@style/DefaultText"
+                    android:textColor="@color/textColorGray"/>
+                <include layout="@layout/divider_full"/>
+                <LinearLayout
+                    android:id="@+id/llExtra"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dialog_item_height"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtExtra"
+                        android:gravity="center"
+                        style="@style/SettingItemText"/>
+                    <LinearLayout
+                        android:id="@+id/llExtraValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/default_padding_small"
+                        android:paddingStart="@dimen/default_margin"
+                        android:paddingEnd="@dimen/default_margin">
+
+                        <TextView
+                            android:id="@+id/txtExtraValue"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            style="@style/DefaultText"
+                            android:textAlignment="center"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/default_margin"
+                            android:src="@mipmap/ic_copy"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgQRCode"
+                        android:layout_width="@dimen/qr_code"
+                        android:layout_height="@dimen/qr_code"/>
+                    <ProgressBar
+                        android:id="@+id/progressQRCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:id="@+id/llCopy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:padding="@dimen/default_padding">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/ic_copy"/>
+                            <TextView
+                                android:layout_marginStart="@dimen/default_margin_small"
+                                style="@style/TitleText"
+                                android:text="@string/copy"/>
+                        </LinearLayout>
+                    </FrameLayout>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@color/colorDivider"/>
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:id="@+id/llShare"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:padding="@dimen/default_padding">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/ic_share"/>
+                            <TextView
+                                android:layout_marginStart="@dimen/default_margin_small"
+                                style="@style/TitleText"
+                                android:text="@string/share"/>
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</LinearLayout>

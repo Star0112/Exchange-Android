@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/DialogItem">
+
+    <ImageView
+        android:id="@+id/imgCoin"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"/>
+    <TextView
+        android:id="@+id/txtCoin"
+        android:layout_marginStart="@dimen/default_margin_small"
+        style="@style/TitleText"
+        android:text="URNC Token"
+        android:textSize="@dimen/text_tab"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtBalance"
+            style="@style/DefaultText"
+            android:text="1 BTC"
+            android:textAlignment="textEnd"
+            android:textColor="@color/textColorGray"
+            android:textSize="@dimen/text_tab"/>
+        <TextView
+            android:id="@+id/txtBalanceCurrency"
+            android:layout_marginTop="@dimen/default_padding_small"
+            style="@style/ItemText"
+            android:text="$4292.00"
+            android:textColor="@color/textColorGray"
+            android:textSize="@dimen/text_tab"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imgCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_padding_2x"
+        android:src="@mipmap/ic_checkmark"/>
+</LinearLayout>

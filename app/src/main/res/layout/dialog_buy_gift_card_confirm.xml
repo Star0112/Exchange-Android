@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llConfirm"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:visibility="visible">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_header_height">
+
+        <ImageView
+            android:id="@+id/btnBackConfirm"
+            style="@style/DialogCancelButton.Back"/>
+        <TextView
+            style="@style/DialogTitleText"
+            android:text="@string/confirm"/>
+        <ImageView
+            android:id="@+id/btnCloseConfirm"
+            style="@style/DialogCancelButton"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorBackground">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginStart="@dimen/default_margin_2x"
+            android:layout_marginEnd="@dimen/default_margin_2x"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
+            app:cardBackgroundColor="@color/colorTransparent"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/default_margin">
+
+                <ImageView
+                    android:id="@+id/imgCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/card_height_small"
+                    android:adjustViewBounds="true"
+                    android:layout_margin="@dimen/default_margin"/>
+                <TextView
+                    android:id="@+id/txtConfirmPrice"
+                    android:layout_height="wrap_content"
+                    style="@style/ItemTextBold"
+                    android:text="$500 USD"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/text_xlarge"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/llSelectCoin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginStart="@dimen/default_padding_2x"
+            android:layout_marginEnd="@dimen/default_padding_2x"
+            android:layout_marginBottom="@dimen/default_margin_small"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_height="@dimen/item_height_small"
+                style="@style/DialogItem">
+
+                <ImageView
+                    android:id="@+id/imgSelectCoin"
+                    android:layout_width="@dimen/coin_size_small"
+                    android:layout_height="@dimen/coin_size_small"/>
+                <TextView
+                    android:id="@+id/txtSelectCoin"
+                    android:layout_marginStart="@dimen/default_margin_small"
+                    style="@style/SettingItemText"
+                    android:text="Bitcoin"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtSelectAmount"
+                        style="@style/DefaultText"
+                        android:text="$0.00"
+                        android:textColor="@color/textColorGray"/>
+                    <TextView
+                        style="@style/ItemText"
+                        android:text="@string/change_method"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_item_small"/>
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:src="@mipmap/ic_forward"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding_2x"
+            android:layout_marginEnd="@dimen/default_padding_2x"
+            android:layout_marginBottom="@dimen/default_padding_small"
+            app:cardCornerRadius="8dp">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_height="@dimen/setting_item_height"
+                    style="@style/DialogItem"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_weight="1"
+                        style="@style/SettingItemText"
+                        android:text="@string/payment_method"/>
+                    <TextView
+                        android:id="@+id/txtPaymentMethod"
+                        style="@style/DefaultText"
+                        android:text="$0.00"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider_full"/>
+                <LinearLayout
+                    android:layout_height="@dimen/setting_item_height"
+                    style="@style/DialogItem"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_weight="1"
+                        style="@style/SettingItemText"
+                        android:text="@string/amount"/>
+                    <TextView
+                        android:id="@+id/txtConfirmAmount"
+                        style="@style/DefaultText"
+                        android:text="$0.00"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider_full"/>
+                <LinearLayout
+                    android:layout_height="@dimen/setting_item_height"
+                    style="@style/DialogItem">
+
+                    <TextView
+                        android:layout_weight="1"
+                        style="@style/SettingItemText"
+                        android:text="@string/available"
+                        android:textAlignment="viewStart"/>
+                    <TextView
+                        android:id="@+id/txtAvailable"
+                        style="@style/DefaultText"
+                        android:text="Instantly"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider_full"/>
+                <LinearLayout
+                    android:layout_height="@dimen/setting_item_height"
+                    style="@style/DialogItem">
+
+                    <TextView
+                        android:layout_weight="1"
+                        style="@style/SettingItemText"
+                        android:text="@string/fee"
+                        android:textAlignment="viewStart"/>
+                    <TextView
+                        android:id="@+id/txtFee"
+                        style="@style/DefaultText"
+                        android:text="$0.00"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider_full"/>
+                <LinearLayout
+                    android:layout_height="@dimen/setting_item_height"
+                    style="@style/DialogItem">
+
+                    <TextView
+                        android:layout_weight="1"
+                        style="@style/SettingItemText"
+                        android:text="@string/total"
+                        android:textAlignment="viewStart"/>
+                    <TextView
+                        android:id="@+id/txtTotal"
+                        style="@style/DefaultText"
+                        android:text="$0.00"
+                        android:textColor="@color/colorAccent"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/txtDisclaimer"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_padding"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            style="@style/ItemText"
+            android:text="Except as required by law, Walmart Gift Cards cannot be transferd for value or redeemed for cash."/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_padding">
+
+            <TextView
+                android:id="@+id/txtTerms"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/ItemText"
+                android:alpha="0.45"
+                android:text="@string/cardholder_accept_terms"/>
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin"/>
+        </LinearLayout>
+
+        <include layout="@layout/group_pass"/>
+    </LinearLayout>
+</LinearLayout>

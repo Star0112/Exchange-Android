@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/button_height"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/default_margin"
+    android:paddingEnd="@dimen/default_margin">
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_weight="1"
+        android:maxLines="2"
+        style="@style/DefaultText"
+        android:text="@string/address"
+        android:textAlignment="viewStart"
+        android:textColor="@color/textColorGray"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:src="@mipmap/ic_forward"/>
+</LinearLayout>

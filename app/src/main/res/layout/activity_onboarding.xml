@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="@dimen/default_margin">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <com.urgentrn.urncexchange.ui.view.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/indicator_height"
+                android:layout_gravity="bottom"
+                app:ci_width="@dimen/indicator_size"
+                app:ci_height="@dimen/indicator_size"
+                app:ci_animator="@animator/indicator"
+                app:ci_drawable="@drawable/indicator_selected"
+                app:ci_drawable_unselected="@drawable/indicator_unselected"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/default_margin_xxlarge">
+
+            <Button
+                android:layout_marginBottom="@dimen/default_padding_3x"
+                android:onClick="onLogin"
+                style="@style/DefaultButton"
+                android:text="@string/exchange_login"
+                android:visibility="visible"/>
+            <Button
+                android:layout_marginBottom="@dimen/default_padding_small"
+                android:onClick="onSignUp"
+                style="@style/DefaultButton"
+                android:text="@string/exchange_signup"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

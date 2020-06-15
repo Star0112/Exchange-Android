@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:visibility="visible">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_header_height">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/DialogTitleText"
+            android:text="@string/purchase"/>
+        <ImageView
+            android:id="@+id/btnClose"
+            style="@style/DialogCancelButton"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/colorBackground">
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_marginTop="@dimen/default_margin_xlarge"
+            android:layout_marginBottom="@dimen/default_margin_xlarge"
+            style="@style/TitleText"
+            android:text="0.1 SXP"
+            android:textSize="@dimen/text_large"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_padding_2x"
+            android:layout_marginEnd="@dimen/default_padding_2x"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="@dimen/setting_item_height"
+                        android:paddingStart="@dimen/default_padding_2x"
+                        android:paddingEnd="@dimen/default_padding_2x"
+                        style="@style/SettingButtonTransparent">
+
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/date"
+                            android:textAlignment="viewStart"/>
+                        <TextView
+                            android:id="@+id/txtDate"
+                            style="@style/ItemText"
+                            android:text="Mar 22, 2019 - 9:24 PM"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="@dimen/setting_item_height"
+                        android:paddingStart="@dimen/default_padding_2x"
+                        android:paddingEnd="@dimen/default_padding_2x"
+                        style="@style/SettingButtonTransparent">
+
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/vendor"
+                            android:textAlignment="viewStart"/>
+                        <TextView
+                            android:id="@+id/txtName"
+                            style="@style/ItemText"
+                            android:text="URNC COM"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="@dimen/setting_item_height"
+                        android:paddingStart="@dimen/default_padding_2x"
+                        android:paddingEnd="@dimen/default_padding_2x"
+                        style="@style/SettingButtonTransparent">
+
+                        <TextView
+                            android:layout_weight="1"
+                            style="@style/SettingItemText"
+                            android:text="@string/status"
+                            android:textAlignment="viewStart"/>
+                        <TextView
+                            android:id="@+id/txtStatus"
+                            style="@style/SettingItemText"
+                            android:text="@string/processing"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/txtTransactionId"
+            android:layout_marginTop="@dimen/default_padding_3x"
+            android:layout_marginBottom="@dimen/default_margin_large"
+            style="@style/DefaultText"
+            android:text="@string/transaction_id"
+            android:textColor="@color/textColorGray"/>
+    </LinearLayout>
+</LinearLayout>

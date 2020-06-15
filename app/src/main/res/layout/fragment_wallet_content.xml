@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llGradient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|end"
+                android:gravity="center_vertical|end">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnDeposit"
+                    android:layout_width="@dimen/menu_button_size"
+                    android:layout_height="@dimen/menu_button_size"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginEnd="@dimen/default_padding_2x"
+                    android:visibility="gone"
+                    app:cardCornerRadius="@dimen/button_corner_radius"
+                    app:cardElevation="8dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_qr_code"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnSend"
+                    android:layout_width="@dimen/menu_button_size"
+                    android:layout_height="@dimen/menu_button_size"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:visibility="gone"
+                    app:cardCornerRadius="@dimen/button_corner_radius"
+                    app:cardElevation="8dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_send" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.55"
+            android:layout_margin="@dimen/default_margin_small"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin_2x">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/default_margin_2x">
+
+                        <ImageView
+                            android:id="@+id/imgCoin"
+                            android:layout_width="@dimen/icon_size"
+                            android:layout_height="@dimen/icon_size"/>
+                        <TextView
+                            android:id="@+id/txtCoin"
+                            android:layout_marginStart="@dimen/default_margin_small"
+                            style="@style/DefaultText"
+                            android:text="BITCOIN"
+                            android:textSize="@dimen/text_button"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="@dimen/default_margin_2x">
+
+                        <TextView
+                            android:layout_marginEnd="@dimen/default_padding_small"
+                            style="@style/SettingItemText"
+                            android:text="@string/card"/>
+                        <Switch
+                            android:id="@+id/switchCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtBalanceUSD"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        style="@style/ItemTextBold"
+                        android:textSize="@dimen/text_xlarge"
+                        app:autoSizeMinTextSize="@dimen/text_sub_title"
+                        app:autoSizeMaxTextSize="@dimen/text_xlarge"
+                        app:autoSizeTextType="uniform"/>
+                    <TextView
+                        android:id="@+id/txtBalance"
+                        android:layout_marginTop="@dimen/default_padding_small"
+                        style="@style/DefaultText"
+                        android:alpha="0.5"
+                        android:text="0.00 BTC"
+                        android:textSize="@dimen/text_item_3x"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnBuy"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding_3x"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="@dimen/default_padding_3x"
+                        style="@style/DefaultButton.Dark"
+                        android:text="@string/buy"/>
+                    <Button
+                        android:id="@+id/btnSell"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding_2x"
+                        android:layout_marginEnd="@dimen/default_padding_3x"
+                        android:layout_marginBottom="@dimen/default_padding_3x"
+                        style="@style/DefaultButton.Dark"
+                        android:text="@string/sell"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="@dimen/peek_height">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/bg_dialog"
+            android:layout_marginTop="?attr/actionBarSize">
+
+            <View
+                android:layout_width="@dimen/menu_button_size"
+                android:layout_height="4dp"
+                android:background="@drawable/bg_button_white2"
+                android:backgroundTint="@color/colorBorder"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/default_padding"/>
+            <TextView
+                android:layout_gravity="start"
+                android:padding="@dimen/default_margin"
+                style="@style/TitleText"
+                android:text="@string/transaction_history"/>
+            <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="true">
+
+                <TextView
+                    android:id="@+id/txtNoTransactions"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/default_margin_2x"
+                    style="@style/DefaultText"
+                    android:lineSpacingExtra="8dp"
+                    android:text="@string/no_transactions"
+                    android:textAlignment="center"
+                    android:visibility="gone"/>
+            </com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

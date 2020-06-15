@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/bg_dialog"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin_3x">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_marginTop="@dimen/default_margin_3x"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/new_card2"/>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/txtTitle"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/default_padding_3x"
+            android:layout_marginBottom="@dimen/default_padding"
+            style="@style/TitleText"
+            android:text="@string/success"/>
+        <TextView
+            android:id="@+id/txtDescription"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/default_margin_2x"
+            android:layout_marginEnd="@dimen/default_margin_2x"
+            style="@style/DefaultText"/>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin_2x"
+            android:layout_marginBottom="@dimen/default_margin_3x">
+
+            <at.grabner.circleprogress.CircleProgressView
+                android:id="@+id/progressView"
+                android:layout_width="@dimen/avatar_size"
+                android:layout_height="@dimen/avatar_size"
+                app:cpv_barColor="@color/colorAccent"
+                app:cpv_barWidth="4dp"
+                app:cpv_innerContourSize="0dp"
+                app:cpv_outerContourSize="0dp"
+                app:cpv_rimColor="@color/colorBlackMoreTransparent"
+                app:cpv_rimWidth="4dp"
+                app:cpv_textSize="0dp"
+                app:cpv_unit="s"/>
+            <TextView
+                android:id="@+id/txtProgress"
+                android:layout_gravity="center"
+                style="@style/ItemTextBold"
+                android:text="10"
+                android:textSize="@dimen/text_title"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_padding_small"
+                style="@style/ItemTextBold"
+                android:text="s"
+                android:textSize="@dimen/text_default"/>
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

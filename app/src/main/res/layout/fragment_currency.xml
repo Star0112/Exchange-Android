@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/TitleText.Dark"
+            android:text="@string/multi_currency"/>
+        <TextView
+            android:id="@+id/btnDone"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/default_padding"
+            android:padding="@dimen/default_padding"
+            style="@style/TitleText.Dark"
+            android:text="@string/button_done"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:gravity="center"
+        style="@style/DefaultText"
+        android:lines="2"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/select_default_currency"
+        android:textColor="@color/textColorGray"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

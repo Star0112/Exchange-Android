@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:statusBarColor">@color/colorBackground</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="GradientTheme" parent="AppTheme.NoActionBar">
+        <item name="android:navigationBarColor">@color/colorGradient</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>

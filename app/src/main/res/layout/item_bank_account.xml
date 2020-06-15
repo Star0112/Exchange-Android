@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/button_height"
+    android:paddingTop="@dimen/default_padding_2x"
+    android:paddingBottom="@dimen/default_padding_2x"
+    style="@style/SettingButton">
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        style="@style/DefaultText"
+        android:text="Routing Number"
+        android:textAlignment="viewStart"/>
+    <TextView
+        android:id="@+id/txtValue"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        style="@style/ItemTextBold"
+        android:text="123456"
+        android:textAlignment="textEnd"/>
+</LinearLayout>

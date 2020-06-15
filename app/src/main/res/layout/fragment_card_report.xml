@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            style="@style/TitleText.Dark"
+            android:text="@string/report_card"/>
+        <TextView
+            android:id="@+id/btnNext"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/default_padding"
+            android:padding="@dimen/default_padding"
+            style="@style/TitleText.Dark"
+            android:text="@string/button_next"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin"
+        style="@style/ItemText"
+        android:text="@string/report_card_help"
+        android:textAlignment="center"
+        android:textColor="@color/textColorGray"
+        android:textSize="@dimen/text_item_small"/>
+    <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtNoTransactions"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/default_margin_2x"
+            style="@style/DefaultText"
+            android:lineSpacingExtra="8dp"
+            android:text="@string/no_card_transactions"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGray"
+            android:visibility="gone"/>
+    </com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
+</LinearLayout>

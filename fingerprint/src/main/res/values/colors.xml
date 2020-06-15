@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fingerprint_scanning">#ffffff</color>
+    <color name="fingerprint_success">#ffffff</color>
+    <color name="fingerprint_error">#ffffff</color>
+
+    <color name="circle_scanning">#607D8B</color>
+    <color name="circle_success">#009688</color>
+    <color name="circle_error">#F4511E</color>
+
+    <color name="status_scanning">#42000000</color>
+    <color name="status_success">#009688</color>
+    <color name="status_error">#F4511E</color>
+</resources>

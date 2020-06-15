@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_marginTop="@dimen/default_padding"
+    android:paddingStart="@dimen/default_padding_3x"
+    android:paddingEnd="@dimen/default_padding_3x"
+    android:paddingTop="@dimen/default_padding_3x"
+    android:paddingBottom="@dimen/default_padding_2x">
+
+    <LinearLayout
+        android:id="@+id/llDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin_small"
+            android:src="@mipmap/ic_delete"/>
+        <TextView
+            android:id="@+id/txtCoin"
+            style="@style/SettingItemText"
+            android:text="URNC Token"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/default_padding">
+
+        <EditText
+            android:id="@+id/editAddress"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/default_margin_2x"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:backgroundTint="@drawable/input"
+            android:hint="@string/wallet_address"
+            style="@style/DefaultInput"/>
+        <ImageView
+            android:id="@+id/imgQRCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_status"
+            android:backgroundTint="@color/colorWhite"
+            android:elevation="2dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_margin="@dimen/default_padding_tiny"
+            android:padding="@dimen/default_margin_small"
+            android:src="@mipmap/ic_qr_code"/>
+    </LinearLayout>
+    <EditText
+        android:id="@+id/editMemo"
+        android:layout_marginStart="@dimen/default_margin_2x"
+        android:backgroundTint="@drawable/input"
+        android:hint="@string/memo_tag"
+        style="@style/DefaultInput"/>
+</LinearLayout>

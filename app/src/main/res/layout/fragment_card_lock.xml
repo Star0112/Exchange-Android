@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            style="@style/TitleText.Dark"
+            android:text="@string/lock_unlock_card"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:foreground="@color/colorTransparent"
+            style="@style/SettingButton">
+
+            <ImageView
+                android:id="@+id/imgItem"
+                android:layout_width="@dimen/circle_size"
+                android:layout_height="@dimen/circle_size"
+                android:src="@mipmap/card_status"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                style="@style/SettingItemText"
+                android:text="@string/card_status"
+                android:textAlignment="viewStart"/>
+            <ImageView
+                android:id="@+id/imgCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_check"
+                android:tint="@color/colorGreen"/>
+            <TextView
+                android:id="@+id/txtLock"
+                android:layout_marginStart="@dimen/default_margin"
+                style="@style/SettingItemText"
+                android:text="@string/unlocked"
+                android:textColor="@color/colorGreen"/>
+        </LinearLayout>
+        <include layout="@layout/divider"/>
+        <LinearLayout
+            android:foreground="@color/colorTransparent"
+            style="@style/SettingButton">
+
+            <ImageView
+                android:layout_width="@dimen/circle_size"
+                android:layout_height="@dimen/circle_size"
+                android:src="@mipmap/card_lock"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                style="@style/SettingItemText"
+                android:text="@string/lock_unlock_card"
+                android:textAlignment="viewStart"
+                android:textSize="@dimen/text_default"/>
+            <Switch
+                android:id="@+id/switchLock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

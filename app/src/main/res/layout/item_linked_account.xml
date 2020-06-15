@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llAccount"
+    style="@style/SettingButton">
+
+    <ImageView
+        android:id="@+id/imgCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_new_bank"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/default_margin_small">
+
+        <TextView
+            android:id="@+id/txtName"
+            style="@style/SettingItemText"
+            android:text="Bank 1"/>
+        <TextView
+            android:id="@+id/txtAccount"
+            style="@style/ItemText"
+            android:text="•••• 1111"
+            android:textSize="@dimen/text_item"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginEnd="@dimen/default_margin_small">
+
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle_status"
+            android:tint="@color/colorPendingLight"/>
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:minWidth="@dimen/status_text_width"
+            style="@style/DefaultText"
+            android:text="Pending"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/textColorGray"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imgArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_forward"/>
+</LinearLayout>

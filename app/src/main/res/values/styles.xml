@@ -1,0 +1,342 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionMenuTextColor">@color/textColorWhite</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/colorBlack</item>
+        <item name="android:statusBarColor">@color/colorBlack</item>
+    </style>
+
+    <style name="AppTheme.Dark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Black">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/colorBlack</item>
+        <item name="android:statusBarColor">@color/colorBlack</item>
+    </style>
+
+    <style name="GradientTheme" parent="AppTheme.NoActionBar">
+        <item name="android:navigationBarColor">@color/colorGradient</item>
+        <item name="android:statusBarColor">@color/colorWhite</item>
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+    </style>
+
+    <style name="AppTheme.FullScreen" parent="GradientTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:navigationBarColor">@color/colorBlackMoreTransparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:textAllCaps">false</item>
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/textColorDefault</item>
+    </style>
+
+    <style name="AppTheme.NavigationDrawer" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:listDivider">@android:color/transparent</item>
+    </style>
+
+    <style name="ProgressBarHorizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/bg_progress</item>
+        <item name="android:progressTint">@color/colorPrimary</item>
+        <item name="android:secondaryProgressTint">@color/colorPendingLight</item>
+    </style>
+
+    <style name="DefaultText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:textColor">@color/textColorDefault</item>
+        <item name="android:textSize">@dimen/text_default</item>
+    </style>
+
+    <style name="LoginText" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <!--exchange start-->
+    <style name="WelcomeText" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <style name="ReceiveText" parent="DefaultText">
+        <item name="android:fontFamily">@font/impact</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:textSize">@dimen/text_xxlarge</item>
+    </style>
+
+    <style name="DescriptionText" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+    <!--exchange start-->
+
+    <style name="TitleText" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/text_title_default</item>
+    </style>
+
+    <style name="TitleText.Dark">
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
+
+    <style name="NewTitleText" parent="DefaultText">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:fontFamily">@font/codec_pro_extrabold</item>
+        <item name="android:textSize">@dimen/text_title_large</item>
+    </style>
+
+    <style name="DialogTitleText" parent="TitleText">
+    </style>
+
+    <style name="ItemText" parent="DefaultText">
+        <item name="android:textSize">@dimen/text_tab</item>
+    </style>
+
+    <style name="ItemTextBold" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <style name="ItemHeaderText" parent="TitleText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:paddingStart">@dimen/default_padding_3x</item>
+        <item name="android:paddingTop">@dimen/default_padding_3x</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/textColorGray6</item>
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
+    <style name="SettingItemText" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+    </style>
+
+    <style name="NewSettingItemText" parent="DefaultText">
+        <item name="android:textColor">@color/textColorGray1</item>
+        <item name="android:textSize">@dimen/text_default</item>
+    </style>
+
+    <style name="PercentText" parent="ItemTextBold">
+        <item name="android:layout_width">@dimen/percent_button_width</item>
+        <item name="android:layout_height">@dimen/tab_height_small</item>
+        <item name="android:background">@drawable/bg_button_small</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_tiny</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding_tiny</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="PercentText.Small">
+        <item name="android:layout_width">@dimen/item_select_width</item>
+        <item name="android:layout_height">@dimen/period_button_height</item>
+        <item name="android:textSize">@dimen/text_tab</item>
+    </style>
+
+    <style name="TabActiveText" parent="TitleText">
+        <item name="android:textColor">#ff7c30</item>
+        <item name="android:textSize">@dimen/text_item_small</item>
+    </style>
+
+    <style name="TabInactiveText" parent="TitleText">
+        <item name="android:textColor">#cecece</item>
+        <item name="android:textSize">@dimen/text_item_small</item>
+    </style>
+
+    <style name="DefaultInput" parent="Widget.Design.TextInputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:background">@android:color/transparent</item>-->
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/textColorDefault</item>
+        <!--<item name="android:textColorHint">@color/textColorGray</item>-->
+        <item name="android:textSize">@dimen/text_default</item>
+    </style>
+
+    <style name="LoginInput" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:elevation">3dp</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding</item>
+        <item name="android:paddingStart">@dimen/default_margin</item>
+        <item name="android:paddingEnd">@dimen/default_margin</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <style name="SettingInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/setting_item_height</item>
+        <item name="android:background">@mipmap/bg_input</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginStart">@dimen/default_margin</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
+        <item name="android:paddingStart">@dimen/default_margin</item>
+        <item name="android:paddingEnd">@dimen/default_margin</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/textColorDefault</item>
+        <item name="android:textSize">@dimen/text_default</item>
+    </style>
+
+    <style name="SettingInputTransparent" parent="SettingInput">
+        <item name="android:foreground">@color/colorTransparent</item>
+    </style>
+
+    <style name="DefaultButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/textColorBlack</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <style name="DefaultButton.Blue">
+        <item name="android:background">@drawable/bg_button_blue</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
+
+    <style name="DefaultButton.Dark">
+        <item name="android:backgroundTint">@drawable/button_selector</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
+
+    <style name="DefaultButton.Transparent">
+        <item name="android:background">@drawable/bg_button_transparent</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+    </style>
+
+    <style name="ActionButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/action_button_height</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <style name="ActionButtonDark" parent="ActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:paddingStart">@dimen/default_padding_3x</item>
+        <item name="android:paddingEnd">@dimen/default_padding_3x</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="SettingButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/item_height_small</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/default_padding_3x</item>
+        <item name="android:paddingEnd">@dimen/default_padding_3x</item>
+    </style>
+
+    <style name="SettingButtonTransparent" parent="SettingButton">
+        <item name="android:foreground">@color/colorTransparent</item>
+    </style>
+
+    <style name="GreenSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:thumbTint">@drawable/switch_selector</item>-->
+        <!--<item name="android:trackTint">@drawable/switch_selector</item>-->
+    </style>
+
+    <style name="DialogCancelButton" parent="DefaultText">
+        <item name="android:layout_width">@dimen/icon_size</item>
+        <item name="android:layout_height">@dimen/icon_size</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_small</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:src">@mipmap/ic_close</item>
+    </style>
+
+    <style name="DialogCancelButton.Back">
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_small</item>
+        <item name="android:src">@mipmap/ic_back</item>
+    </style>
+
+    <style name="DialogItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dialog_item_height</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">@dimen/default_margin</item>
+        <item name="android:paddingEnd">@dimen/default_margin</item>
+    </style>
+
+</resources>

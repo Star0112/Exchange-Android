@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:src="@mipmap/user"/>
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="@string/title_username"
+                    android:textSize="@dimen/text_title"/>
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_2x"
+                    android:layout_marginEnd="@dimen/default_margin_2x"
+                    android:layout_marginTop="@dimen/default_margin_small"
+                    android:layout_marginBottom="@dimen/default_margin_2x"
+                    style="@style/DefaultText"
+                    android:alpha="0.5"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/username_input_description"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_margin_large"
+                    style="@style/DefaultText"
+                    android:alpha="0.3"
+                    android:text="@string/username_input_label"/>
+                <EditText
+                    android:id="@+id/editText"
+                    android:imeActionLabel="@string/button_go"
+                    android:imeOptions="actionGo"
+                    android:inputType="textNoSuggestions"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    style="@style/LoginInput"/>
+                <LinearLayout
+                    android:id="@+id/llValidation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:visibility="invisible">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin_2x">
+
+                        <ProgressBar
+                            android:id="@+id/progressValidation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            style="?android:attr/progressBarStyleSmall"/>
+                        <ImageView
+                            android:id="@+id/imgValidation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/ic_invalid"/>
+                    </FrameLayout>
+                    <TextView
+                        android:id="@+id/txtValidation"
+                        android:layout_marginStart="@dimen/default_margin"
+                        style="@style/ItemText"
+                        android:text="@string/username_invalid"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <Button
+            android:id="@+id/btnNext"
+            android:onClick="onNext"
+            android:layout_marginStart="@dimen/default_margin_2x"
+            android:layout_marginEnd="@dimen/default_margin_2x"
+            android:layout_marginBottom="@dimen/default_margin_2x"
+            style="@style/DefaultButton.Dark"
+            android:enabled="false"
+            android:text="@string/button_next"/>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp"
+        app:theme="@style/ToolbarColoredBackArrow"/>
+</FrameLayout>

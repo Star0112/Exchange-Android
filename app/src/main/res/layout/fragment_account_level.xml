@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            style="@style/TitleText.Dark"
+            android:text="@string/account_level"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llPending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/default_padding">
+
+                <TextView
+                    android:id="@+id/txtTierLevel"
+                    style="@style/DefaultText"
+                    android:text="Tier 2 Verification"
+                    android:textSize="@dimen/text_button"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/default_padding">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/circle_status"
+                        android:tint="@color/colorPendingLight"/>
+                    <TextView
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/ItemText"
+                        android:text="@string/processing"
+                        android:textColor="@color/colorPendingLight"/>
+                </LinearLayout>
+                <TextView
+                    style="@style/ItemText"
+                    android:text="@string/check_in_3_days"
+                    android:textColor="@color/textColorGray"
+                    android:textSize="@dimen/text_item"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llTier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorListBackground"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/default_padding">
+
+                <TextView
+                    android:layout_marginStart="@dimen/default_padding_3x"
+                    style="@style/ItemTextBold"
+                    android:text="@string/current_tier"
+                    android:textColor="@color/textColorGray2"
+                    android:textSize="@dimen/text_tab"/>
+                <TextView
+                    android:id="@+id/txtCurrentTier"
+                    android:layout_width="@dimen/period_button_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/default_padding_2x"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/bg_button_white"
+                    android:gravity="center"
+                    style="@style/ItemTextBold"
+                    android:text="1"
+                    android:textColor="@color/textColorGray2"
+                    android:textSize="@dimen/text_item_title"/>
+                <Button
+                    android:id="@+id/btnUpgrade"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_padding_3x"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    style="@style/DefaultButton.Dark"
+                    android:text="@string/upgrade_tier"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/ItemHeaderText"
+                    android:text="@string/account_limits"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_transfer"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/crypto_withdrawal"/>
+                    <TextView
+                        android:id="@+id/txtCryptoWithdraw"
+                        style="@style/DefaultText"
+                        android:text="$10,000/daily"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_deposit"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/crypto_deposit"/>
+                    <TextView
+                        android:id="@+id/txtCryptoDeposit"
+                        style="@style/DefaultText"
+                        android:text="Unlimited"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_new_bank"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/bank_withdrawal"/>
+                    <TextView
+                        android:id="@+id/txtBankWithdraw"
+                        style="@style/DefaultText"
+                        android:text="$10,000/daily"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_new_bank"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/bank_purchase"/>
+                    <TextView
+                        android:id="@+id/txtBank"
+                        style="@style/DefaultText"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_new_card"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/card_buys"/>
+                    <TextView
+                        android:id="@+id/txtCard"
+                        style="@style/DefaultText"
+                        android:text="$2500 / day"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_transfer"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/wire_transfer"/>
+                    <TextView
+                        android:id="@+id/txtWire"
+                        style="@style/DefaultText"
+                        android:text="$2500 / day"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ItemHeaderText"
+                    android:text="@string/features"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_receive"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/receive_crypto"/>
+                    <TextView
+                        android:id="@+id/txtReceive"
+                        style="@style/DefaultText"
+                        android:text="Disabled"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_new_send"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/send_crypto"/>
+                    <TextView
+                        android:id="@+id/txtSend"
+                        style="@style/DefaultText"
+                        android:text="Disabled"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                    style="@style/SettingButton">
+
+                    <ImageView
+                        android:layout_width="@dimen/bank_icon_size"
+                        android:layout_height="@dimen/bank_icon_size"
+                        android:src="@mipmap/ic_new_card"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/default_padding"
+                        style="@style/SettingItemText"
+                        android:text="@string/order_card"/>
+                    <TextView
+                        android:id="@+id/txtOrder"
+                        style="@style/DefaultText"
+                        android:text="Disabled"
+                        android:textColor="@color/textColorGray"/>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/ItemHeaderText"
+                    android:text="@string/card_limits"/>
+                <LinearLayout
+                    android:id="@+id/llCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="@dimen/bank_icon_size"
+                            android:layout_height="@dimen/bank_icon_size"
+                            android:src="@mipmap/ic_new_card"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/default_padding"
+                            style="@style/SettingItemText"
+                            android:text="@string/type"/>
+                        <TextView
+                            android:id="@+id/txtType"
+                            style="@style/DefaultText"
+                            android:text="URNC Saffron"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="@dimen/bank_icon_size"
+                            android:layout_height="@dimen/bank_icon_size"
+                            android:src="@mipmap/ic_new_card"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/default_padding"
+                            style="@style/SettingItemText"
+                            android:text="@string/card_purchases"/>
+                        <TextView
+                            android:id="@+id/txtCardPurchases"
+                            style="@style/DefaultText"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider"/>
+                    <LinearLayout
+                        style="@style/SettingButton">
+
+                        <ImageView
+                            android:layout_width="@dimen/bank_icon_size"
+                            android:layout_height="@dimen/bank_icon_size"
+                            android:src="@mipmap/ic_atm"/>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/default_padding"
+                            style="@style/SettingItemText"
+                            android:text="@string/atm_withdrawals"/>
+                        <TextView
+                            android:id="@+id/txtATMWithdraw"
+                            style="@style/DefaultText"
+                            android:textColor="@color/textColorGray"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llNoCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/default_margin_2x"
+                        style="@style/DefaultText"
+                        android:text="@string/no_cards_available"
+                        android:textColor="@color/textColorGray3"
+                        android:textSize="@dimen/text_item_title"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorListBackground">
+
+                        <Button
+                            android:id="@+id/btnOrder"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_marginBottom="@dimen/default_margin_2x"
+                            style="@style/DefaultButton.Dark"
+                            android:text="@string/order_card_now"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/ItemHeaderText"
+                        android:text="@string/account_levels"/>
+                    <LinearLayout
+                        android:id="@+id/llLevel0"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:weightSum="2"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/txtLevel0"
+                                android:layout_width="@dimen/item_title_width"
+                                style="@style/SettingItemText"
+                                android:text="@string/tier_level"
+                                android:textAlignment="viewStart"/>
+                            <ImageView
+                                android:id="@+id/imgLevel0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/circle_status"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginEnd="@dimen/default_margin"
+                            style="@style/ItemText"
+                            android:text="@string/click_details"
+                            android:textColor="@color/colorAccent"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                    <LinearLayout
+                        android:id="@+id/llLevel1"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:weightSum="2"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/txtLevel1"
+                                android:layout_width="@dimen/item_title_width"
+                                style="@style/SettingItemText"
+                                android:text="@string/tier_level"
+                                android:textAlignment="viewStart"/>
+                            <ImageView
+                                android:id="@+id/imgLevel1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/circle_status"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginEnd="@dimen/default_margin"
+                            style="@style/ItemText"
+                            android:text="@string/click_details"
+                            android:textColor="@color/colorAccent"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                    <LinearLayout
+                        android:id="@+id/llLevel2"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:weightSum="2"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/txtLevel2"
+                                android:layout_width="@dimen/item_title_width"
+                                style="@style/SettingItemText"
+                                android:text="@string/tier_level"
+                                android:textAlignment="viewStart"/>
+                            <ImageView
+                                android:id="@+id/imgLevel2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/circle_status"/>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_marginEnd="@dimen/default_margin"
+                            style="@style/ItemText"
+                            android:text="@string/click_details"
+                            android:textColor="@color/colorAccent"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                    <LinearLayout
+                        android:id="@+id/llLevel3"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:weightSum="2"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/txtLevel3"
+                                android:layout_width="@dimen/item_title_width"
+                                style="@style/SettingItemText"
+                                android:text="@string/tier_level"
+                                android:textAlignment="viewStart"/>
+                            <ImageView
+                                android:id="@+id/imgLevel3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/circle_status"/>
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/txtLevel"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            style="@style/ItemText"
+                            android:text="@string/click_details"
+                            android:textColor="@color/colorAccent"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_forward"/>
+                    </LinearLayout>
+                    <include layout="@layout/divider_full"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
