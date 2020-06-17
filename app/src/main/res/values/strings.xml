@@ -139,7 +139,6 @@
     <string name="crypto">Crypto</string>
     <string name="fiat">Fiat</string>
     <string name="your_wallets">Your Wallets</string>
-    <string name="total_balance">Total Balance:</string>
     <string name="search_coins">Search Coins&#8230;</string>
 
     <!-- Wallet -->
@@ -312,7 +311,6 @@
     <string name="network_pending">SXP Network is processing your activation right now</string>
     <string name="network_activate_success">Your have successfully activated the SXP Network</string>
     <string name="network_deactivate_success">Your have successfully deactivated the SXP Network</string>
-    <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
     <string name="change_phone_number">Change Phone Number</string>
     <string name="manage_contacts">Manage Contacts</string>
@@ -619,11 +617,22 @@
 
     <!-- Dashboard -->
     <string name="title_dashboard">Dashboard</string>
+    <!-- Deposit -->
+    <string name="title_deposit">Deposit</string>
+    <string name="URNC">URNC</string>
+    <string name="BTC">BTC</string>
+    <string name="ETH">ETH</string>
+    <string name="USD">USD</string>
+    <string name="total_balance">Total:</string>
+    <string name="free_balance">Free:</string>
+    <string name="address">Address:</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>
     <!-- Order -->
     <string name="title_order">Order</string>
+    <!-- Setting -->
+    <string name="title_setting">Setting</string>
     <!-- Profile -->
     <string name="title_profile">Profile</string>
 

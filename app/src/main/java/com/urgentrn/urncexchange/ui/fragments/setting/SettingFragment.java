@@ -1,4 +1,4 @@
-package com.urgentrn.urncexchange.ui.fragments.profile;
+package com.urgentrn.urncexchange.ui.fragments.setting;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @EFragment(R.layout.fragment_profile_new)
-public class ProfileFragmentNew extends BaseFragment implements ApiCallback {
+public class SettingFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         initView();

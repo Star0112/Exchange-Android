@@ -51,11 +51,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void updateView() {
-        int startColor = Utils.getTransparentColor("#0000FF");
-        int endColor = Utils.getTransparentColor("#00FF00");
-        int centerColor = (Integer) new ArgbEvaluator().evaluate(0.6f, startColor, endColor);
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{startColor, centerColor, endColor});
-        llBackground.setBackground(gradientDrawable);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

@@ -9,53 +9,17 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.urgentrn.urncexchange.BuildConfig;
 import com.urgentrn.urncexchange.R;
-import com.urgentrn.urncexchange.ExchangeApplication;
 import com.urgentrn.urncexchange.api.ApiCallback;
-import com.urgentrn.urncexchange.api.ApiClient;
-import com.urgentrn.urncexchange.api.AppCallback;
-import com.urgentrn.urncexchange.fcm.ExchangeMessagingService;
-import com.urgentrn.urncexchange.models.AppData;
-import com.urgentrn.urncexchange.models.ExchangeData;
-import com.urgentrn.urncexchange.models.Market;
-import com.urgentrn.urncexchange.models.Symbol;
-import com.urgentrn.urncexchange.models.User;
 import com.urgentrn.urncexchange.models.Wallet;
-import com.urgentrn.urncexchange.models.card.CardInfo;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.models.response.GetExchangeTickersResponse;
-import com.urgentrn.urncexchange.models.response.GetFlowResponse;
-import com.urgentrn.urncexchange.models.response.GetUserResponse;
-import com.urgentrn.urncexchange.models.response.MarketResponse;
-import com.urgentrn.urncexchange.models.response.SymbolResponse;
-import com.urgentrn.urncexchange.models.response.WalletResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
-import com.urgentrn.urncexchange.ui.dialogs.PinDialog;
-import com.urgentrn.urncexchange.ui.dialogs.PinDialog_;
 import com.urgentrn.urncexchange.ui.fragments.buy.BuyFragment_;
-import com.urgentrn.urncexchange.ui.fragments.card.CardContainerFragment;
-import com.urgentrn.urncexchange.ui.fragments.card.CardContainerFragment_;
-import com.urgentrn.urncexchange.ui.fragments.card.CardOrderFragment;
-import com.urgentrn.urncexchange.ui.fragments.exchange.ExchangeFragment;
-import com.urgentrn.urncexchange.ui.fragments.exchange.ExchangeFragment_;
-import com.urgentrn.urncexchange.ui.fragments.gift.GiftContainerFragment;
-import com.urgentrn.urncexchange.ui.fragments.gift.GiftContainerFragment_;
-import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment;
+import com.urgentrn.urncexchange.ui.fragments.deposit.DepositFragment_;
 import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment_;
 import com.urgentrn.urncexchange.ui.fragments.order.OrderFragment_;
-import com.urgentrn.urncexchange.ui.fragments.price.PriceContainerFragment_;
-import com.urgentrn.urncexchange.ui.fragments.price.PriceFragment;
-import com.urgentrn.urncexchange.ui.fragments.profile.ProfileContainerFragment;
-import com.urgentrn.urncexchange.ui.fragments.profile.ProfileContainerFragment_;
-import com.urgentrn.urncexchange.ui.fragments.profile.ProfileFragmentNew_;
-import com.urgentrn.urncexchange.ui.fragments.wallet.WalletFragment;
-import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
-import com.urgentrn.urncexchange.utils.Constants;
-import com.urgentrn.urncexchange.utils.WalletUtils;
+import com.urgentrn.urncexchange.ui.fragments.setting.SettingFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -74,10 +38,10 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     BottomNavigationView navigation;
 
     private final DashboardFragment_ fragment1 = new DashboardFragment_();
-    private final BuyFragment_ fragment2 = new BuyFragment_();
-//    private final OrderFragment fragment3 = new OrderFragment();
+    private final DepositFragment_ fragment2 = new DepositFragment_();
+    private final BuyFragment_ fragment3 = new BuyFragment_();
     private final OrderFragment_ fragment4 = new OrderFragment_();
-    private final ProfileFragmentNew_ fragment5 = new ProfileFragmentNew_();
+    private final SettingFragment_ fragment5 = new SettingFragment_();
     private final FragmentManager fm = getSupportFragmentManager();
     private BaseFragment active = fragment1;
 
@@ -96,19 +60,19 @@ public class MainActivity extends BaseActivity implements ApiCallback {
                 fm.beginTransaction().hide(active).show(fragment1).commitAllowingStateLoss();
                 active = fragment1;
                 break;
-            case R.id.navigation_buy:
+            case R.id.navigation_deposit:
                 fm.beginTransaction().hide(active).show(fragment2).commitAllowingStateLoss();
                 active = fragment2;
                 break;
-//            case R.id.navigation_gift:
-//                fm.beginTransaction().hide(active).show(fragment3).commitAllowingStateLoss();
-//                active = fragment3;
-//                break;
+            case R.id.navigation_buy:
+                fm.beginTransaction().hide(active).show(fragment3).commitAllowingStateLoss();
+                active = fragment3;
+                break;
             case R.id.navigation_order:
                 fm.beginTransaction().hide(active).show(fragment4).commitAllowingStateLoss();
                 active = fragment4;
                 break;
-            case R.id.navigation_profile:
+            case R.id.navigation_setting:
                 fm.beginTransaction().hide(active).show(fragment5).commitAllowingStateLoss();
                 active = fragment5;
                 break;
@@ -125,7 +89,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     protected void init() {
         fm.beginTransaction().add(R.id.container, fragment5, "5").hide(fragment5).commit();
         fm.beginTransaction().add(R.id.container, fragment4, "4").hide(fragment4).commit();
-//        fm.beginTransaction().add(R.id.container, fragment3, "3").hide(fragment3).commit();
+        fm.beginTransaction().add(R.id.container, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.container, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.container, fragment1, "1").hide(fragment1).commit(); // setting last because of status bar color
 
@@ -141,11 +105,11 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     }
 
     private void updateTabIcons(int itemId) { // not recommended but because of bad icon designs. it should use opacity instead of color
-        navigation.getMenu().findItem(R.id.navigation_dash).setIcon(itemId == R.id.navigation_dash ? R.mipmap.ic_tab_wallet_selected : R.mipmap.ic_tab_wallet);
-        navigation.getMenu().findItem(R.id.navigation_buy).setIcon(itemId == R.id.navigation_buy ? R.mipmap.ic_tab_card_selected : R.mipmap.ic_tab_card);
-        navigation.getMenu().findItem(R.id.navigation_gift).setIcon(itemId == R.id.navigation_gift ? R.mipmap.ic_tab_gift_selected : R.mipmap.ic_tab_gift);
-        navigation.getMenu().findItem(R.id.navigation_order).setIcon(itemId == R.id.navigation_order ? R.mipmap.ic_tab_exchange_selected : R.mipmap.ic_tab_exchange);
-        navigation.getMenu().findItem(R.id.navigation_profile).setIcon(itemId == R.id.navigation_profile ? R.mipmap.ic_tab_profile_selected : R.mipmap.ic_tab_profile);
+        navigation.getMenu().findItem(R.id.navigation_dash).setIcon(itemId == R.id.navigation_dash ? R.mipmap.ic_tab_dashboard : R.mipmap.ic_tab_dashboard_inactive);
+        navigation.getMenu().findItem(R.id.navigation_deposit).setIcon(itemId == R.id.navigation_deposit ? R.mipmap.ic_tab_deposit : R.mipmap.ic_tab_deposit_inactive);
+        navigation.getMenu().findItem(R.id.navigation_buy).setIcon(itemId == R.id.navigation_buy ? R.mipmap.ic_tab_buy : R.mipmap.ic_tab_buy_inactive);
+        navigation.getMenu().findItem(R.id.navigation_order).setIcon(itemId == R.id.navigation_order ? R.mipmap.ic_tab_order : R.mipmap.ic_tab_order_inactive);
+        navigation.getMenu().findItem(R.id.navigation_setting).setIcon(itemId == R.id.navigation_setting ? R.mipmap.ic_tab_setting : R.mipmap.ic_tab_setting_inactive);
     }
 
     @Override

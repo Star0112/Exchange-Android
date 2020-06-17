@@ -131,6 +131,11 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:textSize">@dimen/text_title_default</item>
     </style>
+    <style name="CoinText" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/text_title_default</item>
+    </style>
 
     <style name="TitleText.Dark">
         <item name="android:textColor">@color/textColorWhite</item>

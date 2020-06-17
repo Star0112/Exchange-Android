@@ -3,21 +3,26 @@
 
     <item
         android:id="@+id/navigation_dash"
-        android:icon="@mipmap/ic_tab_wallet"
+        android:icon="@mipmap/ic_tab_dashboard"
         android:title="@string/title_dashboard" />
 
     <item
+        android:id="@+id/navigation_deposit"
+        android:icon="@mipmap/ic_tab_deposit"
+        android:title="@string/title_deposit" />
+
+    <item
         android:id="@+id/navigation_buy"
-        android:icon="@mipmap/ic_tab_card"
+        android:icon="@mipmap/ic_tab_buy"
         android:title="@string/title_buy" />
 
     <item
         android:id="@+id/navigation_order"
-        android:icon="@mipmap/ic_tab_exchange"
+        android:icon="@mipmap/ic_tab_order"
         android:title="@string/title_order" />
 
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@mipmap/ic_tab_profile"
-        android:title="@string/title_profile" />
+        android:id="@+id/navigation_setting"
+        android:icon="@mipmap/ic_tab_setting"
+        android:title="@string/title_setting" />
 </menu>
