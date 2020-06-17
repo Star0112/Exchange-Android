@@ -127,7 +127,7 @@ public class AccountLevelFragment extends BaseFragment {
 
     @Click(R.id.btnOrder)
     void onOrder() {
-        ((MainActivity)getActivity()).setActiveTab(R.id.navigation_card, null);
+        ((MainActivity)getActivity()).setActiveTab(R.id.navigation_buy, null);
         onBackPressed();
     }
 

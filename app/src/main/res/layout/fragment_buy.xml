@@ -3,7 +3,209 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        style="@style/NewTitleText"
-        android:text="@string/title_buy" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/llBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+                <TextView
+                    style="@style/NewTitleText"
+                    android:text="@string/title_buy" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/default_margin_2x">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/default_padding"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="15dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/default_padding_2x"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.62"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent">
+                                    <ImageView
+                                        android:id="@+id/imgCoinFrom"
+                                        android:layout_width="@dimen/menu_button_size"
+                                        android:layout_height="@dimen/menu_button_size"
+                                        android:src="@mipmap/logo"
+                                        android:layout_gravity="center" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@mipmap/ic_switch_across"
+                                        android:layout_gravity="center"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent">
+                                    <ImageView
+                                        android:layout_width="@dimen/menu_button_size"
+                                        android:layout_height="@dimen/menu_button_size"
+                                        android:src="@mipmap/logo"
+                                        android:layout_gravity="center" />
+                                </LinearLayout>
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/default_padding_3x"
+                                    android:src="@mipmap/ic_arrow_down"
+                                    android:tint="@color/colorAccent"
+                                    android:layout_gravity="center" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/default_padding_3x"
+                                android:paddingEnd="@dimen/default_padding_3x">
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        style="@style/ItemText"
+                                        android:layout_gravity="start"
+                                        android:text="@string/price"
+                                        android:textSize="@dimen/text_default" />
+                                </LinearLayout>
+                                <TextView
+                                    android:id="@+id/txtPrice"
+                                    style="@style/ItemText"
+                                    android:layout_gravity="end"
+                                    android:text="0.01796"
+                                    android:textSize="@dimen/text_default" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/default_padding_3x"
+                                android:paddingEnd="@dimen/default_padding_3x">
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent">
+                                    <TextView
+                                        style="@style/ItemText"
+                                        android:layout_gravity="start"
+                                        android:text="@string/price"
+                                        android:textSize="@dimen/text_default" />
+                                </LinearLayout>
+                                <TextView
+                                    android:id="@+id/txtAmount"
+                                    style="@style/ItemText"
+                                    android:layout_gravity="end"
+                                    android:text="1"
+                                    android:textSize="@dimen/text_default" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/default_padding_3x"
+                            android:layout_marginEnd="@dimen/default_padding_3x"
+                            android:background="@color/colorDivider" />
+
+                        <LinearLayout
+                            android:id="@+id/llAmountFrom"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.38"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/default_padding_3x"
+                            android:paddingEnd="@dimen/default_padding_3x">
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/txtTotalPrice"
+                                style="@style/TitleText"
+                                android:text="0.01796"
+                                android:textSize="@dimen/text_title_large" />
+
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/btnBuy"
+                            style="@style/DefaultButton.Blue"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:enabled="false"
+                            android:text="@string/buy" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_dialog"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/buy_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingEnd="@dimen/default_padding"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
 </FrameLayout>

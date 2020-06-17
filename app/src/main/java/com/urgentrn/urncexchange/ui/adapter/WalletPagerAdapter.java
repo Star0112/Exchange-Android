@@ -60,7 +60,7 @@ public class WalletPagerAdapter extends PagerAdapter {
                 .into(imgCoin);
         imgCoin.setOnClickListener(v -> {
             if (!wallet.getSymbolData().isCurrency()) {
-                ((MainActivity)container.getContext()).setActiveTab(R.id.navigation_wallet, wallet);
+                ((MainActivity)container.getContext()).setActiveTab(R.id.navigation_dash, wallet);
             }
         });
         ((TextView)view.findViewById(R.id.txtCoin)).setText(wallet.getTitle().toUpperCase());

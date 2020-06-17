@@ -144,7 +144,7 @@ public class BankFragment extends BaseFragment implements ApiCallback {
     @Click(R.id.llViewWallet)
     void onViewWallet() {
         if (wallet == null || getActivity() == null) return;
-        ((MainActivity)getActivity()).setActiveTab(R.id.navigation_wallet, wallet);
+        ((MainActivity)getActivity()).setActiveTab(R.id.navigation_dash, wallet);
     }
 
     private void onItemClick(int position) {

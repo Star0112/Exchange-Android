@@ -4,7 +4,7 @@ import com.urgentrn.urncexchange.BuildConfig;
 
 public class Constants {
 
-    public static String API_URL = "http://192.168.1.150:3000/api/";
+    public static String API_URL = "https://svrp1prod.walletsdk.com";
     public static String COUNTRY_NAME = "";
     public static final String API_VERSION = "1.0.0";
     public static final String ENVIRONMENT = BuildConfig.ENVIRONMENT;

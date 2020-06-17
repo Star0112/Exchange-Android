@@ -2,29 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_wallet"
+        android:id="@+id/navigation_dash"
         android:icon="@mipmap/ic_tab_wallet"
-        android:title="@string/title_wallet" />
+        android:title="@string/title_dashboard" />
 
     <item
-        android:id="@+id/navigation_card"
+        android:id="@+id/navigation_buy"
         android:icon="@mipmap/ic_tab_card"
-        android:title="@string/title_card" />
+        android:title="@string/title_buy" />
 
     <item
-        android:id="@+id/navigation_gift"
-        android:icon="@mipmap/ic_tab_gift"
-        android:title="@string/title_gift"
-        android:visible="false"/>
-
-    <item
-        android:id="@+id/navigation_exchange"
+        android:id="@+id/navigation_order"
         android:icon="@mipmap/ic_tab_exchange"
-        android:title="@string/title_exchange" />
+        android:title="@string/title_order" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@mipmap/ic_tab_profile"
         android:title="@string/title_profile" />
-
 </menu>

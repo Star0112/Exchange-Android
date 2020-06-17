@@ -126,6 +126,6 @@ public class AccountFragment extends BaseFragment {
     @Click(R.id.llViewWallet)
     void onViewWallet() {
         if (wallet == null || getActivity() == null) return;
-        ((MainActivity)getActivity()).setActiveTab(R.id.navigation_wallet, wallet);
+        ((MainActivity)getActivity()).setActiveTab(R.id.navigation_dash, wallet);
     }
 }

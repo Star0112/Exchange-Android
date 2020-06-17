@@ -594,7 +594,6 @@
     <string name="wire_transfer_accounts">Wire Transfer Accounts</string>
     <!-- Confirm Dialog -->
     <string name="confirm">Confirm</string>
-    <string name="price">Price</string>
     <string name="payment_method">Payment Method</string>
     <string name="from">From</string>
     <string name="to">To</string>
@@ -622,6 +621,7 @@
     <string name="title_dashboard">Dashboard</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
+    <string name="price">Price</string>
     <!-- Order -->
     <string name="title_order">Order</string>
     <!-- Profile -->

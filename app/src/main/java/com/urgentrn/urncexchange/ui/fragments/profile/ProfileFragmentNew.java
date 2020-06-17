@@ -1,5 +1,6 @@
 package com.urgentrn.urncexchange.ui.fragments.profile;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import com.urgentrn.urncexchange.R;
@@ -11,6 +12,7 @@ import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -21,18 +23,23 @@ import java.util.List;
 public class ProfileFragmentNew extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
-
+        initView();
+        updateView();
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        EventBus.getDefault().unregister(this);
     }
+
+    private void initView() {}
 
     @Override
     public void updateView() {
@@ -41,6 +48,7 @@ public class ProfileFragmentNew extends BaseFragment implements ApiCallback {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void updateView(List<Wallet> data) {
+        updateView();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -50,7 +58,10 @@ public class ProfileFragmentNew extends BaseFragment implements ApiCallback {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        if (resultCode == Activity.RESULT_OK && data != null) {}
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override

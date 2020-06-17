@@ -47,11 +47,7 @@
                 style="@style/DefaultButton"
                 android:text="@string/exchange_login"
                 android:visibility="visible"/>
-            <Button
-                android:layout_marginBottom="@dimen/default_padding_small"
-                android:onClick="onSignUp"
-                style="@style/DefaultButton"
-                android:text="@string/exchange_signup"/>
+
         </LinearLayout>
 
     </LinearLayout>
