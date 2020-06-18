@@ -621,7 +621,6 @@
     <!-- Exchange -->
     <string name="title_exchange">Exchange</string>
     <string name="no_wallets_to_exchange">You have no wallets to exchange</string>
-    <string name="balance">Balance</string>
     <string name="are_exchanging">You have</string>
     <string name="will_receive">You want</string>
     <string name="exchange_accept_terms">By checking this box you agree to the URNC Exchange Terms &amp; Conditions</string>
@@ -719,8 +718,10 @@
     <string name="amount">Amount</string>
     <!-- Order -->
     <string name="title_order">Order</string>
+    <string name="balance">Balanc</string>
     <!-- Setting -->
     <string name="title_setting">Setting</string>
     <!-- Profile -->
     <string name="title_profile">Profile</string>
+    <string name="user_profile">User profile</string>
 </resources>

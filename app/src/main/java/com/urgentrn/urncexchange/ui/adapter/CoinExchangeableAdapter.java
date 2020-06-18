@@ -86,7 +86,7 @@ public class CoinExchangeableAdapter extends ExchangeableUltimateViewAdapter<Wal
 
     @Override
     protected int getNormalLayoutResId() {
-        return R.layout.item_exchangeable_coin;
+        return R.layout.item_exchange_coin;
     }
 
     @Override

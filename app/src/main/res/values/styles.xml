@@ -255,6 +255,7 @@
     <style name="DefaultButton.Blue">
         <item name="android:background">@drawable/bg_button_blue</item>
         <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="DefaultButton.Dark">
@@ -368,9 +369,20 @@
         <item name="android:paddingEnd">@dimen/default_margin</item>
         <item name="android:textSize">@dimen/text_button</item>
     </style>
-    <style name="CoinInput" parent="DefaultInput">
+    <style name="CoinInput.White" parent="DefaultInput">
         <item name="android:layout_height">@dimen/button_height_small</item>
         <item name="android:background">@drawable/bg_input</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
+        <item name="android:textSize">@dimen/text_item_3x</item>
+    </style>
+    <style name="CoinInput.Gray" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:background">@drawable/bg_input_gray</item>
         <item name="android:elevation">0dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginStart">@dimen/default_margin_2x</item>

@@ -10,5 +10,114 @@
         android:orientation="vertical"
         android:background="@mipmap/background">
         <include  layout="@layout/activity_main_header"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <Spinner
+                android:id="@+id/selectCoin"
+                android:background="@drawable/button_dropdown"
+                android:layout_gravity="center_horizontal"
+                android:spinnerMode="dropdown"
+                style="@style/SpinnerInput"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/coinIcon"
+                    android:layout_width="@dimen/menu_button_size"
+                    android:layout_height="@dimen/menu_button_size"
+                    android:src="@mipmap/icon_balance" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/balance"
+                    style="@style/NewTitleText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    style="@style/NewTitleText" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_dialog"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/buyPrice"
+                        android:imeActionLabel="@string/button_next"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/price"
+                        style="@style/CoinInput.Gray"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/buyAmount"
+                        android:imeActionLabel="@string/button_go"
+                        android:imeOptions="actionGo"
+                        android:inputType="number"
+                        android:hint="@string/amount"
+                        style="@style/CoinInput.Gray" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnBuy"
+                android:layout_width="@dimen/button_width"
+                android:layout_margin="@dimen/default_margin"
+                android:text="@string/price"
+                style="@style/DefaultButton.Blue"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/sellPrice"
+                        android:imeActionLabel="@string/button_next"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:hint="@string/price"
+                        style="@style/CoinInput.Gray"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/sellAmount"
+                        android:imeActionLabel="@string/button_go"
+                        android:imeOptions="actionGo"
+                        android:inputType="number"
+                        android:hint="@string/amount"
+                        style="@style/CoinInput.Gray" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnSell"
+                android:layout_width="@dimen/button_width"
+                android:layout_margin="@dimen/default_margin"
+                android:text="@string/price"
+                style="@style/DefaultButton.Blue"/>
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
