@@ -4,6 +4,7 @@ package com.urgentrn.urncexchange.ui.fragments.deposit;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,8 +34,13 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     @ViewById
     View llBackground;
 
+    @ViewById(R.id.newHeader)
+    TextView newHeader;
+
     @ViewById
     RecyclerView recyclerDepositCoins;
+
+
 
 
     private CoinDepositAdapter adapterCoin;
@@ -42,6 +48,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
+        newHeader.setText(R.string.title_deposit);
         tempCoins.add(new DepositCoin("cypto","URNC","0x01029dko4", "51000","24453"));
         tempCoins.add(new DepositCoin("cypto","BTC","0x324dfds54", "25000","68253"));
         tempCoins.add(new DepositCoin("cypto","ETH","0xf102a5ko4", "30300","27423"));

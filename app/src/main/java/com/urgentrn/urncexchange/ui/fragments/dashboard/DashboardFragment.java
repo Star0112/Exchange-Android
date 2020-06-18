@@ -3,6 +3,7 @@ package com.urgentrn.urncexchange.ui.fragments.dashboard;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
@@ -28,8 +29,12 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     @ViewById
     View llBackground;
 
+    @ViewById(R.id.newHeader)
+    TextView newHeader;
+
     @AfterViews
     protected void init() {
+        newHeader.setText(R.string.title_dashboard);
         initView();
         updateView();
     }

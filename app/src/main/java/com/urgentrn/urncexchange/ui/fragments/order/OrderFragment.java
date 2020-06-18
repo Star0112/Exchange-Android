@@ -2,6 +2,7 @@ package com.urgentrn.urncexchange.ui.fragments.order;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.TextView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
@@ -12,6 +13,7 @@ import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -21,8 +23,13 @@ import java.util.List;
 
 @EFragment(R.layout.fragment_order)
 public class OrderFragment extends BaseFragment implements ApiCallback {
+
+    @ViewById(R.id.newHeader)
+    TextView newHeader;
+
     @AfterViews
     protected void init() {
+        newHeader.setText(R.string.title_order);
         initView();
         updateView();
     }
