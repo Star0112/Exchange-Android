@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorBlueLight">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +26,7 @@
                     android:layout_height="@dimen/menu_button_size"
                     android:src="@mipmap/coin_urnc" />
                 <TextView
+                    android:id="@+id/coin_name"
                     style="@style/CoinText"
                     android:text="@string/BTC"
                     android:textSize="@dimen/text_button"

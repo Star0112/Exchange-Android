@@ -37,31 +37,18 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     RecyclerView recyclerDepositCoins;
 
 
-    ////////////////////////////
-//    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    ////////////////////////////
-
     private CoinDepositAdapter adapterCoin;
     private ArrayList<DepositCoin> tempCoins = new ArrayList<>();
+
     @AfterViews
     protected void init() {
+        tempCoins.add(new DepositCoin("cypto","URNC","0x01029dko4", "51000","24453"));
+        tempCoins.add(new DepositCoin("cypto","BTC","0x324dfds54", "25000","28253"));
+        tempCoins.add(new DepositCoin("cypto","ETH","0xf102a5ko4", "30300","27423"));
+        tempCoins.add(new DepositCoin("currency","USD","0xh1i2cdko4", "60200","26451"));
+        tempCoins.add(new DepositCoin("cypto","COIN","0xu10d9dko4", "70400","28253"));
         setupDrawer();
 //        updateView(null);
-        // use this setting to
-        // improve performance if you know that changes
-        // in content do not change the layout size
-        // of the RecyclerView
-        recyclerDepositCoins.setHasFixedSize(true);
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(getContext());
-        recyclerDepositCoins.setLayoutManager(layoutManager);
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            input.add("Test" + i);
-        }// define an adapter
-        adapterCoin = new CoinDepositAdapter(input);
-        recyclerDepositCoins.setAdapter(adapterCoin);
     }
 
     @Override
@@ -77,13 +64,14 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer() {
-//        for (int i = 1; i <= 10; i++) {
-//            tempCoins.add(new DepositCoin("", "", "", "", ""));
-//        }
-//        this.adapterCoin = new CoinDepositAdapter(tempCoins);
-//        final LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
-//        recyclerDepositCoins.setLayoutManager(layoutManager2);
-//        recyclerDepositCoins.setAdapter(adapterCoin);
+        recyclerDepositCoins.setHasFixedSize(true);
+        recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapterCoin = new CoinDepositAdapter(pos -> updateCoin(tempCoins.get(pos)));
+        adapterCoin.setData(tempCoins);
+        recyclerDepositCoins.setAdapter(adapterCoin);
+    }
+
+    public void updateCoin(DepositCoin coin){
 
     }
 
