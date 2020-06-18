@@ -2,14 +2,14 @@ package com.urgentrn.urncexchange.models;
 
 import java.io.Serializable;
 
-public class DepositCoin implements Serializable {
+public class CoinBalance implements Serializable {
     private String type;
     private String coinName;
     private String address;
     private String total;
     private String free;
 
-    public DepositCoin(String type, String coin, String address, String total, String free) {
+    public CoinBalance(String type, String coin, String address, String total, String free) {
         this.type = type;
         this.coinName = coin;
         this.address = address;

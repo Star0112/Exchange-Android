@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="90dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +35,7 @@
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="3"
             android:layout_height="match_parent"
             app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="12dp"
@@ -48,7 +48,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/default_padding"
                     android:layout_marginBottom="@dimen/default_padding"
-                    android:background="@color/colorDivider" />
+                    android:background="@color/colorGray" />
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -67,7 +67,7 @@
                         android:layout_weight="1"
                         android:layout_height="0dp"
                         android:layout_width="match_parent"
-                        android:text="333"
+                        android:text="10400,00"
                         android:textSize="@dimen/text_default"
                         app:autoSizeMinTextSize="@dimen/text_item_small"/>
                 </LinearLayout>
@@ -76,7 +76,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/default_padding"
                     android:layout_marginBottom="@dimen/default_padding"
-                    android:background="@color/colorDivider" />
+                    android:background="@color/colorGray" />
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -95,51 +95,11 @@
                         android:layout_height="0dp"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
-                        android:text="222"
-                        android:textSize="@dimen/text_default"
-                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
-                </LinearLayout>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/default_padding"
-                    android:layout_marginBottom="@dimen/default_padding"
-                    android:background="@color/colorDivider" />
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-                    <TextView
-                        style="@style/DepositText.Title"
-                        android:layout_weight="1"
-                        android:layout_height="0dp"
-                        android:layout_width="match_parent"
-                        android:text="@string/total_balance"
-                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
-                    <Button
-                        android:id="@+id/btnAddress"
-                        style="@style/DepositText.Value"
-                        android:layout_height="0dp"
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:text="@string/address_copy"
+                        android:text="980,00"
                         android:textSize="@dimen/text_default"
                         app:autoSizeMinTextSize="@dimen/text_item_small"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <!--                        <Button-->
-        <!--                            android:id="@+id/btnBuy"-->
-        <!--                            style="@style/DefaultButton.Blue"-->
-        <!--                            android:layout_gravity="bottom"-->
-        <!--                            android:layout_marginBottom="@dimen/default_margin"-->
-        <!--                            android:enabled="false"-->
-        <!--                            android:text="@string/buy" />-->
-
-
-
     </LinearLayout>
 </FrameLayout>

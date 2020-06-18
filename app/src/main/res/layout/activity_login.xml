@@ -66,10 +66,11 @@
                         style="@style/LoginInput">
                     </EditText>
                 </LinearLayout>
+
                 <Button
-                    android:onClick="onLogin"
                     style="@style/DefaultButton.Blue"
-                    android:text="@string/login_button_label"/>
+                    android:onClick="onLogin"
+                    android:text="@string/login_button_label" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

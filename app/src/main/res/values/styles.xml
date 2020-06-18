@@ -218,19 +218,6 @@
         <item name="android:textSize">@dimen/text_default</item>
     </style>
 
-    <style name="LoginInput" parent="DefaultInput">
-        <item name="android:layout_height">@dimen/button_height_small</item>
-        <item name="android:background">@drawable/bg_input</item>
-        <item name="android:elevation">3dp</item>
-        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
-        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
-        <item name="android:layout_marginTop">@dimen/default_padding</item>
-        <item name="android:layout_marginBottom">@dimen/default_padding</item>
-        <item name="android:paddingStart">@dimen/default_margin</item>
-        <item name="android:paddingEnd">@dimen/default_margin</item>
-        <item name="android:textSize">@dimen/text_button</item>
-    </style>
-
     <style name="SettingInput">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/setting_item_height</item>
@@ -364,5 +351,41 @@
         <item name="android:textSize">@dimen/text_item_small</item>
         <item name="android:layout_gravity">bottom</item>
     </style>
-
+    <style name="DefaultButton.White">
+        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="LoginInput" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:elevation">3dp</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding</item>
+        <item name="android:paddingStart">@dimen/default_margin</item>
+        <item name="android:paddingEnd">@dimen/default_margin</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+    <style name="CoinInput" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
+        <item name="android:textSize">@dimen/text_item_3x</item>
+    </style>
+    <style name="SpinnerInput" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_xxxlarge</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_xxxlarge</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding</item>
+        <item name="android:textSize">@dimen/text_item_3x</item>
+    </style>
 </resources>

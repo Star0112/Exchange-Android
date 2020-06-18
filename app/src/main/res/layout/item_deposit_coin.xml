@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/default_padding"
+        android:layout_gravity="center">
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="12dp"
+            app:cardPreventCornerOverlap="false">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center">
+                <ImageView
+                    android:id="@+id/coinIcon"
+                    android:layout_width="@dimen/menu_button_size"
+                    android:layout_height="@dimen/menu_button_size"
+                    android:src="@mipmap/coin_urnc" />
+                <TextView
+                    android:id="@+id/coinName"
+                    style="@style/CoinText"
+                    android:text="@string/BTC"
+                    android:textSize="@dimen/text_button"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="12dp"
+            app:cardPreventCornerOverlap="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:background="@color/colorDivider" />
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/DepositText.Title"
+                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:text="@string/total_balance"
+                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
+                    <TextView
+                        android:id="@+id/txtTotalBalance"
+                        style="@style/DepositText.Value"
+                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:text="333"
+                        android:textSize="@dimen/text_default"
+                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:background="@color/colorDivider" />
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/DepositText.Title"
+                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:text="@string/free_balance"
+                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
+                    <TextView
+                        android:id="@+id/txtFreeBalance"
+                        style="@style/DepositText.Value"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:text="222"
+                        android:textSize="@dimen/text_default"
+                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:background="@color/colorDivider" />
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/DepositText.Title"
+                        android:layout_weight="1"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:text="@string/total_balance"
+                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
+                    <Button
+                        android:id="@+id/btnAddress"
+                        style="@style/DepositText.Value"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/address_copy"
+                        android:textSize="@dimen/text_default"
+                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--                        <Button-->
+        <!--                            android:id="@+id/btnBuy"-->
+        <!--                            style="@style/DefaultButton.Blue"-->
+        <!--                            android:layout_gravity="bottom"-->
+        <!--                            android:layout_marginBottom="@dimen/default_margin"-->
+        <!--                            android:enabled="false"-->
+        <!--                            android:text="@string/buy" />-->
+
+
+
+    </LinearLayout>
+</FrameLayout>

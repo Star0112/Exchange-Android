@@ -28,6 +28,10 @@
     <string name="error_fullname_empty">Fullname is empty</string>
     <string name="error_phone_empty">Phone Number is empty</string>
     <string name="error_email_empty">Email is empty</string>
+    <string name="error_price_empty">Price is empty</string>
+    <string name="error_amount_empty">Price is empty</string>
+    <string name="error_price_invalid">Price is invalid</string>
+    <string name="error_amount_invalid">Amount is invalid</string>
     <string name="error_email_invalid">Email is invalid</string>
     <string name="error_email_not_match">Email doesn\'t match</string>
     <string name="error_username_empty">Username is empty</string>
@@ -570,7 +574,6 @@
     <string name="error_larger_amount_transaction">You are trying to %s more than your balance. Please try again with a lesser amount.</string>
     <string name="error_not_enough_funds">You do not have enough funds to perform this transaction.</string>
     <string name="error_no_payment_method">Please select payment method.</string>
-    <string name="error_amount_empty">Please enter the amount.</string>
     <string name="error_choose_same_asset">You can\'t choose the same asset.</string>
     <string name="error_account_pending">Your bank verification is %s. Please try using this account when it is verified.</string>
 
@@ -623,7 +626,6 @@
     <string name="will_receive">You want</string>
     <string name="exchange_accept_terms">By checking this box you agree to the URNC Exchange Terms &amp; Conditions</string>
     <string name="exchange_terms_conditions">URNC Exchange Terms &amp; Conditions</string>
-    <string name="amount">Amount</string>
     <string name="exchanging_to">Exchanging To</string>
     <string name="exchanging_from">Exchanging From</string>
     <string name="success">Success</string>
@@ -714,6 +716,7 @@
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>
+    <string name="amount">Amount</string>
     <!-- Order -->
     <string name="title_order">Order</string>
     <!-- Setting -->

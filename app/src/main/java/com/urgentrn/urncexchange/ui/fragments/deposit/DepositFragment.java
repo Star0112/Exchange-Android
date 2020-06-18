@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
-import com.urgentrn.urncexchange.models.DepositCoin;
+import com.urgentrn.urncexchange.models.CoinBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
@@ -44,16 +44,16 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
 
     private CoinDepositAdapter adapterCoin;
-    private ArrayList<DepositCoin> tempCoins = new ArrayList<>();
+    private ArrayList<CoinBalance> tempCoins = new ArrayList<>();
 
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_deposit);
-        tempCoins.add(new DepositCoin("cypto","URNC","0x01029dko4", "51000","24453"));
-        tempCoins.add(new DepositCoin("cypto","BTC","0x324dfds54", "25000","68253"));
-        tempCoins.add(new DepositCoin("cypto","ETH","0xf102a5ko4", "30300","27423"));
-        tempCoins.add(new DepositCoin("currency","USD","0xh1i2cdko4", "60200","26451"));
-        tempCoins.add(new DepositCoin("cypto","COIN","0xu10d9dko4", "70400","18253"));
+        tempCoins.add(new CoinBalance("cypto","URNC","0x01029dko4", "51000","24453"));
+        tempCoins.add(new CoinBalance("cypto","BTC","0x324dfds54", "25000","68253"));
+        tempCoins.add(new CoinBalance("cypto","ETH","0xf102a5ko4", "30300","27423"));
+        tempCoins.add(new CoinBalance("currency","USD","0xh1i2cdko4", "60200","26451"));
+        tempCoins.add(new CoinBalance("cypto","COIN","0xu10d9dko4", "70400","18253"));
         setupDrawer();
 //        updateView(null);
     }
@@ -71,6 +71,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer() {
+
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterCoin = new CoinDepositAdapter(pos -> updateCoin(tempCoins.get(pos)));
@@ -78,7 +79,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         recyclerDepositCoins.setAdapter(adapterCoin);
     }
 
-    public void updateCoin(DepositCoin coin){
+    public void updateCoin(CoinBalance coin){
 
     }
 
