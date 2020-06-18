@@ -19,7 +19,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.List;
 
-@EFragment(R.layout.fragment_profile_new)
+@EFragment(R.layout.fragment_setting)
 public class SettingFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {

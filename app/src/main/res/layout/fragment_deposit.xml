@@ -9,25 +9,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@mipmap/background">
-
+        <include  layout="@layout/activity_main_header"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:orientation="vertical">
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
-                <TextView
-                    style="@style/NewTitleText"
-                    android:text="@string/title_deposit" />
-
-            </androidx.appcompat.widget.Toolbar>
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/default_margin_2x">
+                android:layout_marginBottom="@dimen/default_margin">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerDepositCoins"
                     android:layout_width="match_parent"
@@ -40,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:background="@drawable/bg_dialog"
             android:orientation="vertical">
             <FrameLayout
@@ -53,7 +44,6 @@
                     android:layout_height="match_parent"
                     android:paddingStart="@dimen/default_padding"
                     android:paddingEnd="@dimen/default_padding"/>
-
             </FrameLayout>
         </LinearLayout>
 

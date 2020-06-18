@@ -33,7 +33,7 @@
     <dimen name="coin_size">41dp</dimen>
     <dimen name="button_size_small">44dp</dimen>
     <dimen name="fab_size">48dp</dimen>
-    <dimen name="avatar_size_small">50dp</dimen>
+    <dimen name="avatar_size_small">45dp</dimen>
     <dimen name="coin_size_large">56dp</dimen>
     <dimen name="avatar_size">64dp</dimen>
     <dimen name="circle_fab_bg_area_size">60dp</dimen>
@@ -41,6 +41,7 @@
     <dimen name="qr_code_small">120dp</dimen>
     <dimen name="qr_code">216dp</dimen>
     <!-- Width -->
+    <dimen name="avatar_padding">10dp</dimen>
     <dimen name="text_width">25dp</dimen>
     <dimen name="item_select_width">49dp</dimen>
     <dimen name="period_button_width">56dp</dimen>

@@ -16,7 +16,7 @@
             android:id="@+id/imgAvatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_bank_user"/>
+            android:src="@mipmap/user_avatar"/>
         <TextView
             android:id="@+id/txtLetter"
             android:layout_gravity="center"

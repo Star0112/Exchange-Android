@@ -43,10 +43,10 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         tempCoins.add(new DepositCoin("cypto","URNC","0x01029dko4", "51000","24453"));
-        tempCoins.add(new DepositCoin("cypto","BTC","0x324dfds54", "25000","28253"));
+        tempCoins.add(new DepositCoin("cypto","BTC","0x324dfds54", "25000","68253"));
         tempCoins.add(new DepositCoin("cypto","ETH","0xf102a5ko4", "30300","27423"));
         tempCoins.add(new DepositCoin("currency","USD","0xh1i2cdko4", "60200","26451"));
-        tempCoins.add(new DepositCoin("cypto","COIN","0xu10d9dko4", "70400","28253"));
+        tempCoins.add(new DepositCoin("cypto","COIN","0xu10d9dko4", "70400","18253"));
         setupDrawer();
 //        updateView(null);
     }

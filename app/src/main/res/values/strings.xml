@@ -615,27 +615,6 @@
     <string name="use_passcode">Use Passcode</string>
     <string name="use_password">Use Password</string>
 
-    <!-- Dashboard -->
-    <string name="title_dashboard">Dashboard</string>
-    <!-- Deposit -->
-    <string name="title_deposit">Deposit</string>
-    <string name="URNC">URNC</string>
-    <string name="BTC">BTC</string>
-    <string name="ETH">ETH</string>
-    <string name="USD">USD</string>
-    <string name="total_balance">Total:</string>
-    <string name="free_balance">Free:</string>
-    <string name="address">Address:</string>
-    <!-- Buy -->
-    <string name="title_buy">Buy</string>
-    <string name="price">Price</string>
-    <!-- Order -->
-    <string name="title_order">Order</string>
-    <!-- Setting -->
-    <string name="title_setting">Setting</string>
-    <!-- Profile -->
-    <string name="title_profile">Profile</string>
-
     <!-- Exchange -->
     <string name="title_exchange">Exchange</string>
     <string name="no_wallets_to_exchange">You have no wallets to exchange</string>
@@ -715,4 +694,30 @@
     <string name="signup_phone">Phone Number</string>
     <string name="signup_button_label">Sign Up</string>
 
+
+
+
+    <!-- For URNC -->
+
+    <!-- Dashboard -->
+    <string name="title_dashboard">Dashboard</string>
+    <!-- Deposit -->
+    <string name="title_deposit">Deposit</string>
+    <string name="URNC">URNC</string>
+    <string name="BTC">BTC</string>
+    <string name="ETH">ETH</string>
+    <string name="USD">USD</string>
+    <string name="total_balance">Total</string>
+    <string name="free_balance">Free</string>
+    <string name="address">Address</string>
+    <string name="address_copy">Copy</string>
+    <!-- Buy -->
+    <string name="title_buy">Buy</string>
+    <string name="price">Price</string>
+    <!-- Order -->
+    <string name="title_order">Order</string>
+    <!-- Setting -->
+    <string name="title_setting">Setting</string>
+    <!-- Profile -->
+    <string name="title_profile">Profile</string>
 </resources>

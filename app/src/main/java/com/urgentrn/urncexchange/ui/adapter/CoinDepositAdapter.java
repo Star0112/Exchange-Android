@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.DepositCoin;
 import com.urgentrn.urncexchange.ui.holder.CoinDepositHolder;
@@ -36,8 +37,7 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
     @Override
     public void onBindViewHolder(@NonNull CoinDepositHolder holder, int position) {
         final DepositCoin depositCoin = data.get(position);
-        holder.updateView(depositCoin);
-
+        holder.updateView(depositCoin, position);
         holder.itemView.setOnClickListener(v->mListener.onItemClick(position));
     }
 
@@ -50,4 +50,5 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
     public void setData(List<DepositCoin> data) {
         this.data = data;
     }
+
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
@@ -37,6 +38,9 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     @ViewById(R.id.navigation)
     BottomNavigationView navigation;
 
+    @ViewById(R.id.newHeader)
+    TextView newHeader;
+
     private final DashboardFragment_ fragment1 = new DashboardFragment_();
     private final DepositFragment_ fragment2 = new DepositFragment_();
     private final BuyFragment_ fragment3 = new BuyFragment_();
@@ -59,22 +63,27 @@ public class MainActivity extends BaseActivity implements ApiCallback {
             case R.id.navigation_dash:
                 fm.beginTransaction().hide(active).show(fragment1).commitAllowingStateLoss();
                 active = fragment1;
+//                newHeader.setText(R.string.title_dashboard);
                 break;
             case R.id.navigation_deposit:
                 fm.beginTransaction().hide(active).show(fragment2).commitAllowingStateLoss();
                 active = fragment2;
+//                newHeader.setText(R.string.title_deposit);
                 break;
             case R.id.navigation_buy:
                 fm.beginTransaction().hide(active).show(fragment3).commitAllowingStateLoss();
                 active = fragment3;
+//                newHeader.setText(R.string.title_buy);
                 break;
             case R.id.navigation_order:
                 fm.beginTransaction().hide(active).show(fragment4).commitAllowingStateLoss();
                 active = fragment4;
+//                newHeader.setText(R.string.title_order);
                 break;
             case R.id.navigation_setting:
                 fm.beginTransaction().hide(active).show(fragment5).commitAllowingStateLoss();
                 active = fragment5;
+//                newHeader.setText(R.string.title_setting);
                 break;
             default:
 

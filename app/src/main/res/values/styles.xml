@@ -133,7 +133,7 @@
     </style>
     <style name="CoinText" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
-        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_title_default</item>
     </style>
 
@@ -145,6 +145,7 @@
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:fontFamily">@font/codec_pro_extrabold</item>
         <item name="android:textSize">@dimen/text_title_large</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="DialogTitleText" parent="TitleText">
@@ -342,6 +343,26 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingStart">@dimen/default_margin</item>
         <item name="android:paddingEnd">@dimen/default_margin</item>
+    </style>
+
+    <!--  For URNC -->
+    <style name="DepositText.Title" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorDefault</item>
+        <item name="android:textSize">@dimen/text_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="DepositText.Value" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/text_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="UserName" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/text_item_small</item>
+        <item name="android:layout_gravity">bottom</item>
     </style>
 
 </resources>
