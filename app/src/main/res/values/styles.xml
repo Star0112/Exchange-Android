@@ -346,6 +346,18 @@
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="TransactionHistory.Green" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:textColor">@color/numberColor</item>
+        <item name="android:textSize">@dimen/text_button</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="TransactionHistory.Dark" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:textColor">@color/historyDateColor</item>
+        <item name="android:textSize">@dimen/text_button</item>
+        <item name="android:gravity">center</item>
+    </style>
     <style name="Profile.Title" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:textColor">@color/textColorDefault</item>

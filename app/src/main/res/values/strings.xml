@@ -154,7 +154,6 @@
     <string name="rate">Rate</string>
     <string name="received">Received</string>
     <string name="exchanged">Exchanged</string>
-    <string name="date">Date</string>
     <string name="status">Status</string>
     <string name="transaction_id">Transaction ID</string>
     <string name="method">Method</string>
@@ -708,6 +707,7 @@
     <string name="free_balance">Free</string>
     <string name="address">Address</string>
     <string name="address_copy">Copy</string>
+    <string name="date">Date</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>

@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
+import com.urgentrn.urncexchange.models.BuyHistory;
 import com.urgentrn.urncexchange.models.CoinBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
+import com.urgentrn.urncexchange.models.Transaction;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinDepositAdapter;
+import com.urgentrn.urncexchange.ui.adapter.TransactionHistoryAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
@@ -38,22 +41,35 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     TextView newHeader;
 
     @ViewById
-    RecyclerView recyclerDepositCoins;
-
-
-
+    RecyclerView recyclerDepositCoins, buy_history;
 
     private CoinDepositAdapter adapterCoin;
+    private TransactionHistoryAdapter adapterTransaction;
+
+    ////////////////////////////////////
     private ArrayList<CoinBalance> tempCoins = new ArrayList<>();
+    private ArrayList<BuyHistory> tempHistory = new ArrayList<>();
 
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_deposit);
+
+        ////////////////////////////////////////////////////////////
         tempCoins.add(new CoinBalance("cypto","URNC","0x01029dko4", "51000","24453"));
         tempCoins.add(new CoinBalance("cypto","BTC","0x324dfds54", "25000","68253"));
         tempCoins.add(new CoinBalance("cypto","ETH","0xf102a5ko4", "30300","27423"));
         tempCoins.add(new CoinBalance("currency","USD","0xh1i2cdko4", "60200","26451"));
         tempCoins.add(new CoinBalance("cypto","COIN","0xu10d9dko4", "70400","18253"));
+
+        tempHistory.add(new BuyHistory("ETH","+51000","5/3/2020"));
+        tempHistory.add(new BuyHistory("BTC","+71000","5/3/2020"));
+        tempHistory.add(new BuyHistory("ETH","+53000","4/13/2020"));
+        tempHistory.add(new BuyHistory("USD","+51100","4/12/2020"));
+        tempHistory.add(new BuyHistory("BTC","+11000","3/3/2020"));
+
+
+        ////////////////////////////////////////////////////////
+
         setupDrawer();
 //        updateView(null);
     }
@@ -77,6 +93,12 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         adapterCoin = new CoinDepositAdapter(pos -> updateCoin(tempCoins.get(pos)));
         adapterCoin.setData(tempCoins);
         recyclerDepositCoins.setAdapter(adapterCoin);
+
+        buy_history.setHasFixedSize(true);
+        buy_history.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapterTransaction = new TransactionHistoryAdapter(tempHistory);
+        adapterTransaction.setData(tempHistory);
+        buy_history.setAdapter(adapterTransaction);
     }
 
     public void updateCoin(CoinBalance coin){
