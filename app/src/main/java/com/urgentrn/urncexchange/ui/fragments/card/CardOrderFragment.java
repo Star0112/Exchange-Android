@@ -247,7 +247,7 @@ public class CardOrderFragment extends BaseFragment implements ViewTreeObserver.
     @Click(R.id.llDetail)
     void onViewDetail() {
         isExpanded = !isExpanded;
-        imgArrow.setImageResource(isExpanded ? R.mipmap.ic_arrow_up : R.mipmap.ic_arrow_down);
+        imgArrow.setImageResource(isExpanded ? R.mipmap.ic_add : R.mipmap.ic_add);
         listView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
     }
 

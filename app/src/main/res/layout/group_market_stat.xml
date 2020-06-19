@@ -33,6 +33,5 @@
     <ImageView
         android:id="@+id/arrow"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_arrow_down"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -20,7 +20,7 @@ import com.urgentrn.urncexchange.ui.fragments.buy.BuyFragment_;
 import com.urgentrn.urncexchange.ui.fragments.deposit.DepositFragment_;
 import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment_;
 import com.urgentrn.urncexchange.ui.fragments.order.OrderFragment_;
-import com.urgentrn.urncexchange.ui.fragments.setting.SettingFragment_;
+import com.urgentrn.urncexchange.ui.fragments.setting.SettingContainerFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     private final DepositFragment_ fragment2 = new DepositFragment_();
     private final BuyFragment_ fragment3 = new BuyFragment_();
     private final OrderFragment_ fragment4 = new OrderFragment_();
-    private final SettingFragment_ fragment5 = new SettingFragment_();
+    private final SettingContainerFragment_ fragment5 = new SettingContainerFragment_();
     private final FragmentManager fm = getSupportFragmentManager();
     private BaseFragment active = fragment1;
 

@@ -1,16 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Spacing -->
-    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_padding_tiny">2dp</dimen>
+    <dimen name="default_padding_small">4dp</dimen>
+    <dimen name="default_padding">8dp</dimen>
     <dimen name="default_margin_small">10dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
     <dimen name="default_margin_2x">24dp</dimen>
     <dimen name="default_margin_3x">32dp</dimen>
     <dimen name="default_margin_large">40dp</dimen>
     <dimen name="default_margin_xlarge">48dp</dimen>
     <dimen name="default_margin_xxlarge">56dp</dimen>
     <dimen name="default_margin_xxxlarge">64dp</dimen>
-    <dimen name="default_padding_tiny">2dp</dimen>
-    <dimen name="default_padding_small">4dp</dimen>
-    <dimen name="default_padding">8dp</dimen>
     <dimen name="default_padding_2x">12dp</dimen>
     <dimen name="default_padding_3x">20dp</dimen>
     <dimen name="item_vertical_padding">10dp</dimen>
@@ -50,7 +50,8 @@
     <dimen name="tab_with_icon_width">70dp</dimen>
     <dimen name="percent_button_width">80dp</dimen>
     <dimen name="card_width">80dp</dimen>
-    <dimen name="button_width">200dp</dimen>
+    <dimen name="button_width">160dp</dimen>
+    <dimen name="button_width_2x">250dp</dimen>
     <dimen name="item_title_width">90dp</dimen>
     <dimen name="card_small_width">116dp</dimen>
     <!-- Height -->
@@ -62,7 +63,7 @@
     <dimen name="dialog_top_margin_height">34dp</dimen>
     <dimen name="action_button_height">36dp</dimen>
     <dimen name="tab_height_small">36dp</dimen>
-    <dimen name="setting_item_height">41dp</dimen>
+    <dimen name="setting_item_height">40dp</dimen>
     <dimen name="tab_height">43dp</dimen>
     <dimen name="button_height_small">45dp</dimen>
     <dimen name="item_height_small">48dp</dimen>
@@ -82,7 +83,6 @@
     <dimen name="card_height_2x">320dp</dimen>
     <dimen name="dialog_list_height">316dp</dimen>
 
-    <!-- Font Size -->
     <dimen name="text_item_small">10sp</dimen>
     <dimen name="text_small">11sp</dimen>
     <dimen name="text_item">12sp</dimen>
@@ -99,6 +99,7 @@
     <dimen name="text_large">36sp</dimen>
     <dimen name="text_xlarge">45sp</dimen>
     <dimen name="text_xxlarge">60sp</dimen>
+
 
     <dimen name="design_bottom_navigation_text_size" tools:override="true">@dimen/text_item</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">@dimen/text_item</dimen>

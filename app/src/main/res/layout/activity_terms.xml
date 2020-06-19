@@ -67,7 +67,6 @@
                         android:id="@+id/imgArrow1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_arrow_up"
                         android:tint="@color/colorAccent"/>
                 </LinearLayout>
                 <WebView
@@ -101,7 +100,6 @@
                         android:id="@+id/imgArrow2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_arrow_down"
                         android:tint="@color/colorGrayLight"/>
                 </LinearLayout>
                 <WebView

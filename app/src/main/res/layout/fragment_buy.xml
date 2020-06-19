@@ -29,7 +29,7 @@
                 android:imeOptions="actionNext"
                 android:inputType="numberDecimal"
                 android:hint="@string/price"
-                style="@style/CoinInput.White"/>
+                style="@style/Input.White.Center"/>
 
             <EditText
                 android:id="@+id/buyAmount"
@@ -37,7 +37,7 @@
                 android:imeOptions="actionGo"
                 android:inputType="number"
                 android:hint="@string/amount"
-                style="@style/CoinInput.White" />
+                style="@style/Input.White.Center" />
 
             <Button
                 android:id="@+id/btnBuy"

@@ -67,18 +67,18 @@ public class TermsActivity extends BaseActivity implements ApiCallback {
     }
 
     public void onTerms(View v) {
-        imgArrow1.setImageResource(R.mipmap.ic_arrow_up);
+        imgArrow1.setImageResource(R.mipmap.ic_add);
         imgArrow1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-        imgArrow2.setImageResource(R.mipmap.ic_arrow_down);
+        imgArrow2.setImageResource(R.mipmap.ic_add);
         imgArrow2.setImageTintList(null);
         webView1.setVisibility(View.VISIBLE);
         webView2.setVisibility(View.GONE);
     }
 
     public void onPrivacy(View v) {
-        imgArrow1.setImageResource(R.mipmap.ic_arrow_down);
+        imgArrow1.setImageResource(R.mipmap.ic_add);
         imgArrow1.setImageTintList(null);
-        imgArrow2.setImageResource(R.mipmap.ic_arrow_up);
+        imgArrow2.setImageResource(R.mipmap.ic_add);
         imgArrow2.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
         webView1.setVisibility(View.GONE);
         webView2.setVisibility(View.VISIBLE);

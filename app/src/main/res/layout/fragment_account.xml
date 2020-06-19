@@ -120,8 +120,7 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/default_margin_small"
-                                android:src="@mipmap/ic_arrow_right"/>
+                                android:layout_marginStart="@dimen/default_margin_small"/>
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

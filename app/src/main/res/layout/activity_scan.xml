@@ -68,7 +68,6 @@
                         android:layout_gravity="center_vertical|end"
                         android:layout_marginEnd="@dimen/default_margin_2x"
                         android:onClick="onSwitch"
-                        android:src="@mipmap/ic_arrow_down"
                         android:tint="@color/colorWhite"
                         android:visibility="gone" />
                 </FrameLayout>

@@ -145,7 +145,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/default_padding"
-                        android:src="@mipmap/ic_arrow_up"
                         android:tint="@color/colorPrimary"/>
                 </LinearLayout>
                 <ExpandableListView

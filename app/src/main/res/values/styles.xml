@@ -252,11 +252,7 @@
         <item name="android:textSize">@dimen/text_button</item>
     </style>
 
-    <style name="DefaultButton.Blue">
-        <item name="android:background">@drawable/bg_button_blue</item>
-        <item name="android:textColor">@color/textColorWhite</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
+
 
     <style name="DefaultButton.Dark">
         <item name="android:backgroundTint">@drawable/button_selector</item>
@@ -358,12 +354,7 @@
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
     </style>
-    <style name="Profile.Title" parent="DefaultText">
-        <item name="android:fontFamily">@font/codec_pro_bold</item>
-        <item name="android:textColor">@color/textColorDefault</item>
-        <item name="android:textSize">@dimen/back_icon_size</item>
-        <item name="android:gravity">center</item>
-    </style>
+
     <style name="UserName" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:textColor">@color/colorWhite</item>
@@ -387,35 +378,95 @@
         <item name="android:paddingEnd">@dimen/default_margin</item>
         <item name="android:textSize">@dimen/text_button</item>
     </style>
-    <style name="CoinInput.White" parent="DefaultInput">
+
+
+
+
+
+
+
+
+<!--  For URNC  -->
+
+    <!-- Edit View -->
+    <style name="Input.White.Start" parent="DefaultInput">
         <item name="android:layout_height">@dimen/button_height_small</item>
         <item name="android:background">@drawable/bg_input</item>
-        <item name="android:elevation">0dp</item>
+        <item name="android:elevation">3dp</item>
         <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
         <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
-        <item name="android:textSize">@dimen/text_item_3x</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textColor">@color/textColorBlue</item>
+        <item name="android:paddingStart">@dimen/default_margin_2x</item>
+        <item name="android:paddingEnd">@dimen/default_margin_2x</item>
+    </style>
+    <style name="Input.White.Center" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/setting_item_height</item>
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:elevation">3dp</item>
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:textAlignment">center</item>
     </style>
-    <style name="CoinInput.Gray" parent="DefaultInput">
-        <item name="android:layout_height">@dimen/button_height_small</item>
+    <style name="Input.Gray.Center" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/setting_item_height</item>
         <item name="android:background">@drawable/bg_input_gray</item>
         <item name="android:elevation">0dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
-        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginStart">@dimen/default_padding</item>
+        <item name="android:layout_marginEnd">@dimen/default_padding</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
-        <item name="android:textSize">@dimen/text_item_3x</item>
-    </style>
-    <style name="SpinnerInput" parent="DefaultInput">
-        <item name="android:layout_height">@dimen/button_height_small</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginStart">@dimen/default_margin_xxxlarge</item>
-        <item name="android:layout_marginEnd">@dimen/default_margin_xxxlarge</item>
+    </style>
+
+    <!--  Text  -->
+    <style name="Profile.Title" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorDefault</item>
+        <item name="android:textSize">@dimen/back_icon_size</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="Text.Black1" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorBlack1</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:layout_marginStart">@dimen/default_padding</item>
+    </style>
+    <style name="Description.White" parent="DefaultInput">
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
+
+    <style name="Default.White" parent="DefaultInput">
+        <item name="android:layout_marginStart">@dimen/default_padding_small</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
+
+    <!--  Button  -->
+    <style name="DefaultButton.Blue">
+        <item name="android:background">@drawable/bg_button_blue</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:layout_gravity">center</item>
+
+    </style>
+
+    <style name="SpinnerInput" parent="DefaultInput">
+        <item name="android:layout_height">@dimen/setting_item_height</item>
+        <item name="android:layout_width">@dimen/button_width_2x</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding</item>
-        <item name="android:textSize">@dimen/text_item_3x</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
+
 </resources>

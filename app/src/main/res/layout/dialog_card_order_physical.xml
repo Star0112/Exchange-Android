@@ -42,8 +42,7 @@
 
                 <ImageView
                     android:layout_width="@dimen/coin_size"
-                    android:layout_height="@dimen/coin_size"
-                    android:src="@mipmap/card_order"/>
+                    android:layout_height="@dimen/coin_size"/>
                 <TextView
                     android:layout_marginStart="@dimen/default_padding"
                     android:layout_marginEnd="@dimen/default_padding"

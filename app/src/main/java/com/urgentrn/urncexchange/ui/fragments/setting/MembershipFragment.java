@@ -10,11 +10,8 @@ import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
-import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
-import com.urgentrn.urncexchange.ui.fragments.profile.PhoneFragment_;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
@@ -24,15 +21,13 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.List;
 
-@EFragment(R.layout.fragment_setting)
-public class SettingFragment extends BaseFragment implements ApiCallback {
+@EFragment(R.layout.fragment_membership)
+public class MembershipFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById(R.id.newHeader)
-    TextView newHeader;
+
 
     @AfterViews
     protected void init() {
-        newHeader.setText(R.string.title_setting);
         initView();
         updateView();
     }
@@ -54,11 +49,6 @@ public class SettingFragment extends BaseFragment implements ApiCallback {
     @Override
     public void updateView() {
 
-    }
-
-    @Click(R.id.userProfile)
-    void onUserProfileClicked() {
-        ((BaseFragment)getParentFragment()).replaceFragment(new UserProfileFragment_(), false);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

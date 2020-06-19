@@ -46,6 +46,7 @@
     <color name="textColorTransparent">#33172c3d</color>
     <color name="textColorTransparent2">#66172c3d</color>
     <color name="textColorBlack">#000</color>
+    <color name="textColorBlack1">#424242</color>
     <color name="textColorDarkGreyBlue">#2c4253</color>
     <color name="textColorGray">#8d979e</color>
     <color name="textColorGray1">#3d3d3d</color>
@@ -53,14 +54,18 @@
     <color name="textColorGray3">#4d5357</color>
     <color name="textColorGray4">#444a4e</color>
     <color name="textColorGray5">#979ea3</color>
-    <color name="textColorGray6">#97a5ad</color>
+    <color name="textColorGray6">#F6F6F6</color>
     <color name="textColorGreen">#26b200</color>
     <color name="textColorGreenDark">#6b851b</color>
     <color name="textColorWhite">#fff</color>
     <color name="textColorPrimary">#277ee6</color>
     <color name="numberColor">#27F0CC</color>
     <color name="historyDividerColor">#ACCFF5</color>
+
     <color name="historyDateColor">#B8B8B8</color>
     <color name="textColorSecondary">#783d38</color>
+    
+    
+    <color name="textColorBlue">#09428F</color>
 
 </resources>

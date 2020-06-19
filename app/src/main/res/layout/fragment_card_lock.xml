@@ -30,8 +30,7 @@
             <ImageView
                 android:id="@+id/imgItem"
                 android:layout_width="@dimen/circle_size"
-                android:layout_height="@dimen/circle_size"
-                android:src="@mipmap/card_status"/>
+                android:layout_height="@dimen/circle_size"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"

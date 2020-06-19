@@ -33,7 +33,7 @@ public class SelfieActivity extends BaseActivity {
         switch (step) {
             case 3:
                 txtTitle.setText(R.string.take_selfie);
-                imgDocument.setImageResource(R.mipmap.kyc2);
+                imgDocument.setImageResource(R.mipmap.ic_add);
                 txtHint.setText(R.string.scan_hint4);
                 break;
             case 4:

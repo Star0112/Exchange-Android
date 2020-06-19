@@ -65,7 +65,7 @@ public class UsernameActivity extends BaseActivity implements ApiCallback {
             llValidation.setVisibility(View.VISIBLE);
             progressValidation.setVisibility(isValidating ? View.VISIBLE : View.INVISIBLE);
             imgValidation.setVisibility(isValidating ? View.INVISIBLE : View.VISIBLE);
-            imgValidation.setImageResource(isValid ? R.mipmap.ic_valid : R.mipmap.ic_invalid);
+            imgValidation.setImageResource(isValid ? R.mipmap.ic_add : R.mipmap.ic_add);
             if (message != null) {
                 txtValidation.setText(message);
             } else {

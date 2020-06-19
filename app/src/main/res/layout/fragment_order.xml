@@ -28,20 +28,141 @@
                 android:gravity="center">
                 <ImageView
                     android:id="@+id/coinIcon"
-                    android:layout_width="@dimen/menu_button_size"
-                    android:layout_height="@dimen/menu_button_size"
+                    android:layout_width="@dimen/circle_size_small"
+                    android:layout_height="@dimen/circle_size_small"
                     android:src="@mipmap/icon_balance" />
                 <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:text="@string/balance"
-                    style="@style/NewTitleText" />
+                    style="@style/Default.White" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.00"
-                    style="@style/NewTitleText" />
+                    style="@style/Default.White" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_2x"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginHorizontal="@dimen/default_margin_large"
+                    app:cardElevation="2dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/default_padding"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginHorizontal="@dimen/default_margin_large"
+                    app:cardElevation="2dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/default_padding"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin_2x"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginHorizontal="@dimen/default_margin_large"
+                    app:cardElevation="2dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/default_padding"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginHorizontal="@dimen/default_margin_large"
+                    app:cardElevation="2dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/default_padding"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/textColorBlue">
+                        </TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,71 +172,85 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin" >
+
+                <TextView
+                    android:id="@+id/buySymbolName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buy URNC/BTC"
+                    style="@style/Text.Black1"/>
                 <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
                     <EditText
                         android:id="@+id/buyPrice"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:imeActionLabel="@string/button_next"
                         android:imeOptions="actionNext"
                         android:inputType="numberDecimal"
                         android:hint="@string/price"
-                        style="@style/CoinInput.Gray"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
+                        style="@style/Input.Gray.Center"/>
                     <EditText
                         android:id="@+id/buyAmount"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:imeActionLabel="@string/button_go"
                         android:imeOptions="actionGo"
                         android:inputType="number"
                         android:hint="@string/amount"
-                        style="@style/CoinInput.Gray" />
+                        style="@style/Input.Gray.Center" />
                 </LinearLayout>
+                <Button
+                    android:id="@+id/btnBuy"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="@string/buy"
+                    style="@style/DefaultButton.Blue"/>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnBuy"
-                android:layout_width="@dimen/button_width"
-                android:layout_margin="@dimen/default_margin"
-                android:text="@string/price"
-                style="@style/DefaultButton.Blue"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/sellSymbolName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buy URNC/BTC"
+                    style="@style/Text.Black1"/>
                 <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
                     <EditText
                         android:id="@+id/sellPrice"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:imeActionLabel="@string/button_next"
                         android:imeOptions="actionNext"
                         android:inputType="numberDecimal"
                         android:hint="@string/price"
-                        style="@style/CoinInput.Gray"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
+                        style="@style/Input.Gray.Center"/>
                     <EditText
                         android:id="@+id/sellAmount"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:imeActionLabel="@string/button_go"
                         android:imeOptions="actionGo"
                         android:inputType="number"
                         android:hint="@string/amount"
-                        style="@style/CoinInput.Gray" />
+                        style="@style/Input.Gray.Center" />
                 </LinearLayout>
             </LinearLayout>
             <Button
                 android:id="@+id/btnSell"
                 android:layout_width="@dimen/button_width"
-                android:layout_margin="@dimen/default_margin"
+                android:height="@dimen/menu_button_size"
                 android:text="@string/price"
                 style="@style/DefaultButton.Blue"/>
         </LinearLayout>

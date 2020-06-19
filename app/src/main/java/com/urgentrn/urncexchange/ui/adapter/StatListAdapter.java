@@ -91,7 +91,7 @@ public class StatListAdapter extends BaseExpandableListAdapter {
         value.setText(Utils.formatLargeNumber(stat.value));
         icon.setImageResource(stat.icon);
         icon.setImageTintList(ColorStateList.valueOf(color));
-        arrow.setImageResource(isExpanded ? R.mipmap.ic_arrow_up : R.mipmap.ic_arrow_down);
+        arrow.setImageResource(isExpanded ? R.mipmap.ic_add : R.mipmap.ic_add);
         arrow.setImageTintList(ColorStateList.valueOf(color));
 
         return convertView;
