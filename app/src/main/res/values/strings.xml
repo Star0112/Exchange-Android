@@ -321,12 +321,8 @@
     <string name="my_docs">My Docs</string>
     <string name="multi_currency">Fiat Currency</string>
     <string name="security">Security</string>
-    <string name="passcode">Passcode</string>
-    <string name="biometrics">Biometrics</string>
     <string name="tfa_authentication">Two-Factor Authentication</string>
-    <string name="help">Helpdesk</string>
     <string name="support">Support</string>
-    <string name="live_chat">Live Chat</string>
     <string name="sign_out">Sign out</string>
     <string name="requirements">Requirements</string>
     <string name="no_limit">No limit</string>
@@ -723,5 +719,11 @@
     <string name="title_setting">Setting</string>
     <!-- Profile -->
     <string name="title_profile">Profile</string>
-    <string name="user_profile">User profile</string>
+    <string name="user_profile">User Profile</string>
+    <string name="message">Messages</string>
+    <string name="passcode">Passcode</string>
+    <string name="biometrics">Biometrics</string>
+    <string name="help">Help</string>
+    <string name="live_chat">Live Chat</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -346,6 +346,12 @@
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="Profile.Title" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorDefault</item>
+        <item name="android:textSize">@dimen/back_icon_size</item>
+        <item name="android:gravity">center</item>
+    </style>
     <style name="UserName" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:textColor">@color/colorWhite</item>
@@ -373,12 +379,12 @@
         <item name="android:layout_height">@dimen/button_height_small</item>
         <item name="android:background">@drawable/bg_input</item>
         <item name="android:elevation">0dp</item>
-        <item name="android:gravity">center</item>
         <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
         <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
         <item name="android:textSize">@dimen/text_item_3x</item>
+        <item name="android:textAlignment">center</item>
     </style>
     <style name="CoinInput.Gray" parent="DefaultInput">
         <item name="android:layout_height">@dimen/button_height_small</item>
