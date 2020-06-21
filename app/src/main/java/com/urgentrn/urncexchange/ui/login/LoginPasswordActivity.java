@@ -88,13 +88,13 @@ public class LoginPasswordActivity extends BaseActivity implements ApiCallback {
 
             Intent intent;
             final boolean remember = getIntent().getBooleanExtra("remember", false);
-            if (data.hasTwoFactorAuth()) {
-                intent = new Intent(this, TfaActivity_.class);
-                intent.putExtra("username", data.getTwoFactorData().getUserId());
-                intent.putExtra("type", data.getTwoFactorData().getType());
-                intent.putExtra("session", data.getSession());
-                intent.putExtra("remember", remember);
-            } else {
+//            if (data.hasTwoFactorAuth()) {
+//                intent = new Intent(this, TfaActivity_.class);
+//                intent.putExtra("username", data.getTwoFactorData().getUserId());
+//                intent.putExtra("type", data.getTwoFactorData().getType());
+//                intent.putExtra("session", data.getSession());
+//                intent.putExtra("remember", remember);
+//            } else {
                 ExchangeApplication.getApp().getPreferences().clear();
                 ExchangeApplication.getApp().getPreferences().setRefreshToken(data.getRefreshToken());
                 ExchangeApplication.getApp().getPreferences().setUsername(remember ? data.getUser().getUsername() : null);
@@ -113,7 +113,7 @@ public class LoginPasswordActivity extends BaseActivity implements ApiCallback {
                 } else {
                     intent = new Intent(this, EmailVerificationActivity_.class);
                 }
-            }
+//            }
             startActivity(intent);
             finish();
         }

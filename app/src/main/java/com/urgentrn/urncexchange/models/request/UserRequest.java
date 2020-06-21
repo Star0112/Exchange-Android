@@ -2,9 +2,9 @@ package com.urgentrn.urncexchange.models.request;
 
 public class UserRequest {
 
-    protected String username;
+    protected String login;
 
     public void setUsername(String username) {
-        this.username = username;
+        this.login = username;
     }
 }

@@ -70,7 +70,8 @@ public class AppCallback<T> implements Callback<T> {
                 if (baseResponse.getErrorCode() == 4323) { // Banking Services are not available yet in your region
                     AppData.getInstance().setFlowData(new FlowData(baseResponse.getErrorMessage()));
                 }
-            } else if (baseResponse.isSuccess() || baseResponse instanceof TokenResponse) {
+            }
+//            else if (baseResponse.isSuccess() || baseResponse instanceof TokenResponse) {
                 if (mCallback instanceof BaseFragment) {
                     if (!((BaseFragment)mCallback).isAdded()) return;
                 } else if (mContext instanceof BaseActivity) {
@@ -78,9 +79,9 @@ public class AppCallback<T> implements Callback<T> {
                 }
                 mCallback.onResponse(baseResponse);
                 return;
-            } else {
-                errorMessage = new Gson().toJson(baseResponse);
-            }
+//            } else {
+//                errorMessage = new Gson().toJson(baseResponse);
+//            }
         } else if (response.code() == 403 || response.code() == 522) {
             errorMessage = "Your connection was blocked due to security check. Please try again later.";
         } else if (response.code() == 404) {

@@ -38,7 +38,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/buy_history"
+                    android:id="@+id/buyHistory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingStart="@dimen/default_padding"

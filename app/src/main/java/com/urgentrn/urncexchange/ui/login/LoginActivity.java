@@ -39,7 +39,7 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
 
     @AfterViews
     protected void init() {
-        editEmail.setText("fengliu123");
+        editEmail.setText("fengliu93");
         editPassword.setText("Security123!@#");
         setToolBar(false);
     }
@@ -95,23 +95,23 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
 //                intent.putExtra("type", data.getTwoFactorData().getType());
 //                intent.putExtra("session", data.getSession());
 //            } else {
-//                ExchangeApplication.getApp().getPreferences().clear();
-//                ExchangeApplication.getApp().getPreferences().setRefreshToken(data.getRefreshToken());
-//                ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
-//                ExchangeApplication.getApp().setUser(data.getUser());
-//
-//                if (data.getUser() == null) {
-//                    intent = new Intent(this, EmailVerificationActivity_.class);
-//                    intent.putExtra("username", email);
-//                } else if (data.getUser().isPhoneVerified()) {
-//                    intent = new Intent(this, PINCreateActivity_.class);
-//                } else if (data.getUser().getPhone() != null) {
-//                    intent = new Intent(this, PhoneVerificationActivity_.class);
-//                } else if (data.getUser().isEmailVerified()) {
-//                    intent = new Intent(this, PhoneActivity_.class);
-//                } else {
-//                    intent = new Intent(this, EmailVerificationActivity_.class);
-//                }
+                ExchangeApplication.getApp().getPreferences().clear();
+                ExchangeApplication.getApp().getPreferences().setRefreshToken(data.getRefreshToken());
+                ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
+                ExchangeApplication.getApp().setUser(data.getUser());
+
+                if (data.getUser() == null) {
+                    intent = new Intent(this, EmailVerificationActivity_.class);
+                    intent.putExtra("username", email);
+                } else if (data.getUser().isPhoneVerified()) {
+                    intent = new Intent(this, PINCreateActivity_.class);
+                } else if (data.getUser().getPhone() != null) {
+                    intent = new Intent(this, PhoneVerificationActivity_.class);
+                } else if (data.getUser().isEmailVerified()) {
+                    intent = new Intent(this, PhoneActivity_.class);
+                } else {
+                    intent = new Intent(this, EmailVerificationActivity_.class);
+                }
 //            }
             intent = new Intent(this, PINCreateActivity_.class);
             startActivity(intent);

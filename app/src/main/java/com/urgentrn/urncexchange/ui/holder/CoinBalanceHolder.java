@@ -1,6 +1,5 @@
 package com.urgentrn.urncexchange.ui.holder;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.urgentrn.urncexchange.R;
-import com.urgentrn.urncexchange.models.CoinBalance;
-import com.urgentrn.urncexchange.models.card.CardTransaction;
-import com.urgentrn.urncexchange.utils.Utils;
+import com.urgentrn.urncexchange.models.AssetBalance;
 
 public class CoinBalanceHolder extends RecyclerView.ViewHolder {
     private ImageView coinIcon;
@@ -37,13 +34,13 @@ public class CoinBalanceHolder extends RecyclerView.ViewHolder {
         coins[3] = R.mipmap.coin_usd;
     }
 
-    public void updateView(CoinBalance data, int position) {
+    public void updateView(AssetBalance data, int position) {
 
         Glide.with(this.itemView.getContext())
                 .load(coins[position])
                 .into(coinIcon);
-        coinName.setText(data.getCoinName());
-        txtTotalBalance.setText(data.getTotal());
-        txtFreeBalance.setText(data.getFree());
+        coinName.setText(data.getCoin());
+        txtTotalBalance.setText(data.getAvailable());
+        txtFreeBalance.setText(data.getFreeze());
     }
 }

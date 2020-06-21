@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
+import com.urgentrn.urncexchange.api.ApiClient;
+import com.urgentrn.urncexchange.api.AppCallback;
+import com.urgentrn.urncexchange.models.AppData;
+import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.BuyHistory;
-import com.urgentrn.urncexchange.models.CoinBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
-import com.urgentrn.urncexchange.models.Transaction;
 import com.urgentrn.urncexchange.models.Wallet;
+import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinDepositAdapter;
 import com.urgentrn.urncexchange.ui.adapter.TransactionHistoryAdapter;
@@ -41,36 +44,34 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     TextView newHeader;
 
     @ViewById
-    RecyclerView recyclerDepositCoins, buy_history;
+    RecyclerView recyclerDepositCoins, buyHistory;
 
-    private CoinDepositAdapter adapterCoin;
+    private CoinDepositAdapter adapterAsset;
     private TransactionHistoryAdapter adapterTransaction;
 
     ////////////////////////////////////
-    private ArrayList<CoinBalance> tempCoins = new ArrayList<>();
-    private ArrayList<BuyHistory> tempHistory = new ArrayList<>();
+    private List<AssetBalance> assetBalances = new ArrayList<>();
+    private List<BuyHistory> tempHistory = new ArrayList<>();
 
     @AfterViews
     protected void init() {
-        newHeader.setText(R.string.title_deposit);
+        recyclerDepositCoins.setHasFixedSize(true);
+        recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapterAsset = new CoinDepositAdapter(pos -> updateCoin(assetBalances.get(pos)));
+        adapterAsset.setData(assetBalances);
+        recyclerDepositCoins.setAdapter(adapterAsset);
 
-        ////////////////////////////////////////////////////////////
-        tempCoins.add(new CoinBalance("cypto","URNC","0x01029dko4", "51000","24453"));
-        tempCoins.add(new CoinBalance("cypto","BTC","0x324dfds54", "25000","68253"));
-        tempCoins.add(new CoinBalance("cypto","ETH","0xf102a5ko4", "30300","27423"));
-        tempCoins.add(new CoinBalance("currency","USD","0xh1i2cdko4", "60200","26451"));
-        tempCoins.add(new CoinBalance("cypto","COIN","0xu10d9dko4", "70400","18253"));
-
-        tempHistory.add(new BuyHistory("ETH","+51000","5/3/2020"));
-        tempHistory.add(new BuyHistory("BTC","+71000","5/3/2020"));
-        tempHistory.add(new BuyHistory("ETH","+53000","4/13/2020"));
-        tempHistory.add(new BuyHistory("USD","+51100","4/12/2020"));
-        tempHistory.add(new BuyHistory("BTC","+11000","3/3/2020"));
-
+        buyHistory.setHasFixedSize(true);
+        buyHistory.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapterTransaction = new TransactionHistoryAdapter(tempHistory);
+        adapterTransaction.setData(tempHistory);
+        buyHistory.setAdapter(adapterTransaction);
+             ////////////////////////////////////////////////////////////
+        setupDrawer();
 
         ////////////////////////////////////////////////////////
 
-        setupDrawer();
+
 //        updateView(null);
     }
 
@@ -87,21 +88,38 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer() {
+        newHeader.setText(R.string.title_deposit);
 
-        recyclerDepositCoins.setHasFixedSize(true);
-        recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterCoin = new CoinDepositAdapter(pos -> updateCoin(tempCoins.get(pos)));
-        adapterCoin.setData(tempCoins);
-        recyclerDepositCoins.setAdapter(adapterCoin);
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<>(new ApiCallback() {
+                    @Override
+                    public void onResponse(BaseResponse response) {
+                        if(response instanceof AssetResponse) {
+                            final List<AssetBalance> data = ((AssetResponse)response).getData();
+                            AppData.getInstance().setAssetBalanceData(data);
 
-        buy_history.setHasFixedSize(true);
-        buy_history.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterTransaction = new TransactionHistoryAdapter(tempHistory);
-        adapterTransaction.setData(tempHistory);
-        buy_history.setAdapter(adapterTransaction);
+                            for (AssetBalance assetBalance : AppData.getInstance().getAssetBalanceData()) {
+                                assetBalances.add(assetBalance);
+                            }
+                            tempHistory.add(new BuyHistory("ETH","+51000","5/3/2020"));
+                            tempHistory.add(new BuyHistory("BTC","+71000","5/3/2020"));
+                            tempHistory.add(new BuyHistory("ETH","+53000","4/13/2020"));
+                            tempHistory.add(new BuyHistory("USD","+51100","4/12/2020"));
+                            tempHistory.add(new BuyHistory("BTC","+11000","3/3/2020"));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                }));
+
+
     }
 
-    public void updateCoin(CoinBalance coin){
+    public void updateCoin(AssetBalance coin){
 
     }
 

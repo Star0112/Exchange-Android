@@ -8,14 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
-import com.urgentrn.urncexchange.models.CoinBalance;
+import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.ui.holder.CoinDepositHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> {
-    private List<CoinBalance> data = new ArrayList<>();
+    private List<AssetBalance> data = new ArrayList<>();
     private OnItemClickListener mListener;
 
     public CoinDepositAdapter(OnItemClickListener listener) {
@@ -34,8 +34,8 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull CoinDepositHolder holder, int position) {
-        final CoinBalance coinBalance = data.get(position);
-        holder.updateView(coinBalance, position);
+        final AssetBalance assetBalance = data.get(position);
+        holder.updateView(assetBalance, position);
         holder.itemView.setOnClickListener(v->mListener.onItemClick(position));
     }
 
@@ -45,7 +45,7 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
         return data.size();
     }
 
-    public void setData(List<CoinBalance> data) {
+    public void setData(List<AssetBalance> data) {
         this.data = data;
     }
 

@@ -1,6 +1,5 @@
 package com.urgentrn.urncexchange.ui.fragments.buy;
 
-import android.animation.ArgbEvaluator;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
@@ -14,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
-import com.urgentrn.urncexchange.models.CoinBalance;
+import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
-import com.urgentrn.urncexchange.ui.signup.PINCreateActivity_;
 import com.urgentrn.urncexchange.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
@@ -50,11 +48,11 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     EditText buyPrice, buyAmount;
 
     @ViewById
-    RecyclerView coinBalance;
+    RecyclerView assetBalance;
 
     String[] symbols = { "URNC/BTC", "URNC/ETH", "URNC/USD"};
     private CoinBalanceAdapter adapterCoin;
-    private ArrayList<CoinBalance> tempCoins = new ArrayList<>();
+    private ArrayList<AssetBalance> tempCoins = new ArrayList<>();
 
     @AfterViews
     protected void init() {
@@ -63,11 +61,11 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
         selectCoin.setAdapter(spinnerAdapter);
 
-        tempCoins.add(new CoinBalance("cypto","URNC","0x01029dko4", "51000","24453"));
-        tempCoins.add(new CoinBalance("cypto","BTC","0x324dfds54", "25000","68253"));
-        tempCoins.add(new CoinBalance("cypto","ETH","0xf102a5ko4", "30300","27423"));
-        tempCoins.add(new CoinBalance("currency","USD","0xh1i2cdko4", "60200","26451"));
-        tempCoins.add(new CoinBalance("cypto","COIN","0xu10d9dko4", "70400","18253"));
+        tempCoins.add(new AssetBalance("cypto","URNC","0x01029dko4", "51000","24453", ""));
+        tempCoins.add(new AssetBalance("cypto","BTC","0x324dfds54", "25000","68253", ""));
+        tempCoins.add(new AssetBalance("cypto","ETH","0xf102a5ko4", "30300","27423", "" ));
+        tempCoins.add(new AssetBalance("currency","USD","0xh1i2cdko4", "60200","26451", ""));
+        tempCoins.add(new AssetBalance("cypto","COIN","0xu10d9dko4", "70400","18253", ""));
 
 
         setupDrawer();
@@ -88,14 +86,14 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     private void setupDrawer() {
 
-        coinBalance.setHasFixedSize(true);
-        coinBalance.setLayoutManager(new LinearLayoutManager(getContext()));
+        assetBalance.setHasFixedSize(true);
+        assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(tempCoins.get(pos)));
         adapterCoin.setData(tempCoins);
-        coinBalance.setAdapter(adapterCoin);
+        assetBalance.setAdapter(adapterCoin);
     }
 
-    public void updateCoin(CoinBalance coin){
+    public void updateCoin(AssetBalance coin){
 
     }
 

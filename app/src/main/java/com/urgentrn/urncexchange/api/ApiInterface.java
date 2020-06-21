@@ -1,5 +1,6 @@
 package com.urgentrn.urncexchange.api;
 
+import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.contacts.BaseWalletAddress;
 import com.urgentrn.urncexchange.models.request.ActivateCardRequest;
 import com.urgentrn.urncexchange.models.request.CodeRequest;
@@ -26,6 +27,7 @@ import com.urgentrn.urncexchange.models.request.UserRequest;
 import com.urgentrn.urncexchange.models.request.WalletRequest;
 import com.urgentrn.urncexchange.models.request.WithdrawRequest;
 import com.urgentrn.urncexchange.models.response.ActivateResponse;
+import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.ContactResponse;
 import com.urgentrn.urncexchange.models.response.CreateWalletResponse;
@@ -336,7 +338,7 @@ public interface ApiInterface {
     @POST("user/login/code") // Login 2FA Flow - If 2FA is active
     Call<LoginResponse> login(@Body TfaRequest request);
 
-    @POST("auth/login") // Login Simple Flow
+    @POST("api/m/v1/auth/login") // Login Simple Flow
     Call<LoginResponse> login(@Body LoginRequest request);
 
     @POST("user/password") // Forgot password
@@ -365,4 +367,13 @@ public interface ApiInterface {
 
     @POST("user/referral/confirm") // Referral Code Confirmation
     Call<BaseResponse> referralCodeConfirm(@Body ReferralCodeRequest request);
+
+
+
+
+    // For URNC
+
+    @GET("api/m/v1/asset/info") // Add Favorite Wallet
+    Call<AssetResponse> getAssetBalance();
+
 }

@@ -6,11 +6,11 @@ public class LoginRequest extends UserRequest {
     private String refreshToken;
 
     public LoginRequest(String username) {
-        this.username = username;
+        this.login = username;
     }
 
     public LoginRequest(String username, String password) {
-        this.username = username;
+        this.login = username;
         this.password = password;
     }
 

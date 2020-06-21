@@ -53,6 +53,10 @@ public class AppData {
     private HashMap<String, List<StateData>> states = new HashMap<>();
     private PlaidApi plaidApi;
 
+
+
+    private List<AssetBalance> assetBalance = new ArrayList<>();
+
     public List<Wallet> getWallets() {
         return ExchangeApplication.getApp().getUser() != null && ExchangeApplication.getApp().getUser().getFavoriteFunds() == 1 ? favoriteWallets : wallets;
     }
@@ -276,6 +280,16 @@ public class AppData {
         this.plaidApi = plaidApi;
     }
 
+
+    // For URNC
+    public void setAssetBalanceData(List<AssetBalance> assetBalance) {
+        this.assetBalance = assetBalance;
+    }
+
+    public List<AssetBalance> getAssetBalanceData() {
+        return this.assetBalance;
+    }
+
     public void clearData() {
         wallets.clear();
         favoriteWallets.clear();
@@ -292,6 +306,9 @@ public class AppData {
         cardTransactions.clear();
         contacts.clear();
         walletData.clear();
+
+
+        assetBalance.clear();
     }
 
     /**

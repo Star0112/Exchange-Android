@@ -7,14 +7,6 @@ public class LoginResponse extends BaseResponse {
 
     private LoginData data;
 
-    public boolean hasTwoFactorAuth() {
-        return data.twoFactorAuth;
-    }
-
-    public TwoFactorData getTwoFactorData() {
-        return data.twoFactorData;
-    }
-
     public String getAccessToken() {
         return data.accessToken;
     }
@@ -33,8 +25,10 @@ public class LoginResponse extends BaseResponse {
 
     private class LoginData {
 
-        private boolean twoFactorAuth;
-        private TwoFactorData twoFactorData;
+        private String username;
+        private String email;
+        private String phonenumber;
+        private String socketToken;
         private String accessToken;
         private String refreshToken;
         private User user;

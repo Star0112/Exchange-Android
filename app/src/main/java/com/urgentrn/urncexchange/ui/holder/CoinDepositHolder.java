@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.urgentrn.urncexchange.R;
-import com.urgentrn.urncexchange.models.CoinBalance;
+import com.urgentrn.urncexchange.models.AssetBalance;
 
 
 public class CoinDepositHolder extends RecyclerView.ViewHolder {
@@ -19,8 +19,6 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
     private TextView txtFreeBalance;
     private Button btnAddress;
 
-    private int [] coins = new int[5];
-
     public CoinDepositHolder(View itemView) {
         super(itemView);
         coinIcon = itemView.findViewById(R.id.coinIcon);
@@ -28,20 +26,15 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
         txtTotalBalance = itemView.findViewById(R.id.txtTotalBalance);
         txtFreeBalance = itemView.findViewById(R.id.txtFreeBalance);
         btnAddress = itemView.findViewById(R.id.btnAddress);
-
-        coins[0] = R.mipmap.coin_urnc;
-        coins[1] = R.mipmap.coin_btc;
-        coins[2] = R.mipmap.coin_eth;
-        coins[3] = R.mipmap.coin_usd;
     }
 
-    public void updateView(CoinBalance data, int position) {
+    public void updateView(AssetBalance data, int position) {
 
         Glide.with(this.itemView.getContext())
-            .load(coins[position])
+            .load(data.getImage())
             .into(coinIcon);
-        coinName.setText(data.getCoinName());
-        txtTotalBalance.setText(data.getTotal());
-        txtFreeBalance.setText(data.getFree());
+        coinName.setText(data.getCoin());
+        txtTotalBalance.setText(data.getAvailable());
+        txtFreeBalance.setText(data.getFreeze());
     }
 }
