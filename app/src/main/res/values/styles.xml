@@ -426,10 +426,10 @@
     </style>
 
     <!--  Text  -->
-    <style name="Profile.Title" parent="DefaultText">
+    <style name="Text.Black" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:textColor">@color/textColorDefault</item>
-        <item name="android:textSize">@dimen/back_icon_size</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="Text.Black1" parent="DefaultText">

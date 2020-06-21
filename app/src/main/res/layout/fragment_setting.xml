@@ -10,78 +10,90 @@
         android:orientation="vertical"
         android:background="@mipmap/background">
         <include  layout="@layout/activity_main_header"/>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:background="@drawable/bg_dialog"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/default_margin_large"
             android:layout_marginTop="@dimen/default_margin_2x"
-            android:orientation="vertical">
+            android:background="@drawable/bg_dialog"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/default_margin_large">
 
             <LinearLayout
+                style="@style/SettingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                style="@style/SettingButton">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/userProfile"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size"
                     android:layout_marginVertical="@dimen/profile_divide_size"
-                    android:gravity="center" >
+                    android:gravity="center">
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:layout_width="@dimen/bank_icon_size"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/bank_icon_size"
                             android:src="@mipmap/ic_user" />
+
                         <TextView
-                            android:text="@string/user_profile"
-                            android:layout_marginStart="@dimen/icon_size"
-                            style="@style/Profile.Title"/>
+                            style="@style/Text.Black"
+                            android:layout_marginStart="@dimen/default_margin_2x"
+                            android:text="@string/user_profile" />
                     </LinearLayout>
+
                     <ImageView
                         android:layout_width="@dimen/back_icon_size"
                         android:layout_height="@dimen/back_icon_size"
                         android:src="@mipmap/ic_next" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDivider" />
             </LinearLayout>
+
             <LinearLayout
+                style="@style/SettingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                style="@style/SettingButton">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size"
                     android:layout_marginVertical="@dimen/profile_divide_size"
                     android:gravity="center">
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:layout_width="@dimen/bank_icon_size"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/bank_icon_size"
                             android:src="@mipmap/ic_message" />
+
                         <TextView
-                            android:text="@string/message"
-                            android:layout_marginStart="@dimen/icon_size"
-                            style="@style/Profile.Title"/>
+                            style="@style/Text.Black"
+                            android:layout_marginStart="@dimen/default_margin_2x"
+                            android:text="@string/message" />
                     </LinearLayout>
+
                     <ImageView
                         android:layout_width="@dimen/back_icon_size"
                         android:layout_height="@dimen/back_icon_size"
                         android:src="@mipmap/ic_next" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -89,34 +101,39 @@
             </LinearLayout>
 
             <LinearLayout
+                style="@style/SettingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                style="@style/SettingButton">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size"
                     android:layout_marginVertical="@dimen/profile_divide_size"
                     android:gravity="center">
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:layout_width="@dimen/bank_icon_size"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/bank_icon_size"
                             android:src="@mipmap/ic_passcode" />
+
                         <TextView
-                            android:text="@string/passcode"
-                            android:layout_marginStart="@dimen/icon_size"
-                            style="@style/Profile.Title"/>
+                            style="@style/Text.Black"
+                            android:layout_marginStart="@dimen/default_margin_2x"
+                            android:text="@string/passcode" />
                     </LinearLayout>
+
                     <ImageView
                         android:layout_width="@dimen/back_icon_size"
                         android:layout_height="@dimen/back_icon_size"
                         android:src="@mipmap/ic_next" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -124,34 +141,39 @@
             </LinearLayout>
 
             <LinearLayout
+                style="@style/SettingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                style="@style/SettingButton">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size"
                     android:layout_marginVertical="@dimen/profile_divide_size"
                     android:gravity="center">
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:layout_width="@dimen/bank_icon_size"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/bank_icon_size"
                             android:src="@mipmap/ic_biometrics" />
+
                         <TextView
-                            android:text="@string/biometrics"
-                            android:layout_marginStart="@dimen/icon_size"
-                            style="@style/Profile.Title"/>
+                            style="@style/Text.Black"
+                            android:layout_marginStart="@dimen/default_margin_2x"
+                            android:text="@string/biometrics" />
                     </LinearLayout>
+
                     <ImageView
                         android:layout_width="@dimen/back_icon_size"
                         android:layout_height="@dimen/back_icon_size"
                         android:src="@mipmap/ic_next" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -159,34 +181,39 @@
             </LinearLayout>
 
             <LinearLayout
+                style="@style/SettingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                style="@style/SettingButton">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size"
                     android:layout_marginVertical="@dimen/profile_divide_size"
                     android:gravity="center">
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:layout_width="@dimen/bank_icon_size"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/bank_icon_size"
                             android:src="@mipmap/ic_help" />
+
                         <TextView
-                            android:text="@string/help"
-                            android:layout_marginStart="@dimen/icon_size"
-                            style="@style/Profile.Title"/>
+                            style="@style/Text.Black"
+                            android:layout_marginStart="@dimen/default_margin_2x"
+                            android:text="@string/help" />
                     </LinearLayout>
+
                     <ImageView
                         android:layout_width="@dimen/back_icon_size"
                         android:layout_height="@dimen/back_icon_size"
                         android:src="@mipmap/ic_next" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -194,34 +221,39 @@
             </LinearLayout>
 
             <LinearLayout
+                style="@style/SettingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                style="@style/SettingButton">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/icon_size"
                     android:layout_marginVertical="@dimen/profile_divide_size"
                     android:gravity="center">
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
 
                         <ImageView
                             android:layout_width="@dimen/bank_icon_size"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/bank_icon_size"
                             android:src="@mipmap/ic_chat" />
+
                         <TextView
-                            android:text="@string/live_chat"
-                            android:layout_marginStart="@dimen/icon_size"
-                            style="@style/Profile.Title"/>
+                            style="@style/Text.Black"
+                            android:layout_marginStart="@dimen/default_margin_2x"
+                            android:text="@string/live_chat" />
                     </LinearLayout>
+
                     <ImageView
                         android:layout_width="@dimen/back_icon_size"
                         android:layout_height="@dimen/back_icon_size"
                         android:src="@mipmap/ic_next" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -230,10 +262,10 @@
 
             <Button
                 android:id="@+id/logout"
+                style="@style/DefaultButton.Blue"
                 android:layout_width="@dimen/button_width"
                 android:layout_margin="@dimen/default_margin"
-                android:text="@string/logout"
-                style="@style/DefaultButton.Blue"/>
+                android:text="@string/logout" />
 
         </LinearLayout>
     </LinearLayout>

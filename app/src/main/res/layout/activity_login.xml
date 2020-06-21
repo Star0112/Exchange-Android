@@ -53,7 +53,7 @@
                         android:id="@+id/editEmail"
                         android:imeActionLabel="@string/button_next"
                         android:imeOptions="actionNext"
-                        android:hint="@string/login_email"
+                        android:hint="@string/username"
                         style="@style/LoginInput"/>
 
                     <EditText

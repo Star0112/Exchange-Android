@@ -39,6 +39,8 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
 
     @AfterViews
     protected void init() {
+        editEmail.setText("fengliu123");
+        editPassword.setText("Security123!@#");
         setToolBar(false);
     }
 
@@ -64,9 +66,9 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
         if (email.isEmpty()) {
             editEmail.requestFocus();
             editEmail.setError(getString(R.string.error_email_empty));
-        } else if (!Utils.isEmailValid(email)) {
-            editEmail.requestFocus();
-            editEmail.setError(getString(R.string.error_email_invalid));
+//        } else if (!Utils.isEmailValid(email)) {
+//            editEmail.requestFocus();
+//            editEmail.setError(getString(R.string.error_email_invalid));
         } else if (password.isEmpty()) {
             editPassword.requestFocus();
             editPassword.setError(getString(R.string.error_password_empty));
@@ -74,13 +76,9 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
             editPassword.requestFocus();
             editPassword.setError(getString(R.string.error_password_short));
         } else {
-//            ApiClient.getInterface()
-//                    .login(new LoginRequest(email, password))
-//                    .enqueue(new AppCallback<>(this, this));
-            Intent intent;
-            intent = new Intent(this, PINCreateActivity_.class);
-            startActivity(intent);
-            finish();
+            ApiClient.getInterface()
+                    .login(new LoginRequest(email, password))
+                    .enqueue(new AppCallback<>(this, this));
         }
     }
 

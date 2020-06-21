@@ -336,7 +336,7 @@ public interface ApiInterface {
     @POST("user/login/code") // Login 2FA Flow - If 2FA is active
     Call<LoginResponse> login(@Body TfaRequest request);
 
-    @POST("user/login") // Login Simple Flow
+    @POST("auth/login") // Login Simple Flow
     Call<LoginResponse> login(@Body LoginRequest request);
 
     @POST("user/password") // Forgot password
