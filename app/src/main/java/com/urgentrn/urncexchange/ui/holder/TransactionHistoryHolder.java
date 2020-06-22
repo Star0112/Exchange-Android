@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.urgentrn.urncexchange.R;
-import com.urgentrn.urncexchange.models.BuyHistory;
+import com.urgentrn.urncexchange.models.DepositHistory;
 
 public class TransactionHistoryHolder extends RecyclerView.ViewHolder {
 
@@ -17,10 +17,10 @@ public class TransactionHistoryHolder extends RecyclerView.ViewHolder {
         txtDate = itemView.findViewById(R.id.txtDate);
     }
 
-    public void updateView(BuyHistory data, int position) {
+    public void updateView(DepositHistory data, int position) {
 
-        txtAssetsName.setText(data.getAssetName());
-        txtTotalBalance.setText(data.getTotalBalance());
+        txtAssetsName.setText(data.getSymbol());
+        txtTotalBalance.setText(data.getAmount());
         txtDate.setText(data.getDate());
     }
 }

@@ -15,11 +15,12 @@ import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
-import com.urgentrn.urncexchange.models.BuyHistory;
+import com.urgentrn.urncexchange.models.DepositHistory;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinDepositAdapter;
 import com.urgentrn.urncexchange.ui.adapter.TransactionHistoryAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
@@ -51,7 +52,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     ////////////////////////////////////
     private List<AssetBalance> assetBalances = new ArrayList<>();
-    private List<BuyHistory> tempHistory = new ArrayList<>();
+    private List<DepositHistory> depositHistories = new ArrayList<>();
 
     @AfterViews
     protected void init() {
@@ -63,8 +64,8 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
         buyHistory.setHasFixedSize(true);
         buyHistory.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterTransaction = new TransactionHistoryAdapter(tempHistory);
-        adapterTransaction.setData(tempHistory);
+        adapterTransaction = new TransactionHistoryAdapter(depositHistories);
+        adapterTransaction.setData(depositHistories);
         buyHistory.setAdapter(adapterTransaction);
              ////////////////////////////////////////////////////////////
         setupDrawer();
@@ -98,15 +99,29 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
                         if(response instanceof AssetResponse) {
                             final List<AssetBalance> data = ((AssetResponse)response).getData();
                             AppData.getInstance().setAssetBalanceData(data);
-
-                            for (AssetBalance assetBalance : AppData.getInstance().getAssetBalanceData()) {
+                            for (AssetBalance assetBalance : data) {
                                 assetBalances.add(assetBalance);
                             }
-                            tempHistory.add(new BuyHistory("ETH","+51000","5/3/2020"));
-                            tempHistory.add(new BuyHistory("BTC","+71000","5/3/2020"));
-                            tempHistory.add(new BuyHistory("ETH","+53000","4/13/2020"));
-                            tempHistory.add(new BuyHistory("USD","+51100","4/12/2020"));
-                            tempHistory.add(new BuyHistory("BTC","+11000","3/3/2020"));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                }));
+
+        ApiClient.getInterface()
+                .getDepositHistory(0,30)
+                .enqueue(new AppCallback<>(new ApiCallback() {
+                    @Override
+                    public void onResponse(BaseResponse response) {
+                        if(response instanceof DepositHistoryResponse) {
+                            final List<DepositHistory> data = ((DepositHistoryResponse) response).getData();
+                            AppData.getInstance().setDepositHistoryData(data);
+                            for (DepositHistory depositHistory : data) {
+                                depositHistories.add(depositHistory);
+                            }
                         }
                     }
 

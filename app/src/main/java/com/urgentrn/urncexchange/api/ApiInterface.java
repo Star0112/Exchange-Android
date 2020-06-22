@@ -1,6 +1,5 @@
 package com.urgentrn.urncexchange.api;
 
-import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.contacts.BaseWalletAddress;
 import com.urgentrn.urncexchange.models.request.ActivateCardRequest;
 import com.urgentrn.urncexchange.models.request.CodeRequest;
@@ -31,6 +30,7 @@ import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.ContactResponse;
 import com.urgentrn.urncexchange.models.response.CreateWalletResponse;
+import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.models.response.ExchangeConfirmResponse;
 import com.urgentrn.urncexchange.models.response.ExchangeQuoteResponse;
 import com.urgentrn.urncexchange.models.response.ForgotPasswordResponse;
@@ -373,7 +373,10 @@ public interface ApiInterface {
 
     // For URNC
 
-    @GET("api/m/v1/asset/info") // Add Favorite Wallet
+    @GET("api/m/v1/asset/info") // Get Deposit Balance
     Call<AssetResponse> getAssetBalance();
+
+    @GET("api/m/v1/asset/depositHistory") // Get Deposit History
+    Call<DepositHistoryResponse> getDepositHistory(@Query("offset") int offset, @Query("limit") int limit);
 
 }

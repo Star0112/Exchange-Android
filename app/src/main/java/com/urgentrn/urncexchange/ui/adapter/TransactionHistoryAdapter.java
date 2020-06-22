@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
-import com.urgentrn.urncexchange.models.BuyHistory;
+import com.urgentrn.urncexchange.models.DepositHistory;
 import com.urgentrn.urncexchange.ui.holder.TransactionHistoryHolder;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import java.util.List;
 
 public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionHistoryHolder> {
 
-    private List<BuyHistory> data = new ArrayList<>();
+    private List<DepositHistory> data = new ArrayList<>();
 
-    public TransactionHistoryAdapter(List<BuyHistory> transactions) {
+    public TransactionHistoryAdapter(List<DepositHistory> transactions) {
         this.data = transactions;
     }
 
@@ -34,7 +34,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
 
     @Override
     public void onBindViewHolder(@NonNull TransactionHistoryHolder holder, int position) {
-        final BuyHistory transactionHistory = data.get(position);
+        final DepositHistory transactionHistory = data.get(position);
         holder.updateView(transactionHistory, position);
     }
 
@@ -42,7 +42,7 @@ public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionH
     public int getItemCount() {
         return data.size();
     }
-    public void setData(List<BuyHistory> data) {
+    public void setData(List<DepositHistory> data) {
         this.data = data;
     }
 }
