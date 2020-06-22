@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.AssetBalance;
+import com.urgentrn.urncexchange.models.DepositHistory;
 import com.urgentrn.urncexchange.ui.holder.CoinDepositHolder;
 
 import java.util.ArrayList;
@@ -20,6 +21,10 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
 
     public CoinDepositAdapter(OnItemClickListener listener) {
         this.mListener = listener;
+    }
+
+    public CoinDepositAdapter(List<AssetBalance> transactions) {
+        this.data = transactions;
     }
 
     @NonNull

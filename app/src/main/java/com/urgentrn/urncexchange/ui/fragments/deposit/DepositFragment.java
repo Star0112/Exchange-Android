@@ -92,26 +92,6 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         newHeader.setText(R.string.title_deposit);
 
         ApiClient.getInterface()
-                .getAssetBalance()
-                .enqueue(new AppCallback<>(new ApiCallback() {
-                    @Override
-                    public void onResponse(BaseResponse response) {
-                        if(response instanceof AssetResponse) {
-                            final List<AssetBalance> data = ((AssetResponse)response).getData();
-                            AppData.getInstance().setAssetBalanceData(data);
-                            for (AssetBalance assetBalance : data) {
-                                assetBalances.add(assetBalance);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-
-                    }
-                }));
-
-        ApiClient.getInterface()
                 .getDepositHistory(0,30)
                 .enqueue(new AppCallback<>(new ApiCallback() {
                     @Override
@@ -131,6 +111,25 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
                     }
                 }));
 
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<>(new ApiCallback() {
+                    @Override
+                    public void onResponse(BaseResponse response) {
+                        if(response instanceof AssetResponse) {
+                            final List<AssetBalance> data = ((AssetResponse)response).getData();
+                            AppData.getInstance().setAssetBalanceData(data);
+                            for (AssetBalance assetBalance : data) {
+                                assetBalances.add(assetBalance);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                }));
 
     }
 
