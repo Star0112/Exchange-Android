@@ -624,7 +624,6 @@
     <string name="exchanging_from">Exchanging From</string>
     <string name="success">Success</string>
     <string name="exchange_success">You have exchanged:</string>
-    <string name="buy_success">You have bought</string>
     <string name="sell_success">You have sold</string>
     <string name="deposit_success">You have deposited</string>
     <string name="withdraw_success">You have withdrawn</string>
@@ -720,6 +719,8 @@
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>
     <string name="amount">Amount</string>
+    <string name="buy_success">You have bought successfully.</string>
+    <string name="buy_failed">You are failed.</string>
     <!-- Order -->
     <string name="title_order">Order</string>
     <string name="balance">Balanc</string>

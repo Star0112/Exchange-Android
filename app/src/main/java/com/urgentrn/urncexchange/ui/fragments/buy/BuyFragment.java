@@ -3,6 +3,7 @@ package com.urgentrn.urncexchange.ui.fragments.buy;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -10,13 +11,22 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
+import com.urgentrn.urncexchange.api.ApiClient;
+import com.urgentrn.urncexchange.api.AppCallback;
+import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
+import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.Wallet;
+import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
+import com.urgentrn.urncexchange.models.request.LoginRequest;
+import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.utils.Utils;
@@ -24,12 +34,14 @@ import com.urgentrn.urncexchange.utils.Utils;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,7 +54,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     TextView newHeader;
 
     @ViewById(R.id.selectCoin)
-    Spinner selectCoin;
+    Spinner spinner;
 
     @ViewById
     EditText buyPrice, buyAmount;
@@ -50,23 +62,36 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     @ViewById
     RecyclerView assetBalance;
 
-    String[] symbols = { "URNC/BTC", "URNC/ETH", "URNC/USD"};
+    private List<String> symbols = new ArrayList<>();
     private CoinBalanceAdapter adapterCoin;
-    private ArrayList<AssetBalance> tempCoins = new ArrayList<>();
+    private ArrayList<AssetBalance> assetBalances = new ArrayList<>();
+    private List<MarketInfo> marketInfos = new ArrayList<>();
+
+    private int selectedNumber = 0;
 
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_buy);
 
-        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
-        selectCoin.setAdapter(spinnerAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedNumber = position;
+                buyPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
+            }
 
-        tempCoins.add(new AssetBalance("cypto","URNC","0x01029dko4", "51000","24453", ""));
-        tempCoins.add(new AssetBalance("cypto","BTC","0x324dfds54", "25000","68253", ""));
-        tempCoins.add(new AssetBalance("cypto","ETH","0xf102a5ko4", "30300","27423", "" ));
-        tempCoins.add(new AssetBalance("currency","USD","0xh1i2cdko4", "60200","26451", ""));
-        tempCoins.add(new AssetBalance("cypto","COIN","0xu10d9dko4", "70400","18253", ""));
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
 
+        });
+
+
+        assetBalance.setHasFixedSize(true);
+        assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(assetBalances.get(pos)));
+        adapterCoin.setData(assetBalances);
+        assetBalance.setAdapter(adapterCoin);
 
         setupDrawer();
         updateView();
@@ -85,12 +110,48 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer() {
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<>(new ApiCallback() {
+                    @Override
+                    public void onResponse(BaseResponse response) {
+                        if(response instanceof AssetResponse) {
+                            final List<AssetBalance> data = ((AssetResponse)response).getData();
+                            AppData.getInstance().setAssetBalanceData(data);
+                            for (AssetBalance assetBalance : data) {
+                                assetBalances.add(assetBalance);
+                            }
+                        }
+                    }
 
-        assetBalance.setHasFixedSize(true);
-        assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(tempCoins.get(pos)));
-        adapterCoin.setData(tempCoins);
-        assetBalance.setAdapter(adapterCoin);
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                }));
+
+        ApiClient.getInterface()
+                .getMarketInfo()
+                .enqueue(new AppCallback<>(new ApiCallback() {
+                    @Override
+                    public void onResponse(BaseResponse response) {
+                        if(response instanceof MarketInfoResponse) {
+                            final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
+                            AppData.getInstance().setMarketInfoData(data);
+                            for(MarketInfo marketInfo : data ) {
+                                marketInfos.add(marketInfo);
+                                symbols.add(marketInfo.getName());
+                                final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+                                spinner.setAdapter(spinnerAdapter);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                }));
     }
 
     public void updateCoin(AssetBalance coin){
@@ -103,23 +164,34 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.btnBuy)
     void onBuy() {
-        final String price = buyPrice.getText().toString();
         final String amount = buyAmount.getText().toString();
 
-        if (price.isEmpty()) {
-            buyPrice.requestFocus();
-            buyPrice.setError(getString(R.string.error_price_empty));
-        } else if (Integer.parseInt(price)<=0) {
-            buyPrice.requestFocus();
-            buyPrice.setError(getString(R.string.error_price_invalid));
-        } else if (amount.isEmpty()) {
+        if (amount.isEmpty()) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_empty));
-        } else if (!Utils.isPasswordValid(amount)) {
+        } else if (Integer.parseInt(amount)<=0) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_invalid));
         } else {
+            ApiClient.getInterface()
+                    .buyCoin(new BuyCoinRequest(this.marketInfos.get(this.selectedNumber).getPair(), this.marketInfos.get(this.selectedNumber).getBase(), Integer.parseInt(amount)))
+                    .enqueue(new AppCallback<BaseResponse>(new ApiCallback() {
+                        @Override
+                        public void onResponse(BaseResponse response) {
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle(R.string.buy)
+                                    .setMessage(R.string.buy_success)
+                                    .show();
+                        }
 
+                        @Override
+                        public void onFailure(String message) {
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle(R.string.buy)
+                                    .setMessage(R.string.buy_failed)
+                                    .show();
+                        }
+                    }));
         }
     }
 

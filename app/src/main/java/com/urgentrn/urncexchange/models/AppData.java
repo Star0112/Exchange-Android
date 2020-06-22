@@ -57,6 +57,7 @@ public class AppData {
 
     private List<AssetBalance> assetBalance = new ArrayList<>();
     private List<DepositHistory> depositHistories = new ArrayList<>();
+    private List<MarketInfo> marketInfo = new ArrayList<>();
 
     public List<Wallet> getWallets() {
         return ExchangeApplication.getApp().getUser() != null && ExchangeApplication.getApp().getUser().getFavoriteFunds() == 1 ? favoriteWallets : wallets;
@@ -291,6 +292,10 @@ public class AppData {
         this.depositHistories = depositHistories;
     }
 
+    public void setMarketInfoData(List<MarketInfo> marketInfo) {
+        this.marketInfo = marketInfo;
+    }
+
     public List<AssetBalance> getAssetBalanceData() {
         return this.assetBalance;
     }
@@ -298,6 +303,8 @@ public class AppData {
     public List<DepositHistory> getDepositHistoryData() {
         return this.depositHistories;
     }
+
+    public List<MarketInfo> getMarketInfoData() { return this.marketInfo; }
 
     public void clearData() {
         wallets.clear();

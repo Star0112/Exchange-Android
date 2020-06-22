@@ -2,6 +2,7 @@ package com.urgentrn.urncexchange.api;
 
 import com.urgentrn.urncexchange.models.contacts.BaseWalletAddress;
 import com.urgentrn.urncexchange.models.request.ActivateCardRequest;
+import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
 import com.urgentrn.urncexchange.models.request.CodeRequest;
 import com.urgentrn.urncexchange.models.request.ContactRequest;
 import com.urgentrn.urncexchange.models.request.DisbursementRequest;
@@ -57,6 +58,7 @@ import com.urgentrn.urncexchange.models.response.GetUserResponse;
 import com.urgentrn.urncexchange.models.response.GetVersionsResponse;
 import com.urgentrn.urncexchange.models.response.GetWalletsResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
+import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.models.response.MarketResponse;
 import com.urgentrn.urncexchange.models.response.PhoneConfirmResponse;
 import com.urgentrn.urncexchange.models.response.PinResponse;
@@ -338,9 +340,6 @@ public interface ApiInterface {
     @POST("user/login/code") // Login 2FA Flow - If 2FA is active
     Call<LoginResponse> login(@Body TfaRequest request);
 
-    @POST("api/m/v1/auth/login") // Login Simple Flow
-    Call<LoginResponse> login(@Body LoginRequest request);
-
     @POST("user/password") // Forgot password
     Call<ForgotPasswordResponse> forgotPassword(@Body UserRequest request);
 
@@ -372,11 +371,19 @@ public interface ApiInterface {
 
 
     // For URNC
+    @POST("api/m/v1/auth/login") // Login Simple Flow
+    Call<LoginResponse> login(@Body LoginRequest request);
 
     @GET("api/m/v1/asset/info") // Get Deposit Balance
     Call<AssetResponse> getAssetBalance();
 
     @GET("api/m/v1/asset/depositHistory") // Get Deposit History
     Call<DepositHistoryResponse> getDepositHistory(@Query("offset") int offset, @Query("limit") int limit);
+
+    @GET("api/m/v1/market/list") // Get Market Info
+    Call<MarketInfoResponse> getMarketInfo();
+
+    @POST("api/m/v1/buy/coin") // Buy Coin
+    Call<BaseResponse> buyCoin(@Body BuyCoinRequest request);
 
 }

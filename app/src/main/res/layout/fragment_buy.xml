@@ -23,20 +23,21 @@
                 android:spinnerMode="dropdown"
                 style="@style/SpinnerInput"/>
 
-            <EditText
-                android:id="@+id/buyPrice"
-                android:imeActionLabel="@string/button_next"
-                android:imeOptions="actionNext"
-                android:inputType="numberDecimal"
-                android:hint="@string/price"
-                style="@style/Input.White.Center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/buyPrice"
+                    android:inputType="numberDecimal"
+                    android:editable="false"
+                    style="@style/Input.White.Center"/>
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/buyAmount"
                 android:imeActionLabel="@string/button_go"
                 android:imeOptions="actionGo"
                 android:inputType="number"
-                android:hint="@string/amount"
                 style="@style/Input.White.Center" />
 
             <Button
