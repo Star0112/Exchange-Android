@@ -23,7 +23,7 @@ import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.CountryData;
 import com.urgentrn.urncexchange.models.request.ImageUploadRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.ui.VerifySuccessActivity_;
+//import com.urgentrn.urncexchange.ui.VerifySuccessActivity_;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.ImageUtils;
@@ -261,10 +261,7 @@ public class ScanActivity extends BaseActivity implements ApiCallback {
             intent = new Intent(this, SelfieActivity_.class);
             intent.putExtra("step", 3);
             startActivity(intent);
-        } else if (step == 4) {
-            intent = new Intent(this, VerifySuccessActivity_.class);
-            intent.putExtra("type", Constants.VerifyType.TIER2);
-        } else {
+        }  else {
             intent = new Intent(this, SelfieActivity_.class);
             intent.putExtra("step", step + 1);
         }

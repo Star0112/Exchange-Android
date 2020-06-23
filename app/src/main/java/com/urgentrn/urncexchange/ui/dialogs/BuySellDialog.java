@@ -44,7 +44,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.ExchangeConfirmResponse;
 import com.urgentrn.urncexchange.models.response.ExchangeQuoteResponse;
 import com.urgentrn.urncexchange.models.response.GetExchangeTickersResponse;
-import com.urgentrn.urncexchange.ui.account.AddAccountActivity_;
+//import com.urgentrn.urncexchange.ui.account.AddAccountActivity_;
 import com.urgentrn.urncexchange.ui.adapter.LinkedAccountAdapter;
 import com.urgentrn.urncexchange.ui.adapter.SelectCurrencyAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
@@ -599,9 +599,9 @@ public class BuySellDialog extends BaseDialog implements ApiCallback {
 
     private void onAddPayment() {
         if (AppData.getInstance().getFlowData() == null) return;
-        final Intent intent = new Intent(getContext(), AddAccountActivity_.class);
-        startActivity(intent);
-        onClose();
+//        final Intent intent = new Intent(getContext(), AddAccountActivity_.class);
+//        startActivity(intent);
+//        onClose();
     }
 
     private void onQuote(HashMap<String, ExchangeData> data) {

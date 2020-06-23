@@ -14,7 +14,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.Banner;
-import com.urgentrn.urncexchange.ui.TermActivity_;
+//import com.urgentrn.urncexchange.ui.TermActivity_;
 
 import java.util.List;
 
@@ -56,10 +56,10 @@ public class BannerPagerAdapter extends PagerAdapter {
         if (banner.getLink() != null) {
             view.setOnClickListener(v -> {
                 final Context context = view.getContext();
-                final Intent intent = new Intent(context, TermActivity_.class);
-                intent.putExtra("title", banner.getTitle());
-                intent.putExtra("url", banner.getLink());
-                context.startActivity(intent);
+//                final Intent intent = new Intent(context, TermActivity_.class);
+//                intent.putExtra("title", banner.getTitle());
+//                intent.putExtra("url", banner.getLink());
+//                context.startActivity(intent);
             });
         }
 

@@ -27,9 +27,9 @@ import com.urgentrn.urncexchange.models.response.ActivateResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.GetAccountsResponse;
 import com.urgentrn.urncexchange.models.response.GetBannersResponse;
-import com.urgentrn.urncexchange.ui.DocsActivity_;
-import com.urgentrn.urncexchange.ui.account.AddAccountActivity_;
-import com.urgentrn.urncexchange.ui.account.ManageAccountActivity_;
+//import com.urgentrn.urncexchange.ui.DocsActivity_;
+//import com.urgentrn.urncexchange.ui.account.AddAccountActivity_;
+//import com.urgentrn.urncexchange.ui.account.ManageAccountActivity_;
 import com.urgentrn.urncexchange.ui.adapter.BannerPagerAdapter;
 import com.urgentrn.urncexchange.ui.adapter.LinkedAccountAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
@@ -93,15 +93,15 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
         setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         // Linked Accounts View
-        adapter = new LinkedAccountAdapter(position -> startActivity(new Intent(getContext(), ManageAccountActivity_.class)));
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        final DividerItemDecoration decoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        decoration.setDrawable(getResources().getDrawable(R.drawable.divider));
-        recyclerView.addItemDecoration(decoration);
-        recyclerView.setAdapter(adapter);
-
-        switchPasscode.setChecked(ExchangeApplication.getApp().getPreferences().isPasscodeEnabled());
-        switchBiometrics.setChecked(ExchangeApplication.getApp().getPreferences().isFingerprintEnabled());
+//        adapter = new LinkedAccountAdapter(position -> startActivity(new Intent(getContext(), ManageAccountActivity_.class)));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        final DividerItemDecoration decoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+//        decoration.setDrawable(getResources().getDrawable(R.drawable.divider));
+//        recyclerView.addItemDecoration(decoration);
+//        recyclerView.setAdapter(adapter);
+//
+//        switchPasscode.setChecked(ExchangeApplication.getApp().getPreferences().isPasscodeEnabled());
+//        switchBiometrics.setChecked(ExchangeApplication.getApp().getPreferences().isFingerprintEnabled());
     }
 
     @Override
@@ -203,9 +203,9 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.llAddPayment)
     void onAddPaymentClicked() {
-        if (AppData.getInstance().getFlowData() == null) return;
-        final Intent intent = new Intent(getContext(), AddAccountActivity_.class);
-        startActivity(intent);
+//        if (AppData.getInstance().getFlowData() == null) return;
+//        final Intent intent = new Intent(getContext(), AddAccountActivity_.class);
+//        startActivity(intent);
     }
 
     @Click(R.id.llTierLevel)
@@ -276,9 +276,9 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.llDocs)
     void onDocsClicked() {
-        if (ExchangeApplication.getApp().getConfig() == null) return;
-        final Intent intent = new Intent(getContext(), DocsActivity_.class);
-        startActivity(intent);
+//        if (ExchangeApplication.getApp().getConfig() == null) return;
+//        final Intent intent = new Intent(getContext(), DocsActivity_.class);
+//        startActivity(intent);
     }
 
     @Click(R.id.llCurrency)

@@ -17,7 +17,7 @@ import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.request.ActivateCardRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.PinResponse;
-import com.urgentrn.urncexchange.ui.VerifySuccessActivity_;
+//import com.urgentrn.urncexchange.ui.VerifySuccessActivity_;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
 import com.urgentrn.urncexchange.utils.Constants;
 
@@ -123,12 +123,12 @@ public class CvvDialog extends BaseDialog implements ApiCallback {
             } else {
                 hideProgressBar();
 
-                final Intent intent = new Intent(getContext(), VerifySuccessActivity_.class);
-                intent.putExtra("type", Constants.VerifyType.CARD_ACTIVATE);
-                intent.putExtra("reference", reference);
-                intent.putExtra("pin_type", pinType);
-                startActivity(intent);
-                dismiss();
+//                final Intent intent = new Intent(getContext(), VerifySuccessActivity_.class);
+//                intent.putExtra("type", Constants.VerifyType.CARD_ACTIVATE);
+//                intent.putExtra("reference", reference);
+//                intent.putExtra("pin_type", pinType);
+//                startActivity(intent);
+//                dismiss();
             }
         }
     }

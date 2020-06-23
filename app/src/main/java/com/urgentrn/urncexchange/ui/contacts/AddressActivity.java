@@ -33,7 +33,7 @@ import com.urgentrn.urncexchange.models.request.ImageUploadRequest;
 import com.urgentrn.urncexchange.models.request.WalletRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.CreateWalletResponse;
-import com.urgentrn.urncexchange.ui.QrCodeActivity_;
+//import com.urgentrn.urncexchange.ui.QrCodeActivity_;
 import com.urgentrn.urncexchange.ui.adapter.AddressAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.view.EditableItemView;
@@ -135,10 +135,10 @@ public class AddressActivity extends BaseActivity implements ApiCallback {
     public void scanQRCode(int position) {
         selectedQRPosition = position;
 
-        final IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setCaptureActivity(QrCodeActivity_.class);
-        integrator.setOrientationLocked(false);
-        integrator.initiateScan();
+//        final IntentIntegrator integrator = new IntentIntegrator(this);
+//        integrator.setCaptureActivity(QrCodeActivity_.class);
+//        integrator.setOrientationLocked(false);
+//        integrator.initiateScan();
     }
 
     public void onAdd() {
@@ -230,58 +230,58 @@ public class AddressActivity extends BaseActivity implements ApiCallback {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK) {
-            if (requestCode == Constants.ActivityRequestCodes.SELECT_ASSETS && data != null) {
-                final List<Integer> assetIds = data.getIntegerArrayListExtra("data");
-                for (int assetId : assetIds) {
-                    final WalletAddress address = new WalletAddress();
-                    address.setAssetId(assetId);
-                    addresses.add(address);
-                }
-                adapter.notifyDataSetChanged();
-            } else if (requestCode == IntentIntegrator.REQUEST_CODE) {
-                IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-                if (result != null) {
-                    if (result.getContents() != null) { // null means cancelled
-                        adapter.getItem(selectedQRPosition).setAddress(result.getContents());
-                        adapter.notifyItemChanged(selectedQRPosition);
-                    }
-                }
-            } else if (requestCode == Constants.ActivityRequestCodes.SELECT_PICTURE) {
-                final Uri selectedUri = data.getData();
-                if (selectedUri != null) {
-                    final UCrop uCrop = UCrop.of(selectedUri, Uri.fromFile(new File(getCacheDir(), System.currentTimeMillis() + ".png")));
-                    uCrop.withAspectRatio(1, 1);
-                    uCrop.start(this);
-
-                } else {
-                    Toast.makeText(this, R.string.toast_cannot_retrieve_selected_image, Toast.LENGTH_SHORT).show();
-                }
-            } else if (requestCode == UCrop.REQUEST_CROP) {
-                final Uri resultUri = UCrop.getOutput(data);
-                if (resultUri != null) {
-                    Glide.with(this).load(new File(resultUri.getPath())).into(imgAvatar);
-                    imageData = ImageUtils.encodeImage(this, resultUri);
-                    txtAdd.setVisibility(View.GONE);
-                    txtEdit.setVisibility(View.VISIBLE);
-                } else {
-                    Toast.makeText(this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else if (resultCode == UCrop.RESULT_ERROR) {
-            if (data != null) {
-                final Throwable cropError = UCrop.getError(data);
-                if (cropError != null) {
-                    Toast.makeText(this, cropError.getMessage(), Toast.LENGTH_LONG).show();
-                    return;
-                }
-            }
-            Toast.makeText(this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
-        }
-    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        if (resultCode == RESULT_OK) {
+//            if (requestCode == Constants.ActivityRequestCodes.SELECT_ASSETS && data != null) {
+//                final List<Integer> assetIds = data.getIntegerArrayListExtra("data");
+//                for (int assetId : assetIds) {
+//                    final WalletAddress address = new WalletAddress();
+//                    address.setAssetId(assetId);
+//                    addresses.add(address);
+//                }
+//                adapter.notifyDataSetChanged();
+//            } else if (requestCode == IntentIntegrator.REQUEST_CODE) {
+//                IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+//                if (result != null) {
+//                    if (result.getContents() != null) { // null means cancelled
+//                        adapter.getItem(selectedQRPosition).setAddress(result.getContents());
+//                        adapter.notifyItemChanged(selectedQRPosition);
+//                    }
+//                }
+//            } else if (requestCode == Constants.ActivityRequestCodes.SELECT_PICTURE) {
+//                final Uri selectedUri = data.getData();
+//                if (selectedUri != null) {
+//                    final UCrop uCrop = UCrop.of(selectedUri, Uri.fromFile(new File(getCacheDir(), System.currentTimeMillis() + ".png")));
+//                    uCrop.withAspectRatio(1, 1);
+//                    uCrop.start(this);
+//
+//                } else {
+//                    Toast.makeText(this, R.string.toast_cannot_retrieve_selected_image, Toast.LENGTH_SHORT).show();
+//                }
+//            } else if (requestCode == UCrop.REQUEST_CROP) {
+//                final Uri resultUri = UCrop.getOutput(data);
+//                if (resultUri != null) {
+//                    Glide.with(this).load(new File(resultUri.getPath())).into(imgAvatar);
+//                    imageData = ImageUtils.encodeImage(this, resultUri);
+//                    txtAdd.setVisibility(View.GONE);
+//                    txtEdit.setVisibility(View.VISIBLE);
+//                } else {
+//                    Toast.makeText(this, R.string.toast_cannot_retrieve_cropped_image, Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        } else if (resultCode == UCrop.RESULT_ERROR) {
+//            if (data != null) {
+//                final Throwable cropError = UCrop.getError(data);
+//                if (cropError != null) {
+//                    Toast.makeText(this, cropError.getMessage(), Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//            }
+//            Toast.makeText(this, R.string.toast_unexpected_error, Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     public void onResponse(BaseResponse response) {

@@ -12,7 +12,7 @@ import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.ui.VerifySuccessActivity_;
+//import com.urgentrn.urncexchange.ui.VerifySuccessActivity_;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.PinValidator;
@@ -123,10 +123,10 @@ public class PinDialog extends BaseDialog implements ApiCallback {
     @Override
     public void onResponse(BaseResponse response) {
         hideProgressBar();
-        final Intent intent = new Intent(getContext(), VerifySuccessActivity_.class);
-        intent.putExtra("type", isUpdating ? Constants.VerifyType.CARD_UPDATE_PIN : Constants.VerifyType.CARD_CREATE_PIN);
-        startActivity(intent);
-        dismiss();
+//        final Intent intent = new Intent(getContext(), VerifySuccessActivity_.class);
+//        intent.putExtra("type", isUpdating ? Constants.VerifyType.CARD_UPDATE_PIN : Constants.VerifyType.CARD_CREATE_PIN);
+//        startActivity(intent);
+//        dismiss();
     }
 
     @Override

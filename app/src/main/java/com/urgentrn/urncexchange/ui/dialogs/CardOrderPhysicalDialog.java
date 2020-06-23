@@ -24,7 +24,7 @@ import com.urgentrn.urncexchange.models.card.CardInfo;
 import com.urgentrn.urncexchange.models.card.CardUpgrade;
 import com.urgentrn.urncexchange.models.request.UpgradeCardRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.ui.CardSuccessActivity_;
+//import com.urgentrn.urncexchange.ui.CardSuccessActivity_;
 import com.urgentrn.urncexchange.ui.adapter.SelectWalletAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
 import com.urgentrn.urncexchange.utils.Constants;
@@ -181,10 +181,10 @@ public class CardOrderPhysicalDialog extends BaseDialog implements ApiCallback {
     @Override
     public void onResponse(BaseResponse response) {
         hideProgressBar();
-        final Intent intent = new Intent(getContext(), CardSuccessActivity_.class);
-        intent.putExtra("type", Constants.VerifyType.CARD_ORDER_PHYSICAL);
-        startActivity(intent);
-        dismiss();
+//        final Intent intent = new Intent(getContext(), CardSuccessActivity_.class);
+//        intent.putExtra("type", Constants.VerifyType.CARD_ORDER_PHYSICAL);
+//        startActivity(intent);
+//        dismiss();
     }
 
     @Override

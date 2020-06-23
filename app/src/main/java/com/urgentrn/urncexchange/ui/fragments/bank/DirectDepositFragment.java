@@ -9,7 +9,7 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.DepositAddress;
 import com.urgentrn.urncexchange.models.bank.FieldOption;
-import com.urgentrn.urncexchange.ui.DDFormActivity_;
+//import com.urgentrn.urncexchange.ui.DDFormActivity_;
 import com.urgentrn.urncexchange.ui.adapter.BankAccountAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
@@ -48,8 +48,8 @@ public class DirectDepositFragment extends BaseFragment {
         adapter.setData(data);
     }
 
-    @Click(R.id.btnDirectDeposit)
-    void onDirectDeposit() {
-        startActivity(new Intent(getContext(), DDFormActivity_.class));
-    }
+//    @Click(R.id.btnDirectDeposit)
+//    void onDirectDeposit() {
+//        startActivity(new Intent(getContext(), DDFormActivity_.class));
+//    }
 }

@@ -22,7 +22,7 @@ import com.urgentrn.urncexchange.models.card.Card;
 import com.urgentrn.urncexchange.models.card.GiftMeta;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.GetCardResponse;
-import com.urgentrn.urncexchange.ui.TermActivity_;
+//import com.urgentrn.urncexchange.ui.TermActivity_;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.utils.Utils;
@@ -123,10 +123,10 @@ public class GiftCardDetailFragment extends BaseFragment implements ApiCallback 
 
     @Click(R.id.btnLink)
     void onLink() {
-        final Intent intent = new Intent(getContext(), TermActivity_.class);
-        intent.putExtra("title", getString(R.string.claim_code));
-        intent.putExtra("url", cardLink);
-        startActivity(intent);
+//        final Intent intent = new Intent(getContext(), TermActivity_.class);
+//        intent.putExtra("title", getString(R.string.claim_code));
+//        intent.putExtra("url", cardLink);
+//        startActivity(intent);
     }
 
     @Click(R.id.btnLock)

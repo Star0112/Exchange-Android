@@ -33,7 +33,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.GetContactsResponse;
 import com.urgentrn.urncexchange.models.response.GetLastUsedAddressesResponse;
 import com.urgentrn.urncexchange.models.response.GetWalletsResponse;
-import com.urgentrn.urncexchange.ui.QrCodeActivity_;
+//import com.urgentrn.urncexchange.ui.QrCodeActivity_;
 import com.urgentrn.urncexchange.ui.adapter.ContactAdapter;
 import com.urgentrn.urncexchange.ui.adapter.WalletAddressAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
@@ -325,7 +325,7 @@ public class SendActivity extends BaseActivity implements ApiCallback {
 
     public void scanQRCode(View v) {
         final IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setCaptureActivity(QrCodeActivity_.class);
+//        integrator.setCaptureActivity(QrCodeActivity_.class);
         integrator.setOrientationLocked(false);
         integrator.initiateScan();
     }

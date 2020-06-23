@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.Link;
-import com.urgentrn.urncexchange.ui.TermActivity_;
+//import com.urgentrn.urncexchange.ui.TermActivity_;
 import com.urgentrn.urncexchange.ui.holder.DocHolder;
 
 import java.util.List;
@@ -40,10 +40,10 @@ public class DocAdapter extends RecyclerView.Adapter<DocHolder> {
         viewHolder.setTitle(link.getTitle());
         viewHolder.itemView.setOnClickListener(v -> {
             final Context context = viewHolder.itemView.getContext();
-            final Intent intent = new Intent(context, TermActivity_.class);
-            intent.putExtra("title", link.getTitle());
-            intent.putExtra("url", link.getUrl());
-            context.startActivity(intent);
+//            final Intent intent = new Intent(context, TermActivity_.class);
+//            intent.putExtra("title", link.getTitle());
+//            intent.putExtra("url", link.getUrl());
+//            context.startActivity(intent);
         });
     }
 
