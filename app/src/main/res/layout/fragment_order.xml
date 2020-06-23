@@ -63,7 +63,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/total"
+                            android:text="@string/total_balance"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
@@ -90,7 +90,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/total"
+                            android:text="@string/total_balance"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
@@ -123,7 +123,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/total"
+                            android:text="@string/total_balance"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
@@ -150,7 +150,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/total"
+                            android:text="@string/total_balance"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
@@ -209,7 +209,7 @@
                     android:id="@+id/btnBuy"
                     android:layout_width="@dimen/button_width"
                     android:layout_marginBottom="@dimen/default_margin"
-                    android:text="@string/buy"
+                    android:text="@string/title_buy"
                     style="@style/DefaultButton.Blue"/>
             </LinearLayout>
 

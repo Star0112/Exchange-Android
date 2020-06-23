@@ -89,30 +89,11 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
 
             Log.v("login response", data.toString());
             Intent intent;
-//            if (data.hasTwoFactorAuth()) {
-//                intent = new Intent(this, TfaActivity_.class);
-//                intent.putExtra("username", data.getTwoFactorData().getUserId());
-//                intent.putExtra("type", data.getTwoFactorData().getType());
-//                intent.putExtra("session", data.getSession());
-//            } else {
-                ExchangeApplication.getApp().getPreferences().clear();
-                ExchangeApplication.getApp().getPreferences().setRefreshToken(data.getRefreshToken());
-                ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
-                ExchangeApplication.getApp().setUser(data.getUser());
+            ExchangeApplication.getApp().getPreferences().clear();
+            ExchangeApplication.getApp().getPreferences().setRefreshToken(data.getRefreshToken());
+            ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
+            ExchangeApplication.getApp().setUser(data.getUser());
 
-//                if (data.getUser() == null) {
-//                    intent = new Intent(this, EmailVerificationActivity_.class);
-//                    intent.putExtra("username", email);
-//                } else if (data.getUser().isPhoneVerified()) {
-//                    intent = new Intent(this, PINCreateActivity_.class);
-//                } else if (data.getUser().getPhone() != null) {
-//                    intent = new Intent(this, PhoneVerificationActivity_.class);
-//                } else if (data.getUser().isEmailVerified()) {
-//                    intent = new Intent(this, PhoneActivity_.class);
-//                } else {
-//                    intent = new Intent(this, EmailVerificationActivity_.class);
-//                }
-//            }
             intent = new Intent(this, PINCreateActivity_.class);
             startActivity(intent);
             finish();

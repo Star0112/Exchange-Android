@@ -35,14 +35,9 @@ public class TouchIDActivity extends BaseActivity {
             ExchangeApplication.getApp().getPreferences().setFingerprintEnabled(false);
         }
         final Intent intent;
-//        if (ExchangeApplication.getApp().getUser().termsAccepted()) {
-            intent = new Intent(this, MainActivity_.class);
-            startActivity(intent);
+        intent = new Intent(this, MainActivity_.class);
+        startActivity(intent);
         finish();
-//        } else {
-//            intent = new Intent(this, TermsActivity_.class);
-//            startActivity(intent);
-//        }
     }
 
     @Override
