@@ -10,8 +10,8 @@ import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
-import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
-import com.urgentrn.urncexchange.ui.fragments.profile.PhoneFragment_;
+//import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
+//import com.urgentrn.urncexchange.ui.fragments.profile.PhoneFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;

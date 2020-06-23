@@ -34,7 +34,7 @@ import com.urgentrn.urncexchange.ui.adapter.BannerPagerAdapter;
 import com.urgentrn.urncexchange.ui.adapter.LinkedAccountAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
-import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
+//import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
 import com.urgentrn.urncexchange.ui.kyc.DocUploadActivity_;
 import com.urgentrn.urncexchange.ui.transactions.NetworkActivity_;
 import com.urgentrn.urncexchange.ui.view.CircleIndicator;
@@ -270,8 +270,8 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.llContacts)
     void onContactsClicked() {
-        final Intent intent = new Intent(getContext(), ManageContactsActivity_.class);
-        startActivity(intent);
+//        final Intent intent = new Intent(getContext(), ManageContactsActivity_.class);
+//        startActivity(intent);
     }
 
     @Click(R.id.llDocs)

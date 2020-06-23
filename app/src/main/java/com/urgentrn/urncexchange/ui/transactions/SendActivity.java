@@ -37,8 +37,8 @@ import com.urgentrn.urncexchange.models.response.GetWalletsResponse;
 import com.urgentrn.urncexchange.ui.adapter.ContactAdapter;
 import com.urgentrn.urncexchange.ui.adapter.WalletAddressAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
-import com.urgentrn.urncexchange.ui.contacts.AddressActivity_;
-import com.urgentrn.urncexchange.ui.contacts.ContactActivity_;
+//import com.urgentrn.urncexchange.ui.contacts.AddressActivity_;
+//import com.urgentrn.urncexchange.ui.contacts.ContactActivity_;
 import com.urgentrn.urncexchange.ui.dialogs.SendConfirmDialog;
 import com.urgentrn.urncexchange.ui.dialogs.SendConfirmDialog_;
 import com.urgentrn.urncexchange.ui.view.EditableItemView;
@@ -333,13 +333,13 @@ public class SendActivity extends BaseActivity implements ApiCallback {
     private void onContactDetail(BaseContact baseContact) {
         final Intent intent = new Intent();
         intent.putExtra("data", baseContact);
-        if (recyclerContact.getVisibility() == View.VISIBLE) {
-            intent.setClass(this, ContactActivity_.class);
-            startActivityForResult(intent, Constants.ActivityRequestCodes.CONTACT);
-        } else {
-            intent.setClass(this, AddressActivity_.class);
-            startActivityForResult(intent, Constants.ActivityRequestCodes.WALLET_ADDRESS);
-        }
+//        if (recyclerContact.getVisibility() == View.VISIBLE) {
+//            intent.setClass(this, ContactActivity_.class);
+//            startActivityForResult(intent, Constants.ActivityRequestCodes.CONTACT);
+//        } else {
+//            intent.setClass(this, AddressActivity_.class);
+//            startActivityForResult(intent, Constants.ActivityRequestCodes.WALLET_ADDRESS);
+//        }
     }
 
     @Override
