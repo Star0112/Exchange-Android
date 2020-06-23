@@ -7,7 +7,6 @@ import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.models.response.GetAccountsResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;

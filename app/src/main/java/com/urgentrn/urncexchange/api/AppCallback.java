@@ -8,12 +8,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.ExchangeApplication;
-import com.urgentrn.urncexchange.models.AppData;
-import com.urgentrn.urncexchange.models.bank.FlowData;
 import com.urgentrn.urncexchange.models.request.LoginRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
-import com.urgentrn.urncexchange.models.response.TokenResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
@@ -67,9 +64,6 @@ public class AppCallback<T> implements Callback<T> {
                 errorMessage = "Internal server error";
             } else if (baseResponse.getError() != null) {
                 errorMessage = baseResponse.getErrorMessage();
-                if (baseResponse.getErrorCode() == 4323) { // Banking Services are not available yet in your region
-                    AppData.getInstance().setFlowData(new FlowData(baseResponse.getErrorMessage()));
-                }
             }
 //            else if (baseResponse.isSuccess() || baseResponse instanceof TokenResponse) {
                 if (mCallback instanceof BaseFragment) {

@@ -116,9 +116,7 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
             Constants.API_URL = (BuildConfig.PRODUCTION && data.isProduction() ? data.getProduction() : data.getSandbox()) + "/api/";
             Constants.COUNTRY_NAME = data.getCountry();
             ApiClient.setInterface(null);
-//            ApiClient.getInterface()
-//                    .getVersions(new GetVersionsRequest(Constants.API_VERSION, Constants.ENVIRONMENT))
-//                    .enqueue(new AppCallback<>(this));
+
         }  else if (response instanceof GetUserResponse) {
             ExchangeApplication.getApp().setUser(((GetUserResponse)response).getData());
             onNextStep();

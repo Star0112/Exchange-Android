@@ -353,7 +353,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 //                }
 //            }
 //        } else if (response instanceof GetFlowResponse) {
-//            AppData.getInstance().setFlowData(((GetFlowResponse)response).getData());
 //        } else if (response instanceof GetExchangeTickersResponse) {
 //            final HashMap<String, ExchangeData> data = ((GetExchangeTickersResponse)response).getData();
 //            AppData.getInstance().setBlockChainTickers(data);
