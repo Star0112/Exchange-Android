@@ -23,25 +23,13 @@ public class SettingContainerFragment extends BaseFragment implements ApiCallbac
         getChildFragmentManager().beginTransaction()
                 .add(R.id.container, new SettingFragment_())
                 .commit();
-        getAccounts();
-    }
-
-    public void getAccounts() {
-        ApiClient.getInterface().getBankAccounts().enqueue(new AppCallback<>(this));
     }
 
     @Override
     public void onResponse(BaseResponse response) {
-        if (response instanceof GetAccountsResponse) {
-            AppData.getInstance().setAccounts(((GetAccountsResponse)response).getData());
-            EventBus.getDefault().post(response);
-        }
     }
 
     @Override
     public void onFailure(String message) {
-        if (BuildConfig.DEBUG && getContext() != null) showToast(message, false);
-        AppData.getInstance().setAccounts(new ArrayList<>());
-        EventBus.getDefault().post(new GetAccountsResponse());
     }
 }
