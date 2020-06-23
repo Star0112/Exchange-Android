@@ -38,8 +38,6 @@ import java.util.List;
 
 @EFragment(R.layout.fragment_deposit)
 public class DepositFragment extends BaseFragment implements ApiCallback {
-    @ViewById
-    View llBackground;
 
     @ViewById(R.id.newHeader)
     TextView newHeader;

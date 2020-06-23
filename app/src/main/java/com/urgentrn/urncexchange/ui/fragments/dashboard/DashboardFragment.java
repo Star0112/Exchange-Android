@@ -26,9 +26,6 @@ import java.util.List;
 @EFragment(R.layout.fragment_dashboard)
 public class DashboardFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById
-    View llBackground;
-
     @ViewById(R.id.newHeader)
     TextView newHeader;
 

@@ -48,7 +48,7 @@ import java.util.List;
 @EFragment(R.layout.fragment_buy)
 public class BuyFragment extends BaseFragment implements ApiCallback {
     @ViewById
-    View llBackground, btnBuy;
+    View btnBuy;
 
     @ViewById(R.id.newHeader)
     TextView newHeader;
