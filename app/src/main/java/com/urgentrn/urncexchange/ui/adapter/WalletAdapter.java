@@ -12,7 +12,7 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.Market;
 import com.urgentrn.urncexchange.models.Wallet;
-import com.urgentrn.urncexchange.ui.fragments.price.PriceContainerFragment;
+//import com.urgentrn.urncexchange.ui.fragments.price.PriceContainerFragment;
 import com.urgentrn.urncexchange.ui.holder.WalletHolder;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletHolder> {
         viewHolder.updateChart(market, wallet.getColor());
 
         viewHolder.itemView.setOnClickListener(v -> {
-            ((PriceContainerFragment)this.parentFragment).updateWalletPosition(getItem(position));
+//            ((PriceContainerFragment)this.parentFragment).updateWalletPosition(getItem(position));
         });
     }
 
