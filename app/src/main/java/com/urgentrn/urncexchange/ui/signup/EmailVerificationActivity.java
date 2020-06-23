@@ -95,11 +95,11 @@ public class EmailVerificationActivity extends BaseActivity implements ApiCallba
     public void onResponse(BaseResponse response) {
         if (response instanceof GetUserResponse) {
             final User user = ((GetUserResponse)response).getData();
-            if (user.isEmailVerified()) {
+//            if (user.isEmailVerified()) {
                 ExchangeApplication.getApp().setUser(user, false);
                 startActivity(new Intent(this, PhoneActivity_.class));
                 finish();
-            }
+//            }
         } else {
             Toast.makeText(this, R.string.resend_email_success, Toast.LENGTH_SHORT).show();
         }

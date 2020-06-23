@@ -90,7 +90,7 @@ public class NetworkActivity extends BaseActivity implements ApiCallback {
     }
 
     private void updateView() {
-        final boolean isPending = ExchangeApplication.getApp().getUser().getSXPStatus() == 1;
+        final boolean isPending = false;
 
         txtTitle.setText(Html.fromHtml(getString(isPending ? R.string.network_pending : R.string.network_activate_hint).replace("1 SXP", "<b>1 SXP</b>")));
         cardView.setVisibility(isPending ? View.INVISIBLE : View.VISIBLE);
@@ -120,15 +120,15 @@ public class NetworkActivity extends BaseActivity implements ApiCallback {
     public void onResponse(BaseResponse response) {
         if (response instanceof GetUserResponse) {
             final User user = ((GetUserResponse)response).getData();
-            if (user.getActivateSXP() == 1 && ExchangeApplication.getApp().getUser().getActivateSXP() == 0 || user.getSXPStatus() == 0 && ExchangeApplication.getApp().getUser().getSXPStatus() == 1) {
-                final Intent intent = new Intent(this, BuySellSuccessActivity_.class);
-                intent.putExtra("type", WalletUtils.TransactionType.NETWORK);
-                intent.putExtra("name", user.getActivateSXP() == 1 ? "activated" : "deactivated");
-                startActivity(intent);
-                finish();
-            } else {
-                updateView();
-            }
+//            if (user.getActivateSXP() == 1 && ExchangeApplication.getApp().getUser().getActivateSXP() == 0 || user.getSXPStatus() == 0 && ExchangeApplication.getApp().getUser().getSXPStatus() == 1) {
+//                final Intent intent = new Intent(this, BuySellSuccessActivity_.class);
+//                intent.putExtra("type", WalletUtils.TransactionType.NETWORK);
+//                intent.putExtra("name", user.getActivateSXP() == 1 ? "activated" : "deactivated");
+//                startActivity(intent);
+//                finish();
+//            } else {
+//                updateView();
+//            }
             ExchangeApplication.getApp().setUser(user, true);
         }
     }

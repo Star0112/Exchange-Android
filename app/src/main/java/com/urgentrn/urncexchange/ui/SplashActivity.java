@@ -19,18 +19,10 @@ import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppConfig;
 import com.urgentrn.urncexchange.models.User;
-import com.urgentrn.urncexchange.models.request.GetVersionsRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.GetApiResponse;
 import com.urgentrn.urncexchange.models.response.GetUserResponse;
-import com.urgentrn.urncexchange.models.response.GetVersionsResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
-import com.urgentrn.urncexchange.ui.signup.EmailVerificationActivity_;
-import com.urgentrn.urncexchange.ui.signup.PINCreateActivity_;
-import com.urgentrn.urncexchange.ui.signup.PhoneActivity_;
-import com.urgentrn.urncexchange.ui.signup.PhoneVerificationActivity_;
-import com.urgentrn.urncexchange.ui.signup.TermsActivity_;
-import com.urgentrn.urncexchange.ui.signup.TouchIDActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 
@@ -76,7 +68,7 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
         step = 1;
 
         if (ExchangeApplication.getApp().getToken() != null) {
-            ApiClient.getInterface().getUser().enqueue(new AppCallback<>(this));
+//            ApiClient.getInterface().getUser().enqueue(new AppCallback<>(this));
         } else {
             Utils.transferActivity(this, HomeActivity_.class);
         }
@@ -88,7 +80,7 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
 
         Intent intent;
         if (ExchangeApplication.getApp().getPreferences().getPasscode() != null) {
-            if (ExchangeApplication.getApp().getPreferences().termsAccepted() || user.termsAccepted()) {
+            if (ExchangeApplication.getApp().getPreferences().termsAccepted()) {
                 showPassDialog(Constants.SecurityType.DEFAULT, isSuccess -> {
                     if (isSuccess) {
                         startActivity(new Intent(this, MainActivity_.class));
@@ -98,28 +90,19 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
                     }
                 });
                 return;
-            } else if (ExchangeApplication.getApp().getPreferences().isFingerprintEnabled()) {
-                intent = new Intent(this, TermsActivity_.class);
-            } else {
-                intent = new Intent(this, TouchIDActivity_.class);
             }
-        } else if (user.isPhoneVerified()) {
-            intent = new Intent(this, PINCreateActivity_.class);
-        } else if (user.getPhone() != null) {
-            intent = new Intent(this, PhoneVerificationActivity_.class);
-        } else if (user.isEmailVerified()) {
-            intent = new Intent(this, PhoneActivity_.class);
         } else {
             if (getIntent().getData() != null) { // from deep link
                 final String url = getIntent().getData().toString();
-                ApiClient.getInterface().verifyEmail(url).enqueue(new AppCallback<>(this));
+//                ApiClient.getInterface().verifyEmail(url).enqueue(new AppCallback<>(this));
                 getIntent().setData(null);
 
                 return;
             } else {
-                intent = new Intent(this, EmailVerificationActivity_.class);
+//                intent = new Intent(this, EmailVerificationActivity_.class);
             }
         }
+        intent = new Intent(this, MainActivity_.class);
         intent.putExtra("from_splash", true);
         startActivity(intent);
         finish();
@@ -133,23 +116,13 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
             Constants.API_URL = (BuildConfig.PRODUCTION && data.isProduction() ? data.getProduction() : data.getSandbox()) + "/api/";
             Constants.COUNTRY_NAME = data.getCountry();
             ApiClient.setInterface(null);
-            ApiClient.getInterface()
-                    .getVersions(new GetVersionsRequest(Constants.API_VERSION, Constants.ENVIRONMENT))
-                    .enqueue(new AppCallback<>(this));
-        } else if (response instanceof GetVersionsResponse) {
-            final AppConfig config = ((GetVersionsResponse)response).getData();
-            if (config != null) {
-                if (Constants.USE_API_FROM_CONFIG) {
-                    ApiClient.setInterface(null);
-                }
-                ExchangeApplication.getApp().setConfig(config);
-            }
-            onUserStep();
-        } else if (response instanceof GetUserResponse) {
+//            ApiClient.getInterface()
+//                    .getVersions(new GetVersionsRequest(Constants.API_VERSION, Constants.ENVIRONMENT))
+//                    .enqueue(new AppCallback<>(this));
+        }  else if (response instanceof GetUserResponse) {
             ExchangeApplication.getApp().setUser(((GetUserResponse)response).getData());
             onNextStep();
         } else { // from verify email api
-            ExchangeApplication.getApp().getUser().setEmailVerified(true);
             onNextStep();
         }
     }

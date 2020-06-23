@@ -93,26 +93,26 @@ public class CardContainerFragment extends BaseFragment implements ApiCallback {
         if (activeCard == null) {
             fragment = new CardOrderFragment_();
         } else {
-            if (!activeCard.isActivated() || !activeCard.getEntity().isTierCompleted()) {
-                fragment = new CardStatusFragment_();
-            } else {
-                fragment = new CardFragment_();
-            }
+//            if (!activeCard.isActivated() || !activeCard.getEntity().isTierCompleted()) {
+//                fragment = new CardStatusFragment_();
+//            } else {
+//                fragment = new CardFragment_();
+//            }
         }
-        if (activeFragment == null || !fragment.getClass().getSimpleName().equals(activeFragment.getClass().getSimpleName())) {
-            activeFragment = fragment;
-            if (activeCard != null) {
-                final Bundle args = new Bundle();
-                args.putSerializable("card", activeCard);
-                fragment.setArguments(args);
-            }
-
-            final FragmentManager fm = getChildFragmentManager();
-            for (int i = 0; i < fm.getBackStackEntryCount(); i ++) {
-                fm.popBackStack();
-            }
-            fm.beginTransaction().add(R.id.container, fragment).commitAllowingStateLoss();
-        }
+//        if (activeFragment == null || !fragment.getClass().getSimpleName().equals(activeFragment.getClass().getSimpleName())) {
+//            activeFragment = fragment;
+//            if (activeCard != null) {
+//                final Bundle args = new Bundle();
+//                args.putSerializable("card", activeCard);
+//                fragment.setArguments(args);
+//            }
+//
+//            final FragmentManager fm = getChildFragmentManager();
+//            for (int i = 0; i < fm.getBackStackEntryCount(); i ++) {
+//                fm.popBackStack();
+//            }
+//            fm.beginTransaction().add(R.id.container, fragment).commitAllowingStateLoss();
+//        }
     }
 
     public void getData(boolean forceUpdate) { // forceUpdate is used to refresh when Upgrading Card is activated

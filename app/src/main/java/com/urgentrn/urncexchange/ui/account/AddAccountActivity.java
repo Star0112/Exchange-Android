@@ -40,7 +40,7 @@ public class AddAccountActivity extends BaseActivity implements ApiCallback {
     public void onBankAccount(View v) {
         final User user = ExchangeApplication.getApp().getUser();
         if (user == null) return; // TODO: when does this happen?
-        if (user.getTierLevel() < 2 || (user.getTierLevel() == 2 && user.isTierPending())) {
+        if (true){//user.getTierLevel() < 2 || (user.getTierLevel() == 2 && user.isTierPending())) {
             final VerifyDialog verifyDialog = new VerifyDialog_();
             final Bundle args = new Bundle();
             args.putString("title", getString(R.string.add_bank_account));
@@ -87,7 +87,7 @@ public class AddAccountActivity extends BaseActivity implements ApiCallback {
     public void onDebitCard(View v) {
         final User user = ExchangeApplication.getApp().getUser();
         if (user == null) return;
-        if (user.getTierLevel() < 2 || (user.getTierLevel() == 2 && user.isTierPending())) {
+        if (true){//user.getTierLevel() < 2 || (user.getTierLevel() == 2 && user.isTierPending())) {
             final VerifyDialog verifyDialog = new VerifyDialog_();
             final Bundle args = new Bundle();
             args.putString("title", getString(R.string.add_bank_account));

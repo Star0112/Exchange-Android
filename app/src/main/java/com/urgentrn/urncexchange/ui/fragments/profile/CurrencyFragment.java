@@ -107,11 +107,11 @@ public class CurrencyFragment extends BaseFragment implements ApiCallback {
         if (isDefault) {
             final Symbol selectedSymbol = adapter.getSelectedItem();
             if (selectedSymbol != null) {
-                if (selectedSymbol.getId() != getUser().getCurrencyAssetId()) {
-                    ApiClient.getInterface().setDefaultCurrency(selectedSymbol.getSymbol()).enqueue(new AppCallback<>(getContext(), this));
-                } else {
-                    onBackPressed();
-                }
+//                if (selectedSymbol.getId() != getUser().getCurrencyAssetId()) {
+//                    ApiClient.getInterface().setDefaultCurrency(selectedSymbol.getSymbol()).enqueue(new AppCallback<>(getContext(), this));
+//                } else {
+//                    onBackPressed();
+//                }
             }
         } else {
             for (Symbol symbol : data) {
@@ -134,9 +134,9 @@ public class CurrencyFragment extends BaseFragment implements ApiCallback {
             data = ((SymbolResponse)response).getData();
             updateView();
         } else {
-            if (isDefault) {
-                getUser().setCurrencyAssetId(adapter.getSelectedItem().getId());
-            }
+//            if (isDefault) {
+//                getUser().setCurrencyAssetId(adapter.getSelectedItem().getId());
+//            }
             ((MainActivity)getActivity()).getData(true);
             onBackPressed();
         }

@@ -69,10 +69,10 @@ public class PhoneActivity extends BaseActivity implements ApiCallback {
         ccp.setTypeFace(ResourcesCompat.getFont(this, R.font.codec_pro_regular));
 
         final User user = ExchangeApplication.getApp().getUser();
-        if (false && user != null && user.getPhone() != null) { // disabling for now because of same country code for some countries
-            ccp.setFullNumber(user.getPhone());
-            return;
-        }
+//        if (false && user != null && user.getPhone() != null) { // disabling for now because of same country code for some countries
+//            ccp.setFullNumber(user.getPhone());
+//            return;
+//        }
         if (false) {
             String countryCode = null;
             if (user != null) {

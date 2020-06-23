@@ -51,19 +51,19 @@ public class WalletUtils {
     public static void setDefaultCurrencySymbol() {
         if (ExchangeApplication.getApp().getUser() == null) return;
         for (Symbol data : AppData.getInstance().getSymbols()) {
-            if (data.getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) {
-                defaultCurrencySymbol = data;
-                return;
-            }
+//            if (data.getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) {
+//                defaultCurrencySymbol = data;
+//                return;
+//            }
         }
     }
 
     public static Wallet getDefaultCurrencyWallet() {
         if (ExchangeApplication.getApp().getUser() == null) return null;
         for (Wallet data : AppData.getInstance().getCurrencyWallets()) {
-            if (data.getSymbolData().getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) {
-                return data;
-            }
+//            if (data.getSymbolData().getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) {
+//                return data;
+//            }
         }
         return null;
     }
@@ -94,17 +94,17 @@ public class WalletUtils {
         if (ExchangeApplication.getApp().getConfig() == null || ExchangeApplication.getApp().getUser() == null) return null; // TODO: when does this happen?
         final AppConfig.Restrictions.TierLevel tierLevel = ExchangeApplication.getApp().getConfig().getRestrictions().getAssets().get(type);
         if (tierLevel != null) {
-            final int assetLevel = tierLevel.getTier();
-            final int userLevel = ExchangeApplication.getApp().getUser().getTierLevel();
-            if (assetLevel < userLevel || (assetLevel == userLevel && (skipPending || ExchangeApplication.getApp().getUser().isTierCompleted()))) {
-                return AssetRestriction.UNLOCKED;
-            } else {
-                if (userLevel == 0) {
+//            final int assetLevel = tierLevel.getTier();
+//            final int userLevel = ExchangeApplication.getApp().getUser().getTierLevel();
+//            if (assetLevel < userLevel || (assetLevel == userLevel && (skipPending || ExchangeApplication.getApp().getUser().isTierCompleted()))) {
+//                return AssetRestriction.UNLOCKED;
+//            } else {
+//                if (userLevel == 0) {
+//                    return AssetRestriction.UPGRADE;
+//                } else {
                     return AssetRestriction.UPGRADE;
-                } else {
-                    return AssetRestriction.UPGRADE;
-                }
-            }
+//                }
+//            }
         } else {
             return AssetRestriction.LOCKED;
         }

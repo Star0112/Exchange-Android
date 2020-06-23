@@ -128,7 +128,7 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
     public void updateView(User user) {
         if (user == null) return;
 
-        final int tierLevel = user.getTierLevel();
+//        final int tierLevel = user.getTierLevel();
 
         final String username = user.getUsername();
         if (username.isEmpty()) {
@@ -137,33 +137,33 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
             txtUserName.setVisibility(View.VISIBLE);
             txtUserName.setText(username);
         }
-        txtTierLevel.setText(getString(R.string.tier, tierLevel));
-
-        if (tierLevel < 2) {
-            llVerify.setVisibility(View.VISIBLE);
-            llBanner.setVisibility(View.GONE);
-            if (tierLevel == 0) {
-                txtVerifyTitle.setText(R.string.access_wallet);
-                txtVerifyDescription.setText(R.string.complete_profile);
-            } else if (tierLevel == 1) {
-                txtVerifyTitle.setText(R.string.access_order);
-                txtVerifyDescription.setText(R.string.complete_tier2);
-            }
-        } else {
-            llVerify.setVisibility(View.GONE);
-            llBanner.setVisibility(View.VISIBLE);
-            if (banners == null) {
-                ApiClient.getInterface().getBanners().enqueue(new AppCallback<>(this));
-            } else {
-                showBanner();
-            }
-        }
-
-        txtLevel.setText(String.format(Locale.US, "%s %d", getString(R.string.level), tierLevel));
+//        txtTierLevel.setText(getString(R.string.tier, tierLevel));
+//
+//        if (tierLevel < 2) {
+//            llVerify.setVisibility(View.VISIBLE);
+//            llBanner.setVisibility(View.GONE);
+//            if (tierLevel == 0) {
+//                txtVerifyTitle.setText(R.string.access_wallet);
+//                txtVerifyDescription.setText(R.string.complete_profile);
+//            } else if (tierLevel == 1) {
+//                txtVerifyTitle.setText(R.string.access_order);
+//                txtVerifyDescription.setText(R.string.complete_tier2);
+//            }
+//        } else {
+//            llVerify.setVisibility(View.GONE);
+//            llBanner.setVisibility(View.VISIBLE);
+//            if (banners == null) {
+//                ApiClient.getInterface().getBanners().enqueue(new AppCallback<>(this));
+//            } else {
+//                showBanner();
+//            }
+//        }
+//
+//        txtLevel.setText(String.format(Locale.US, "%s %d", getString(R.string.level), tierLevel));
 
         updateNetworkView();
 
-        switch2fa.setChecked(user.isMfa());
+//        switch2fa.setChecked(user.isMfa());
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -172,15 +172,15 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
     }
 
     private void updateNetworkView() {
-        if (getUser() == null) return;
-        if (getUser().getSXPStatus() == 1 && getUser().getActivateSXP() == 0) {
-            llNetworkPending.setVisibility(View.VISIBLE);
-            switchDiscounts.setVisibility(View.GONE);
-        } else {
-            llNetworkPending.setVisibility(View.GONE);
-            switchDiscounts.setChecked(getUser().getActivateSXP() == 1);
-            switchDiscounts.setVisibility(View.VISIBLE);
-        }
+//        if (getUser() == null) return;
+//        if (getUser().getSXPStatus() == 1 && getUser().getActivateSXP() == 0) {
+//            llNetworkPending.setVisibility(View.VISIBLE);
+//            switchDiscounts.setVisibility(View.GONE);
+//        } else {
+//            llNetworkPending.setVisibility(View.GONE);
+//            switchDiscounts.setChecked(getUser().getActivateSXP() == 1);
+//            switchDiscounts.setVisibility(View.VISIBLE);
+//        }
     }
 
     private void showBanner() {
@@ -220,29 +220,29 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @CheckedChange(R.id.switchDiscounts)
     void onDiscountsChecked(boolean isChecked) { // SXP Network
-        if (getUser() == null || isChecked == (getUser().getActivateSXP() == 1)) return;
-        final HashMap<String, Integer> request = new HashMap<>();
-        request.put("activation", 1 - getUser().getActivateSXP());
-        ApiClient.getInterface().activateSXP(request).enqueue(new AppCallback<>(getContext(), new ApiCallback() {
-            @Override
-            public void onResponse(BaseResponse response) {
-                if (response instanceof ActivateResponse) {
-                    final NetworkStatus data = ((ActivateResponse)response).getData();
-                    getUser().setSXPStatus(data.getSXPStatus());
-                    getUser().setActivateSXP(data.getActivateSXP());
-                    updateNetworkView();
-
-                    final Intent intent = new Intent(getContext(), NetworkActivity_.class);
-                    intent.putExtra("depositAddress", data.getDepositAddress());
-                    startActivity(intent);
-                }
-            }
-
-            @Override
-            public void onFailure(String message) {
-                switchDiscounts.setChecked(!isChecked);
-            }
-        }));
+//        if (getUser() == null || isChecked == (getUser().getActivateSXP() == 1)) return;
+//        final HashMap<String, Integer> request = new HashMap<>();
+//        request.put("activation", 1 - getUser().getActivateSXP());
+//        ApiClient.getInterface().activateSXP(request).enqueue(new AppCallback<>(getContext(), new ApiCallback() {
+//            @Override
+//            public void onResponse(BaseResponse response) {
+//                if (response instanceof ActivateResponse) {
+//                    final NetworkStatus data = ((ActivateResponse)response).getData();
+//                    getUser().setSXPStatus(data.getSXPStatus());
+//                    getUser().setActivateSXP(data.getActivateSXP());
+//                    updateNetworkView();
+//
+//                    final Intent intent = new Intent(getContext(), NetworkActivity_.class);
+//                    intent.putExtra("depositAddress", data.getDepositAddress());
+//                    startActivity(intent);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(String message) {
+//                switchDiscounts.setChecked(!isChecked);
+//            }
+//        }));
     }
 
     @Click(R.id.llNetwork)
@@ -254,12 +254,12 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.llAddress)
     void onAddressClicked() {
-        if (getUser() == null) return;
-        if (getUser().getTierLevel() == 0) {
-            onVerifyAccountClicked();
-        } else {
-            ((BaseFragment)getParentFragment()).replaceFragment(new AddressFragment_(), false);
-        }
+//        if (getUser() == null) return;
+//        if (getUser().getTierLevel() == 0) {
+//            onVerifyAccountClicked();
+//        } else {
+//            ((BaseFragment)getParentFragment()).replaceFragment(new AddressFragment_(), false);
+//        }
     }
 
     @Click(R.id.llPhone)
@@ -344,20 +344,20 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @CheckedChange(R.id.switch2fa)
     void on2faChecked(boolean isChecked) {
-        if (getUser() == null || isChecked == getUser().isMfa()) return;
-        final UpdateUserRequest request = new UpdateUserRequest();
-        request.setMfa(isChecked);
-        ApiClient.getInterface().updateUser(request).enqueue(new AppCallback<>(getContext(), new ApiCallback() {
-            @Override
-            public void onResponse(BaseResponse response) {
-                getUser().setMfa(isChecked);
-            }
-
-            @Override
-            public void onFailure(String message) {
-                switch2fa.setChecked(!isChecked);
-            }
-        }));
+//        if (getUser() == null || isChecked == getUser().isMfa()) return;
+//        final UpdateUserRequest request = new UpdateUserRequest();
+//        request.setMfa(isChecked);
+//        ApiClient.getInterface().updateUser(request).enqueue(new AppCallback<>(getContext(), new ApiCallback() {
+//            @Override
+//            public void onResponse(BaseResponse response) {
+//                getUser().setMfa(isChecked);
+//            }
+//
+//            @Override
+//            public void onFailure(String message) {
+//                switch2fa.setChecked(!isChecked);
+//            }
+//        }));
     }
 
     @Click(R.id.llHelp)
@@ -394,13 +394,13 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
      */
     private void initializeChatSdk() {
         if (getUser() == null) return;
-        final VisitorInfo.Builder builder = new VisitorInfo.Builder()
-                .name(getUser().getUsername())
-                .email(getUser().getEmail())
-                .note(Utils.getDeviceInfo())
-                .phoneNumber(getUser().getPhone());
+//        final VisitorInfo.Builder builder = new VisitorInfo.Builder()
+//                .name(getUser().getUsername())
+//                .email(getUser().getEmail())
+//                .note(Utils.getDeviceInfo())
+//                .phoneNumber(getUser().getPhone());
                 
-        ZopimChat.setVisitorInfo(builder.build());
+//        ZopimChat.setVisitorInfo(builder.build());
     }
 
     @Click(R.id.llSignOut)

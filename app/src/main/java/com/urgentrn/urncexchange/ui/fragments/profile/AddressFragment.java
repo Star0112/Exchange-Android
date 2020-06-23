@@ -34,13 +34,13 @@ public class AddressFragment extends BaseFragment implements ApiCallback {
         setToolBar(true);
 
         if (getUser() == null) return;
-        txtAddress.setText(getUser().getAddress());
-        txtCity.setText(getUser().getCity());
-        if (getUser().getCountry().equals("CA")) {
-            txtState.setHint(R.string.province);
-            txtZipCode.setHint(R.string.postal_code);
-        }
-        txtZipCode.setText(getUser().getZipCode());
+//        txtAddress.setText(getUser().getAddress());
+//        txtCity.setText(getUser().getCity());
+//        if (getUser().getCountry().equals("CA")) {
+//            txtState.setHint(R.string.province);
+//            txtZipCode.setHint(R.string.postal_code);
+//        }
+//        txtZipCode.setText(getUser().getZipCode());
 
         if (AppData.getInstance().getCountries().size() > 0) {
             setCountry();
@@ -66,10 +66,10 @@ public class AddressFragment extends BaseFragment implements ApiCallback {
     private void setState() {
         final List<StateData> states = AppData.getInstance().getStates().get(getUser().getCountry());
         for (StateData state : states) {
-            if (state.getCode().equals(getUser().getState()) || state.getName().equals(getUser().getState())) {
-                txtState.setText(state.getName());
-                return;
-            }
+//            if (state.getCode().equals(getUser().getState()) || state.getName().equals(getUser().getState())) {
+//                txtState.setText(state.getName());
+//                return;
+//            }
         }
     }
 

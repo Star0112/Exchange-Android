@@ -344,8 +344,8 @@ public class BuySellDialog extends BaseDialog implements ApiCallback {
             if (isCreditCard) {
                 ((TextView)llAccount.findViewById(R.id.txtName)).setText(CardUtils.getBrandName(selectedAccount.getField().getBrand()));
                 imgCard.setImageResource(CardUtils.getBrandImage(selectedAccount.getField().getBrand()));
-                final Limit limit = ExchangeApplication.getApp().getUser().getLimits().getCard();
-                ((TextView)llAccount.findViewById(R.id.txtAccount)).setText(String.format("%s: $%s %s", getString(R.string.limit), Utils.formattedNumber(limit.getAmount()), selectedAccount.getAsset().getSymbol()));
+//                final Limit limit = ExchangeApplication.getApp().getUser().getLimits().getCard();
+//                ((TextView)llAccount.findViewById(R.id.txtAccount)).setText(String.format("%s: $%s %s", getString(R.string.limit), Utils.formattedNumber(limit.getAmount()), selectedAccount.getAsset().getSymbol()));
             } else {
                 ((TextView)llAccount.findViewById(R.id.txtName)).setText(selectedAccount.getField().getBankName());
                 ((TextView)llAccount.findViewById(R.id.txtAccount)).setText(selectedAccount.getField().getAccountNumber());
@@ -387,11 +387,11 @@ public class BuySellDialog extends BaseDialog implements ApiCallback {
             txtBalance.setText(currencyWallet.getBalanceCurrencyFormatted());
 
             if (type == TransactionType.BUY) {
-                final Limit limit = ExchangeApplication.getApp().getUser().getLimits().getWallet().get(currencyWallet.getSymbol());
-                if (limit != null) {
-                    txtLimit.setText(String.format("%s: %s", getString(R.string.limit), limit.getAmountFormatted()));
-                    txtLimit.setVisibility(View.VISIBLE);
-                }
+//                final Limit limit = ExchangeApplication.getApp().getUser().getLimits().getWallet().get(currencyWallet.getSymbol());
+//                if (limit != null) {
+//                    txtLimit.setText(String.format("%s: %s", getString(R.string.limit), limit.getAmountFormatted()));
+//                    txtLimit.setVisibility(View.VISIBLE);
+//                }
             }
         }
     }

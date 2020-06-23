@@ -61,7 +61,7 @@ public class ExchangeApplication extends Application implements Application.Acti
     public void onActivityResumed(Activity activity) {
         if (activityReferences == 1 && !isActivityChangingConfigurations) {
             if (BuildConfig.DEBUG) Log.d(getClass().getSimpleName(), "App enters foreground!!!");
-            if (getUser() != null && mPreferences.getPasscode() != null && (mPreferences.termsAccepted() || getUser().termsAccepted()) &&
+            if (getUser() != null && mPreferences.getPasscode() != null && (mPreferences.termsAccepted()) &&
                     activity instanceof BaseActivity && !(activity instanceof SplashActivity)) {
                 ((BaseActivity)activity).showPassDialog(Constants.SecurityType.DEFAULT, isSuccess -> {
                     if (!isSuccess) {

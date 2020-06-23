@@ -98,7 +98,7 @@ public class TermsActivity extends BaseActivity implements ApiCallback {
     @Override
     public void onResponse(BaseResponse response) {
         if (response instanceof GetUserResponse) {
-            ExchangeApplication.getApp().getUser().acceptTerms(1);
+//            ExchangeApplication.getApp().getUser().acceptTerms(1);
             ExchangeApplication.getApp().getPreferences().acceptTerms(true);
 
             final Intent intent = new Intent(this, MainActivity_.class);

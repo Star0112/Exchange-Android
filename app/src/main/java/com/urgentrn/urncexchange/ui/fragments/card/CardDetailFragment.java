@@ -69,8 +69,8 @@ public class CardDetailFragment extends BaseFragment implements ApiCallback {
             llCard.getLayoutParams().height = getResources().getDimensionPixelOffset(R.dimen.card_height_2x);
             txtName.setVisibility(View.INVISIBLE);
         } else {
-            txtName.setText(getUser() != null ? String.format("%s %s", getUser().getFirstName(), getUser().getLastName()) : null);
-            txtName.setVisibility(View.VISIBLE);
+//            txtName.setText(getUser() != null ? String.format("%s %s", getUser().getFirstName(), getUser().getLastName()) : null);
+//            txtName.setVisibility(View.VISIBLE);
         }
 
         groupAdapter = new CardDetailGroupAdapter();

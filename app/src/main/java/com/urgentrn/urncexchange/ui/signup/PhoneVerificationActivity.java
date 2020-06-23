@@ -49,7 +49,7 @@ public class PhoneVerificationActivity extends BaseActivity implements ApiCallba
         if (user == null) return;
         UpdateUserRequest request = new UpdateUserRequest();
         request.setCountry(user.getCountry()); // TODO: confirm if country should be changed as well
-        request.setPhone(user.getPhone());
+//        request.setPhone(user.getPhone());
         ApiClient.getInterface().updateUser(request).enqueue(new AppCallback<>(this, this));
     }
 
@@ -71,7 +71,7 @@ public class PhoneVerificationActivity extends BaseActivity implements ApiCallba
         } else {
             final User user = ExchangeApplication.getApp().getUser();
             if (user == null) return;
-            user.setPhoneVerified(true);
+//            user.setPhoneVerified(true);
             ExchangeApplication.getApp().getPreferences().setUsername(user.getUsername());
 
             Intent intent = new Intent(this, VerifySuccessActivity_.class);

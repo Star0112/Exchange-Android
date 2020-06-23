@@ -69,8 +69,8 @@ public class CardStatusFragment extends BaseFragment implements ApiCallback {
             Glide.with(getContext()).load(cardInfo.getImages().get(cardInfo.getImages().size() == 1 ? 0 : 1).getImage()).into(imgCard);
         }
         if (getUser() != null) {
-            txtName.setText(String.format("%s %s", getUser().getFirstName(), getUser().getLastName()));
-            txtName.setVisibility(View.VISIBLE);
+//            txtName.setText(String.format("%s %s", getUser().getFirstName(), getUser().getLastName()));
+//            txtName.setVisibility(View.VISIBLE);
         }
 
         updateView(null);
@@ -101,11 +101,11 @@ public class CardStatusFragment extends BaseFragment implements ApiCallback {
         llLock.setVisibility(card.getCardInfo().getReserveAsset() != null && card.getCardInfo().getReserveAmount() > 0 ? View.VISIBLE : View.GONE);
 
         txtHelp.setVisibility(card.isPhysical() || isUpgrading ? View.VISIBLE : View.GONE);
-        if (!card.getEntity().isTierCompleted() || !card.isPhysical()/* || isUpgrading*/) { // TODO: why is isUpgrading here?
-            btnActivate.setVisibility(View.GONE);
-        } else {
-            btnActivate.setVisibility(View.VISIBLE);
-        }
+////        if (!card.getEntity().isTierCompleted() || !card.isPhysical()/* || isUpgrading*/) { // TODO: why is isUpgrading here?
+//            btnActivate.setVisibility(View.GONE);
+//        } else {
+//            btnActivate.setVisibility(View.VISIBLE);
+//        }
 
         if (card.getCardOrder() != null && !TextUtils.isEmpty(card.getCardOrder().getStatus())) {
             switch (card.getCardOrder().getStatus()) {

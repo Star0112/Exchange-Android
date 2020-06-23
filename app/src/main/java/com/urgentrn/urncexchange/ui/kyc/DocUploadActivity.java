@@ -31,7 +31,7 @@ public class DocUploadActivity extends BaseActivity implements ApiCallback {
     protected void init() {
         setToolBar(true);
 
-        if (ExchangeApplication.getApp().getUser().getTierLevel() >= 1) {
+        if (true){//ExchangeApplication.getApp().getUser().getTierLevel() >= 1) {
             llTier1.setVisibility(View.GONE);
         }
         if (AppData.getInstance().getCountries().size() == 0) {
@@ -45,11 +45,9 @@ public class DocUploadActivity extends BaseActivity implements ApiCallback {
         final Intent intent;
         final User user = ExchangeApplication.getApp().getUser();
         if (user == null) return;
-        if (user.getTierLevel() == 0) {
-            intent = new Intent(this, VerifyAccountActivity_.class);
-        } else {
+
             intent = new Intent(this, ScanActivity_.class);
-        }
+
         startActivity(intent);
     }
 

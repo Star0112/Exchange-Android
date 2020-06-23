@@ -60,7 +60,7 @@ public class AppData {
     private List<MarketInfo> marketInfo = new ArrayList<>();
 
     public List<Wallet> getWallets() {
-        return ExchangeApplication.getApp().getUser() != null && ExchangeApplication.getApp().getUser().getFavoriteFunds() == 1 ? favoriteWallets : wallets;
+        return ExchangeApplication.getApp().getUser() != null ? favoriteWallets : wallets;
     }
 
     public List<Wallet> getMainWallets() {

@@ -100,18 +100,18 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
                 ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
                 ExchangeApplication.getApp().setUser(data.getUser());
 
-                if (data.getUser() == null) {
-                    intent = new Intent(this, EmailVerificationActivity_.class);
-                    intent.putExtra("username", email);
-                } else if (data.getUser().isPhoneVerified()) {
-                    intent = new Intent(this, PINCreateActivity_.class);
-                } else if (data.getUser().getPhone() != null) {
-                    intent = new Intent(this, PhoneVerificationActivity_.class);
-                } else if (data.getUser().isEmailVerified()) {
-                    intent = new Intent(this, PhoneActivity_.class);
-                } else {
-                    intent = new Intent(this, EmailVerificationActivity_.class);
-                }
+//                if (data.getUser() == null) {
+//                    intent = new Intent(this, EmailVerificationActivity_.class);
+//                    intent.putExtra("username", email);
+//                } else if (data.getUser().isPhoneVerified()) {
+//                    intent = new Intent(this, PINCreateActivity_.class);
+//                } else if (data.getUser().getPhone() != null) {
+//                    intent = new Intent(this, PhoneVerificationActivity_.class);
+//                } else if (data.getUser().isEmailVerified()) {
+//                    intent = new Intent(this, PhoneActivity_.class);
+//                } else {
+//                    intent = new Intent(this, EmailVerificationActivity_.class);
+//                }
 //            }
             intent = new Intent(this, PINCreateActivity_.class);
             startActivity(intent);

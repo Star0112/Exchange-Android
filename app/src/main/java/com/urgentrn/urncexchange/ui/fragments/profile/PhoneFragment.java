@@ -31,11 +31,11 @@ public class PhoneFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-        final String phone = ExchangeApplication.getApp().getUser().getPhone();
-        if (phone != null) {
-            final String formattedPhone = PhoneNumberUtils.formatNumber(phone, "US");
-            txtPhone.setText(Utils.maskedPhoneNumber(formattedPhone));
-        }
+//        final String phone = ExchangeApplication.getApp().getUser().getPhone();
+//        if (phone != null) {
+//            final String formattedPhone = PhoneNumberUtils.formatNumber(phone, "US");
+//            txtPhone.setText(Utils.maskedPhoneNumber(formattedPhone));
+//        }
     }
 
     @Click(R.id.llChange)

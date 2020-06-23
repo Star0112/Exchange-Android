@@ -208,12 +208,12 @@ public class PriceFragment extends BaseFragment implements ApiCallback {
                             @Override
                             public void onResponse(BaseResponse response) {
                                 if (response instanceof GetUserResponse) {
-                                    if (ExchangeApplication.getApp().getUser().getFavoriteFunds() == 1) {
-                                        ((MainActivity)getActivity()).getMyWallets(true);
-                                    } else {
-                                        selectedWallet.setFavorite(!selectedWallet.isFavorite());
-                                        adapterCoin.notifyDataSetChanged();
-                                    }
+//                                    if (ExchangeApplication.getApp().getUser().getFavoriteFunds() == 1) {
+//                                        ((MainActivity)getActivity()).getMyWallets(true);
+//                                    } else {
+//                                        selectedWallet.setFavorite(!selectedWallet.isFavorite());
+//                                        adapterCoin.notifyDataSetChanged();
+//                                    }
                                 }
                             }
 
@@ -254,36 +254,36 @@ public class PriceFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.btnFavorite)
     void onFavorite() {
-        if (getUser() == null) return;
-        final int isFavoriteEnabled = 1 - getUser().getFavoriteFunds();
-        if (isFavoriteEnabled == 1) { // to prevent favorite enabled when no favorite wallets
-            boolean hasFavorite = false;
-            for (Wallet wallet : AppData.getInstance().getWallets()) {
-                if (wallet.isFavorite()) {
-                    hasFavorite = true;
-                    break;
-                }
-            }
-            if (!hasFavorite) {
-                showAlert(getString(R.string.no_favorite_wallets));
-                return;
-            }
-        }
-        final UpdateUserRequest request = new UpdateUserRequest();
-        request.setFavoriteFunds(isFavoriteEnabled);
-        ApiClient.getInterface().updateUser(request).enqueue(new AppCallback<>(getContext(), new ApiCallback() {
-            @Override
-            public void onResponse(BaseResponse response) {
-                getUser().setFavoriteFunds(isFavoriteEnabled);
-                updateFavoriteView();
-                ((MainActivity)getActivity()).getMyWallets(true);
-            }
-
-            @Override
-            public void onFailure(String message) {
-
-            }
-        }));
+//        if (getUser() == null) return;
+////        final int isFavoriteEnabled = 1 - getUser().getFavoriteFunds();
+//        if (isFavoriteEnabled == 1) { // to prevent favorite enabled when no favorite wallets
+//            boolean hasFavorite = false;
+//            for (Wallet wallet : AppData.getInstance().getWallets()) {
+//                if (wallet.isFavorite()) {
+//                    hasFavorite = true;
+//                    break;
+//                }
+//            }
+//            if (!hasFavorite) {
+//                showAlert(getString(R.string.no_favorite_wallets));
+//                return;
+//            }
+//        }
+//        final UpdateUserRequest request = new UpdateUserRequest();
+//        request.setFavoriteFunds(isFavoriteEnabled);
+//        ApiClient.getInterface().updateUser(request).enqueue(new AppCallback<>(getContext(), new ApiCallback() {
+//            @Override
+//            public void onResponse(BaseResponse response) {
+//                getUser().setFavoriteFunds(isFavoriteEnabled);
+//                updateFavoriteView();
+//                ((MainActivity)getActivity()).getMyWallets(true);
+//            }
+//
+//            @Override
+//            public void onFailure(String message) {
+//
+//            }
+//        }));
     }
 
     @Click(R.id.btnDone)
@@ -357,17 +357,17 @@ public class PriceFragment extends BaseFragment implements ApiCallback {
     }
 
     private void updateFavoriteView() {
-        if (getUser() == null) return;
-        if (Constants.USE_FAVORITES) {
-            if (getUser().getFavoriteFunds() == 1) {
-                btnFavorite.setImageResource(R.mipmap.ic_favorite_filled);
-            } else {
-                btnFavorite.setImageResource(R.mipmap.ic_favorite);
-            }
-        } else {
-            btnFavorite.setVisibility(View.GONE);
-        }
-        adapterCoin.getCustomLoadMoreView().findViewById(R.id.txtEdit).setVisibility(!Constants.USE_FAVORITES || getUser().getFavoriteFunds() == 0 ? View.GONE : View.VISIBLE);
+//        if (getUser() == null) return;
+//        if (Constants.USE_FAVORITES) {
+//            if (getUser().getFavoriteFunds() == 1) {
+//                btnFavorite.setImageResource(R.mipmap.ic_favorite_filled);
+//            } else {
+//                btnFavorite.setImageResource(R.mipmap.ic_favorite);
+//            }
+//        } else {
+//            btnFavorite.setVisibility(View.GONE);
+//        }
+//        adapterCoin.getCustomLoadMoreView().findViewById(R.id.txtEdit).setVisibility(!Constants.USE_FAVORITES || getUser().getFavoriteFunds() == 0 ? View.GONE : View.VISIBLE);
     }
 
     public void onCloseDrawer() {
@@ -463,8 +463,8 @@ public class PriceFragment extends BaseFragment implements ApiCallback {
 
         if (data != null) {
             if (data.size() == 0) { // assume favorite enabled and no favorites
-                getUser().setFavoriteFunds(1);
-                onFavorite();
+//                getUser().setFavoriteFunds(1);
+//                onFavorite();
                 return;
             }
 

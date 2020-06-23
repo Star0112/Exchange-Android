@@ -69,10 +69,10 @@ public class SelectFiatCurrencyAdapter extends RecyclerView.Adapter<CurrencyHold
         this.data = data;
         if (!multiSelectable && selectedPosition == -1) {
             for (int i = 0; i < data.size(); i ++) {
-                if (data.get(i).getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) {
-                    selectedPosition = i;
-                    break;
-                }
+//                if (data.get(i).getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) {
+//                    selectedPosition = i;
+//                    break;
+//                }
             }
         }
         notifyDataSetChanged();
@@ -82,9 +82,9 @@ public class SelectFiatCurrencyAdapter extends RecyclerView.Adapter<CurrencyHold
         if (multiSelectable) {
             final String symbol = getItem(position).getSymbol();
             if (selectedSymbols.contains(symbol)) {
-                if (getItem(position).getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) { // cannot remove default currency
-                    return;
-                }
+//                if (getItem(position).getId() == ExchangeApplication.getApp().getUser().getCurrencyAssetId()) { // cannot remove default currency
+//                    return;
+//                }
                 selectedSymbols.remove(symbol);
             } else {
                 selectedSymbols.add(symbol);

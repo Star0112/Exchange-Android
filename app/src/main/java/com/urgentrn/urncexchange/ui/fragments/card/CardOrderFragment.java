@@ -276,10 +276,10 @@ public class CardOrderFragment extends BaseFragment implements ViewTreeObserver.
 
     private void onOrder(boolean isVirtual) {
         if (getUser() == null) return;
-        if (getUser().getTierLevel() < 2) {
-            showVerifyDialog(null);
-            return;
-        }
+//        if (getUser().getTierLevel() < 2) {
+//            showVerifyDialog(null);
+//            return;
+//        }
         if (dialog.getDialog() != null && dialog.getDialog().isShowing()) return;
         if (AppData.getInstance().getWallets().size() == 0) return;
         final Bundle args = new Bundle();

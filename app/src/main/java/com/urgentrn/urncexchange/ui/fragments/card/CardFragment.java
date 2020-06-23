@@ -132,7 +132,7 @@ public class CardFragment extends BaseFragment implements ApiCallback {
         if (card == null || getUser() == null) return;
 
         Glide.with(getContext()).load(card.getCardInfo().getFrontImage()).into(imgCard);
-        txtName.setText(String.format("%s %s", getUser().getFirstName(), getUser().getLastName()));
+//        txtName.setText(String.format("%s %s", getUser().getFirstName(), getUser().getLastName()));
 
         if (card.isPhysical()) {
             txtTapCardNumbers.setVisibility(View.GONE);

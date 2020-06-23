@@ -47,7 +47,7 @@ public class CardPagerAdapter extends PagerAdapter {
         final TextView txtName = view.findViewById(R.id.txtName);
         if (false && isUpgrade) {
             final User user = ExchangeApplication.getApp().getUser();
-            txtName.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
+//            txtName.setText(String.format("%s %s", user.getFirstName(), user.getLastName()));
             txtName.setVisibility(View.VISIBLE);
         } else {
             txtName.setVisibility(View.INVISIBLE);

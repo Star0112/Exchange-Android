@@ -47,11 +47,11 @@ public class VerifyDialog extends BaseDialog {
             return;
         }
 
-        level = user.getTierLevel();
-        final boolean isPending = user.getTierLevel() == 2 && user.isTierPending();
-
-        btnVerify.setVisibility(isPending ? View.INVISIBLE : View.VISIBLE);
-        llPending.setVisibility(isPending ? View.VISIBLE : View.INVISIBLE);
+//        level = user.getTierLevel();
+//        final boolean isPending = user.getTierLevel() == 2 && user.isTierPending();
+//
+//        btnVerify.setVisibility(isPending ? View.INVISIBLE : View.VISIBLE);
+//        llPending.setVisibility(isPending ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Click(R.id.btnVerify)

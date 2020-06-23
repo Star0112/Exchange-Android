@@ -40,42 +40,12 @@
             android:name="com.urgentrn.urncexchange.ui.HomeActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/GradientTheme"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.OnboardingActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/GradientTheme"/>
+
         <activity
             android:name="com.zopim.android.sdk.prechat.ZopimChatActivity"
             android:theme="@style/AppTheme.Dark"
             tools:replace="android:theme"/>
 
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.SignupActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.EmailActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.UsernameActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.PasswordActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.EmailVerificationActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.PhoneActivity_"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.PhoneVerificationActivity_"
-            android:screenOrientation="portrait"/>
         <activity
             android:name="com.urgentrn.urncexchange.ui.signup.PINCreateActivity_"
             android:screenOrientation="portrait"
@@ -88,14 +58,6 @@
             android:name="com.urgentrn.urncexchange.ui.signup.TouchIDActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.TermsActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.signup.ReferralActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name="com.urgentrn.urncexchange.ui.login.LoginActivity_"
@@ -110,16 +72,11 @@
             android:name="com.urgentrn.urncexchange.ui.login.LoginUsernameActivity_"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.login.LoginPasswordActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
+
         <activity
             android:name="com.urgentrn.urncexchange.ui.login.ForgotUsernameActivity_"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.login.ForgotUsernameConfirmActivity_"
-            android:screenOrientation="portrait"/>
+
         <activity
             android:name="com.urgentrn.urncexchange.ui.login.ForgotPasswordActivity_"
             android:screenOrientation="portrait"
@@ -135,9 +92,6 @@
             android:name="com.urgentrn.urncexchange.ui.login.ConfirmPasswordActivity_"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.login.TfaActivity_"
-            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.urgentrn.urncexchange.ui.MainActivity_"
@@ -148,123 +102,9 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.DocsActivity_"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.TermActivity_"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.DDFormActivity_"/>
 
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.AddAccountActivity_"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.ConnectBankActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.ConnectAccountActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.EnterAccountActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.ManageAccountActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.PlaidActivity_"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.account.AddCardActivity_"
-            android:theme="@style/AppTheme.Dark"/>
-
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.contacts.ContactActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.contacts.AddressActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.contacts.SelectAssetsActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.kyc.VerifyAccountActivity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.kyc.VerifyAccount2Activity_"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.kyc.KycSuccessActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/GradientTheme"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.VerifySuccessActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.kyc.DocUploadActivity_"
-            android:theme="@style/AppTheme.Dark"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.kyc.ScanActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Black"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.kyc.SelfieActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Black"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.CardSuccessActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullScreen"/>
-
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.transactions.ExchangeInputActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppDialogTheme"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.transactions.ExchangeSuccessActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullScreen"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullScreen"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.transactions.SendInputActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppDialogTheme"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.transactions.SendActivity_"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppDialogTheme"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.QrCodeActivity_"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/AppTheme.Black"/>
-        <activity
-            android:name="com.urgentrn.urncexchange.ui.transactions.NetworkActivity_"
             android:screenOrientation="portrait"/>
 
         <meta-data
