@@ -30,8 +30,8 @@ import com.urgentrn.urncexchange.ui.dialogs.ExchangeConfirmDialog;
 import com.urgentrn.urncexchange.ui.dialogs.ExchangeConfirmDialog_;
 import com.urgentrn.urncexchange.ui.dialogs.SelectWalletDialog;
 import com.urgentrn.urncexchange.ui.dialogs.SelectWalletDialog_;
-import com.urgentrn.urncexchange.ui.transactions.ExchangeInputActivity_;
-import com.urgentrn.urncexchange.ui.transactions.ExchangeSuccessActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.ExchangeInputActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.ExchangeSuccessActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 import com.urgentrn.urncexchange.utils.WalletUtils;
@@ -205,20 +205,20 @@ public class ExchangeFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.llAmountFrom)
     void onClickAmountFrom() {
-        if (fromWallet == null) return;
-        final Intent intent = new Intent(getContext(), ExchangeInputActivity_.class);
-        intent.putExtra("wallet", fromWallet);
-        intent.putExtra("amount", fromAmount);
-        startActivityForResult(intent, Constants.ActivityRequestCodes.AMOUNT_INPUT_FROM);
+//        if (fromWallet == null) return;
+//        final Intent intent = new Intent(getContext(), ExchangeInputActivity_.class);
+//        intent.putExtra("wallet", fromWallet);
+//        intent.putExtra("amount", fromAmount);
+//        startActivityForResult(intent, Constants.ActivityRequestCodes.AMOUNT_INPUT_FROM);
     }
 
     @Click(R.id.llAmountTo)
     void onClickAmountTo() {
-        if (toWallet == null) return;
-        final Intent intent = new Intent(getContext(), ExchangeInputActivity_.class);
-        intent.putExtra("wallet", toWallet);
-        intent.putExtra("amount", toAmount);
-        startActivityForResult(intent, Constants.ActivityRequestCodes.AMOUNT_INPUT_TO);
+//        if (toWallet == null) return;
+//        final Intent intent = new Intent(getContext(), ExchangeInputActivity_.class);
+//        intent.putExtra("wallet", toWallet);
+//        intent.putExtra("amount", toAmount);
+//        startActivityForResult(intent, Constants.ActivityRequestCodes.AMOUNT_INPUT_TO);
     }
 
     @CheckedChange(R.id.checkBox)
@@ -366,10 +366,10 @@ public class ExchangeFragment extends BaseFragment implements ApiCallback {
         args.putInt("quote_id", quote.getId());
         confirmDialog.setArguments(args);
         confirmDialog.setOnDialogDismissListener(isSuccess -> {
-            Intent intent = new Intent(getContext(), ExchangeSuccessActivity_.class);
-            intent.putExtra("args1", args1);
-            intent.putExtra("args2", args2);
-            startActivity(intent);
+//            Intent intent = new Intent(getContext(), ExchangeSuccessActivity_.class);
+//            intent.putExtra("args1", args1);
+//            intent.putExtra("args2", args2);
+//            startActivity(intent);
         });
         confirmDialog.show(getChildFragmentManager(), WalletUtils.TransactionType.EXCHANGE.name());
     }

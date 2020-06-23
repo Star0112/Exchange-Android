@@ -48,7 +48,7 @@ import com.urgentrn.urncexchange.models.response.GetExchangeTickersResponse;
 import com.urgentrn.urncexchange.ui.adapter.LinkedAccountAdapter;
 import com.urgentrn.urncexchange.ui.adapter.SelectCurrencyAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
-import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
 import com.urgentrn.urncexchange.utils.CardUtils;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
@@ -686,12 +686,12 @@ public class BuySellDialog extends BaseDialog implements ApiCallback {
     }
 
     private void showSuccessScreen() {
-        final Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
-        intent.putExtra("wallet", wallet);
-        intent.putExtra("type", type);
-        intent.putExtra("amount", type == TransactionType.BUY || type == TransactionType.SELL ? amount : amount - fee);
-        startActivity(intent);
-        dismissAllowingStateLoss();
+//        final Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
+//        intent.putExtra("wallet", wallet);
+//        intent.putExtra("type", type);
+//        intent.putExtra("amount", type == TransactionType.BUY || type == TransactionType.SELL ? amount : amount - fee);
+//        startActivity(intent);
+//        dismissAllowingStateLoss();
     }
 
     @Override

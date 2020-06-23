@@ -32,7 +32,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.adapter.SelectWalletAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
-import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 import com.urgentrn.urncexchange.utils.WalletUtils;
@@ -277,13 +277,13 @@ public class BuyGiftCardDialog extends BaseDialog implements ApiCallback {
     public void onResponse(BaseResponse response) {
         if (!isAdded()) return;
         hideProgressBar();
-
-        final Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
-        intent.putExtra("type", WalletUtils.TransactionType.GIFT);
-        intent.putExtra("name", card.getName());
-        intent.putExtra("amount", amount);
-        startActivity(intent);
-        dismiss();
+//
+//        final Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
+//        intent.putExtra("type", WalletUtils.TransactionType.GIFT);
+//        intent.putExtra("name", card.getName());
+//        intent.putExtra("amount", amount);
+//        startActivity(intent);
+//        dismiss();
     }
 
     @Override

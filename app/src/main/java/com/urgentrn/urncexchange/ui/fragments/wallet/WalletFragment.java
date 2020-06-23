@@ -45,7 +45,7 @@ import com.urgentrn.urncexchange.ui.dialogs.DepositDialog;
 import com.urgentrn.urncexchange.ui.dialogs.DepositDialog_;
 import com.urgentrn.urncexchange.ui.dialogs.TransactionDialog;
 import com.urgentrn.urncexchange.ui.dialogs.TransactionDialog_;
-import com.urgentrn.urncexchange.ui.transactions.SendInputActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.SendInputActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 import com.urgentrn.urncexchange.utils.WalletUtils;
@@ -265,10 +265,10 @@ public class WalletFragment extends BaseFragment implements ApiCallback {
             final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle(getString(R.string.send_to, wallet.getSymbol()))
                     .setItems(items, (dialog, which) -> {
-                        final Intent intent = new Intent(getContext(), SendInputActivity_.class);
-                        intent.putExtra("wallet", wallet);
-                        intent.putExtra("type", Constants.SendType.values()[which]);
-                        startActivity(intent);
+//                        final Intent intent = new Intent(getContext(), SendInputActivity_.class);
+//                        intent.putExtra("wallet", wallet);
+//                        intent.putExtra("type", Constants.SendType.values()[which]);
+//                        startActivity(intent);
                     })
                     .show();
         }

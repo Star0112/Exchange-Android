@@ -22,7 +22,7 @@ import com.urgentrn.urncexchange.models.request.LoadCardRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.adapter.SelectWalletAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
-import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 import com.urgentrn.urncexchange.utils.WalletUtils;
@@ -231,13 +231,13 @@ public class LoadBalanceDialog extends BaseDialog implements ApiCallback {
     public void onResponse(BaseResponse response) {
         if (!isAdded()) return;
         hideProgressBar();
-        if (true) {
-            Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
-            intent.putExtra("type", WalletUtils.TransactionType.LOAD);
-            intent.putExtra("amount", amount - amountFee);
-            startActivity(intent);
-            dismiss();
-        }
+//        if (true) {
+//            Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
+//            intent.putExtra("type", WalletUtils.TransactionType.LOAD);
+//            intent.putExtra("amount", amount - amountFee);
+//            startActivity(intent);
+//            dismiss();
+//        }
     }
 
     @Override

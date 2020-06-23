@@ -36,7 +36,7 @@ import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 //import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
 import com.urgentrn.urncexchange.ui.kyc.DocUploadActivity_;
-import com.urgentrn.urncexchange.ui.transactions.NetworkActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.NetworkActivity_;
 import com.urgentrn.urncexchange.ui.view.CircleIndicator;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
@@ -247,9 +247,9 @@ public class ProfileFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.llNetwork)
     void onNetworkClicked() {
-        if (switchDiscounts.getVisibility() == View.VISIBLE) return;
-        final Intent intent = new Intent(getContext(), NetworkActivity_.class);
-        startActivity(intent);
+//        if (switchDiscounts.getVisibility() == View.VISIBLE) return;
+//        final Intent intent = new Intent(getContext(), NetworkActivity_.class);
+//        startActivity(intent);
     }
 
     @Click(R.id.llAddress)

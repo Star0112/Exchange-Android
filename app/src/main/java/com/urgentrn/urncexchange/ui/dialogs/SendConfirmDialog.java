@@ -18,7 +18,7 @@ import com.urgentrn.urncexchange.models.request.DisbursementRequest;
 import com.urgentrn.urncexchange.models.request.WithdrawRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
-import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
+//import com.urgentrn.urncexchange.ui.transactions.BuySellSuccessActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 import com.urgentrn.urncexchange.utils.WalletUtils;
@@ -124,14 +124,14 @@ public class SendConfirmDialog extends BaseDialog implements ApiCallback {
     public void onResponse(BaseResponse response) {
         if (!isAdded()) return;
 
-        Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
-        intent.putExtra("wallet", wallet);
-        intent.putExtra("type", WalletUtils.TransactionType.SEND);
-        intent.putExtra("amount", amount);
-        startActivity(intent);
-        dismissAllowingStateLoss();
-
-        hideProgressBar();
+//        Intent intent = new Intent(getContext(), BuySellSuccessActivity_.class);
+//        intent.putExtra("wallet", wallet);
+//        intent.putExtra("type", WalletUtils.TransactionType.SEND);
+//        intent.putExtra("amount", amount);
+//        startActivity(intent);
+//        dismissAllowingStateLoss();
+//
+//        hideProgressBar();
     }
 
     @Override
