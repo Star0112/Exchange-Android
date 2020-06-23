@@ -9,8 +9,8 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.ExchangeApplication;
 import com.urgentrn.urncexchange.models.User;
 import com.urgentrn.urncexchange.ui.base.BaseDialog;
-import com.urgentrn.urncexchange.ui.kyc.DocUploadActivity_;
-import com.urgentrn.urncexchange.ui.kyc.VerifyAccountActivity_;
+//import com.urgentrn.urncexchange.ui.kyc.DocUploadActivity_;
+//import com.urgentrn.urncexchange.ui.kyc.VerifyAccountActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -56,14 +56,14 @@ public class VerifyDialog extends BaseDialog {
 
     @Click(R.id.btnVerify)
     void onVerify() {
-        Intent intent;
-        if (level == 0) {
-            intent = new Intent(getContext(), VerifyAccountActivity_.class);
-        } else {
-            intent = new Intent(getContext(), DocUploadActivity_.class);
-        }
-        startActivity(intent);
-        dismiss();
+//        Intent intent;
+//        if (level == 0) {
+//            intent = new Intent(getContext(), VerifyAccountActivity_.class);
+//        } else {
+//            intent = new Intent(getContext(), DocUploadActivity_.class);
+//        }
+//        startActivity(intent);
+//        dismiss();
     }
 
     @Click(R.id.btnClose)
