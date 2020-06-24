@@ -196,12 +196,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(List<Wallet> data) {
-        updateView();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onTickersUpdated(HashMap<String, ExchangeData> data) {
+    public void updateView(HashMap<String, ExchangeData> data) {
 
     }
 

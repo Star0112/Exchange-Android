@@ -32,8 +32,6 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_dashboard);
-        initView();
-        updateView();
     }
 
     @Override
@@ -48,22 +46,8 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
-    private void initView() {
-
-    }
-
-    @Override
-    public void updateView() {
-
-    }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(List<Wallet> data) {
-        updateView();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onTickersUpdated(HashMap<String, ExchangeData> data) {
+    public void updateView(HashMap<String, ExchangeData> data) {
 
     }
 

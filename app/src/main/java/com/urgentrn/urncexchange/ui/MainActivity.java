@@ -158,37 +158,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 //        }
     }
 
-    private void setupPushNotification() {
-//        final String oldToken = ExchangeApplication.getApp().getPreferences().getPushToken();
-//        if (oldToken != null) {
-//            FirebaseMessaging.getInstance().subscribeToTopic(ExchangeMessagingService.DEFAULT_TOPIC);
-//            return;
-//        }
-//        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(task -> {
-//            if (!task.isSuccessful()) {
-//                return;
-//            }
-//            final String pushToken = task.getResult().getToken();
-//            if (BuildConfig.DEBUG) Toast.makeText(this, pushToken, Toast.LENGTH_SHORT).show();
-//
-//            final HashMap<String, String> request = new HashMap<>();
-//            request.put("service", "gcm");
-//            request.put("token", pushToken);
-//            request.put("device", Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID));
-//            ApiClient.getInterface().registerDevice(request).enqueue(new AppCallback<>(new ApiCallback() {
-//                @Override
-//                public void onResponse(BaseResponse response) {
-//                    ExchangeApplication.getApp().getPreferences().setPushToken(pushToken);
-//                    FirebaseMessaging.getInstance().subscribeToTopic(ExchangeMessagingService.DEFAULT_TOPIC);
-//                }
-//
-//                @Override
-//                public void onFailure(String message) {
-//                    if (BuildConfig.DEBUG) Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-//                }
-//            }));
-//        });
-    }
 
     public boolean isActiveFragment(BaseFragment fragment) {
         return active == fragment;
@@ -203,56 +172,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 //        }
     }
 
-    public void showPin(String reference, boolean isUpdating) { // Create or Update Card PIN Code
-//        final PinDialog dialog = new PinDialog_();
-//        final Bundle args = new Bundle();
-//        args.putBoolean("is_updating", isUpdating);
-//        args.putString("reference", reference);
-//        dialog.setArguments(args);
-//        dialog.show(getSupportFragmentManager(), "PIN");
-    }
-
-    private void getExchangeTickersData() {
-//        ApiClient.getInterface().getExchangeTickers("blockChain").enqueue(new AppCallback<>(new ApiCallback() {
-//            @Override
-//            public void onResponse(BaseResponse response) {
-////                if (response instanceof GetExchangeTickersResponse) {
-////                    AppData.getInstance().setBlockChainTickers(((GetExchangeTickersResponse)response).getData());
-////                }
-//            }
-//
-//            @Override
-//            public void onFailure(String message) {
-//
-//            }
-//        }));
-//        ApiClient.getInterface().getExchangeTickers("currency").enqueue(new AppCallback<>(new ApiCallback() {
-//            @Override
-//            public void onResponse(BaseResponse response) {
-////                if (response instanceof GetExchangeTickersResponse) {
-////                    AppData.getInstance().setCurrencyTickers(((GetExchangeTickersResponse)response).getData());
-////                }
-//            }
-//
-//            @Override
-//            public void onFailure(String message) {
-//
-//            }
-//        }));
-//        ApiClient.getInterface().getExchangeTickers("stableCoin").enqueue(new AppCallback<>(new ApiCallback() {
-//            @Override
-//            public void onResponse(BaseResponse response) {
-////                if (response instanceof GetExchangeTickersResponse) {
-////                    AppData.getInstance().setStableCoinTickers(((GetExchangeTickersResponse) response).getData());
-////                }
-//            }
-//
-//            @Override
-//            public void onFailure(String message) {
-//
-//            }
-//        }));
-    }
 
     public void getData(boolean shouldRestartThread) {
 //        final User user = ExchangeApplication.getApp().getUser();
