@@ -111,12 +111,24 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btnDeposit"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/default_padding"
+                        android:layout_marginVertical="@dimen/default_margin_2x"
+                        android:text="@string/deposit"
+                        android:visibility="gone"
+                        android:background="@drawable/bg_button_blue"
+                        android:textColor="@color/textColorWhite"/>
                     <TextView
+                        android:id="@+id/address"
                         style="@style/DepositText.Title"
                         android:layout_weight="1"
                         android:layout_height="0dp"
                         android:layout_width="match_parent"
-                        android:text="@string/total_balance"
+                        android:text="@string/address"
                         app:autoSizeMinTextSize="@dimen/text_item_small"/>
                     <Button
                         android:id="@+id/btnAddress"
@@ -125,21 +137,12 @@
                         android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:text="@string/address_copy"
+                        android:drawableLeft="@mipmap/ic_copy"
+                        android:paddingHorizontal="@dimen/default_margin"
                         android:textSize="@dimen/text_default"
                         app:autoSizeMinTextSize="@dimen/text_item_small"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <!--                        <Button-->
-        <!--                            android:id="@+id/btnBuy"-->
-        <!--                            style="@style/DefaultButton.Blue"-->
-        <!--                            android:layout_gravity="bottom"-->
-        <!--                            android:layout_marginBottom="@dimen/default_margin"-->
-        <!--                            android:enabled="false"-->
-        <!--                            android:text="@string/buy" />-->
-
-
-
     </LinearLayout>
 </FrameLayout>

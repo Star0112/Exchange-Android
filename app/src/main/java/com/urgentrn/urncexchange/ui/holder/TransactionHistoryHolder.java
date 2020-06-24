@@ -20,7 +20,7 @@ public class TransactionHistoryHolder extends RecyclerView.ViewHolder {
     public void updateView(DepositHistory data, int position) {
 
         txtAssetsName.setText(data.getSymbol());
-        txtTotalBalance.setText(data.getAmount());
-        txtDate.setText(data.getDate());
+        txtTotalBalance.setText("+" + data.getAmount());
+        txtDate.setText(data.getDate().replace("T", "/").replace(".000Z",""));
     }
 }

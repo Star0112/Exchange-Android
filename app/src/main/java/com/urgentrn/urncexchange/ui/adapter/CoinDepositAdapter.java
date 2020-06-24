@@ -41,7 +41,9 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
     public void onBindViewHolder(@NonNull CoinDepositHolder holder, int position) {
         final AssetBalance assetBalance = data.get(position);
         holder.updateView(assetBalance, position);
-        holder.itemView.setOnClickListener(v->mListener.onItemClick(position));
+        holder.itemView.setOnClickListener(v-> {
+            mListener.onItemClick(position);
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

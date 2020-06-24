@@ -56,7 +56,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     protected void init() {
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterAsset = new CoinDepositAdapter(pos -> updateCoin(assetBalances.get(pos)));
+        adapterAsset = new CoinDepositAdapter(pos -> assetBalances.get(pos));
         adapterAsset.setData(assetBalances);
         recyclerDepositCoins.setAdapter(adapterAsset);
 

@@ -470,6 +470,13 @@
 
     </style>
 
+    <style name="DefaultButton.Blue.Full">
+<!--        <item name="android:background">@drawable/bg_button_blue</item>-->
+<!--        <item name="android:textColor">@color/textColorWhite</item>-->
+<!--        <item name="android:layout_gravity">center</item>-->
+
+    </style>
+
     <style name="SpinnerInput" parent="DefaultInput">
         <item name="android:layout_height">@dimen/setting_item_height</item>
         <item name="android:layout_width">@dimen/button_width_2x</item>
