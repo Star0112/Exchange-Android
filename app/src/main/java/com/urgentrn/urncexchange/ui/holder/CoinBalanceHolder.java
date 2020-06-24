@@ -18,7 +18,6 @@ public class CoinBalanceHolder extends RecyclerView.ViewHolder {
     private TextView txtFreeBalance;
     private Button btnAddress;
 
-    private int [] coins = new int[5];
 
     public CoinBalanceHolder(View itemView) {
         super(itemView);
@@ -28,16 +27,12 @@ public class CoinBalanceHolder extends RecyclerView.ViewHolder {
         txtFreeBalance = itemView.findViewById(R.id.txtFreeBalance);
         btnAddress = itemView.findViewById(R.id.btnAddress);
 
-        coins[0] = R.mipmap.coin_urnc;
-        coins[1] = R.mipmap.coin_btc;
-        coins[2] = R.mipmap.coin_eth;
-        coins[3] = R.mipmap.coin_usd;
     }
 
     public void updateView(AssetBalance data, int position) {
 
         Glide.with(this.itemView.getContext())
-                .load(coins[position])
+                .load(data.getImage())
                 .into(coinIcon);
         coinName.setText(data.getCoin());
         txtTotalBalance.setText(data.getAvailable());
