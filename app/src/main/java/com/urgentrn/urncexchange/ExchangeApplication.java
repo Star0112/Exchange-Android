@@ -140,13 +140,17 @@ public class ExchangeApplication extends Application implements Application.Acti
     }
 
     public void setUser(User user, boolean shouldBroadcast) {
-        mPreferences.setEmail(user.getEmail());
-        mPreferences.setUsername(user.getUsername());
-        mPreferences.setFirstname(user.getFirstname());
-        mPreferences.setPhone(user.getPhonenumber());
-        mPreferences.setCountry(user.getCountry());
-        if (shouldBroadcast) {
-            EventBus.getDefault().post(user);
+        if(user == null) {
+            mPreferences.setUsername(null);
+        } else {
+            mPreferences.setEmail(user.getEmail());
+            mPreferences.setUsername(user.getUsername());
+            mPreferences.setFirstname(user.getFirstname());
+            mPreferences.setPhone(user.getPhonenumber());
+            mPreferences.setCountry(user.getCountry());
+            if (shouldBroadcast) {
+                EventBus.getDefault().post(user);
+            }
         }
     }
 
@@ -175,6 +179,6 @@ public class ExchangeApplication extends Application implements Application.Acti
         if (!saveUser) setUser(null);
         mPreferences.clear();
         AppData.getInstance().clearData();
-        FirebaseMessaging.getInstance().unsubscribeFromTopic(ExchangeMessagingService.DEFAULT_TOPIC);
+//        FirebaseMessaging.getInstance().unsubscribeFromTopic(ExchangeMessagingService.DEFAULT_TOPIC);
     }
 }

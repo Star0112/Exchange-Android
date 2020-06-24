@@ -10,47 +10,73 @@
         android:orientation="vertical"
         android:background="@mipmap/background">
         <include  layout="@layout/activity_main_header"/>
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-            <Spinner
-                android:id="@+id/selectCoin"
-                android:background="@drawable/button_dropdown"
-                android:layout_gravity="center_horizontal"
-                android:spinnerMode="dropdown"
-                style="@style/SpinnerInput"/>
-
+            android:layout_weight="2">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/buyPrice"
-                    android:inputType="numberDecimal"
-                    android:editable="false"
-                    style="@style/Input.White.Center"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <Spinner
+                    android:id="@+id/selectCoin"
+                    android:background="@drawable/button_dropdown"
+                    android:layout_gravity="center_horizontal"
+                    android:spinnerMode="dropdown"
+                    style="@style/SpinnerInput"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price"
+                        style="@style/Input.White.Description"/>
+                    <EditText
+                        android:id="@+id/buyPrice"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:inputType="numberDecimal"
+                        android:enabled="false"
+                        style="@style/Input.White.Center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount"
+                        style="@style/Input.White.Description"/>
+                    <EditText
+                        android:id="@+id/buyAmount"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:imeActionLabel="@string/button_go"
+                        android:imeOptions="actionGo"
+                        android:inputType="number"
+                        style="@style/Input.White.Center" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnBuy"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="@string/buy"
+                    style="@style/DefaultButton.White"/>
             </LinearLayout>
-
-            <EditText
-                android:id="@+id/buyAmount"
-                android:imeActionLabel="@string/button_go"
-                android:imeOptions="actionGo"
-                android:inputType="number"
-                style="@style/Input.White.Center" />
-
-            <Button
-                android:id="@+id/btnBuy"
-                android:layout_width="@dimen/button_width"
-                android:layout_margin="@dimen/default_margin"
-                android:text="@string/price"
-                style="@style/DefaultButton.White"/>
-        </LinearLayout>
+        </ScrollView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:background="@drawable/bg_dialog"
             android:orientation="vertical">
             <FrameLayout

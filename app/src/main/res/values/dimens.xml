@@ -18,15 +18,15 @@
 
     <!-- Size -->
     <dimen name="indicator_size">8dp</dimen>
-    <dimen name="input_border_radius">20dp</dimen>
-    <dimen name="button_border_radius">12dp</dimen>
-    <dimen name="button_corner_radius">15dp</dimen>
     <dimen name="profile_divide_size">8dp</dimen>
+    <dimen name="button_border_radius">12dp</dimen>
     <dimen name="star_size">12dp</dimen>
     <dimen name="back_icon_size">15dp</dimen>
+    <dimen name="button_corner_radius">15dp</dimen>
     <dimen name="spinner_size">16dp</dimen>
     <dimen name="circle_size_small">18dp</dimen>
     <dimen name="bank_icon_size">20dp</dimen>
+    <dimen name="input_border_radius">20dp</dimen>
     <dimen name="circle_size">24dp</dimen>
     <dimen name="coin_size_small">27dp</dimen>
     <dimen name="icon_size">32dp</dimen>
@@ -50,10 +50,10 @@
     <dimen name="tab_with_icon_width">70dp</dimen>
     <dimen name="percent_button_width">80dp</dimen>
     <dimen name="card_width">80dp</dimen>
-    <dimen name="button_width">160dp</dimen>
-    <dimen name="button_width_2x">250dp</dimen>
     <dimen name="item_title_width">90dp</dimen>
-    <dimen name="card_small_width">116dp</dimen>
+    <dimen name="card_small_width">120dp</dimen>
+    <dimen name="button_width">160dp</dimen>
+    <dimen name="button_width_2x">200dp</dimen>
     <!-- Height -->
     <dimen name="banner_height">288dp</dimen>
     <dimen name="text_height">21dp</dimen>

@@ -137,7 +137,7 @@
         <item name="android:textSize">@dimen/text_title_default</item>
     </style>
 
-    <style name="TitleText.Dark">
+    <style name="TitleText.White">
         <item name="android:textColor">@color/textColorWhite</item>
     </style>
 
@@ -366,6 +366,8 @@
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+
     <style name="LoginInput" parent="DefaultInput">
         <item name="android:layout_height">@dimen/button_height_small</item>
         <item name="android:background">@drawable/bg_input</item>
@@ -389,6 +391,12 @@
 <!--  For URNC  -->
 
     <!-- Edit View -->
+    <style name="Description.White" parent="DefaultInput">
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
+        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
     <style name="Input.White.Start" parent="DefaultInput">
         <item name="android:layout_height">@dimen/button_height_small</item>
         <item name="android:background">@drawable/bg_input</item>
@@ -397,16 +405,22 @@
         <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
-        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textSize">@dimen/text_button</item>
         <item name="android:textColor">@color/textColorBlue</item>
         <item name="android:paddingStart">@dimen/default_margin_2x</item>
         <item name="android:paddingEnd">@dimen/default_margin_2x</item>
+    </style>
+
+    <style name="Input.White.Description" parent="DefaultInput">
+        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:gravity">center|start</item>
     </style>
     <style name="Input.White.Center" parent="DefaultInput">
         <item name="android:layout_height">@dimen/setting_item_height</item>
         <item name="android:background">@drawable/bg_input</item>
         <item name="android:elevation">3dp</item>
-        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
         <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
@@ -437,12 +451,6 @@
         <item name="android:textColor">@color/textColorBlack1</item>
         <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:layout_marginStart">@dimen/default_padding</item>
-    </style>
-    <style name="Description.White" parent="DefaultInput">
-        <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
-        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
-        <item name="android:textSize">@dimen/text_item_title</item>
-        <item name="android:textColor">@color/textColorWhite</item>
     </style>
 
     <style name="Default.White" parent="DefaultInput">

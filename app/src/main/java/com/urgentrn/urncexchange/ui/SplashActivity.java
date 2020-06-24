@@ -34,8 +34,6 @@ import org.androidannotations.annotations.EActivity;
 @EActivity(R.layout.activity_splash)
 public class SplashActivity extends BaseActivity implements ApiCallback {
 
-    private int step;
-
     @AfterViews
     protected void init() {
         if (new RootBeer(getApplicationContext()).isRooted()) {
@@ -66,19 +64,14 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
     }
 
     private void onUserStep() {
-        step = 1;
-
-//        if (ExchangeApplication.getApp().getToken() != null) {
-//            ApiClient.getInterface().getUser().enqueue(new AppCallback<>(this));
-//        } else {
-//            Utils.transferActivity(this, HomeActivity_.class);
-//        }
+        if (ExchangeApplication.getApp().getToken() != null) {
+            ApiClient.getInterface().getUser().enqueue(new AppCallback<>(this));
+        } else {
+            Utils.transferActivity(this, HomeActivity_.class);
+        }
     }
 
     private void onNextStep() {
-        final User user = ExchangeApplication.getApp().getUser();
-        step = 2;
-
         Intent intent;
         if (ExchangeApplication.getApp().getPreferences().getPasscode() != null) {
             if (ExchangeApplication.getApp().getPreferences().isFingerprintEnabled()) {
@@ -104,43 +97,11 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
-        if (isFinishing()) return;
-        if (response instanceof GetApiResponse) {
-            final GetApiResponse data = (GetApiResponse)response;
-            Constants.API_URL = (BuildConfig.PRODUCTION && data.isProduction() ? data.getProduction() : data.getSandbox()) + "/api/";
-            Constants.COUNTRY_NAME = data.getCountry();
-            ApiClient.setInterface(null);
 
-        }  else if (response instanceof GetUserResponse) {
-            ExchangeApplication.getApp().setUser(((GetUserResponse)response).getData());
-            onNextStep();
-        } else { // from verify email api
-            onNextStep();
-        }
     }
 
     @Override
     public void onFailure(String message) {
-        if (isFinishing()) return;
-        if (message != null && message.contains("location")) {
-            final Intent intent = new Intent(this, HomeActivity_.class);
-            intent.putExtra("message", message);
-            startActivity(intent);
-            finish();
-            return;
-        }
-        if (step == 1) {
-            if (BuildConfig.DEBUG) Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-            if (ExchangeApplication.getApp().getConfig() == null) {
-                showAlert(message != null && message.equals(getString(R.string.no_internet_connection)) ? message : "Server Error", ((dialog, which) -> finish()));
-                return;
-            }
-
-            ExchangeApplication.getApp().setToken(null, true);
-            ExchangeApplication.getApp().getPreferences().clear();
-        }
-
-        onUserStep();
     }
 }

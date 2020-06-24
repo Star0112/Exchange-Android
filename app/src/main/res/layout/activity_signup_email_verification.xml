@@ -35,7 +35,7 @@
                 android:layout_marginTop="@dimen/default_margin_2x"
                 android:paddingStart="@dimen/default_margin"
                 android:paddingEnd="@dimen/default_margin"
-                style="@style/TitleText.Dark"
+                style="@style/TitleText.White"
                 android:text="@string/email_input_hint"/>
             <TextView
                 android:layout_marginTop="@dimen/default_margin"

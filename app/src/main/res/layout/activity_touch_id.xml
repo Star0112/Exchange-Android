@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/txtTitle"
-            style="@style/TitleText.Dark"
+            style="@style/TitleText.White"
             android:text="@string/touch_id"/>
     </androidx.appcompat.widget.Toolbar>
 

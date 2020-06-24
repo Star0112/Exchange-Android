@@ -13,20 +13,20 @@
                 android:text="@string/title_dashboard"
                 android:layout_alignParentLeft="true"
                 style="@style/NewTitleText" />
-            <TextView
-                android:id="@+id/userName"
-                style="@style/UserName"
-                android:layout_toLeftOf="@id/imgAvatar"
-                android:layout_alignParentBottom="true"
-                android:text="Jane Cooper" />
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="@dimen/avatar_size_small"
-                android:layout_height="@dimen/avatar_size_small"
-                android:layout_marginHorizontal="@dimen/avatar_padding"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:src="@mipmap/user_avatar"/>
+<!--            <TextView-->
+<!--                android:id="@+id/userName"-->
+<!--                style="@style/UserName"-->
+<!--                android:layout_toLeftOf="@id/imgAvatar"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:text="Jane Cooper" />-->
+<!--            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                android:id="@+id/imgAvatar"-->
+<!--                android:layout_width="@dimen/avatar_size_small"-->
+<!--                android:layout_height="@dimen/avatar_size_small"-->
+<!--                android:layout_marginHorizontal="@dimen/avatar_padding"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:src="@mipmap/user_avatar"/>-->
         </RelativeLayout >
     </androidx.appcompat.widget.Toolbar>
 </RelativeLayout >
