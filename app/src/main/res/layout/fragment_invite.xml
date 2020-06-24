@@ -31,6 +31,7 @@
                 android:text="@string/invite_description"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/default_margin"
+                android:layout_margin="@dimen/default_padding"
                 android:textAlignment="center"/>
             <EditText
                 android:id="@+id/editPassword"
@@ -52,7 +53,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="@drawable/bg_dialog">
+            android:background="@drawable/bg_dialog"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/friend_list"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_item_3x"
+                android:layout_margin="@dimen/default_margin"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
