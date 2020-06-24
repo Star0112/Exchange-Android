@@ -223,6 +223,9 @@
     <string name="title_profile">Profile</string>
     <string name="user_profile">User Profile</string>
     <string name="membership">Membership</string>
+    <string name="invite">Invite</string>
+    <string name="invite_description">Invite your friends to get rewards.</string>
+    <string name="friend_email">Enter your friends email</string>
     <string name="basic">BASIC</string>
     <string name="year">year</string>
     <string name="membership_description">It\'s possible to trade by purchasing.</string>

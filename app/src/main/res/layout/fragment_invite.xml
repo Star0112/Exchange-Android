@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/background">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleText.White"
+                android:text="@string/user_profile"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/invite_description"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/default_margin"
+                android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/editPassword"
+                android:imeActionLabel="@string/button_go"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:paddingEnd="@dimen/default_margin_3x"
+                android:hint="@string/friend_email"
+                style="@style/LoginInput">
+            </EditText>
+            <Button
+                android:id="@+id/btnBuy"
+                android:layout_width="@dimen/button_width"
+                android:layout_margin="@dimen/default_margin"
+                android:text="@string/save"
+                style="@style/DefaultButton.White"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/bg_dialog">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
