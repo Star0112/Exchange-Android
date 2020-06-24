@@ -19,7 +19,6 @@
             <Spinner
                 android:id="@+id/selectCoin"
                 android:background="@drawable/button_dropdown"
-                android:layout_gravity="center_horizontal"
                 android:spinnerMode="dropdown"
                 style="@style/SpinnerInput"/>
             <LinearLayout
@@ -45,7 +44,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_2x"
                 android:orientation="horizontal">
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
@@ -208,6 +206,7 @@
                 <Button
                     android:id="@+id/btnBuy"
                     android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/tab_height_small"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:text="@string/title_buy"
                     style="@style/DefaultButton.Blue"/>
@@ -250,6 +249,7 @@
             <Button
                 android:id="@+id/btnSell"
                 android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/tab_height_small"
                 android:height="@dimen/menu_button_size"
                 android:text="@string/price"
                 style="@style/DefaultButton.Blue"/>

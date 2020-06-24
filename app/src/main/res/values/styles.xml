@@ -428,14 +428,14 @@
         <item name="android:textAlignment">center</item>
     </style>
     <style name="Input.Gray.Center" parent="DefaultInput">
-        <item name="android:layout_height">@dimen/setting_item_height</item>
+        <item name="android:layout_height">@dimen/tab_height_small</item>
         <item name="android:background">@drawable/bg_input_gray</item>
         <item name="android:elevation">0dp</item>
         <item name="android:layout_marginStart">@dimen/default_padding</item>
         <item name="android:layout_marginEnd">@dimen/default_padding</item>
         <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding_small</item>
-        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -449,7 +449,7 @@
     <style name="Text.Black1" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:textColor">@color/textColorBlack1</item>
-        <item name="android:textSize">@dimen/text_item_title</item>
+        <item name="android:textSize">@dimen/text_title_default</item>
         <item name="android:layout_marginStart">@dimen/default_padding</item>
     </style>
 
@@ -470,11 +470,9 @@
     <style name="SpinnerInput" parent="DefaultInput">
         <item name="android:layout_height">@dimen/setting_item_height</item>
         <item name="android:layout_width">@dimen/button_width_2x</item>
-        <item name="android:layout_marginTop">@dimen/default_padding_small</item>
         <item name="android:layout_marginBottom">@dimen/default_padding</item>
         <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:gravity">center</item>
     </style>
 
 </resources>
