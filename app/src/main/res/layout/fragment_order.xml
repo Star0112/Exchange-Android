@@ -220,7 +220,7 @@
                     android:id="@+id/sellSymbolName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Buy URNC/BTC"
+                    android:text="Sell URNC/BTC"
                     style="@style/Text.Black1"/>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -251,7 +251,7 @@
                 android:layout_width="@dimen/button_width"
                 android:layout_height="@dimen/tab_height_small"
                 android:height="@dimen/menu_button_size"
-                android:text="@string/price"
+                android:text="@string/sell"
                 style="@style/DefaultButton.Blue"/>
         </LinearLayout>
     </LinearLayout>

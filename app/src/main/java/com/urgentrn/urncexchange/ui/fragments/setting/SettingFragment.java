@@ -84,6 +84,12 @@ public class SettingFragment extends BaseFragment implements ApiCallback {
         ((BaseFragment)getParentFragment()).replaceFragment(new InviteFragment_(), false);
     }
 
+
+    @Click(R.id.logout)
+    void onLogout() {
+        ExchangeApplication.getApp().logout(getActivity());
+    }
+
     @CheckedChange(R.id.switchPasscode)
     void onPasscodeChecked(boolean isChecked) {
         if (getActivity() == null) return;
