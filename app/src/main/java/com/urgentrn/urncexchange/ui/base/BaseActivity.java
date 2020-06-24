@@ -160,10 +160,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showPassDialog(Constants.SecurityType type, BaseDialog.OnDialogDismissListener listener) {
-        if (!Constants.USE_RE_ENTRY) {
-            if (listener != null) listener.onDismiss(true);
-            return;
-        }
         if (ExchangeApplication.getApp().getPreferences().isFingerprintEnabled()) {
             showFingerprintDialog(type, listener);
         } else if (ExchangeApplication.getApp().getPreferences().isPasscodeEnabled()) {

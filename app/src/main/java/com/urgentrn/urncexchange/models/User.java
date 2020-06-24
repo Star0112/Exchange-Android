@@ -51,4 +51,13 @@ public class User implements Serializable {
 
     public String getSocketToken() { return socketToken; }
 
+    public User(String email, String username, String firstname, String lastname, String phonenumber, String country) {
+        this.email = email;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phonenumber = phonenumber;
+        this.country = country;
+    }
+
 }

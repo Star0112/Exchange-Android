@@ -35,7 +35,7 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
     @ViewById
     EditText editEmail, editPassword;
 
-    private String email;
+    private String userName;
 
     @AfterViews
     protected void init() {
@@ -60,15 +60,15 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
     }
 
     public void onLogin(View v) {
-        email = editEmail.getText().toString().trim();
+        userName = editEmail.getText().toString().trim();
         final String password = editPassword.getText().toString().trim();
 
-        if (email.isEmpty()) {
+        if (userName.isEmpty()) {
             editEmail.requestFocus();
-            editEmail.setError(getString(R.string.error_email_empty));
-//        } else if (!Utils.isEmailValid(email)) {
-//            editEmail.requestFocus();
-//            editEmail.setError(getString(R.string.error_email_invalid));
+            editEmail.setError(getString(R.string.error_name_empty));
+        } else if (Utils.isUsernameInvalid(userName)) {
+            editEmail.requestFocus();
+            editEmail.setError(getString(R.string.error_name_invalid));
         } else if (password.isEmpty()) {
             editPassword.requestFocus();
             editPassword.setError(getString(R.string.error_password_empty));
@@ -77,7 +77,7 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
             editPassword.setError(getString(R.string.error_password_short));
         } else {
             ApiClient.getInterface()
-                    .login(new LoginRequest(email, password))
+                    .login(new LoginRequest(userName, password))
                     .enqueue(new AppCallback<>(this, this));
         }
     }
@@ -103,5 +103,13 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
     @Override
     public void onFailure(String message) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, HomeActivity_.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

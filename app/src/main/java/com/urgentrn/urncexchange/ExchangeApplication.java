@@ -43,7 +43,10 @@ public class ExchangeApplication extends Application implements Application.Acti
         mApp = this;
         mPreferences = new AppPreferences(this, AppPreferences.PREFERENCE_NAME);
         mToken = mPreferences.getToken();
-
+        if(mPreferences.getUsername() != null)
+            mUser = new User(mPreferences.getEmail(), mPreferences.getUsername(), mPreferences.getFirstname(), mPreferences.getLastname(), mPreferences.getPhone(), mPreferences.getCountry());
+        else
+            mUser = null;
         ZopimChat.init(getString(R.string.zopim_account_id));
     }
 
@@ -61,7 +64,7 @@ public class ExchangeApplication extends Application implements Application.Acti
     public void onActivityResumed(Activity activity) {
         if (activityReferences == 1 && !isActivityChangingConfigurations) {
             if (BuildConfig.DEBUG) Log.d(getClass().getSimpleName(), "App enters foreground!!!");
-            if (getUser() != null && mPreferences.getPasscode() != null && (mPreferences.termsAccepted()) &&
+            if (getUser() != null && mPreferences.getPasscode() != null  &&
                     activity instanceof BaseActivity && !(activity instanceof SplashActivity)) {
                 ((BaseActivity)activity).showPassDialog(Constants.SecurityType.DEFAULT, isSuccess -> {
                     if (!isSuccess) {
@@ -137,7 +140,11 @@ public class ExchangeApplication extends Application implements Application.Acti
     }
 
     public void setUser(User user, boolean shouldBroadcast) {
-        this.mUser = user;
+        mPreferences.setEmail(user.getEmail());
+        mPreferences.setUsername(user.getUsername());
+        mPreferences.setFirstname(user.getFirstname());
+        mPreferences.setPhone(user.getPhonenumber());
+        mPreferences.setCountry(user.getCountry());
         if (shouldBroadcast) {
             EventBus.getDefault().post(user);
         }

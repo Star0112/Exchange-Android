@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.urgentrn.urncexchange.models.Transaction;
+import com.urgentrn.urncexchange.models.User;
 
 import java.util.List;
 
@@ -17,13 +18,14 @@ public class AppPreferences {
     private static final String PREFERENCE_PUSH_TOKEN = "PUSH_TOKEN";
     private static final String PREFERENCE_EMAIL = "EMAIL";
     private static final String PREFERENCE_USERNAME = "USERNAME";
+    private static final String PREFERENCE_FIRSTNAME = "FIRSTNAME";
+    private static final String PREFERENCE_LASTNAME = "USERLASTNAME";
+    private static final String PREFERENCE_PHONE = "USERPHONE";
+    private static final String PREFERENCE_COUNTRY = "COUNTRY";
     private static final String PREFERENCE_PASSWORD = "PASSWORD";
     private static final String PREFERENCE_PASSCODE = "PIN_CODE";
     private static final String PREFERENCE_FINGERPRINT_ENABLED = "FINGERPRINT_ENABLED";
     private static final String PREFERENCE_PASSCODE_ENABLED = "PASSCODE_ENABLED";
-    private static final String PREFERENCE_TERMS = "TERMS_ACCEPTED";
-    private static final String PREFERENCE_TRANSACTION_LIMIT = "TRANSACTION_LIMIT";
-    private static final String PREFERENCE_FAVORITE_SYMBOLS = "FAVORITE_SYMBOLS";
 
     private final SharedPreferences preferences;
     private Context context;
@@ -34,9 +36,7 @@ public class AppPreferences {
     }
 
     public void clear() {
-        final String username = getUsername();
         preferences.edit().clear().apply();
-        setUsername(username);
     }
 
     public String getRefreshToken() {
@@ -79,6 +79,38 @@ public class AppPreferences {
         preferences.edit().putString(PREFERENCE_USERNAME, new StringEncryptUtils(context).encryptString(username)).apply();
     }
 
+    public String getFirstname() {
+        return new StringEncryptUtils(context).decryptString(preferences.getString(PREFERENCE_FIRSTNAME, null));
+    }
+
+    public void setFirstname(String firstname) {
+        preferences.edit().putString(PREFERENCE_FIRSTNAME, new StringEncryptUtils(context).encryptString(firstname)).apply();
+    }
+
+    public String getLastname() {
+        return new StringEncryptUtils(context).decryptString(preferences.getString(PREFERENCE_LASTNAME, null));
+    }
+
+    public void setLastname(String lastname) {
+        preferences.edit().putString(PREFERENCE_LASTNAME, new StringEncryptUtils(context).encryptString(lastname)).apply();
+    }
+
+    public String getPhone() {
+        return new StringEncryptUtils(context).decryptString(preferences.getString(PREFERENCE_PHONE, null));
+    }
+
+    public void setPhone(String phone) {
+        preferences.edit().putString(PREFERENCE_PHONE, new StringEncryptUtils(context).encryptString(phone)).apply();
+    }
+
+    public String getCountry() {
+        return new StringEncryptUtils(context).decryptString(preferences.getString(PREFERENCE_COUNTRY, null));
+    }
+
+    public void setCountry(String country) {
+        preferences.edit().putString(PREFERENCE_COUNTRY, new StringEncryptUtils(context).encryptString(country)).apply();
+    }
+
     public String getPassword() {
         return new StringEncryptUtils(context).decryptString(preferences.getString(PREFERENCE_PASSWORD, null));
     }
@@ -109,33 +141,5 @@ public class AppPreferences {
 
     public void setPasscodeEnabled(boolean isPasscodeEnabled) {
         preferences.edit().putBoolean(PREFERENCE_PASSCODE_ENABLED, isPasscodeEnabled).apply();
-    }
-
-    public boolean termsAccepted() {
-        return preferences.getBoolean(PREFERENCE_TERMS, false);
-    }
-
-    public void acceptTerms(boolean isAccepted) {
-        preferences.edit().putBoolean(PREFERENCE_TERMS, isAccepted).apply();
-    }
-
-    public void setTransactionLimit(Transaction transaction) {
-        final String json = new Gson().toJson(transaction);
-        preferences.edit().putString(PREFERENCE_TRANSACTION_LIMIT, json).apply();
-    }
-
-    public Transaction getTransactionLimit() {
-        final String json = preferences.getString(PREFERENCE_TRANSACTION_LIMIT, null);
-        return json == null ? null : new Gson().fromJson(json, Transaction.class);
-    }
-
-    public void setFavoriteSymbols(List<String> symbols) {
-        final String json = new Gson().toJson(symbols);
-        preferences.edit().putString(PREFERENCE_FAVORITE_SYMBOLS, json).apply();
-    }
-
-    public List<String> getFavoriteSymbols() {
-        final String json = preferences.getString(PREFERENCE_FAVORITE_SYMBOLS, null);
-        return json == null ? null : new Gson().fromJson(json, new TypeToken<List<String>>(){}.getType());
     }
 }

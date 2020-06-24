@@ -34,9 +34,9 @@ public class EmailActivity extends BaseActivity {
     public void onNext(View v) {
         final String email = editText.getText().toString().trim();
         if (email.isEmpty()) {
-            editText.setError(getString(R.string.error_email_empty));
+            editText.setError(getString(R.string.error_name_empty));
         } else if (!Utils.isEmailValid(email)) {
-            editText.setError(getString(R.string.error_email_invalid));
+            editText.setError(getString(R.string.error_name_invalid));
         } else {
             final Intent intent = new Intent(this, PasswordActivity_.class);
             intent.putExtra("username", getIntent().getStringExtra("username"));

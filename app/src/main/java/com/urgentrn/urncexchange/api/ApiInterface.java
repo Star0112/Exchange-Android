@@ -36,9 +36,6 @@ import retrofit2.http.Url;
 
 public interface ApiInterface {
 
-    @GET
-    Call<GetApiResponse> getApiUrl(@Url String url);
-
     @GET("contacts") // Get Contacts
     Call<GetContactsResponse> getContacts();
 

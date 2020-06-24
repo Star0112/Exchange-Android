@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0.6"
-        android:src="@mipmap/logo_white"/>
+        android:src="@mipmap/logo_white"
+        android:contentDescription="@string/URNC" />
 
 </LinearLayout>

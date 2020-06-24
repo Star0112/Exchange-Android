@@ -23,6 +23,8 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.GetApiResponse;
 import com.urgentrn.urncexchange.models.response.GetUserResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
+import com.urgentrn.urncexchange.ui.signup.PINCreateActivity_;
+import com.urgentrn.urncexchange.ui.signup.TouchIDActivity_;
 import com.urgentrn.urncexchange.utils.Constants;
 import com.urgentrn.urncexchange.utils.Utils;
 
@@ -58,20 +60,19 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
         } else if (ExchangeApplication.getApp().getConfig() != null) {
             onUserStep();
         } else {
-            ApiClient.getInterface()
-                    .getApiUrl(Constants.API_URL)
-                    .enqueue(new AppCallback<>(this));
+            ApiClient.getInterface();
+            onUserStep();
         }
     }
 
     private void onUserStep() {
         step = 1;
 
-        if (ExchangeApplication.getApp().getToken() != null) {
+//        if (ExchangeApplication.getApp().getToken() != null) {
 //            ApiClient.getInterface().getUser().enqueue(new AppCallback<>(this));
-        } else {
-            Utils.transferActivity(this, HomeActivity_.class);
-        }
+//        } else {
+//            Utils.transferActivity(this, HomeActivity_.class);
+//        }
     }
 
     private void onNextStep() {
@@ -80,7 +81,7 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
 
         Intent intent;
         if (ExchangeApplication.getApp().getPreferences().getPasscode() != null) {
-            if (ExchangeApplication.getApp().getPreferences().termsAccepted()) {
+            if (ExchangeApplication.getApp().getPreferences().isFingerprintEnabled()) {
                 showPassDialog(Constants.SecurityType.DEFAULT, isSuccess -> {
                     if (isSuccess) {
                         startActivity(new Intent(this, MainActivity_.class));
@@ -90,19 +91,12 @@ public class SplashActivity extends BaseActivity implements ApiCallback {
                     }
                 });
                 return;
+            } else {
+                intent = new Intent(this, TouchIDActivity_.class);
             }
         } else {
-            if (getIntent().getData() != null) { // from deep link
-                final String url = getIntent().getData().toString();
-//                ApiClient.getInterface().verifyEmail(url).enqueue(new AppCallback<>(this));
-                getIntent().setData(null);
-
-                return;
-            } else {
-//                intent = new Intent(this, EmailVerificationActivity_.class);
-            }
+            intent = new Intent(this, PINCreateActivity_.class);
         }
-        intent = new Intent(this, MainActivity_.class);
         intent.putExtra("from_splash", true);
         startActivity(intent);
         finish();

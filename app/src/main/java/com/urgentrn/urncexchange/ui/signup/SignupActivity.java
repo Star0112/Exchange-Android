@@ -55,10 +55,10 @@ public class SignupActivity extends BaseActivity implements ApiCallback {
             editFullname.setError(getString(R.string.error_fullname_empty));
         } else if (email.isEmpty()) {
             editEmail.requestFocus();
-            editEmail.setError(getString(R.string.error_email_empty));
+            editEmail.setError(getString(R.string.error_name_empty));
         } else if (!Utils.isEmailValid(email)) {
             editEmail.requestFocus();
-            editEmail.setError(getString(R.string.error_email_invalid));
+            editEmail.setError(getString(R.string.error_name_invalid));
         } else if (password.isEmpty()) {
             editPassword.requestFocus();
             editPassword.setError(getString(R.string.error_password_empty));
