@@ -28,6 +28,8 @@ public class MembershipFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
+        setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        setToolBar(true);
         initView();
         updateView();
     }

@@ -222,6 +222,11 @@
     <!-- Profile -->
     <string name="title_profile">Profile</string>
     <string name="user_profile">User Profile</string>
+    <string name="membership">Membership</string>
+    <string name="basic">BASIC</string>
+    <string name="year">year</string>
+    <string name="membership_description">It\'s possible to trade by purchasing.</string>
+    <string name="purchase">Purchase</string>
     <string name="message">Messages</string>
     <string name="passcode">Passcode</string>
     <string name="biometrics">Biometrics</string>

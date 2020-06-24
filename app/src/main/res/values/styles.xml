@@ -139,6 +139,9 @@
 
     <style name="TitleText.White">
         <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textSize">@dimen/text_title_large</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="NewTitleText" parent="DefaultText">

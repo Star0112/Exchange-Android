@@ -74,6 +74,11 @@ public class SettingFragment extends BaseFragment implements ApiCallback {
         ((BaseFragment)getParentFragment()).replaceFragment(new UserProfileFragment_(), false);
     }
 
+    @Click(R.id.membership)
+    void onUserMembershipClicked() {
+        ((BaseFragment)getParentFragment()).replaceFragment(new MembershipFragment_(), false);
+    }
+
     @CheckedChange(R.id.switchPasscode)
     void onPasscodeChecked(boolean isChecked) {
         if (getActivity() == null) return;
