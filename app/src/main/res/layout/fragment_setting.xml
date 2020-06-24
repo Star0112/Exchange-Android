@@ -134,11 +134,15 @@
                                     android:layout_marginStart="@dimen/default_margin_2x"
                                     android:text="@string/passcode" />
                             </LinearLayout>
+                            <Switch
+                                android:id="@+id/switchPasscode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
-                            <ImageView
-                                android:layout_width="@dimen/back_icon_size"
-                                android:layout_height="@dimen/back_icon_size"
-                                android:src="@mipmap/ic_next" />
+<!--                            <ImageView-->
+<!--                                android:layout_width="@dimen/back_icon_size"-->
+<!--                                android:layout_height="@dimen/back_icon_size"-->
+<!--                                android:src="@mipmap/ic_next" />-->
                         </LinearLayout>
 
                         <View
@@ -175,10 +179,10 @@
                                     android:text="@string/biometrics" />
                             </LinearLayout>
 
-                            <ImageView
-                                android:layout_width="@dimen/back_icon_size"
-                                android:layout_height="@dimen/back_icon_size"
-                                android:src="@mipmap/ic_next" />
+                            <Switch
+                                android:id="@+id/switchBiomitrics"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
                         <View

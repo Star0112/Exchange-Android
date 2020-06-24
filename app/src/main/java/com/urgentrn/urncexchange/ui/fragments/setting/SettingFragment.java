@@ -2,18 +2,23 @@ package com.urgentrn.urncexchange.ui.fragments.setting;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Switch;
 import android.widget.TextView;
 
+import com.urgentrn.urncexchange.ExchangeApplication;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.utils.Constants;
 //import com.urgentrn.urncexchange.ui.contacts.ManageContactsActivity_;
 //import com.urgentrn.urncexchange.ui.fragments.profile.PhoneFragment_;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.CheckedChange;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -24,15 +29,23 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.List;
 
+import me.aflak.libraries.dialog.FingerprintDialog;
+
 @EFragment(R.layout.fragment_setting)
 public class SettingFragment extends BaseFragment implements ApiCallback {
 
     @ViewById(R.id.newHeader)
     TextView newHeader;
 
+    @ViewById
+    Switch switchPasscode, switchBiomitrics;
+
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_setting);
+        switchPasscode.setChecked(ExchangeApplication.getApp().getPreferences().isPasscodeEnabled());
+        switchBiomitrics.setChecked(ExchangeApplication.getApp().getPreferences().isFingerprintEnabled());
+
         initView();
         updateView();
     }
@@ -59,6 +72,46 @@ public class SettingFragment extends BaseFragment implements ApiCallback {
     @Click(R.id.userProfile)
     void onUserProfileClicked() {
         ((BaseFragment)getParentFragment()).replaceFragment(new UserProfileFragment_(), false);
+    }
+
+    @CheckedChange(R.id.switchPasscode)
+    void onPasscodeChecked(boolean isChecked) {
+        if (getActivity() == null) return;
+        if (isChecked == ExchangeApplication.getApp().getPreferences().isPasscodeEnabled()) return;
+        if (isChecked) {
+            ExchangeApplication.getApp().getPreferences().setPasscodeEnabled(true);
+        } else {
+            ((BaseActivity)getActivity()).showPasscodeDialog(Constants.SecurityType.SETTING, null, isSuccess -> {
+                if (isSuccess) {
+                    ExchangeApplication.getApp().getPreferences().setPasscodeEnabled(false);
+                } else {
+                    switchPasscode.setChecked(true);
+                }
+            });
+        }
+    }
+
+    @CheckedChange(R.id.switchBiomitrics)
+    void onBiomitricsChecked(boolean isChecked) {
+        if (getActivity() == null) return;
+        if (isChecked == ExchangeApplication.getApp().getPreferences().isFingerprintEnabled()) return;
+        if (!FingerprintDialog.isAvailable(getContext())) {
+            showAlert("Fingerprint is not available");
+            ExchangeApplication.getApp().getPreferences().setFingerprintEnabled(false);
+            switchBiomitrics.setChecked(false);
+            return;
+        }
+        if (isChecked) {
+            ExchangeApplication.getApp().getPreferences().setFingerprintEnabled(true);
+        } else {
+            ((BaseActivity)getActivity()).showFingerprintDialog(Constants.SecurityType.SETTING, isSuccess -> {
+                if (isSuccess) {
+                    ExchangeApplication.getApp().getPreferences().setFingerprintEnabled(true);
+                } else {
+                    switchBiomitrics.setChecked(true);
+                }
+            });
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
