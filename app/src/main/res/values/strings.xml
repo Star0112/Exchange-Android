@@ -120,7 +120,7 @@
     <string name="user_agreement">User Agreement</string>
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>
-    <string name="deposit">Deposit</string>
+
     <string name="error_input_digits">Please enter all digits</string>
     <string name="error_invalid_pin">PIN code must be different for card security</string>
     
@@ -199,6 +199,8 @@
     <string name="title_dashboard">Dashboard</string>
     <!-- Deposit -->
     <string name="title_deposit">Deposit</string>
+    <string name="deposit">Deposit</string>
+    <string name="save_address">Your address is saved in clipboard.</string>
     <string name="URNC">URNC</string>
     <string name="BTC">BTC</string>
     <string name="ETH">ETH</string>
