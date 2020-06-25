@@ -61,5 +61,5 @@
         android:onClick="onNext"
         style="@style/DefaultButton.Transparent"
         android:text="@string/do_later"
-        android:textColor="@color/colorPink"/>
+        android:textColor="@color/colorPrimary"/>
 </LinearLayout>

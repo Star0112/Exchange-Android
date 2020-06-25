@@ -31,11 +31,6 @@
     <color name="colorPending">#ef9f26</color>
     <color name="colorPendingLight">#f8cf47</color>
     <color name="colorPendingTransparent">#1aef9f26</color>
-    <color name="colorPink">#f28379</color>
-    <color name="colorRed">#ef4c4c</color>
-    <color name="colorRedLight">#f8867c</color>
-    <color name="colorRedTransparent">#1aef4c4c</color>
-    <color name="colorSalmon">#fb8a75</color>
     <color name="colorSearchBackground">#ececee</color>
     <color name="colorTransparent">@android:color/transparent</color>
     <color name="colorWhite">#fff</color>

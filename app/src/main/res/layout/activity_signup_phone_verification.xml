@@ -38,7 +38,7 @@
             android:layout_marginTop="@dimen/default_margin"
             style="@style/DefaultButton.Transparent"
             android:text="@string/button_resend"
-            android:textColor="@color/colorPink"/>
+            android:textColor="@color/colorPrimary"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"

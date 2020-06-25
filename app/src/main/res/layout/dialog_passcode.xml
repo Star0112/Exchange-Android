@@ -18,7 +18,7 @@
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="@dimen/default_margin"
             android:text="@string/password"
-            android:textColor="@color/colorPink"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/text_default"/>
         <TextView
             style="@style/DialogTitleText"
@@ -31,7 +31,7 @@
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="@dimen/default_margin"
             android:text="@string/logout"
-            android:textColor="@color/colorPink"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/text_default"/>
         <ImageView
             android:id="@+id/btnClose"

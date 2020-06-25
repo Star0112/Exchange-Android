@@ -18,6 +18,6 @@
     app:itemRadius="10dp"
     app:showLineWhenActive="true"
     app:hideLineWhenFilled="false"
-    app:lineColor="@color/colorPink"
+    app:lineColor="@color/colorPrimary"
     app:lineWidth="1dp"
     app:viewType="rectangle"/>

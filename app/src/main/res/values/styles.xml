@@ -201,7 +201,7 @@
     </style>
 
     <style name="TabActiveText" parent="TitleText">
-        <item name="android:textColor">#ff7c30</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">@dimen/text_item_small</item>
     </style>
 
