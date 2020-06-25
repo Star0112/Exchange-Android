@@ -2,12 +2,12 @@ package com.urgentrn.urncexchange.models.request;
 
 public class BuyCoinRequest {
     private String type;
-    private String symbol;
+    private int marketId;
     private int amount;
 
-    public BuyCoinRequest(String type, String symbol, int amount) {
+    public BuyCoinRequest(String type, int marketId, int amount) {
         this.type = type;
-        this.symbol = symbol;
+        this.marketId = marketId;
         this.amount = amount;
     }
 }

@@ -174,7 +174,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
             buyAmount.setError(getString(R.string.error_amount_invalid));
         } else {
             ApiClient.getInterface()
-                    .buyCoin(new BuyCoinRequest(this.marketInfos.get(this.selectedNumber).getPair(), this.marketInfos.get(this.selectedNumber).getBase(), Integer.parseInt(amount)))
+                    .buyCoin(new BuyCoinRequest(this.marketInfos.get(this.selectedNumber).getPair(), this.marketInfos.get(this.selectedNumber).getId(), Integer.parseInt(amount)))
                     .enqueue(new AppCallback<BaseResponse>(new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {

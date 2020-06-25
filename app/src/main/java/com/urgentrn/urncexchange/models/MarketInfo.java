@@ -18,6 +18,7 @@ public class MarketInfo implements Serializable {
         this.minAmount = minAmount;
     }
 
+    public int getId() { return id; }
     public String getName() {
         return this.name;
     }

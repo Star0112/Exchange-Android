@@ -306,23 +306,13 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
     @Override
     public void onBackPressed() {
-//        final FragmentManager fragmentManager = active.getChildFragmentManager();
-//        if (fragmentManager.getBackStackEntryCount() > 0) {
-//            final String fragmentTag = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
-//            final BaseFragment fragment = (BaseFragment)fragmentManager.findFragmentByTag(fragmentTag);
-//            if (fragment != null) {
-//                fragment.onBackPressed();
-//            }
-//        } else if (navigation.getSelectedItemId() == R.id.navigation_dash) {
-//            if (fragment1.getChildFragmentManager().getFragments().size() == 0) return;
-//            final BaseFragment fragment = (BaseFragment)fragment1.getChildFragmentManager().getFragments().get(0);
-//            if (fragment4.getChildFragmentManager().getFragments().size() == 0) return;
-//            final BaseFragment fragment = (BaseFragment)fragment4.getChildFragmentManager().getFragments().get(0);
-//            if (fragment instanceof PriceFragment) {
-//                ((PriceFragment)fragment).onCloseDrawer();
-//            }
-//        } else if (BuildConfig.DEBUG) {
-//            super.onBackPressed();
-//        }
+        final FragmentManager fragmentManager = active.getChildFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            final String fragmentTag = fragmentManager.getBackStackEntryAt(fragmentManager.getBackStackEntryCount() - 1).getName();
+            final BaseFragment fragment = (BaseFragment)fragmentManager.findFragmentByTag(fragmentTag);
+            if (fragment != null) {
+                fragment.onBackPressed();
+            }
+        }
     }
 }

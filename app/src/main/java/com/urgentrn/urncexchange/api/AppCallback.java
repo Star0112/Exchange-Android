@@ -57,7 +57,7 @@ public class AppCallback<T> implements Callback<T> {
         if (showProgress && mContext instanceof BaseActivity) {
             ((BaseActivity)mContext).hideProgressBar();
         }
-        String errorMessage;
+        String errorMessage = null;
         if (response.isSuccessful()) {
             BaseResponse baseResponse = (BaseResponse) response.body();
             if (baseResponse == null) {
@@ -65,7 +65,7 @@ public class AppCallback<T> implements Callback<T> {
             } else if (baseResponse.getError() != null) {
                 errorMessage = baseResponse.getErrorMessage();
             }
-//            else if (baseResponse.isSuccess() || baseResponse instanceof TokenResponse) {
+
                 if (mCallback instanceof BaseFragment) {
                     if (!((BaseFragment)mCallback).isAdded()) return;
                 } else if (mContext instanceof BaseActivity) {
@@ -73,9 +73,31 @@ public class AppCallback<T> implements Callback<T> {
                 }
                 mCallback.onResponse(baseResponse);
                 return;
-//            } else {
-//                errorMessage = new Gson().toJson(baseResponse);
-//            }
+
+        } else if (response.code() == 401) {
+            if (ExchangeApplication.getApp().getToken() == null) return;
+            final LoginRequest request = new LoginRequest(ExchangeApplication.getApp().getPreferences().getUsername());
+            request.setRefreshToken(ExchangeApplication.getApp().getPreferences().getRefreshToken());
+            ApiClient.getInterface()
+                    .login(request)
+                    .enqueue(new AppCallback<>(new ApiCallback() {
+                        @Override
+                        public void onResponse(BaseResponse loginResponse) {
+                            final LoginResponse data = (LoginResponse)loginResponse;
+                            ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
+                            ExchangeApplication.getApp().setUser(data.getUser());
+
+                            mCallback.onResponse(loginResponse);
+                        }
+
+                        @Override
+                        public void onFailure(String message) {
+                            ExchangeApplication.getApp().logout(mContext instanceof Activity ? (Activity)mContext : null, true);
+                            mCallback.onFailure(message);
+                        }
+                    }));
+            ExchangeApplication.getApp().setToken(null, false);
+            return;
         } else if (response.code() == 403 || response.code() == 522) {
             errorMessage = "Your connection was blocked due to security check. Please try again later.";
         } else if (response.code() == 404) {
@@ -83,61 +105,9 @@ public class AppCallback<T> implements Callback<T> {
         } else if (response.code() == 500) {
             errorMessage = response.message();
         } else {
-            final ResponseBody responseBody = response.errorBody();
-            if (responseBody != null) {
-                try {
-                    final String body = responseBody.string();
-                    try {
-                        final BaseResponse error = new Gson().fromJson(body, BaseResponse.class);
-                        if (error == null) {
-                            errorMessage = "unexpected error";
-                        } else {
-                            switch (error.getErrorCode()) {
-                                case 901: // access_token expired, message = "The password you entered is incorrect. Please try again"
-                                case 904: // access_token expired, message = "The password you entered is incorrect. Please try again"
-                                case 902: // access_token expired, message = "Your authentication has failed"
-                                    if (ExchangeApplication.getApp().getToken() == null) return;
-                                    final LoginRequest request = new LoginRequest(ExchangeApplication.getApp().getPreferences().getUsername());
-                                    request.setRefreshToken(ExchangeApplication.getApp().getPreferences().getRefreshToken());
-                                    ApiClient.getInterface().login(request).enqueue(new AppCallback<>(new ApiCallback() {
-                                        @Override
-                                        public void onResponse(BaseResponse loginResponse) {
-                                            final LoginResponse data = (LoginResponse)loginResponse;
-                                            ExchangeApplication.getApp().setToken(data.getAccessToken(), true);
-                                            ExchangeApplication.getApp().setUser(data.getUser());
-
-                                            mCallback.onResponse(loginResponse);
-                                        }
-
-                                        @Override
-                                        public void onFailure(String message) {
-                                            ExchangeApplication.getApp().logout(mContext instanceof Activity ? (Activity)mContext : null, true);
-                                            mCallback.onFailure(message);
-                                        }
-                                    }));
-                                    ExchangeApplication.getApp().setToken(null, false);
-                                    return;
-                                case 903: // message = "You must send the username and password to login",
-                                case 905: // account removed, message = "This account is not valid",
-                                    ExchangeApplication.getApp().logout(mContext instanceof Activity ? (Activity)mContext : null, true);
-                                    break;
-                                case 1001: // message = "Your location is not available to use this app. Please try again later."
-                                    break;
-                                default:
-                                    break;
-                            }
-                            errorMessage = error.getErrorMessage();
-                        }
-                    } catch (JsonSyntaxException e) {
-                        errorMessage = body;
-                    }
-                } catch (IOException e) {
-                    errorMessage = e.getLocalizedMessage();
-                }
-            } else {
-                errorMessage = "unexpected error";
-            }
+            errorMessage = "unexpected error";
         }
+
         if (showProgress && mContext instanceof BaseActivity) {
             ((BaseActivity)mContext).showAlert(errorMessage);
         }

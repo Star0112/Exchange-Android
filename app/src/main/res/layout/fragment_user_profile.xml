@@ -36,6 +36,7 @@
                 android:hint="@string/username"
                 android:imeActionLabel="@string/button_next"
                 android:imeOptions="actionNext"
+                android:enabled="false"
                 android:inputType="text" />
 
             <TextView
@@ -48,6 +49,7 @@
                 android:imeActionLabel="@string/button_next"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
+                android:enabled="false"
                 android:hint="@string/email"
                 style="@style/Input.White.Start"/>
 
@@ -93,7 +95,8 @@
             <Button
                 android:id="@+id/btnBuy"
                 android:layout_width="@dimen/button_width"
-                android:layout_margin="@dimen/default_margin"
+                android:layout_height="@dimen/setting_item_height"
+                android:layout_margin="@dimen/default_padding_3x"
                 android:text="@string/save"
                 style="@style/DefaultButton.White"/>
         </LinearLayout>
