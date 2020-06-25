@@ -9,27 +9,27 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.AssetBalance;
-import com.urgentrn.urncexchange.models.DepositHistory;
-import com.urgentrn.urncexchange.ui.base.BaseActivity;
+import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.ui.fragments.deposit.CardFragment_;
 import com.urgentrn.urncexchange.ui.holder.CoinDepositHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> {
+
+    private Fragment parentFragment;
     private List<AssetBalance> data = new ArrayList<>();
     private OnItemClickListener mListener;
 
-    public CoinDepositAdapter(OnItemClickListener listener) {
+    public CoinDepositAdapter(Fragment fragment, OnItemClickListener listener) {
+        this.parentFragment = fragment;
         this.mListener = listener;
-    }
-
-    public CoinDepositAdapter(List<AssetBalance> transactions) {
-        this.data = transactions;
     }
 
     @NonNull
@@ -53,7 +53,7 @@ public class CoinDepositAdapter extends RecyclerView.Adapter<CoinDepositHolder> 
             Toast.makeText(v.getContext(), data.get(position).getAddress(), Toast.LENGTH_SHORT).show();
         });
         holder.itemView.findViewById(R.id.btnDeposit).setOnClickListener(v -> {
-
+            ((BaseFragment)parentFragment).replaceFragment(new CardFragment_(), false);
         });
     }
 

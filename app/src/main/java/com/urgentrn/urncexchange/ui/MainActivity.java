@@ -1,11 +1,7 @@
 package com.urgentrn.urncexchange.ui;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -17,7 +13,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.ui.fragments.buy.BuyFragment_;
-import com.urgentrn.urncexchange.ui.fragments.deposit.DepositFragment_;
+import com.urgentrn.urncexchange.ui.fragments.deposit.DepositContainerFragment_;
 import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment_;
 import com.urgentrn.urncexchange.ui.fragments.order.OrderFragment_;
 import com.urgentrn.urncexchange.ui.fragments.setting.SettingContainerFragment_;
@@ -25,12 +21,6 @@ import com.urgentrn.urncexchange.ui.fragments.setting.SettingContainerFragment_;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-import org.greenrobot.eventbus.EventBus;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity implements ApiCallback {
@@ -39,7 +29,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     BottomNavigationView navigation;
 
     private final DashboardFragment_ fragment1 = new DashboardFragment_();
-    private final DepositFragment_ fragment2 = new DepositFragment_();
+    private final DepositContainerFragment_ fragment2 = new DepositContainerFragment_();
     private final BuyFragment_ fragment3 = new BuyFragment_();
     private final OrderFragment_ fragment4 = new OrderFragment_();
     private final SettingContainerFragment_ fragment5 = new SettingContainerFragment_();

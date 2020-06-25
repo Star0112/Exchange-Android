@@ -50,13 +50,11 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
             }
-
         });
 
         initView();
@@ -100,9 +98,9 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                             for(MarketInfo marketInfo : data ) {
                                 marketInfos.add(marketInfo);
                                 symbols.add(marketInfo.getName());
-                                final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
-                                spinner.setAdapter(spinnerAdapter);
                             }
+                            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+                            spinner.setAdapter(spinnerAdapter);
                         }
                     }
 

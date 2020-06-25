@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/background"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleText.White"
+                android:text="@string/add_card"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/default_margin"
+                        android:src="@mipmap/card"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price"
+                        style="@style/Input.White.Description"/>
+                    <EditText
+                        android:id="@+id/price"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:inputType="numberDecimal"
+                        style="@style/Input.White.Center"/>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin_2x"
+                    android:layout_marginEnd="@dimen/default_margin_2x"
+                    android:background="@mipmap/bg_input">
+
+                    <com.stripe.android.view.CardInputWidget
+                        android:id="@+id/cardInputWidget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:visibility="visible" />
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/btnPay"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/setting_item_height"
+                    android:layout_margin="@dimen/default_padding_3x"
+                    android:text="@string/pay"
+                    style="@style/DefaultButton.White"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <include layout="@layout/progress"/>
+</FrameLayout>

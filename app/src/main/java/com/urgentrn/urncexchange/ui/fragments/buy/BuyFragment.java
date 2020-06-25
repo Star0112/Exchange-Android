@@ -89,9 +89,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
         assetBalance.setHasFixedSize(true);
         assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(assetBalances.get(pos)));
-        adapterCoin.setData(assetBalances);
-        assetBalance.setAdapter(adapterCoin);
 
         setupDrawer();
         updateView();
@@ -121,6 +118,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                             for (AssetBalance assetBalance : data) {
                                 assetBalances.add(assetBalance);
                             }
+                            adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(assetBalances.get(pos)));
+                            adapterCoin.setData(assetBalances);
+                            assetBalance.setAdapter(adapterCoin);
                         }
                     }
 
@@ -141,9 +141,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                             for(MarketInfo marketInfo : data ) {
                                 marketInfos.add(marketInfo);
                                 symbols.add(marketInfo.getName());
-                                final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
-                                spinner.setAdapter(spinnerAdapter);
                             }
+                            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+                            spinner.setAdapter(spinnerAdapter);
                         }
                     }
 

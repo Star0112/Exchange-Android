@@ -48,7 +48,6 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     private CoinDepositAdapter adapterAsset;
     private TransactionHistoryAdapter adapterTransaction;
 
-    ////////////////////////////////////
     private List<AssetBalance> assetBalances = new ArrayList<>();
     private List<DepositHistory> depositHistories = new ArrayList<>();
 
@@ -56,22 +55,12 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     protected void init() {
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterAsset = new CoinDepositAdapter(pos -> assetBalances.get(pos));
-        adapterAsset.setData(assetBalances);
-        recyclerDepositCoins.setAdapter(adapterAsset);
 
         buyHistory.setHasFixedSize(true);
         buyHistory.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterTransaction = new TransactionHistoryAdapter(depositHistories);
-        adapterTransaction.setData(depositHistories);
-        buyHistory.setAdapter(adapterTransaction);
-             ////////////////////////////////////////////////////////////
+
         setupDrawer();
 
-        ////////////////////////////////////////////////////////
-
-
-//        updateView(null);
     }
 
     @Override
@@ -100,6 +89,9 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
                             for (DepositHistory depositHistory : data) {
                                 depositHistories.add(depositHistory);
                             }
+                            adapterTransaction = new TransactionHistoryAdapter(depositHistories);
+                            adapterTransaction.setData(depositHistories);
+                            buyHistory.setAdapter(adapterTransaction);
                         }
                     }
 
@@ -119,7 +111,11 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
                             AppData.getInstance().setAssetBalanceData(data);
                             for (AssetBalance assetBalance : data) {
                                 assetBalances.add(assetBalance);
+
                             }
+                            adapterAsset = new CoinDepositAdapter(getParentFragment(), pos -> assetBalances.get(pos));
+                            adapterAsset.setData(assetBalances);
+                            recyclerDepositCoins.setAdapter(adapterAsset);
                         }
                     }
 

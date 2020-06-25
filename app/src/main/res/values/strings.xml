@@ -134,10 +134,10 @@
     <string name="enter_new_pin">Enter your new PIN Code</string>
     <string name="change_pin_success">Your PIN for your URNC Card has been changed</string>
     <string name="verify_account">Verify Your Account</string>
-      <string name="phone_number">Phone Number</string>
-<string name="tfa_authentication">Two-Factor Authentication</string>
-<string name="sign_out">Sign out</string>
-<string name="first_name">First Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="tfa_authentication">Two-Factor Authentication</string>
+    <string name="sign_out">Sign out</string>
+    <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <!-- Verify Dialog -->
     <string name="verify_account_description">To access this feature\nplease verify your account</string>
@@ -210,6 +210,14 @@
     <string name="address">Address</string>
     <string name="address_copy">Copy</string>
     <string name="date">Date</string>
+    <string name="pay">Pay</string>
+
+    <string name="add_card">Add Card</string>
+    <string name="full_name">Full Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <string name="zipcode">Zip Code</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>

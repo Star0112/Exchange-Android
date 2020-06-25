@@ -4,8 +4,6 @@ import com.urgentrn.urncexchange.ExchangeApplication;
 import com.urgentrn.urncexchange.models.contacts.Contact;
 import com.urgentrn.urncexchange.models.contacts.WalletData;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,11 +34,10 @@ public class AppData {
     private List<CountryData> countries = new ArrayList<>();
     private HashMap<String, List<StateData>> states = new HashMap<>();
 
-
-
     private List<AssetBalance> assetBalance = new ArrayList<>();
     private List<DepositHistory> depositHistories = new ArrayList<>();
     private List<MarketInfo> marketInfo = new ArrayList<>();
+
 
     public List<Wallet> getWallets() {
         return ExchangeApplication.getApp().getUser() != null ? favoriteWallets : wallets;
@@ -124,6 +121,8 @@ public class AppData {
     }
 
     public List<MarketInfo> getMarketInfoData() { return this.marketInfo; }
+
+
 
     public void clearData() {
         wallets.clear();
