@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.urgentrn.urncexchange.api.ApiClient;
-import com.urgentrn.urncexchange.fcm.ExchangeMessagingService;
 import com.urgentrn.urncexchange.models.AppConfig;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.User;

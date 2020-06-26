@@ -79,43 +79,6 @@ public abstract class BaseDialog extends BottomSheetDialogFragment {
         }
     }
 
-    protected void initPassView(Constants.SecurityType type, String color, OnDialogDismissListener listener) {
-        if (getView() == null) return;
-        final Button view1 = getView().findViewById(R.id.btnPassword);
-        final Button view2 = getView().findViewById(R.id.btnPin);
-        if (view1 == null || view2 == null) return;
-
-        if (color != null) {
-            view1.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color)));
-            view1.setTextColor(Color.parseColor(color));
-            view2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(color)));
-        }
-
-        final boolean isFingerprintEnabled = ExchangeApplication.getApp().getPreferences().isFingerprintEnabled();
-        final boolean isPasscodeEnbled = ExchangeApplication.getApp().getPreferences().isPasscodeEnabled();
-        if (isFingerprintEnabled) {
-            view2.setText(String.format("%s %s", getString(R.string.confirm_with), getString(R.string.touch_id)));
-            view2.setOnClickListener(v -> showFingerprintDialog(type, listener));
-            if (isPasscodeEnbled) {
-                view1.setText(R.string.passcode);
-                view1.setOnClickListener(v -> showPasscodeDialog(type, color, listener));
-            } else {
-                view1.setText(R.string.password);
-                view1.setOnClickListener(v -> showPasswordDialog(type, color, listener, null));
-            }
-        } else {
-            if (isPasscodeEnbled) {
-                view2.setText(String.format("%s %s", getString(R.string.confirm_with), getString(R.string.passcode)));
-                view2.setOnClickListener(v -> showPasscodeDialog(type, color, listener));
-                view1.setText(R.string.password);
-            } else {
-                view2.setVisibility(View.GONE);
-                view1.setText(String.format("%s %s", getString(R.string.confirm_with), getString(R.string.password)));
-            }
-            view1.setOnClickListener(v -> showPasswordDialog(type, color, listener, null));
-        }
-    }
-
     protected void showPasswordDialog(Constants.SecurityType type, String color, OnDialogDismissListener listener, String prevAuth) {
         if (getActivity() == null) return;
         ((BaseActivity)getActivity()).showPasswordDialog(type, color, listener, prevAuth);

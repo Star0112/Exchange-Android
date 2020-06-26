@@ -21,27 +21,22 @@ import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
-import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
-import com.urgentrn.urncexchange.models.request.LoginRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
-import com.urgentrn.urncexchange.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 

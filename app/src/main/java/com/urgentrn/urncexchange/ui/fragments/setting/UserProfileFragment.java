@@ -10,7 +10,6 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.User;
-import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
@@ -22,7 +21,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
-import java.util.List;
 
 @EFragment(R.layout.fragment_user_profile)
 public class UserProfileFragment extends BaseFragment implements ApiCallback {

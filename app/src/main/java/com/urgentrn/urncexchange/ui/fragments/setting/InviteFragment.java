@@ -2,24 +2,20 @@ package com.urgentrn.urncexchange.ui.fragments.setting;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.widget.Toolbar;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.models.ExchangeData;
-import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
-import java.util.List;
 
 @EFragment(R.layout.fragment_invite)
 public class InviteFragment extends BaseFragment implements ApiCallback {

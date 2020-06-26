@@ -15,7 +15,6 @@ import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
-import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
