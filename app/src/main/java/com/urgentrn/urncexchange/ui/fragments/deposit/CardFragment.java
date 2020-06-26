@@ -6,7 +6,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.scottyab.rootbeer.Const;
 import com.stripe.android.ApiResultCallback;
 import com.stripe.android.Stripe;
 import com.stripe.android.model.Token;
@@ -27,9 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 @EFragment(R.layout.fragment_card)
 public class CardFragment extends BaseFragment implements ApiCallback {
