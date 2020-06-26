@@ -17,11 +17,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
 import com.urgentrn.urncexchange.ui.HomeActivity_;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
-import com.urgentrn.urncexchange.ui.signup.EmailVerificationActivity_;
 import com.urgentrn.urncexchange.ui.signup.PINCreateActivity_;
-import com.urgentrn.urncexchange.ui.signup.PhoneActivity_;
-import com.urgentrn.urncexchange.ui.signup.PhoneVerificationActivity_;
-import com.urgentrn.urncexchange.ui.signup.SignupActivity_;
 import com.urgentrn.urncexchange.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
@@ -47,16 +43,6 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
     @EditorAction(R.id.editPassword)
     void onEditorActions(TextView v, int actionId) {
         onLogin(null);
-    }
-
-    public void onForgotPassword(View v) {
-        final Intent intent = new Intent(this, ForgotPasswordActivity_.class);
-        startActivity(intent);
-    }
-
-    public void goSignUp(View v) {
-        final Intent intent = new Intent(this, SignupActivity_.class);
-        startActivity(intent);
     }
 
     public void onLogin(View v) {
