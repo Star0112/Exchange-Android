@@ -19,6 +19,7 @@ import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
+import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
@@ -48,6 +49,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     private List<String> symbols = new ArrayList<>();
     private List<MarketInfo> marketInfos = new ArrayList<>();
 
+    private int selectedNumber = 0;
+
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_order);
@@ -55,6 +58,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedNumber = position;
+                buyPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
             }
 
             @Override
@@ -94,26 +99,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     private void setupDrawer() {
         ApiClient.getInterface()
                 .getMarketInfo()
-                .enqueue(new AppCallback<>(new ApiCallback() {
-                    @Override
-                    public void onResponse(BaseResponse response) {
-                        if(response instanceof MarketInfoResponse) {
-                            final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
-                            AppData.getInstance().setMarketInfoData(data);
-                            for(MarketInfo marketInfo : data ) {
-                                marketInfos.add(marketInfo);
-                                symbols.add(marketInfo.getName());
-                            }
-                            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
-                            spinner.setAdapter(spinnerAdapter);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-
-                    }
-                }));
+                .enqueue(new AppCallback<MarketInfoResponse>(this));
     }
 
     @Click(R.id.btnBuy)
@@ -130,11 +116,11 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         } else if (price.isEmpty()) {
             buyPrice.requestFocus();
             buyPrice.setError(getString(R.string.error_amount_empty));
-        } else if (Integer.parseInt(price) <= 0) {
+        } else if (Float.parseFloat(price) <= 0) {
             buyPrice.requestFocus();
             buyPrice.setError(getString(R.string.error_amount_invalid));
         } else {
-
+            onOrderCoin(symbols.get(selectedNumber), 1, Integer.parseInt(amount), Float.parseFloat(price), "limit");
         }
     }
 
@@ -152,10 +138,11 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         } else if (price.isEmpty()) {
             sellPrice.requestFocus();
             sellPrice.setError(getString(R.string.error_amount_empty));
-        } else if (Integer.parseInt(price) <= 0) {
+        } else if (Float.parseFloat(price) <= 0) {
             sellPrice.requestFocus();
             sellPrice.setError(getString(R.string.error_amount_invalid));
         } else {
+            onOrderCoin(symbols.get(selectedNumber), 1, Integer.parseInt(amount), Float.parseFloat(price), "limit");
         }
     }
 
@@ -165,12 +152,12 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<BaseResponse>( getContext(), new ApiCallback() {
                     @Override
                     public void onResponse(BaseResponse response) {
-
+                        ((BaseActivity)getActivity()).showAlert(R.string.order_success);
                     }
 
                     @Override
                     public void onFailure(String message) {
-
+                        ((BaseActivity)getActivity()).showAlert(R.string.buy_failed);
                     }
                 }));
     }
@@ -185,7 +172,16 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
-
+        if(response instanceof MarketInfoResponse) {
+            final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
+            AppData.getInstance().setMarketInfoData(data);
+            for(MarketInfo marketInfo : data ) {
+                marketInfos.add(marketInfo);
+                symbols.add(marketInfo.getName());
+            }
+            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+            spinner.setAdapter(spinnerAdapter);
+        }
     }
 
     @Override

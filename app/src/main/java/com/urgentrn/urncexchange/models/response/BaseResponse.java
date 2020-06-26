@@ -4,29 +4,27 @@ import java.util.List;
 
 public class BaseResponse {
 
-    private boolean success;
-    private List<Error> error;
+    private String status;
+    private errors errors;
 
-    public boolean isSuccess() {
-        return success;
+    public String isSuccess() {
+        return status;
     }
 
-    public List<Error> getError() {
-        return error;
+    public errors getError() {
+        return errors;
     }
 
     public int getErrorCode() {
-        final List<Error> error = getError();
-        if (error != null && error.size() > 0) {
-            return error.get(0).code;
+        if (errors != null ) {
+            return errors.getCode();
         }
         return 0;
     }
 
     public String getErrorMessage() {
-        final List<Error> error = getError();
-        if (error != null && error.size() > 0) {
-            final String message = error.get(0).message;
+        if (errors != null) {
+            final String message = errors.getMessage();
             if (message != null) {
                 return message;
             }
@@ -34,7 +32,7 @@ public class BaseResponse {
         return "unexpected error";
     }
 
-    private class Error {
+    private class errors {
 
         private int code;
         private String message;

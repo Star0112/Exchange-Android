@@ -64,16 +64,17 @@ public class AppCallback<T> implements Callback<T> {
                 errorMessage = "Internal server error";
             } else if (baseResponse.getError() != null) {
                 errorMessage = baseResponse.getErrorMessage();
-            }
-
+            } else if (baseResponse.isSuccess().equals("ok")) {
                 if (mCallback instanceof BaseFragment) {
-                    if (!((BaseFragment)mCallback).isAdded()) return;
+                    if (!((BaseFragment) mCallback).isAdded()) return;
                 } else if (mContext instanceof BaseActivity) {
-                    if (((BaseActivity)mContext).isFinishing()) return;
+                    if (((BaseActivity) mContext).isFinishing()) return;
                 }
                 mCallback.onResponse(baseResponse);
                 return;
-
+            } else {
+                errorMessage = "Server error";
+            }
         } else if (response.code() == 401) {
             if (ExchangeApplication.getApp().getToken() == null) return;
             final LoginRequest request = new LoginRequest(ExchangeApplication.getApp().getPreferences().getUsername());

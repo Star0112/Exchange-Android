@@ -2,7 +2,7 @@
     <string name="app_name">URNC</string>
     <string name="app_name2">URNC Wallet</string>
     <string name="no_internet_connection">There\'s no internet connection</string>
-   <string name="warning_rooted_device">We have detected that you are using a rooted phone. Please be aware that URNC does not support rooted devices.</string>
+    <string name="warning_rooted_device">We have detected that you are using a rooted phone. Please be aware that URNC does not support rooted devices.</string>
     <string name="zopim_account_id">Djkq9NU7Vb209vw0DMoU3FjBUmN4Fd9A</string>
     <string name="button_next">Next</string>
     <string name="button_go">Go</string>
@@ -123,7 +123,7 @@
 
     <string name="error_input_digits">Please enter all digits</string>
     <string name="error_invalid_pin">PIN code must be different for card security</string>
-    
+
     <string name="create_pin">Create Your PIN Code</string>
     <string name="enter_digits">Enter 4 digits</string>
     <string name="confirm_pin">Re-enter your PIN Code</string>
@@ -223,10 +223,11 @@
     <string name="price">Price</string>
     <string name="amount">Amount</string>
     <string name="buy_success">You have bought successfully.</string>
-    <string name="buy_failed">You are failed.</string>
+    <string name="order_success">Your oder is success.</string>
+    <string name="buy_failed">Operation are failed.</string>
     <!-- Order -->
     <string name="title_order">Order</string>
-    <string name="balance">Balanc</string>
+    <string name="balance">Balance</string>
     <!-- Setting -->
     <string name="title_setting">Setting</string>
     <!-- Profile -->
