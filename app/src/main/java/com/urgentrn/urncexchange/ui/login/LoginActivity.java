@@ -39,7 +39,7 @@ public class LoginActivity extends BaseActivity implements ApiCallback {
 
     @AfterViews
     protected void init() {
-        editEmail.setText("andrei1120");
+        editEmail.setText("fengliu93");
         editPassword.setText("Security123!@#");
         setToolBar(false);
     }

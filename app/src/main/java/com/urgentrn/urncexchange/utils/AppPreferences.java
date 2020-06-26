@@ -3,13 +3,6 @@ package com.urgentrn.urncexchange.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.urgentrn.urncexchange.models.Transaction;
-import com.urgentrn.urncexchange.models.User;
-
-import java.util.List;
-
 public class AppPreferences {
 
     public static final String PREFERENCE_NAME = "EXCHANGE_PREFERENCE";
