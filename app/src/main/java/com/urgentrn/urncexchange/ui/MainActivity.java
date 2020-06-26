@@ -2,10 +2,19 @@ package com.urgentrn.urncexchange.ui;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.neovisionaries.ws.client.ThreadType;
+import com.neovisionaries.ws.client.WebSocket;
+import com.neovisionaries.ws.client.WebSocketAdapter;
+import com.neovisionaries.ws.client.WebSocketException;
+import com.neovisionaries.ws.client.WebSocketFactory;
+import com.neovisionaries.ws.client.WebSocketFrame;
+import com.neovisionaries.ws.client.WebSocketListener;
+import com.neovisionaries.ws.client.WebSocketState;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
@@ -16,10 +25,15 @@ import com.urgentrn.urncexchange.ui.fragments.deposit.DepositContainerFragment_;
 import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment_;
 import com.urgentrn.urncexchange.ui.fragments.order.OrderFragment_;
 import com.urgentrn.urncexchange.ui.fragments.setting.SettingContainerFragment_;
+import com.urgentrn.urncexchange.utils.Constants;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity implements ApiCallback {
@@ -35,14 +49,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     private final FragmentManager fm = getSupportFragmentManager();
     private BaseFragment active = fragment1;
 
-    private Handler handler = new Handler();
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-//            getData(false);
-//            handler.postDelayed(this, Constants.API_REQUEST_INTERVAL_DEFAULT);
-        }
-    };
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         switch (item.getItemId()) {
@@ -87,6 +94,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
         setActiveTab(R.id.navigation_dash);
 
+        onCreateSocket();
     }
 
     private void updateTabIcons(int itemId) { // not recommended but because of bad icon designs. it should use opacity instead of color
@@ -106,7 +114,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     protected void onStop() {
         super.onStop();
 
-        handler.removeCallbacks(runnable);
     }
 
     @Override
@@ -147,6 +154,168 @@ public class MainActivity extends BaseActivity implements ApiCallback {
             if (fragment != null) {
                 fragment.onBackPressed();
             }
+        }
+    }
+
+    public void onCreateSocket() {
+
+        try {
+            WebSocketFactory factory = new WebSocketFactory().setConnectionTimeout(Constants.SOCKET_TIMEOUT);
+            WebSocket ws = factory.createSocket(Constants.SOCKET_URI);
+
+
+            ws.addListener(new WebSocketListener() {
+               @Override
+               public void onStateChanged(WebSocket websocket, WebSocketState newState) throws Exception {
+
+               }
+
+               @Override
+               public void onConnected(WebSocket websocket, Map<String, List<String>> headers) throws Exception {
+
+               }
+
+               @Override
+               public void onConnectError(WebSocket websocket, WebSocketException cause) throws Exception {
+
+               }
+
+               @Override
+               public void onDisconnected(WebSocket websocket, WebSocketFrame serverCloseFrame, WebSocketFrame clientCloseFrame, boolean closedByServer) throws Exception {
+
+               }
+
+               @Override
+               public void onFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onContinuationFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onTextFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onBinaryFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onCloseFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onPingFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onPongFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onTextMessage(WebSocket websocket, String text) throws Exception {
+                   Log.d("Tab", text);
+               }
+
+               @Override
+               public void onTextMessage(WebSocket websocket, byte[] data) throws Exception {
+
+               }
+
+               @Override
+               public void onBinaryMessage(WebSocket websocket, byte[] binary) throws Exception {
+
+               }
+
+               @Override
+               public void onSendingFrame(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onFrameSent(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onFrameUnsent(WebSocket websocket, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onThreadCreated(WebSocket websocket, ThreadType threadType, Thread thread) throws Exception {
+
+               }
+
+               @Override
+               public void onThreadStarted(WebSocket websocket, ThreadType threadType, Thread thread) throws Exception {
+
+               }
+
+               @Override
+               public void onThreadStopping(WebSocket websocket, ThreadType threadType, Thread thread) throws Exception {
+
+               }
+
+               @Override
+               public void onError(WebSocket websocket, WebSocketException cause) throws Exception {
+
+               }
+
+               @Override
+               public void onFrameError(WebSocket websocket, WebSocketException cause, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onMessageError(WebSocket websocket, WebSocketException cause, List<WebSocketFrame> frames) throws Exception {
+
+               }
+
+               @Override
+               public void onMessageDecompressionError(WebSocket websocket, WebSocketException cause, byte[] compressed) throws Exception {
+
+               }
+
+               @Override
+               public void onTextMessageError(WebSocket websocket, WebSocketException cause, byte[] data) throws Exception {
+
+               }
+
+               @Override
+               public void onSendError(WebSocket websocket, WebSocketException cause, WebSocketFrame frame) throws Exception {
+
+               }
+
+               @Override
+               public void onUnexpectedError(WebSocket websocket, WebSocketException cause) throws Exception {
+
+               }
+
+               @Override
+               public void handleCallbackError(WebSocket websocket, Throwable cause) throws Exception {
+
+               }
+
+               @Override
+               public void onSendingHandshake(WebSocket websocket, String requestLine, List<String[]> headers) throws Exception {
+
+               }
+            });
+
+            ws.connectAsynchronously();
+            ws.sendText("{\"id\": 1021, \"method\": \"price.subscribe\", \"params\": [\"URNCBTC\", \"URNCETH\", \"URNCUSD\", \"COINBTC\", \"COINETH\", \"COINUSD\" ]}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

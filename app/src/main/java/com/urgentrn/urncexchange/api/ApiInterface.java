@@ -2,6 +2,7 @@ package com.urgentrn.urncexchange.api;
 
 import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
 import com.urgentrn.urncexchange.models.request.LoginRequest;
+import com.urgentrn.urncexchange.models.request.OrderRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
@@ -31,10 +32,12 @@ public interface ApiInterface {
     @GET("api/m/v1/asset/depositHistory") // Get Deposit History
     Call<DepositHistoryResponse> getDepositHistory(@Query("offset") int offset, @Query("limit") int limit);
 
-    @GET("api/m/v1/market/list") // Get Market Info
+    @GET("api/m/v1/market/price") // Get Market Info
     Call<MarketInfoResponse> getMarketInfo();
 
     @POST("api/m/v1/buy/coin") // Buy Coin
     Call<BaseResponse> buyCoin(@Body BuyCoinRequest request);
 
+    @POST("api/m/v1/order/create") // Order Coin
+    Call<BaseResponse> orderCoin(@Body OrderRequest request);
 }

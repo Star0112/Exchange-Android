@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,11 +16,13 @@ import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
+import com.urgentrn.urncexchange.models.request.OrderRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
@@ -38,6 +41,9 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
     @ViewById(R.id.selectCoin)
     Spinner spinner;
+
+    @ViewById
+    EditText buyPrice, buyAmount, sellPrice, sellAmount;
 
     private List<String> symbols = new ArrayList<>();
     private List<MarketInfo> marketInfos = new ArrayList<>();
@@ -110,6 +116,64 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                 }));
     }
 
+    @Click(R.id.btnBuy)
+    void onBuy() {
+        final String amount = buyAmount.getText().toString();
+        final String price = buyPrice.getText().toString();
+
+        if (amount.isEmpty()) {
+            buyAmount.requestFocus();
+            buyAmount.setError(getString(R.string.error_amount_empty));
+        } else if (Integer.parseInt(amount) <= 0) {
+            buyAmount.requestFocus();
+            buyAmount.setError(getString(R.string.error_amount_invalid));
+        } else if (price.isEmpty()) {
+            buyPrice.requestFocus();
+            buyPrice.setError(getString(R.string.error_amount_empty));
+        } else if (Integer.parseInt(price) <= 0) {
+            buyPrice.requestFocus();
+            buyPrice.setError(getString(R.string.error_amount_invalid));
+        } else {
+
+        }
+    }
+
+    @Click(R.id.btnSell)
+    void onSell() {
+        final String amount = sellAmount.getText().toString();
+        final String price = sellPrice.getText().toString();
+
+        if (amount.isEmpty()) {
+            sellAmount.requestFocus();
+            sellAmount.setError(getString(R.string.error_amount_empty));
+        } else if (Integer.parseInt(amount) <= 0) {
+            sellAmount.requestFocus();
+            sellAmount.setError(getString(R.string.error_amount_invalid));
+        } else if (price.isEmpty()) {
+            sellPrice.requestFocus();
+            sellPrice.setError(getString(R.string.error_amount_empty));
+        } else if (Integer.parseInt(price) <= 0) {
+            sellPrice.requestFocus();
+            sellPrice.setError(getString(R.string.error_amount_invalid));
+        } else {
+        }
+    }
+
+    private void onOrderCoin (String market, int side, int amount, float price, String type) {
+        ApiClient.getInterface()
+                .orderCoin(new OrderRequest(market, side, amount, price, type ))
+                .enqueue(new AppCallback<BaseResponse>( getContext(), new ApiCallback() {
+                    @Override
+                    public void onResponse(BaseResponse response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+
+                    }
+                }));
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

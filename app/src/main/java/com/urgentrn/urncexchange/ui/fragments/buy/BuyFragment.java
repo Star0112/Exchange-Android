@@ -67,7 +67,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_buy);
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -104,49 +103,11 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     private void setupDrawer() {
         ApiClient.getInterface()
                 .getAssetBalance()
-                .enqueue(new AppCallback<>(new ApiCallback() {
-                    @Override
-                    public void onResponse(BaseResponse response) {
-                        if(response instanceof AssetResponse) {
-                            final List<AssetBalance> data = ((AssetResponse)response).getData();
-                            AppData.getInstance().setAssetBalanceData(data);
-                            for (AssetBalance assetBalance : data) {
-                                assetBalances.add(assetBalance);
-                            }
-                            adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(assetBalances.get(pos)));
-                            adapterCoin.setData(assetBalances);
-                            assetBalance.setAdapter(adapterCoin);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-
-                    }
-                }));
+                .enqueue(new AppCallback<AssetResponse>(this));
 
         ApiClient.getInterface()
                 .getMarketInfo()
-                .enqueue(new AppCallback<>(new ApiCallback() {
-                    @Override
-                    public void onResponse(BaseResponse response) {
-                        if(response instanceof MarketInfoResponse) {
-                            final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
-                            AppData.getInstance().setMarketInfoData(data);
-                            for(MarketInfo marketInfo : data ) {
-                                marketInfos.add(marketInfo);
-                                symbols.add(marketInfo.getName());
-                            }
-                            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
-                            spinner.setAdapter(spinnerAdapter);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-
-                    }
-                }));
+                .enqueue(new AppCallback<MarketInfoResponse>(this));
     }
 
     public void updateCoin(AssetBalance coin){
@@ -170,7 +131,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         } else {
             ApiClient.getInterface()
                     .buyCoin(new BuyCoinRequest(this.marketInfos.get(this.selectedNumber).getPair(), this.marketInfos.get(this.selectedNumber).getId(), Integer.parseInt(amount)))
-                    .enqueue(new AppCallback<BaseResponse>(new ApiCallback() {
+                    .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
                             final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -205,7 +166,25 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
-
+        if(response instanceof MarketInfoResponse) {
+            final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
+            AppData.getInstance().setMarketInfoData(data);
+            for(MarketInfo marketInfo : data ) {
+                marketInfos.add(marketInfo);
+                symbols.add(marketInfo.getName());
+            }
+            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+            spinner.setAdapter(spinnerAdapter);
+        } else if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
+            for (AssetBalance assetBalance : data) {
+                assetBalances.add(assetBalance);
+            }
+            adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(assetBalances.get(pos)));
+            adapterCoin.setData(assetBalances);
+            assetBalance.setAdapter(adapterCoin);
+        }
     }
 
     @Override

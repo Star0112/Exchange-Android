@@ -8,9 +8,9 @@ public class MarketInfo implements Serializable {
     private String base;
     private String pair;
     private int minAmount;
-    private float price = 50;
+    private float price;
 
-    public MarketInfo(int id, String name, String base, String pair, int minAmount ) {
+    public MarketInfo(int id, String name, String base, String pair, int minAmount) {
         this.id = id;
         this.name = name;
         this.base = base;
@@ -22,7 +22,7 @@ public class MarketInfo implements Serializable {
     public String getName() {
         return this.name;
     }
-    public float getPrice() { return 50.0f; }
+    public float getPrice() { return this.price; }
     public String getBase() {return this.base; }
     public String getPair() { return this.pair; }
  }

@@ -78,50 +78,11 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
         ApiClient.getInterface()
                 .getDepositHistory(0,30)
-                .enqueue(new AppCallback<>(new ApiCallback() {
-                    @Override
-                    public void onResponse(BaseResponse response) {
-                        if(response instanceof DepositHistoryResponse) {
-                            final List<DepositHistory> data = ((DepositHistoryResponse) response).getData();
-                            AppData.getInstance().setDepositHistoryData(data);
-                            for (DepositHistory depositHistory : data) {
-                                depositHistories.add(depositHistory);
-                            }
-                            adapterTransaction = new TransactionHistoryAdapter(depositHistories);
-                            adapterTransaction.setData(depositHistories);
-                            buyHistory.setAdapter(adapterTransaction);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-
-                    }
-                }));
+                .enqueue(new AppCallback<DepositHistoryResponse>(this));
 
         ApiClient.getInterface()
                 .getAssetBalance()
-                .enqueue(new AppCallback<>(new ApiCallback() {
-                    @Override
-                    public void onResponse(BaseResponse response) {
-                        if(response instanceof AssetResponse) {
-                            final List<AssetBalance> data = ((AssetResponse)response).getData();
-                            AppData.getInstance().setAssetBalanceData(data);
-                            for (AssetBalance assetBalance : data) {
-                                assetBalances.add(assetBalance);
-
-                            }
-                            adapterAsset = new CoinDepositAdapter(getParentFragment(), pos -> assetBalances.get(pos));
-                            adapterAsset.setData(assetBalances);
-                            recyclerDepositCoins.setAdapter(adapterAsset);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(String message) {
-
-                    }
-                }));
+                .enqueue(new AppCallback<AssetResponse>(this));
 
     }
 
@@ -144,6 +105,26 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
+        if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
+            for (AssetBalance assetBalance : data) {
+                assetBalances.add(assetBalance);
+
+            }
+            adapterAsset = new CoinDepositAdapter(getParentFragment(), pos -> assetBalances.get(pos));
+            adapterAsset.setData(assetBalances);
+            recyclerDepositCoins.setAdapter(adapterAsset);
+        } else if(response instanceof DepositHistoryResponse) {
+            final List<DepositHistory> data = ((DepositHistoryResponse) response).getData();
+            AppData.getInstance().setDepositHistoryData(data);
+            for (DepositHistory depositHistory : data) {
+                depositHistories.add(depositHistory);
+            }
+            adapterTransaction = new TransactionHistoryAdapter(depositHistories);
+            adapterTransaction.setData(depositHistories);
+            buyHistory.setAdapter(adapterTransaction);
+        }
 
     }
 
