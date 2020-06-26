@@ -2,7 +2,6 @@ package com.urgentrn.urncexchange.ui;
 
 import android.content.Intent;
 import android.content.IntentSender;
-import android.widget.Toast;
 
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -11,17 +10,12 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.Task;
 import com.scottyab.rootbeer.RootBeer;
-import com.urgentrn.urncexchange.BuildConfig;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.ExchangeApplication;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
-import com.urgentrn.urncexchange.models.AppConfig;
-import com.urgentrn.urncexchange.models.User;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.models.response.GetApiResponse;
-import com.urgentrn.urncexchange.models.response.GetUserResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.signup.PINCreateActivity_;
 import com.urgentrn.urncexchange.ui.signup.TouchIDActivity_;
