@@ -121,14 +121,6 @@ public class Utils {
 
     public static String formattedNumber(double number, int minFractionDigits, int maxFractionDigits) {
         final DecimalFormat formatter = new DecimalFormat("#,###.#####");
-        if (WalletUtils.defaultCurrencySymbol != null) {
-            char groupingSeparator = WalletUtils.defaultCurrencySymbol.getMarketData().getThousand();
-            char decimalSeparator = WalletUtils.defaultCurrencySymbol.getMarketData().getDecimal();
-            DecimalFormatSymbols custom = new DecimalFormatSymbols();
-            custom.setGroupingSeparator(groupingSeparator);
-            custom.setDecimalSeparator(decimalSeparator);
-            formatter.setDecimalFormatSymbols(custom);
-        }
         formatter.setMinimumFractionDigits(minFractionDigits);
         formatter.setMaximumFractionDigits(maxFractionDigits);
         return formatter.format(number);

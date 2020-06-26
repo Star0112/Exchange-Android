@@ -3,15 +3,15 @@ package com.urgentrn.urncexchange.models;
 import java.io.Serializable;
 
 public class AssetBalance implements Serializable {
-    private String type;
+    private int isFiat;
     private String coin;
     private String image;
     private String address;
     private String available;
     private String freeze;
 
-    public AssetBalance(String type, String coin, String address, String available, String free, String image) {
-        this.type = type;
+    public AssetBalance(int isFiat, String coin, String address, String available, String free, String image) {
+        this.isFiat = isFiat;
         this.coin = coin;
         this.address = address;
         this.available = available;
@@ -19,7 +19,7 @@ public class AssetBalance implements Serializable {
         this.image = image;
     }
 
-    public String getType() { return type; }
+    public int getType() { return isFiat; }
     public String getCoin() { return coin; }
     public String getAddress() { return address; }
     public String getAvailable() { return available; }

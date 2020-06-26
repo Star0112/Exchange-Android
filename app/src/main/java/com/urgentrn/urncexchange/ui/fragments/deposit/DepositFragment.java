@@ -3,7 +3,6 @@ package com.urgentrn.urncexchange.ui.fragments.deposit;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +16,6 @@ import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.DepositHistory;
 import com.urgentrn.urncexchange.models.ExchangeData;
-import com.urgentrn.urncexchange.models.Wallet;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
@@ -53,6 +51,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
+        newHeader.setText(R.string.title_deposit);
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -76,7 +75,6 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer() {
-        newHeader.setText(R.string.title_deposit);
 
         ApiClient.getInterface()
                 .getDepositHistory(0,30)

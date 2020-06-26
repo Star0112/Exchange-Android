@@ -20,7 +20,6 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
     private TextView address;
     private Button btnAddress;
     private Button btnDeposit;
-    private String type = "crypto";
 
     public CoinDepositHolder(View itemView) {
         super(itemView);
@@ -43,14 +42,11 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
         coinName.setText(data.getCoin());
         txtTotalBalance.setText(data.getAvailable());
         txtFreeBalance.setText(data.getFreeze());
-//        address.setText(data.getAddress());
-
-        boolean a = data.getType().equals(type);
-        if(data.getType().equals(type)) {
+        if(data.getType() == 0) {
             address.setVisibility(View.VISIBLE);
             btnAddress.setVisibility(View.VISIBLE);
             btnDeposit.setVisibility(View.GONE);
-        } else {
+        } else if (data.getType() == 1) {
             address.setVisibility(View.GONE);
             btnAddress.setVisibility(View.GONE);
             btnDeposit.setVisibility(View.VISIBLE);
