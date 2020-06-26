@@ -26,11 +26,13 @@ import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
+import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -118,6 +120,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     public void updateView() {
     }
 
+    @EditorAction(R.id.buyAmount)
     @Click(R.id.btnBuy)
     void onBuy() {
         final String amount = buyAmount.getText().toString();
@@ -134,18 +137,12 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
-                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                            builder.setTitle(R.string.buy)
-                                    .setMessage(R.string.buy_success)
-                                    .show();
+                            ((BaseActivity)getActivity()).showAlert(R.string.buy_success);
                         }
 
                         @Override
                         public void onFailure(String message) {
-                            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                            builder.setTitle(R.string.buy)
-                                    .setMessage(R.string.buy_failed)
-                                    .show();
+                            ((BaseActivity)getActivity()).showAlert(R.string.buy_failed);
                         }
                     }));
         }
