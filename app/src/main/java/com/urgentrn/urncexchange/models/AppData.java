@@ -1,8 +1,6 @@
 package com.urgentrn.urncexchange.models;
 
 import com.urgentrn.urncexchange.ExchangeApplication;
-import com.urgentrn.urncexchange.models.contacts.Contact;
-import com.urgentrn.urncexchange.models.contacts.WalletData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,17 +20,7 @@ public class AppData {
     private List<Wallet> wallets = new ArrayList<>();
     private List<Wallet> favoriteWallets = new ArrayList<>();
     private List<Symbol> symbols = new ArrayList<>();
-    private List<PortfolioData> portfolioData = new ArrayList<>();
 
-    private HashMap<String, ExchangeData> exchangeTickers = new HashMap<>();
-    private HashMap<String, WalletAddress> walletAddresses = new HashMap<>();
-    private DepositAddress depositAddress;
-
-    private List<Contact> contacts = new ArrayList<>();
-    private List<WalletData> walletData = new ArrayList<>();
-
-    private List<CountryData> countries = new ArrayList<>();
-    private HashMap<String, List<StateData>> states = new HashMap<>();
 
     private List<AssetBalance> assetBalance = new ArrayList<>();
     private List<DepositHistory> depositHistories = new ArrayList<>();
@@ -77,25 +65,6 @@ public class AppData {
     }
 
 
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts != null ? contacts : new ArrayList<>();
-    }
-
-    public List<CountryData> getCountries() {
-        return countries;
-    }
-
-    public void setCountries(List<CountryData> countries) {
-        this.countries = countries;
-    }
-
-    public HashMap<String, List<StateData>> getStates() {
-        return states;
-    }
 
 
 
@@ -125,16 +94,8 @@ public class AppData {
 
 
     public void clearData() {
-        wallets.clear();
-        favoriteWallets.clear();
-        portfolioData.clear();
-        exchangeTickers.clear();
-        walletAddresses.clear();
-        depositAddress = null;
-        contacts.clear();
-        walletData.clear();
-
-
+        marketInfo.clear();
+        depositHistories.clear();
         assetBalance.clear();
     }
 

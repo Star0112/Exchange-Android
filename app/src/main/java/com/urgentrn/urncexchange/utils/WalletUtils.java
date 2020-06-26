@@ -1,7 +1,6 @@
 package com.urgentrn.urncexchange.utils;
 
 import com.urgentrn.urncexchange.ExchangeApplication;
-import com.urgentrn.urncexchange.models.AppConfig;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.Symbol;
 import com.urgentrn.urncexchange.models.Wallet;
@@ -91,9 +90,9 @@ public class WalletUtils {
     }
 
     public static AssetRestriction getAssetRestriction(String type, boolean skipPending) {
-        if (ExchangeApplication.getApp().getConfig() == null || ExchangeApplication.getApp().getUser() == null) return null; // TODO: when does this happen?
-        final AppConfig.Restrictions.TierLevel tierLevel = ExchangeApplication.getApp().getConfig().getRestrictions().getAssets().get(type);
-        if (tierLevel != null) {
+//        if (ExchangeApplication.getApp().getConfig() == null || ExchangeApplication.getApp().getUser() == null) return null; // TODO: when does this happen?
+//        final AppConfig.Restrictions.TierLevel tierLevel = ExchangeApplication.getApp().getConfig().getRestrictions().getAssets().get(type);
+//        if (tierLevel != null) {
 //            final int assetLevel = tierLevel.getTier();
 //            final int userLevel = ExchangeApplication.getApp().getUser().getTierLevel();
 //            if (assetLevel < userLevel || (assetLevel == userLevel && (skipPending || ExchangeApplication.getApp().getUser().isTierCompleted()))) {
@@ -105,9 +104,9 @@ public class WalletUtils {
                     return AssetRestriction.UPGRADE;
 //                }
 //            }
-        } else {
-            return AssetRestriction.LOCKED;
-        }
+//        } else {
+//            return AssetRestriction.LOCKED;
+//        }
     }
 
     public static int getWalletIndex(Wallet wallet) {
