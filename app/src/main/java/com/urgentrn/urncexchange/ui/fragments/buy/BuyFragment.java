@@ -142,7 +142,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
                         @Override
                         public void onFailure(String message) {
-                            ((BaseActivity)getActivity()).showAlert(R.string.buy_failed);
                         }
                     }));
         }

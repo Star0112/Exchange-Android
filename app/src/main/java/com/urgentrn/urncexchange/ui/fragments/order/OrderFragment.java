@@ -25,6 +25,7 @@ import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -102,6 +103,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
     }
 
+    @EditorAction(R.id.buyAmount)
     @Click(R.id.btnBuy)
     void onBuy() {
         final String amount = buyAmount.getText().toString();
@@ -124,6 +126,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         }
     }
 
+    @EditorAction(R.id.sellAmount)
     @Click(R.id.btnSell)
     void onSell() {
         final String amount = sellAmount.getText().toString();
@@ -157,7 +160,6 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
                     @Override
                     public void onFailure(String message) {
-                        ((BaseActivity)getActivity()).showAlert(R.string.buy_failed);
                     }
                 }));
     }
