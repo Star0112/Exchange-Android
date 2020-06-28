@@ -2,6 +2,9 @@ package com.urgentrn.urncexchange.ui.fragments.buy;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.os.Build;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -9,9 +12,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.app.AlertDialog;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
@@ -28,6 +31,7 @@ import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -44,8 +48,10 @@ import java.util.List;
 
 @EFragment(R.layout.fragment_buy)
 public class BuyFragment extends BaseFragment implements ApiCallback {
-    @ViewById
-    View btnBuy;
+    @ViewById(R.id.toolBar)
+    Toolbar toolBar;
+
+    private MenuItem btnSend;
 
     @ViewById(R.id.newHeader)
     TextView newHeader;
@@ -69,6 +75,11 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_buy);
+        btnSend = toolBar.getMenu()
+                .add(R.string.title_send)
+                .setIcon(R.mipmap.ic_send_inactive)
+                .setOnMenuItemClickListener(item -> onSend());
+        btnSend.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -118,6 +129,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void updateView() {
+
     }
 
     @EditorAction(R.id.buyAmount)
@@ -160,9 +172,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         }
     }
 
-    @Click(R.id.btnSend)
-    void onSend() {
+    private boolean onSend() {
         ((BaseFragment)getParentFragment()).replaceFragment(new SendFragment_(), false);
+        return true;
     }
 
     @Override

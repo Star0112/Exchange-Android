@@ -218,6 +218,8 @@
     <string name="mm_yy">MM/YY</string>
     <string name="cvv">CVV</string>
     <string name="zipcode">Zip Code</string>
+    <!-- Send -->
+    <string name="title_send">Send</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>

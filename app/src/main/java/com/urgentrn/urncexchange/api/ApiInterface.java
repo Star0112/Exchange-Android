@@ -7,6 +7,7 @@ import com.urgentrn.urncexchange.models.request.OrderRequest;
 import com.urgentrn.urncexchange.models.request.ProfileUpdateRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.BuyHistoryResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.models.response.GetUserResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
@@ -49,4 +50,7 @@ public interface ApiInterface {
 
     @POST("api/m/v1/membership/purchase") // Purchase
     Call<MembershipResponse> purchase(@Body MembershipRequest request);
+
+    @GET("api/m/v1/buy/history")
+    Call<BuyHistoryResponse> getBuyHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);
 }

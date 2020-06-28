@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"  >
+    android:layout_height="wrap_content">
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/newHeader"
                 android:text="@string/title_dashboard"
                 android:layout_alignParentLeft="true"
                 style="@style/NewTitleText" />
-<!--            <TextView-->
-<!--                android:id="@+id/userName"-->
-<!--                style="@style/UserName"-->
-<!--                android:layout_toLeftOf="@id/imgAvatar"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:text="Jane Cooper" />-->
-<!--            <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                android:id="@+id/imgAvatar"-->
-<!--                android:layout_width="@dimen/avatar_size_small"-->
-<!--                android:layout_height="@dimen/avatar_size_small"-->
-<!--                android:layout_marginHorizontal="@dimen/avatar_padding"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:src="@mipmap/user_avatar"/>-->
-        </RelativeLayout >
+        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
-</RelativeLayout >
+</LinearLayout>
