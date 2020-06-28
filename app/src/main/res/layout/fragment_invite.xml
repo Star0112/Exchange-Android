@@ -40,11 +40,12 @@
                 android:inputType="textPassword"
                 android:paddingEnd="@dimen/default_margin_3x"
                 android:hint="@string/friend_email"
-                style="@style/LoginInput">
+                style="@style/Input.White.Start">
             </EditText>
             <Button
                 android:id="@+id/btnBuy"
                 android:layout_width="@dimen/button_width"
+                android:layout_height="@dimen/tab_height_small"
                 android:layout_margin="@dimen/default_margin"
                 android:text="@string/save"
                 style="@style/DefaultButton.White"/>
@@ -60,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/friend_list"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/text_item_3x"
+                android:textSize="@dimen/text_title_default"
                 android:layout_margin="@dimen/default_margin"/>
 
             <androidx.recyclerview.widget.RecyclerView

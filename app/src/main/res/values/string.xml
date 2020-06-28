@@ -200,6 +200,7 @@
     <!-- Deposit -->
     <string name="title_deposit">Deposit</string>
     <string name="deposit">Deposit</string>
+    <string name="deposit_history">Deposit history</string>
     <string name="save_address">Your address is saved in clipboard.</string>
     <string name="URNC">URNC</string>
     <string name="BTC">BTC</string>
