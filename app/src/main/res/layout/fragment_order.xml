@@ -10,10 +10,11 @@
         android:orientation="vertical"
         android:background="@mipmap/background">
         <include  layout="@layout/activity_main_header"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:orientation="vertical"
             android:gravity="center">
             <Spinner
@@ -165,94 +166,103 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:background="@drawable/bg_dialog"
+            android:paddingTop="@dimen/default_padding"
             android:orientation="vertical">
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/default_margin" >
-
-                <TextView
-                    android:id="@+id/buySymbolName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Buy URNC/BTC"
-                    style="@style/Text.Black1"/>
+                android:layout_height="match_parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-                    <EditText
-                        android:id="@+id/buyPrice"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:imeActionLabel="@string/button_next"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:hint="@string/price"
-                        style="@style/Input.Gray.Center"/>
-                    <EditText
-                        android:id="@+id/buyAmount"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:imeActionLabel="@string/button_go"
-                        android:imeOptions="actionGo"
-                        android:inputType="number"
-                        android:hint="@string/amount"
-                        style="@style/Input.Gray.Center" />
-                </LinearLayout>
-                <Button
-                    android:id="@+id/btnBuy"
-                    android:layout_width="@dimen/button_width"
-                    android:layout_height="@dimen/tab_height_small"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:text="@string/title_buy"
-                    style="@style/DefaultButton.Blue"/>
-            </LinearLayout>
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/sellSymbolName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sell URNC/BTC"
-                    style="@style/Text.Black1"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-                    <EditText
-                        android:id="@+id/sellPrice"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:imeActionLabel="@string/button_next"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:hint="@string/price"
-                        style="@style/Input.Gray.Center"/>
-                    <EditText
-                        android:id="@+id/sellAmount"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:imeActionLabel="@string/button_go"
-                        android:imeOptions="actionGo"
-                        android:inputType="number"
-                        android:hint="@string/amount"
-                        style="@style/Input.Gray.Center" />
+                        <TextView
+                            android:id="@+id/buySymbolName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Buy URNC/BTC"
+                            style="@style/Text.Black1"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+                            <EditText
+                                android:id="@+id/buyPrice"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:imeActionLabel="@string/button_next"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:hint="@string/price"
+                                style="@style/Input.Gray.Center"/>
+                            <EditText
+                                android:id="@+id/buyAmount"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:imeActionLabel="@string/button_go"
+                                android:imeOptions="actionGo"
+                                android:inputType="number"
+                                android:hint="@string/amount"
+                                style="@style/Input.Gray.Center" />
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/btnBuy"
+                            android:layout_width="@dimen/button_width"
+                            android:layout_height="@dimen/tab_height_small"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:text="@string/title_buy"
+                            style="@style/DefaultButton.Blue"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="@dimen/scroll_marge">
+                        <TextView
+                            android:id="@+id/sellSymbolName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sell URNC/BTC"
+                            style="@style/Text.Black1"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+                            <EditText
+                                android:id="@+id/sellPrice"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:imeActionLabel="@string/button_next"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:hint="@string/price"
+                                style="@style/Input.Gray.Center"/>
+                            <EditText
+                                android:id="@+id/sellAmount"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:imeActionLabel="@string/button_go"
+                                android:imeOptions="actionGo"
+                                android:inputType="number"
+                                android:hint="@string/amount"
+                                style="@style/Input.Gray.Center" />
+                        </LinearLayout>
+                        <Button
+                            android:id="@+id/btnSell"
+                            android:layout_width="@dimen/button_width"
+                            android:layout_height="@dimen/tab_height_small"
+                            android:height="@dimen/menu_button_size"
+                            android:text="@string/sell"
+                            style="@style/DefaultButton.Blue"/>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-            <Button
-                android:id="@+id/btnSell"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/tab_height_small"
-                android:height="@dimen/menu_button_size"
-                android:text="@string/sell"
-                style="@style/DefaultButton.Blue"/>
+            </ScrollView>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

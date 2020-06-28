@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@mipmap/background">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
@@ -19,86 +18,90 @@
                 style="@style/TitleText.White"
                 android:text="@string/user_profile"/>
         </androidx.appcompat.widget.Toolbar>
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/username"
-                style="@style/Description.White"/>
-            <EditText
-                android:id="@+id/userName"
-                style="@style/Input.White.Start"
-                android:hint="@string/username"
-                android:imeActionLabel="@string/button_next"
-                android:imeOptions="actionNext"
-                android:enabled="false"
-                android:inputType="text" />
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                style="@style/Description.White"/>
-            <EditText
-                android:id="@+id/email"
-                android:imeActionLabel="@string/button_next"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                android:enabled="false"
-                android:hint="@string/email"
-                style="@style/Input.White.Start"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    style="@style/Description.White"/>
+                <EditText
+                    android:id="@+id/userName"
+                    style="@style/Input.White.Start"
+                    android:hint="@string/username"
+                    android:imeActionLabel="@string/button_next"
+                    android:imeOptions="actionNext"
+                    android:enabled="false"
+                    android:inputType="text" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/first_name"
-                style="@style/Description.White"/>
-            <EditText
-                android:id="@+id/firstName"
-                android:imeActionLabel="@string/button_next"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:hint="@string/first_name"
-                style="@style/Input.White.Start"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    style="@style/Description.White"/>
+                <EditText
+                    android:id="@+id/email"
+                    android:imeActionLabel="@string/button_next"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:enabled="false"
+                    android:hint="@string/email"
+                    style="@style/Input.White.Start"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/last_name"
-                style="@style/Description.White"/>
-            <EditText
-                android:id="@+id/lastName"
-                android:imeActionLabel="@string/button_next"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:hint="@string/last_name"
-                style="@style/Input.White.Start"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first_name"
+                    style="@style/Description.White"/>
+                <EditText
+                    android:id="@+id/firstName"
+                    android:imeActionLabel="@string/button_next"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:hint="@string/first_name"
+                    style="@style/Input.White.Start"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phone_number"
-                style="@style/Description.White"/>
-            <EditText
-                android:id="@+id/phoneNumber"
-                android:imeActionLabel="@string/button_next"
-                android:imeOptions="actionGo"
-                android:inputType="numberDecimal"
-                android:hint="@string/phone_number"
-                style="@style/Input.White.Start"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_name"
+                    style="@style/Description.White"/>
+                <EditText
+                    android:id="@+id/lastName"
+                    android:imeActionLabel="@string/button_next"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:hint="@string/last_name"
+                    style="@style/Input.White.Start"/>
 
-            <Button
-                android:id="@+id/btnBuy"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/setting_item_height"
-                android:layout_margin="@dimen/default_padding_3x"
-                android:text="@string/save"
-                style="@style/DefaultButton.White"/>
-        </LinearLayout>
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number"
+                    style="@style/Description.White"/>
+                <EditText
+                    android:id="@+id/phoneNumber"
+                    android:imeActionLabel="@string/button_next"
+                    android:imeOptions="actionGo"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/phone_number"
+                    style="@style/Input.White.Start"/>
+
+                <Button
+                    android:id="@+id/btnBuy"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/setting_item_height"
+                    android:layout_margin="@dimen/default_padding_3x"
+                    android:text="@string/save"
+                    style="@style/DefaultButton.White"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </FrameLayout>

@@ -15,6 +15,7 @@
     <dimen name="default_padding_3x">20dp</dimen>
     <dimen name="item_vertical_padding">10dp</dimen>
     <dimen name="item_horizontal_spacing">21dp</dimen>
+    <dimen name="scroll_marge">180dp</dimen>
 
     <!-- Size -->
     <dimen name="indicator_size">8dp</dimen>

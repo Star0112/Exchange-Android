@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_margin_large"
                     android:layout_marginEnd="@dimen/default_margin_large"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="70dp"
                     android:layout_marginBottom="@dimen/default_margin_2x"
                     android:orientation="horizontal"
                     android:gravity="center_horizontal">
@@ -115,6 +115,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_item"/>
                 </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
