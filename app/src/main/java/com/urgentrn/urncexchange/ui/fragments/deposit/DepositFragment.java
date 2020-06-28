@@ -41,7 +41,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     TextView newHeader;
 
     @ViewById
-    RecyclerView recyclerDepositCoins, buyHistory;
+    RecyclerView recyclerDepositCoins, depositHistory;
 
     private CoinDepositAdapter adapterAsset;
     private TransactionHistoryAdapter adapterTransaction;
@@ -55,8 +55,8 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        buyHistory.setHasFixedSize(true);
-        buyHistory.setLayoutManager(new LinearLayoutManager(getContext()));
+        depositHistory.setHasFixedSize(true);
+        depositHistory.setLayoutManager(new LinearLayoutManager(getContext()));
 
         setupDrawer();
 
@@ -123,7 +123,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
             }
             adapterTransaction = new TransactionHistoryAdapter(depositHistories);
             adapterTransaction.setData(depositHistories);
-            buyHistory.setAdapter(adapterTransaction);
+            depositHistory.setAdapter(adapterTransaction);
         }
 
     }

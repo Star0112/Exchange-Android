@@ -82,6 +82,7 @@
     <dimen name="peek_height">260dp</dimen>
     <dimen name="card_height_2x">320dp</dimen>
     <dimen name="dialog_list_height">316dp</dimen>
+    <dimen name="dialog_list">800dp</dimen>
 
     <dimen name="text_item_small">10sp</dimen>
     <dimen name="text_small">11sp</dimen>

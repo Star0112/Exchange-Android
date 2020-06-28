@@ -194,7 +194,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
             for (AssetBalance assetBalance : data) {
                 assetBalances.add(assetBalance);
             }
-            adapterCoin = new CoinBalanceAdapter(pos -> updateCoin(assetBalances.get(pos)));
+            adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> updateCoin(assetBalances.get(pos)));
             adapterCoin.setData(assetBalances);
             assetBalance.setAdapter(adapterCoin);
         }
