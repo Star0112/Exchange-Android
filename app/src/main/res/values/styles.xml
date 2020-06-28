@@ -415,7 +415,7 @@
 
     <style name="Input.White.Description" parent="DefaultInput">
         <item name="android:layout_marginStart">@dimen/default_margin_2x</item>
-        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textSize">@dimen/text_item_3x</item>
         <item name="android:textColor">@color/textColorWhite</item>
         <item name="android:gravity">center|start</item>
     </style>

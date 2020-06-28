@@ -21,6 +21,7 @@ import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.ui.fragments.buy.BuyContainerFragment_;
 import com.urgentrn.urncexchange.ui.fragments.buy.BuyFragment_;
 import com.urgentrn.urncexchange.ui.fragments.deposit.DepositContainerFragment_;
 import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment_;
@@ -44,7 +45,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
     private final DashboardFragment_ fragment1 = new DashboardFragment_();
     private final DepositContainerFragment_ fragment2 = new DepositContainerFragment_();
-    private final BuyFragment_ fragment3 = new BuyFragment_();
+    private final BuyContainerFragment_ fragment3 = new BuyContainerFragment_();
     private final OrderFragment_ fragment4 = new OrderFragment_();
     private final SettingContainerFragment_ fragment5 = new SettingContainerFragment_();
     private final FragmentManager fm = getSupportFragmentManager();

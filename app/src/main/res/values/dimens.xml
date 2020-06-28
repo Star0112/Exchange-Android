@@ -43,7 +43,6 @@
     <dimen name="qr_code_small">120dp</dimen>
     <dimen name="qr_code">216dp</dimen>
     <!-- Width -->
-    <dimen name="avatar_padding">10dp</dimen>
     <dimen name="text_width">25dp</dimen>
     <dimen name="item_select_width">49dp</dimen>
     <dimen name="period_button_width">56dp</dimen>

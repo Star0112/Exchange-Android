@@ -9,28 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@mipmap/background">
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/newHeader"
-                    android:text="@string/title_dashboard"
-                    android:layout_alignParentLeft="true"
-                    style="@style/NewTitleText" />
-
-                <Button
-                    android:id="@+id/btnSend"
-                    android:layout_width="@dimen/menu_button_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:layout_marginRight="@dimen/default_margin"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:background="@mipmap/ic_send_inactive"/>
-            </RelativeLayout >
-        </androidx.appcompat.widget.Toolbar>
+        <include  layout="@layout/activity_main_header"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -55,12 +34,12 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="@string/price"
+                        android:text="@string/email"
                         style="@style/Input.White.Description"/>
                     <EditText
                         android:id="@+id/buyPrice"
                         android:layout_width="0dp"
-                        android:layout_weight="2"
+                        android:layout_weight="3"
                         android:inputType="numberDecimal"
                         android:enabled="false"
                         style="@style/Input.White.Center"/>
@@ -79,7 +58,7 @@
                     <EditText
                         android:id="@+id/buyAmount"
                         android:layout_width="0dp"
-                        android:layout_weight="2"
+                        android:layout_weight="3"
                         android:imeActionLabel="@string/button_go"
                         android:imeOptions="actionGo"
                         android:inputType="number"

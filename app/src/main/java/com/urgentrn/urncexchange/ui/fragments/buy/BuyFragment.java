@@ -160,6 +160,11 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         }
     }
 
+    @Click(R.id.btnSend)
+    void onSend() {
+        ((BaseFragment)getParentFragment()).replaceFragment(new SendFragment_(), false);
+    }
+
     @Override
     public void onResponse(BaseResponse response) {
         if(response instanceof MarketInfoResponse) {
