@@ -106,6 +106,16 @@ public abstract class BaseFragment extends Fragment {
         this.isLoading = isLoading;
     }
 
+    public void showProgressBar() {
+        final View view = getActivity().findViewById(R.id.progressBar);
+        if (view != null) view.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar() {
+        final View view = getActivity().findViewById(R.id.progressBar);
+        if (view != null) view.setVisibility(View.GONE);
+    }
+
     protected void showAlert(String message) {
         if (getActivity() != null) {
             ((BaseActivity)getActivity()).showAlert(message);

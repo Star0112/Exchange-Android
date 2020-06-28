@@ -144,6 +144,7 @@ public class ExchangeApplication extends Application implements Application.Acti
             mPreferences.setEmail(user.getEmail());
             mPreferences.setUsername(user.getUsername());
             mPreferences.setFirstname(user.getFirstname());
+            mPreferences.setLastname(user.getLastname());
             mPreferences.setPhone(user.getPhonenumber());
             mPreferences.setCountry(user.getCountry());
             if (shouldBroadcast) {

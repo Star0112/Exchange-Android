@@ -43,6 +43,7 @@ public class AppCallback<T> implements Callback<T> {
         this.showProgress = showProgress;
         if (callback instanceof BaseFragment) {
             ((BaseFragment)callback).setLoading(true);
+            ((BaseFragment)mCallback).showProgressBar();
         }
         if (showProgress && mContext instanceof BaseActivity) {
             ((BaseActivity)mContext).showProgressBar();
@@ -53,6 +54,7 @@ public class AppCallback<T> implements Callback<T> {
     public void onResponse(Call<T> call, Response<T> response) {
         if (mCallback instanceof BaseFragment) {
             ((BaseFragment)mCallback).setLoading(false);
+            ((BaseFragment)mCallback).hideProgressBar();
         }
         if (showProgress && mContext instanceof BaseActivity) {
             ((BaseActivity)mContext).hideProgressBar();

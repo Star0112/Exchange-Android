@@ -95,7 +95,7 @@
                     style="@style/Input.White.Start"/>
 
                 <Button
-                    android:id="@+id/btnBuy"
+                    android:id="@+id/btnSave"
                     android:layout_width="@dimen/button_width"
                     android:layout_height="@dimen/setting_item_height"
                     android:layout_margin="@dimen/default_padding_3x"

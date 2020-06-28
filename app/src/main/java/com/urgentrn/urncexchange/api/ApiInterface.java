@@ -3,6 +3,7 @@ package com.urgentrn.urncexchange.api;
 import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
 import com.urgentrn.urncexchange.models.request.LoginRequest;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
+import com.urgentrn.urncexchange.models.request.ProfileUpdateRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
@@ -40,4 +41,7 @@ public interface ApiInterface {
 
     @POST("api/m/v1/order/create") // Order Coin
     Call<BaseResponse> orderCoin(@Body OrderRequest request);
+
+    @POST("api/m/user/profile/update") // Update User Profile
+    Call<LoginResponse> updateProfile(@Body ProfileUpdateRequest request);
 }

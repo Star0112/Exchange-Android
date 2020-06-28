@@ -3,6 +3,7 @@ package com.urgentrn.urncexchange.ui;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
+import android.view.WindowManager;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -52,6 +53,8 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         switch (item.getItemId()) {
             case R.id.navigation_dash:
                 fm.beginTransaction().hide(active).show(fragment1).commitAllowingStateLoss();
@@ -71,6 +74,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
                 break;
             case R.id.navigation_setting:
                 fm.beginTransaction().hide(active).show(fragment5).commitAllowingStateLoss();
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                 active = fragment5;
                 break;
             default:

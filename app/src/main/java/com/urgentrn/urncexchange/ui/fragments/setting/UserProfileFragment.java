@@ -2,19 +2,28 @@ package com.urgentrn.urncexchange.ui.fragments.setting;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toolbar;
 
+import com.google.android.gms.common.api.Api;
 import com.urgentrn.urncexchange.ExchangeApplication;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
+import com.urgentrn.urncexchange.api.ApiClient;
+import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.User;
+import com.urgentrn.urncexchange.models.request.ProfileUpdateRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.LoginResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.CheckedChange;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -79,9 +88,24 @@ public class UserProfileFragment extends BaseFragment implements ApiCallback {
         }
     }
 
+    @EditorAction(R.id.phoneNumber)
+    @Click(R.id.btnSave)
+    void onSave() {
+        final String fName = firstName.getText().toString();
+        final String lName = lastName.getText().toString();
+        final String phNumber = phoneNumber.getText().toString();
+
+        ApiClient.getInterface()
+                .updateProfile(new ProfileUpdateRequest(fName, lName, phNumber))
+                .enqueue(new AppCallback<LoginResponse>(this));
+    }
+
     @Override
     public void onResponse(BaseResponse response) {
-
+        if(response instanceof LoginResponse) {
+            final LoginResponse data = (LoginResponse)response;
+            ExchangeApplication.getApp().setUser(data.getUser());
+        }
     }
 
     @Override
