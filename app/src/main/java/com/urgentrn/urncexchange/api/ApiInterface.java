@@ -2,6 +2,7 @@ package com.urgentrn.urncexchange.api;
 
 import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
 import com.urgentrn.urncexchange.models.request.LoginRequest;
+import com.urgentrn.urncexchange.models.request.MembershipRequest;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
 import com.urgentrn.urncexchange.models.request.ProfileUpdateRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
@@ -10,6 +11,7 @@ import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.models.response.GetUserResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
+import com.urgentrn.urncexchange.models.response.MembershipResponse;
 
 import java.util.HashMap;
 
@@ -42,6 +44,9 @@ public interface ApiInterface {
     @POST("api/m/v1/order/create") // Order Coin
     Call<BaseResponse> orderCoin(@Body OrderRequest request);
 
-    @POST("api/m/user/profile/update") // Update User Profile
+    @POST("api/m/v1/user/profile/update") // Update User Profile
     Call<LoginResponse> updateProfile(@Body ProfileUpdateRequest request);
+
+    @POST("api/m/v1/membership/purchase") // Purchase
+    Call<MembershipResponse> purchase(@Body MembershipRequest request);
 }
