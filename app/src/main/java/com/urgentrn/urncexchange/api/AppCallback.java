@@ -121,6 +121,7 @@ public class AppCallback<T> implements Callback<T> {
     public void onFailure(Call<T> call, Throwable t) {
         if (mCallback instanceof BaseFragment) {
             ((BaseFragment)mCallback).setLoading(false);
+            ((BaseFragment)mCallback).hideProgressBar();
         }
         if (t instanceof UnknownHostException || t instanceof SocketTimeoutException) {
             if (mContext instanceof BaseActivity) {

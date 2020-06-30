@@ -2,8 +2,12 @@ package com.urgentrn.urncexchange.ui.fragments.setting;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.google.android.gms.common.api.Api;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
@@ -12,6 +16,7 @@ import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.request.MembershipRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MembershipResponse;
+import com.urgentrn.urncexchange.models.response.PurchaseStatusResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
@@ -26,6 +31,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 
 import static com.urgentrn.urncexchange.utils.Utils.formattedDateTime;
+import static com.urgentrn.urncexchange.utils.Utils.stringToDate;
 
 @EFragment(R.layout.fragment_membership)
 public class MembershipFragment extends BaseFragment implements ApiCallback {
@@ -33,10 +39,16 @@ public class MembershipFragment extends BaseFragment implements ApiCallback {
     @ViewById
     Toolbar toolbar;
 
+    @ViewById
+    TextView txtPurchase, datePurchase;
+
+    @ViewById
+    Button btnPurchase;
+
     @AfterViews
     protected void init() {
         setToolBar(true);
-        updateView();
+//        setupDrawer();
     }
 
     @Override
@@ -51,6 +63,11 @@ public class MembershipFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
+    private void setupDrawer() {
+        ApiClient.getInterface()
+                .getPurchaseStatus()
+                .enqueue(new AppCallback<PurchaseStatusResponse>(this));
+    }
 
     @Override
     public void updateView() {
@@ -79,16 +96,24 @@ public class MembershipFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
-        if(response instanceof MembershipResponse) {
+        String date = null;
+        if(response instanceof PurchaseStatusResponse) {
+            final PurchaseStatusResponse data = (PurchaseStatusResponse)response;
+            date = data.getData();
+        } else if(response instanceof MembershipResponse) {
             final MembershipResponse data = (MembershipResponse)response;
-            String date = data.getMessage();
-            ((BaseActivity)getActivity()).showAlert(getResources().getString(R.string.membership), "Membership till " + formattedDateTime(date));
+            date = data.getMessage();
+        }
+        if(date != null) {
+            btnPurchase.setVisibility(View.GONE);
+            txtPurchase.setVisibility(View.VISIBLE);
+            datePurchase.setVisibility(View.VISIBLE);
+            datePurchase.setText(getResources().getString(R.string.purchase_date) + formattedDateTime(date));
         }
     }
 
     @Override
     public void onFailure(String message) {
         String m = message;
-
     }
 }

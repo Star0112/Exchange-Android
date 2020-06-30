@@ -61,20 +61,43 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:textSize="@dimen/text_default"
                         android:text="@string/membership_description"
                         android:gravity="center"/>
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="3"
                         android:gravity="center">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <TextView
+                                android:id="@+id/txtPurchase"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/purchase_success"
+                                style="@style/TransactionHistory.Green"
+                                android:textSize="@dimen/text_default"/>
+                            <TextView
+                                android:id="@+id/datePurchase"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/purchase_date"
+                                android:textSize="@dimen/text_default"
+                                android:gravity="center"/>
+                        </LinearLayout>
                         <Button
                             android:id="@+id/btnPurchase"
                             android:layout_width="@dimen/button_width"
                             android:layout_height="@dimen/tab_height_small"
                             android:text="@string/purchase"
                             style="@style/DefaultButton.Blue"/>
-                    </LinearLayout>
+                    </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

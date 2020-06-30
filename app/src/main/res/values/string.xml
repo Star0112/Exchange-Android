@@ -227,6 +227,8 @@
     <string name="year">year</string>
     <string name="membership_description">It\'s possible to trade by purchasing.</string>
     <string name="purchase">Purchase</string>
+    <string name="purchase_success">You have already purchased.</string>
+    <string name="purchase_date">Your membership will be expired\n on&#160;</string>
     <string name="message">Messages</string>
     <string name="passcode">Passcode</string>
     <string name="biometrics">Biometrics</string>

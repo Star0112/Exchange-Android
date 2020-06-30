@@ -14,6 +14,7 @@ import com.urgentrn.urncexchange.models.response.GetUserResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.models.response.MembershipResponse;
+import com.urgentrn.urncexchange.models.response.PurchaseStatusResponse;
 
 import java.util.HashMap;
 
@@ -57,9 +58,11 @@ public interface ApiInterface {
         // Update User Profile
     Call<LoginResponse> updateProfile(@Body ProfileUpdateRequest request);
 
-    @POST("api/m/v1/membership/purchase")
-        // Purchase
+    @POST("api/m/v1/membership/purchase")// Purchase
     Call<MembershipResponse> purchase(@Body MembershipRequest request);
+
+    @GET("api/m/v1/membership/status") //Purchase status
+    Call<PurchaseStatusResponse> getPurchaseStatus();
 
     @GET("api/m/v1/buy/history")
     Call<BuyHistoryResponse> getBuyHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);
