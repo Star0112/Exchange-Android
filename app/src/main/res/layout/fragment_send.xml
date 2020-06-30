@@ -9,7 +9,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@mipmap/background">
-        <include  layout="@layout/activity_main_header"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                style="@style/TitleText.White"
+                android:text="@string/title_send"/>
+        </androidx.appcompat.widget.Toolbar>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -23,7 +31,7 @@
                     android:id="@+id/selectCoin"
                     android:background="@drawable/button_dropdown"
                     android:layout_gravity="center_horizontal"
-                    android:spinnerMode="dropdown"
+                    android:spinnerMode="dialog"
                     style="@style/SpinnerInput"/>
 
                 <EditText

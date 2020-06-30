@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.DepositHistory;
 
+import static com.urgentrn.urncexchange.utils.Utils.formatLargeNumber;
 import static com.urgentrn.urncexchange.utils.Utils.formattedDateTime;
 
 public class DepositHistoryHolder extends RecyclerView.ViewHolder {
@@ -22,7 +23,7 @@ public class DepositHistoryHolder extends RecyclerView.ViewHolder {
     public void updateView(DepositHistory data, int position) {
 
         txtAssetsName.setText(data.getSymbol());
-        txtTotalBalance.setText("+" + data.getAmount());
+        txtTotalBalance.setText("+ " + formatLargeNumber(Double.parseDouble(data.getAmount())));
         txtDate.setText(formattedDateTime(data.getDate()));
     }
 }

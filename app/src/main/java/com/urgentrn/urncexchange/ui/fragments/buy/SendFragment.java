@@ -41,9 +41,6 @@ import java.util.List;
 @EFragment(R.layout.fragment_send)
 public class SendFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById(R.id.newHeader)
-    TextView newHeader;
-
     @ViewById(R.id.selectCoin)
     Spinner spinner;
 
@@ -58,7 +55,7 @@ public class SendFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
-        newHeader.setText(R.string.title_send);
+        setToolBar(true);
         assetBalance.setHasFixedSize(true);
         assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
         setupDrawer();

@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.AssetBalance;
 
+import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
+
 public class CoinBalanceHolder extends RecyclerView.ViewHolder {
     private ImageView coinIcon;
     private TextView coinName;
@@ -35,7 +37,7 @@ public class CoinBalanceHolder extends RecyclerView.ViewHolder {
                 .load(data.getImage())
                 .into(coinIcon);
         coinName.setText(data.getCoin());
-        txtTotalBalance.setText(data.getAvailable());
-        txtAvailableBalance.setText(String.valueOf(Double.parseDouble(data.getAvailable()) - Double.parseDouble(data.getFreeze())));
+        txtTotalBalance.setText(formattedNumber(Double.parseDouble(data.getAvailable())));
+        txtAvailableBalance.setText(formattedNumber(Double.parseDouble(data.getAvailable()) - Double.parseDouble(data.getFreeze())));
     }
 }

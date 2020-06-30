@@ -3,8 +3,6 @@
     android:id="@android:id/text1"
     android:layout_width="match_parent"
     android:layout_height="@dimen/setting_item_height"
-    android:gravity="center_vertical"
-    android:paddingStart="@dimen/default_padding"
-    android:paddingEnd="@dimen/default_padding"
+    android:gravity="center"
     style="@style/DefaultText"
     android:text="Fraud"/>

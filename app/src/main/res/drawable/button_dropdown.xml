@@ -2,22 +2,22 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_window_focused="false" android:state_enabled="true"
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner2" />
     <item
         android:state_window_focused="false" android:state_enabled="false"
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner2" />
     <item
         android:state_pressed="true"
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner2" />
     <item
         android:state_focused="true" android:state_enabled="true"
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner2" />
     <item
         android:state_enabled="true"
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner1" />
     <item
         android:state_focused="true"
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner2" />
     <item
-        android:drawable="@mipmap/spinner_background" />
+        android:drawable="@mipmap/spinner2" />
 </selector>
