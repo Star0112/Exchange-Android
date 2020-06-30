@@ -48,7 +48,7 @@ public class MembershipFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         setToolBar(true);
-//        setupDrawer();
+        setupDrawer();
     }
 
     @Override
@@ -114,6 +114,5 @@ public class MembershipFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onFailure(String message) {
-        String m = message;
     }
 }

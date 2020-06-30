@@ -1,12 +1,8 @@
 package com.urgentrn.urncexchange.models.response;
 
 public class PurchaseStatusResponse extends BaseResponse {
-    private status errors;
+    private String message;
 
-    public String getData() { return errors.message; }
+    public String getData() { return message; }
 
-    private class status {
-        private String code;
-        private String message;
-    }
 }
