@@ -7,12 +7,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.common.api.Api;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
@@ -20,12 +18,10 @@ import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
-import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.request.SendAssetRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
-import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
+import com.urgentrn.urncexchange.ui.adapter.SendCoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
@@ -60,7 +56,7 @@ public class SendFragment extends BaseFragment implements ApiCallback {
     private List<String> assetsName = new ArrayList<>();
     private List<AssetBalance> assetBalanceData = new ArrayList<>();
     private AssetBalance selectedAsset;
-    private CoinBalanceAdapter adapterCoin;
+    private SendCoinBalanceAdapter adapterCoin;
 
     @AfterViews
     protected void init() {
@@ -129,7 +125,7 @@ public class SendFragment extends BaseFragment implements ApiCallback {
                     assetsName.add(assetBalance.getCoin());
                 }
             }
-            adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> assetBalanceData.get(pos));
+            adapterCoin = new SendCoinBalanceAdapter(getChildFragmentManager(), pos -> assetBalanceData.get(pos));
             adapterCoin.setData(assetBalanceData);
             assetBalance.setAdapter(adapterCoin);
 
@@ -170,8 +166,8 @@ public class SendFragment extends BaseFragment implements ApiCallback {
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
-                            ((BaseActivity)getActivity()).showAlert(R.string.send_success);
                             setupDrawer();
+                            ((BaseActivity)getActivity()).showAlert(R.string.send_success);
                         }
 
                         @Override

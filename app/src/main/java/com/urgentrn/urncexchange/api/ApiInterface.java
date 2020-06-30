@@ -15,6 +15,7 @@ import com.urgentrn.urncexchange.models.response.LoginResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.models.response.MembershipResponse;
 import com.urgentrn.urncexchange.models.response.PurchaseStatusResponse;
+import com.urgentrn.urncexchange.models.response.SendHistoryResponse;
 
 import java.util.HashMap;
 
@@ -66,6 +67,9 @@ public interface ApiInterface {
 
     @GET("api/m/v1/buy/history")
     Call<BuyHistoryResponse> getBuyHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);
+
+    @GET("api/m/v1/asset/sendhistory")
+    Call<SendHistoryResponse> getSendHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);
 
     @POST("api/m/v1/send/byemail")
     Call<BaseResponse> sendByEmail(@Body SendAssetRequest request);

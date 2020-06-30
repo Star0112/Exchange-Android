@@ -18,13 +18,13 @@ import com.urgentrn.urncexchange.ui.holder.CoinBalanceHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoinBalanceAdapter1 extends RecyclerView.Adapter<CoinBalanceHolder> {
+public class SendCoinBalanceAdapter extends RecyclerView.Adapter<CoinBalanceHolder> {
     private final SendHistoryDialog dialog = new SendHistoryDialog_();
     private FragmentManager parentFragmentManager;
     private List<AssetBalance> data = new ArrayList<>();
     private OnItemClickListener mListener;
 
-    public CoinBalanceAdapter1(FragmentManager parentFragment, OnItemClickListener listener) {
+    public SendCoinBalanceAdapter(FragmentManager parentFragment, OnItemClickListener listener) {
         this.parentFragmentManager = parentFragment;
         this.mListener = listener;
     }

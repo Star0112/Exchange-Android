@@ -154,8 +154,8 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
-                            ((BaseActivity)getActivity()).showAlert(R.string.buy_success);
                             balanceDrawer();
+                            ((BaseActivity)getActivity()).showAlert(R.string.buy_success);
                         }
 
                         @Override

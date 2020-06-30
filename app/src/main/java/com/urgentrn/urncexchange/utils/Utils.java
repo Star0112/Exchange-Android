@@ -112,7 +112,7 @@ public class Utils {
     }
 
     public static String formattedDateTime(String dateTime) {
-        return dateToString(stringToDate(dateTime, null), "MMM dd, yyyy - hh:mm a");
+        return dateToString(stringToDate(dateTime, null), "dd/mm/yyyy hh:mm");
     }
 
     public static String formattedNumber(int number) {
