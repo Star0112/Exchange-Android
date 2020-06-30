@@ -1,6 +1,8 @@
 package com.urgentrn.urncexchange.api;
 
+import com.urgentrn.urncexchange.models.InviteUser;
 import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
+import com.urgentrn.urncexchange.models.request.InviteUserRequest;
 import com.urgentrn.urncexchange.models.request.LoginRequest;
 import com.urgentrn.urncexchange.models.request.MembershipRequest;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
@@ -10,7 +12,9 @@ import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.BuyHistoryResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
+import com.urgentrn.urncexchange.models.response.FriendHistoryResponse;
 import com.urgentrn.urncexchange.models.response.GetUserResponse;
+import com.urgentrn.urncexchange.models.response.InviteUserResponse;
 import com.urgentrn.urncexchange.models.response.LoginResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.models.response.MembershipResponse;
@@ -64,6 +68,12 @@ public interface ApiInterface {
 
     @GET("api/m/v1/membership/status") //Purchase status
     Call<PurchaseStatusResponse> getPurchaseStatus();
+
+    @POST("api/m/v1/user/referrals")
+    Call<InviteUserResponse> inviteUser(@Body InviteUserRequest request);
+
+    @GET("api/m/v1/user/referrals")
+    Call<FriendHistoryResponse> getReferral(@Query("offset") int offset, @Query("limit") int limit);
 
     @GET("api/m/v1/buy/history")
     Call<BuyHistoryResponse> getBuyHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);

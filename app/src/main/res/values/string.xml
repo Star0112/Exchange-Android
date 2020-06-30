@@ -227,6 +227,7 @@
     <string name="membership">Membership</string>
     <string name="invite">Invite</string>
     <string name="invite_description">Invite your friends to get rewards.</string>
+    <string name="invite_success">Invitation has been sent successfully.</string>
     <string name="friend_email">Enter your friends email</string>
     <string name="friend_list">Friends List</string>
     <string name="basic">BASIC</string>

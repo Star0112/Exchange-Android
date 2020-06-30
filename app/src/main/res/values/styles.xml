@@ -343,13 +343,13 @@
 
     <!--  For URNC -->
     <style name="DepositText.Title" parent="DefaultText">
-        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
         <item name="android:textColor">@color/textColorDefault</item>
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="DepositText.Value" parent="DefaultText">
-        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
@@ -469,13 +469,13 @@
 
     <!--  Text  -->
     <style name="Text.Black" parent="DefaultText">
-        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
         <item name="android:textColor">@color/textColorDefault</item>
         <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="Text.Black1" parent="DefaultText">
-        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
         <item name="android:textColor">@color/textColorBlack1</item>
         <item name="android:textSize">@dimen/text_title_default</item>
         <item name="android:layout_marginStart">@dimen/default_padding</item>
