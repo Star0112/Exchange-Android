@@ -4,19 +4,27 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.Api;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
+import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.request.SendAssetRequest;
+import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
+import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
@@ -39,19 +47,25 @@ public class SendFragment extends BaseFragment implements ApiCallback {
     @ViewById(R.id.selectCoin)
     Spinner spinner;
 
+    @ViewById
+    RecyclerView assetBalance;
 
-    private List<String> AssetsName = new ArrayList<>();
-    private List<AssetBalance> AssetsInfo = new ArrayList<>();
+
+    private List<String> assetsName = new ArrayList<>();
+    private List<AssetBalance> assetBalanceData = new ArrayList<>();
     private AssetBalance selectedAsset;
+    private CoinBalanceAdapter adapterCoin;
 
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_send);
-        AppData.getInstance().getAssetBalanceData();
+        assetBalance.setHasFixedSize(true);
+        assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
+        setupDrawer();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedAsset = AssetsInfo.get(position);
+                selectedAsset = assetBalanceData.get(position);
             }
 
             @Override
@@ -59,6 +73,12 @@ public class SendFragment extends BaseFragment implements ApiCallback {
             }
 
         });
+    }
+
+    private void setupDrawer() {
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<AssetResponse>(this));
     }
 
     @Override
@@ -92,6 +112,22 @@ public class SendFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
+        if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
+            if(data != null) {
+                for (AssetBalance assetBalance : data) {
+                    assetBalanceData.add(assetBalance);
+                    assetsName.add(assetBalance.getCoin());
+                }
+            }
+            adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> assetBalanceData.get(pos));
+            adapterCoin.setData(assetBalanceData);
+            assetBalance.setAdapter(adapterCoin);
+
+            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, assetsName);
+            spinner.setAdapter(spinnerAdapter);
+        }
 
     }
 

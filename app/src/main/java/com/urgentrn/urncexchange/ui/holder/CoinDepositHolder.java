@@ -16,7 +16,7 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
     private ImageView coinIcon;
     private TextView coinName;
     private TextView txtTotalBalance;
-    private TextView txtFreeBalance;
+    private TextView txtAvailableBalance;
     private TextView address;
     private Button btnAddress;
     private Button btnDeposit;
@@ -26,7 +26,7 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
         coinIcon = itemView.findViewById(R.id.coinIcon);
         coinName = itemView.findViewById(R.id.coinName);
         txtTotalBalance = itemView.findViewById(R.id.txtTotalBalance);
-        txtFreeBalance = itemView.findViewById(R.id.txtFreeBalance);
+        txtAvailableBalance = itemView.findViewById(R.id.txtAvailableBalance);
         address = itemView.findViewById(R.id.address);
         btnAddress = itemView.findViewById(R.id.btnAddress);
         btnDeposit = itemView.findViewById(R.id.btnDeposit);
@@ -41,7 +41,7 @@ public class CoinDepositHolder extends RecyclerView.ViewHolder {
             .into(coinIcon);
         coinName.setText(data.getCoin());
         txtTotalBalance.setText(data.getAvailable());
-        txtFreeBalance.setText(data.getFreeze());
+        txtAvailableBalance.setText(String.valueOf(Double.parseDouble(data.getAvailable()) - Double.parseDouble(data.getFreeze())));
         if(data.getType() == 0) {
             address.setVisibility(View.VISIBLE);
             btnAddress.setVisibility(View.VISIBLE);

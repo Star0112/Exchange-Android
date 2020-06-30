@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_margin_3x"
+        android:gravity="center">
+        <View
+            android:layout_width="@dimen/default_margin_xlarge"
+            android:layout_height="@dimen/default_padding_small"
+            android:background="@color/colorBlackTransparent"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_history"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_title_default"
+        android:layout_marginHorizontal="@dimen/default_margin"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerBuyHistory"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_list"
+        android:padding="@dimen/default_padding" />
+
+</LinearLayout>

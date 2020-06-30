@@ -38,12 +38,12 @@
                     android:text="@string/deposit_history"
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/text_title_default"
-                    android:layout_margin="@dimen/default_margin"/>
+                    android:layout_margin="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_padding"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/depositHistory"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/default_padding" />
+                    android:layout_height="match_parent"/>
 
         </LinearLayout>
 

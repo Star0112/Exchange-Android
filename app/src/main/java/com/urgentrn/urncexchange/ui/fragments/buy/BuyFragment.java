@@ -67,8 +67,8 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     private List<String> symbolsName = new ArrayList<>();
     private CoinBalanceAdapter adapterCoin;
-    private ArrayList<AssetBalance> assetBalances = new ArrayList<>();
-    private List<MarketInfo> AssetsInfo = new ArrayList<>();
+    private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
+    private List<MarketInfo> marketInfoData = new ArrayList<>();
 
     private MarketInfo selectedAsset;
 
@@ -83,7 +83,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedAsset = AssetsInfo.get(position);
+                selectedAsset = marketInfoData.get(position);
                 buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
             }
 
@@ -161,7 +161,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void updateView(HashMap<String, ExchangeData> data) {
-
+        return;
     }
 
     @Override
@@ -184,7 +184,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
             AppData.getInstance().setMarketInfoData(data);
             if(data != null) {
                 for (MarketInfo marketInfo : data) {
-                    AssetsInfo.add(marketInfo);
+                    marketInfoData.add(marketInfo);
                     symbolsName.add(marketInfo.getName());
                 }
             }
@@ -195,11 +195,11 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
             AppData.getInstance().setAssetBalanceData(data);
             if(data != null) {
                 for (AssetBalance assetBalance : data) {
-                    assetBalances.add(assetBalance);
+                    assetBalanceData.add(assetBalance);
                 }
             }
-            adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> updateCoin(assetBalances.get(pos)));
-            adapterCoin.setData(assetBalances);
+            adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> updateCoin(assetBalanceData.get(pos)));
+            adapterCoin.setData(assetBalanceData);
             assetBalance.setAdapter(adapterCoin);
         }
     }

@@ -186,7 +186,7 @@
     <string name="ETH">ETH</string>
     <string name="USD">USD</string>
     <string name="total_balance">Total</string>
-    <string name="free_balance">Free</string>
+    <string name="available_balance">Available</string>
     <string name="address">Address</string>
     <string name="address_copy">Copy</string>
     <string name="date">Date</string>
@@ -200,6 +200,7 @@
     <string name="zipcode">Zip Code</string>
     <!-- Send -->
     <string name="title_send">Send</string>
+    <string name="send_history">Send History</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>
