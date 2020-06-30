@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.urgentrn.urncexchange.R;
@@ -47,6 +48,9 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     @ViewById
     EditText buyPrice, buyAmount, sellPrice, sellAmount;
 
+    @ViewById
+    TabHost tabHost;
+
     private List<String> symbols = new ArrayList<>();
     private List<MarketInfo> marketInfos = new ArrayList<>();
 
@@ -55,6 +59,15 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_order);
+        tabHost.setup();
+        TabHost.TabSpec spec = tabHost.newTabSpec("tag1");
+        spec.setContent(R.id.tab1);
+        spec.setIndicator("BUY");
+        tabHost.addTab(spec);
+        spec = tabHost.newTabSpec("tag2");
+        spec.setContent(R.id.tab2);
+        spec.setIndicator("SELL");
+        tabHost.addTab(spec);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

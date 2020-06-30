@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:orientation="vertical"
             android:gravity="center">
             <Spinner
@@ -51,7 +51,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="8dp"
-                    android:layout_marginHorizontal="@dimen/default_margin_large"
+                    android:layout_marginHorizontal="@dimen/default_margin"
                     app:cardElevation="2dp">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -62,13 +62,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/total_balance"
+                            android:text="@string/bid_amount"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="0 X 0"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                     </LinearLayout>
@@ -78,7 +78,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="8dp"
-                    android:layout_marginHorizontal="@dimen/default_margin_large"
+                    android:layout_marginHorizontal="@dimen/default_margin"
                     app:cardElevation="2dp">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -89,73 +89,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/total_balance"
+                            android:text="@string/ask_amount"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/textColorBlue">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin_2x"
-                android:orientation="horizontal">
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    android:layout_marginHorizontal="@dimen/default_margin_large"
-                    app:cardElevation="2dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/default_padding"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/total_balance"
-                            android:textColor="@color/textColorBlue">
-                        </TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/textColorBlue">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
-                    android:layout_marginHorizontal="@dimen/default_margin_large"
-                    app:cardElevation="2dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="@dimen/default_padding"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/total_balance"
-                            android:textColor="@color/textColorBlue">
-                        </TextView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
+                            android:text="0 X 0"
                             android:textColor="@color/textColorBlue">
                         </TextView>
                     </LinearLayout>
@@ -168,101 +108,146 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:background="@drawable/bg_dialog"
-            android:paddingTop="@dimen/default_padding"
+            android:paddingTop="@dimen/default_margin"
             android:orientation="vertical">
-            <ScrollView
+            <TabHost
+                android:id="@+id/tabHost"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
 
-                        <TextView
-                            android:id="@+id/buySymbolName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Buy URNC/BTC"
-                            style="@style/Text.Black1"/>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal" >
-                            <EditText
-                                android:id="@+id/buyPrice"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:imeActionLabel="@string/button_next"
-                                android:imeOptions="actionNext"
-                                android:inputType="numberDecimal"
-                                android:hint="@string/price"
-                                style="@style/Input.Gray.Center"/>
-                            <EditText
-                                android:id="@+id/buyAmount"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:imeActionLabel="@string/button_go"
-                                android:imeOptions="actionGo"
-                                android:inputType="number"
-                                android:hint="@string/amount"
-                                style="@style/Input.Gray.Center" />
-                        </LinearLayout>
-                        <Button
-                            android:id="@+id/btnBuy"
-                            android:layout_width="@dimen/button_width"
-                            android:layout_height="@dimen/tab_height_small"
-                            android:layout_marginBottom="@dimen/default_margin"
-                            android:text="@string/title_buy"
-                            style="@style/DefaultButton.Blue"/>
-                    </LinearLayout>
-                    <LinearLayout
+                    <TabWidget
+                        android:id="@android:id/tabs"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="@dimen/scroll_marge">
-                        <TextView
-                            android:id="@+id/sellSymbolName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sell URNC/BTC"
-                            style="@style/Text.Black1"/>
+                        android:layout_height="wrap_content" />
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
                         <LinearLayout
+                            android:id="@+id/tab1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal" >
-                            <EditText
-                                android:id="@+id/sellPrice"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:imeActionLabel="@string/button_next"
-                                android:imeOptions="actionNext"
-                                android:inputType="numberDecimal"
-                                android:hint="@string/price"
-                                style="@style/Input.Gray.Center"/>
-                            <EditText
-                                android:id="@+id/sellAmount"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:imeActionLabel="@string/button_go"
-                                android:imeOptions="actionGo"
-                                android:inputType="number"
-                                android:hint="@string/amount"
-                                style="@style/Input.Gray.Center" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/total_price"
+                                    style="@style/Input.Blue.Description"/>
+                                <EditText
+                                    android:id="@+id/buyTotalPrice"
+                                    android:layout_width="match_parent"
+                                    android:imeActionLabel="@string/button_next"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:hint="@string/price"
+                                    android:textAlignment="viewEnd"
+                                    android:layout_marginHorizontal="@dimen/default_margin"
+                                    android:paddingRight="@dimen/default_margin_3x"
+                                    style="@style/Input.Gray.Center"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" >
+                                <EditText
+                                    android:id="@+id/buyPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:imeActionLabel="@string/button_next"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:hint="@string/price"
+                                    style="@style/Input.Gray.Center"/>
+                                <EditText
+                                    android:id="@+id/buyAmount"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:imeActionLabel="@string/button_go"
+                                    android:imeOptions="actionGo"
+                                    android:inputType="number"
+                                    android:hint="@string/amount"
+                                    style="@style/Input.Gray.Center" />
+                            </LinearLayout>
+                            <Button
+                                android:id="@+id/btnBuy"
+                                android:layout_width="@dimen/button_width"
+                                android:layout_height="@dimen/tab_height_small"
+                                android:layout_marginBottom="@dimen/default_margin"
+                                android:text="@string/title_buy"
+                                style="@style/DefaultButton.Blue"/>
                         </LinearLayout>
-                        <Button
-                            android:id="@+id/btnSell"
-                            android:layout_width="@dimen/button_width"
-                            android:layout_height="@dimen/tab_height_small"
-                            android:height="@dimen/menu_button_size"
-                            android:text="@string/sell"
-                            style="@style/DefaultButton.Blue"/>
-                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/total_price"
+                                    style="@style/Input.Blue.Description"/>
+                                <EditText
+                                    android:id="@+id/sellTotalPrice"
+                                    android:layout_width="match_parent"
+                                    android:imeActionLabel="@string/button_next"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:hint="@string/price"
+                                    android:textAlignment="viewEnd"
+                                    android:layout_marginHorizontal="@dimen/default_margin"
+                                    android:paddingRight="@dimen/default_margin_3x"
+                                    style="@style/Input.Gray.Center"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal" >
+                                <EditText
+                                    android:id="@+id/sellPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:imeActionLabel="@string/button_next"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:hint="@string/price"
+                                    style="@style/Input.Gray.Center"/>
+                                <EditText
+                                    android:id="@+id/sellAmount"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:imeActionLabel="@string/button_go"
+                                    android:imeOptions="actionGo"
+                                    android:inputType="number"
+                                    android:hint="@string/amount"
+                                    style="@style/Input.Gray.Center" />
+                            </LinearLayout>
+                            <Button
+                                android:id="@+id/btnSell"
+                                android:layout_width="@dimen/button_width"
+                                android:layout_height="@dimen/tab_height_small"
+                                android:layout_marginBottom="@dimen/default_margin"
+                                android:text="@string/sell"
+                                style="@style/DefaultButton.Blue"/>
+                        </LinearLayout>
+                    </FrameLayout>
                 </LinearLayout>
-            </ScrollView>
+            </TabHost>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

@@ -187,6 +187,8 @@
     <string name="BTC">BTC</string>
     <string name="ETH">ETH</string>
     <string name="USD">USD</string>
+    <string name="bid_amount">BID X AMOUNT</string>
+    <string name="ask_amount">ASK X AMOUNT</string>
     <string name="total_balance">Total</string>
     <string name="available_balance">Available</string>
     <string name="address">Address</string>
@@ -216,6 +218,7 @@
     <!-- Order -->
     <string name="title_order">Order</string>
     <string name="balance">Balance</string>
+    <string name="total_price">Total Price</string>
     <!-- Setting -->
     <string name="title_setting">Setting</string>
     <!-- Profile -->
