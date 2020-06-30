@@ -9,31 +9,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.DepositHistory;
-import com.urgentrn.urncexchange.ui.holder.TransactionHistoryHolder;
+import com.urgentrn.urncexchange.ui.holder.DepositHistoryHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionHistoryAdapter extends RecyclerView.Adapter<TransactionHistoryHolder> {
+public class DepositHistoryAdapter extends RecyclerView.Adapter<DepositHistoryHolder> {
 
     private List<DepositHistory> data = new ArrayList<>();
 
-    public TransactionHistoryAdapter(List<DepositHistory> transactions) {
-        this.data = transactions;
+    public DepositHistoryAdapter(List<DepositHistory> histories) {
+        this.data = histories;
     }
 
     @NonNull
     @Override
-    public TransactionHistoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DepositHistoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.item_deposit_history, parent, false);
 
-        return new TransactionHistoryHolder(v);
+        return new DepositHistoryHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TransactionHistoryHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DepositHistoryHolder holder, int position) {
         final DepositHistory transactionHistory = data.get(position);
         holder.updateView(transactionHistory, position);
     }

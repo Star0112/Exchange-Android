@@ -47,9 +47,9 @@ public class CoinBalanceAdapter extends RecyclerView.Adapter<CoinBalanceHolder> 
         holder.itemView.setOnClickListener(v -> {
             if(dialog.getDialog() != null && dialog.getDialog().isShowing()) return;
             final Bundle args = new Bundle();
-            args.putString("coin", "BTC");
+            args.putString("coin", assetBalance.getCoin());
             dialog.setArguments(args);
-            dialog.show(parentFragmentManager, "ETH");
+            dialog.show(parentFragmentManager, assetBalance.getCoin());
         });
     }
 

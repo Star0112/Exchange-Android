@@ -177,9 +177,11 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         if(response instanceof MarketInfoResponse) {
             final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
             AppData.getInstance().setMarketInfoData(data);
-            for(MarketInfo marketInfo : data ) {
-                marketInfos.add(marketInfo);
-                symbols.add(marketInfo.getName());
+            if(data != null) {
+                for (MarketInfo marketInfo : data) {
+                    marketInfos.add(marketInfo);
+                    symbols.add(marketInfo.getName());
+                }
             }
             final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
             spinner.setAdapter(spinnerAdapter);

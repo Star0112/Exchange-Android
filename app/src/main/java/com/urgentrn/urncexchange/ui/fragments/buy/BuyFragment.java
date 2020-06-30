@@ -65,12 +65,12 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     @ViewById
     RecyclerView assetBalance;
 
-    private List<String> symbols = new ArrayList<>();
+    private List<String> symbolsName = new ArrayList<>();
     private CoinBalanceAdapter adapterCoin;
     private ArrayList<AssetBalance> assetBalances = new ArrayList<>();
-    private List<MarketInfo> marketInfos = new ArrayList<>();
+    private List<MarketInfo> AssetsInfo = new ArrayList<>();
 
-    private int selectedNumber = 0;
+    private MarketInfo selectedAsset;
 
     @AfterViews
     protected void init() {
@@ -83,8 +83,8 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedNumber = position;
-                buyPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
+                selectedAsset = AssetsInfo.get(position);
+                buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
             }
 
             @Override
@@ -145,7 +145,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
             buyAmount.setError(getString(R.string.error_amount_invalid));
         } else {
             ApiClient.getInterface()
-                    .buyCoin(new BuyCoinRequest(this.marketInfos.get(this.selectedNumber).getPair(), this.marketInfos.get(this.selectedNumber).getId(), Integer.parseInt(amount)))
+                    .buyCoin(new BuyCoinRequest(this.selectedAsset.getPair(), this.selectedAsset.getId(), Integer.parseInt(amount)))
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
@@ -182,17 +182,21 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         if(response instanceof MarketInfoResponse) {
             final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
             AppData.getInstance().setMarketInfoData(data);
-            for(MarketInfo marketInfo : data ) {
-                marketInfos.add(marketInfo);
-                symbols.add(marketInfo.getName());
+            if(data != null) {
+                for (MarketInfo marketInfo : data) {
+                    AssetsInfo.add(marketInfo);
+                    symbolsName.add(marketInfo.getName());
+                }
             }
-            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbolsName);
             spinner.setAdapter(spinnerAdapter);
         } else if(response instanceof AssetResponse) {
             final List<AssetBalance> data = ((AssetResponse)response).getData();
             AppData.getInstance().setAssetBalanceData(data);
-            for (AssetBalance assetBalance : data) {
-                assetBalances.add(assetBalance);
+            if(data != null) {
+                for (AssetBalance assetBalance : data) {
+                    assetBalances.add(assetBalance);
+                }
             }
             adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> updateCoin(assetBalances.get(pos)));
             adapterCoin.setData(assetBalances);

@@ -11,9 +11,25 @@ public class BuyHistory implements Serializable {
     private String createdAt;
     private String updatedAt;
     private int userId;
-    private user username;
+    private UserName user;
 
-    private class user {
+    private class UserName {
         private String username;
+    }
+
+    public String getAsset() {
+        return this.token;
+    }
+    public String getAmount() {
+        return this.money;
+    }
+    public String getBaseAsset() {
+        return this.money;
+    }
+    public String getPrice() {
+        return this.price;
+    }
+    public String getDate() {
+        return this.updatedAt;
     }
 }

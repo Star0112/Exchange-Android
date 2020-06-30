@@ -8,11 +8,11 @@ import com.urgentrn.urncexchange.models.DepositHistory;
 
 import static com.urgentrn.urncexchange.utils.Utils.formattedDateTime;
 
-public class TransactionHistoryHolder extends RecyclerView.ViewHolder {
+public class DepositHistoryHolder extends RecyclerView.ViewHolder {
 
     private TextView txtAssetsName, txtTotalBalance, txtDate;
 
-    public TransactionHistoryHolder(View itemView) {
+    public DepositHistoryHolder(View itemView) {
         super(itemView);
         txtAssetsName = itemView.findViewById(R.id.txtAssetsName);
         txtTotalBalance = itemView.findViewById(R.id.txtTotalBalance);

@@ -16,17 +16,12 @@ public class AppData {
     }
 
     private List<AssetBalance> assetBalance = new ArrayList<>();
-    private List<DepositHistory> depositHistories = new ArrayList<>();
     private List<MarketInfo> marketInfo = new ArrayList<>();
 
 
     // For URNC
     public void setAssetBalanceData(List<AssetBalance> assetBalance) {
         this.assetBalance = assetBalance;
-    }
-
-    public void setDepositHistoryData(List<DepositHistory> depositHistories) {
-        this.depositHistories = depositHistories;
     }
 
     public void setMarketInfoData(List<MarketInfo> marketInfo) {
@@ -37,17 +32,13 @@ public class AppData {
         return this.assetBalance;
     }
 
-    public List<DepositHistory> getDepositHistoryData() {
-        return this.depositHistories;
-    }
-
     public List<MarketInfo> getMarketInfoData() { return this.marketInfo; }
+
 
 
 
     public void clearData() {
         marketInfo.clear();
-        depositHistories.clear();
         assetBalance.clear();
     }
 

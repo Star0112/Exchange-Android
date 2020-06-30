@@ -3,6 +3,7 @@ package com.urgentrn.urncexchange.models;
 import java.io.Serializable;
 
 public class AssetBalance implements Serializable {
+    private int id;
     private int isFiat;
     private String name;
     private String displayName;
@@ -22,6 +23,7 @@ public class AssetBalance implements Serializable {
         this.image = image;
     }
 
+    public int getAssetId() {return id; }
     public int getType() { return isFiat; }
     public String getCoin() { return name; }
     public String getAddress() { return address; }

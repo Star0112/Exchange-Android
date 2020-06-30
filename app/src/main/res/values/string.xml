@@ -172,27 +172,6 @@
     <string name="login_no_account">Don\'t have an account?</string>
     <string name="login_signup_link">Sign Up</string>
 
-    <!-- signup page-->
-    <string name="signup_title">Create Your Account</string>
-    <string name="signup_username">Username</string>
-    <string name="signup_fullname">Fullname</string>
-    <string name="signup_email">Email</string>
-    <string name="signup_password">Password</string>
-    <string name="signup_password_confirm">Confirm Password</string>
-    <string name="signup_phone">Phone Number</string>
-    <string name="signup_button_label">Sign Up</string>
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- For URNC -->
 
     <!-- Dashboard -->
@@ -224,6 +203,8 @@
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>
+    <string name="coin_balance">Coin Balance</string>
+    <string name="buy_history">Buy History</string>
     <string name="amount">Amount</string>
     <string name="buy_success">You have bought successfully.</string>
     <string name="order_success">Your oder is success.</string>

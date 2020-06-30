@@ -79,16 +79,19 @@
             android:layout_weight="3"
             android:background="@drawable/bg_dialog"
             android:orientation="vertical">
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/coin_balance"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_title_default"
+            android:layout_margin="@dimen/default_margin"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/assetBalance"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="@dimen/default_margin"/>
-            </FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/assetBalance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/default_margin"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

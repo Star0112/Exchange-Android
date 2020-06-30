@@ -20,7 +20,7 @@ import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinDepositAdapter;
-import com.urgentrn.urncexchange.ui.adapter.TransactionHistoryAdapter;
+import com.urgentrn.urncexchange.ui.adapter.DepositHistoryAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
@@ -44,7 +44,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     RecyclerView recyclerDepositCoins, depositHistory;
 
     private CoinDepositAdapter adapterAsset;
-    private TransactionHistoryAdapter adapterTransaction;
+    private DepositHistoryAdapter adapterTransaction;
 
     private List<AssetBalance> assetBalances = new ArrayList<>();
     private List<DepositHistory> depositHistories = new ArrayList<>();
@@ -108,21 +108,24 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         if(response instanceof AssetResponse) {
             final List<AssetBalance> data = ((AssetResponse)response).getData();
             AppData.getInstance().setAssetBalanceData(data);
-            for (AssetBalance assetBalance : data) {
-                assetBalances.add(assetBalance);
+            if(data != null) {
+                for (AssetBalance assetBalance : data) {
+                    assetBalances.add(assetBalance);
 
+                }
             }
             adapterAsset = new CoinDepositAdapter(getParentFragment(), pos -> assetBalances.get(pos));
             adapterAsset.setData(assetBalances);
             recyclerDepositCoins.setAdapter(adapterAsset);
         } else if(response instanceof DepositHistoryResponse) {
             final List<DepositHistory> data = ((DepositHistoryResponse) response).getData();
-            AppData.getInstance().setDepositHistoryData(data);
-            for (DepositHistory depositHistory : data) {
-                depositHistories.add(depositHistory);
+            if(data != null) {
+                for (DepositHistory depositHistory : data) {
+                    depositHistories.add(depositHistory);
+                }
             }
-            adapterTransaction = new TransactionHistoryAdapter(depositHistories);
-            adapterTransaction.setData(depositHistories);
+            adapterTransaction = new DepositHistoryAdapter(depositHistories);
+//            adapterTransaction.setData(depositHistories);
             depositHistory.setAdapter(adapterTransaction);
         }
 
