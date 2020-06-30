@@ -8,16 +8,16 @@
         android:drawable="@mipmap/spinner2" />
     <item
         android:state_pressed="true"
-        android:drawable="@mipmap/spinner2" />
+        android:drawable="@mipmap/spinner1" />
     <item
         android:state_focused="true" android:state_enabled="true"
-        android:drawable="@mipmap/spinner2" />
+        android:drawable="@mipmap/spinner1" />
     <item
         android:state_enabled="true"
         android:drawable="@mipmap/spinner1" />
     <item
         android:state_focused="true"
-        android:drawable="@mipmap/spinner2" />
+        android:drawable="@mipmap/spinner1" />
     <item
-        android:drawable="@mipmap/spinner2" />
+        android:drawable="@mipmap/spinner1" />
 </selector>

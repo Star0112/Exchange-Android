@@ -10,6 +10,7 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.BuyHistory;
 
 import static com.urgentrn.urncexchange.utils.Utils.formattedDateTime;
+import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
 
 public class BuyHistoryHolder extends RecyclerView.ViewHolder {
     TextView txtAsset, txtAmount, txtBaseAsset, txtPrice, txtDate;
@@ -25,9 +26,9 @@ public class BuyHistoryHolder extends RecyclerView.ViewHolder {
 
     public void UpdateView(BuyHistory data, int position) {
         txtAsset.setText(data.getAsset());
-        txtAmount.setText(data.getAmount());
+        txtAmount.setText(formattedNumber(data.getBuyCount()));
         txtBaseAsset.setText(data.getBaseAsset());
-        txtPrice.setText(data.getPrice());
+        txtPrice.setText(formattedNumber(Double.parseDouble(data.getAmount())));
         txtDate.setText(formattedDateTime(data.getDate()));
     }
 }

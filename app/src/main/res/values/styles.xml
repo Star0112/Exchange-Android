@@ -100,6 +100,15 @@
         <item name="android:textSize">@dimen/text_default</item>
     </style>
 
+    <style name="SpinnerText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:textSize">@dimen/text_default</item>
+    </style>
+
     <style name="LoginText" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:textColor">@color/textColorSecondary</item>

@@ -30,6 +30,8 @@
     <string name="error_price_empty">Price is empty</string>
     <string name="error_amount_empty">Price is empty</string>
     <string name="error_price_invalid">Price is invalid</string>
+    <string name="error_email_empty">Email is empty</string>
+    <string name="error_email_invalid">Email is invalid</string>
     <string name="error_amount_invalid">Amount is invalid</string>
     <string name="error_name_invalid">User name is invalid</string>
     <string name="error_email_not_match">Email doesn\'t match</string>
@@ -201,6 +203,7 @@
     <!-- Send -->
     <string name="title_send">Send</string>
     <string name="send_history">Send History</string>
+    <string name="send_success">You have sent successfully.</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price">Price</string>

@@ -35,7 +35,7 @@
                     style="@style/SpinnerInput"/>
 
                 <EditText
-                    android:id="@+id/buyPrice"
+                    android:id="@+id/sendEmail"
                     android:layout_width="match_parent"
                     android:inputType="textEmailAddress"
                     android:hint="@string/email"
@@ -43,7 +43,7 @@
                     style="@style/Input.White.Center"/>
 
                 <EditText
-                    android:id="@+id/buyAmount"
+                    android:id="@+id/sendAmount"
                     android:layout_width="match_parent"
                     android:imeActionLabel="@string/button_go"
                     android:imeOptions="actionGo"
@@ -53,10 +53,10 @@
                     style="@style/Input.White.Center" />
 
                 <Button
-                    android:id="@+id/btnBuy"
+                    android:id="@+id/btnSend"
                     android:layout_width="@dimen/button_width"
                     android:layout_marginTop="@dimen/default_margin"
-                    android:text="@string/buy"
+                    android:text="@string/title_send"
                     android:layout_height="@dimen/tab_height_small"
                     style="@style/DefaultButton.White"/>
             </LinearLayout>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,10 +26,13 @@ import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
+import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -38,6 +42,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.urgentrn.urncexchange.utils.Utils.isPasswordValid;
+
 @EFragment(R.layout.fragment_send)
 public class SendFragment extends BaseFragment implements ApiCallback {
 
@@ -46,6 +52,9 @@ public class SendFragment extends BaseFragment implements ApiCallback {
 
     @ViewById
     RecyclerView assetBalance;
+
+    @ViewById
+    EditText sendEmail, sendAmount;
 
 
     private List<String> assetsName = new ArrayList<>();
@@ -73,6 +82,8 @@ public class SendFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer() {
+        assetBalanceData.clear();
+        assetsName.clear();
         ApiClient.getInterface()
                 .getAssetBalance()
                 .enqueue(new AppCallback<AssetResponse>(this));
@@ -133,8 +144,41 @@ public class SendFragment extends BaseFragment implements ApiCallback {
 
     }
 
+    @EditorAction(R.id.sendAmount)
+    @Click(R.id.btnSend)
     void onSend() {
-//        ApiClient.getInterface()
-//                .sendByEmail(new SendAssetRequest(1,1,["aa"]))
+        final String email = sendEmail.getText().toString();
+        final String amount = sendAmount.getText().toString();
+        String[] emails = new String[1];
+        emails[0] = email;
+
+        if(email.isEmpty()) {
+            sendEmail.requestFocus();
+            sendEmail.setError(getString(R.string.error_email_empty));
+        } else if(!isPasswordValid(email)) {
+            sendEmail.requestFocus();
+            sendEmail.setError(getString(R.string.error_email_invalid));
+        } else if(amount.isEmpty()) {
+            sendAmount.requestFocus();
+            sendAmount.setError(getString(R.string.error_amount_empty));
+        } else if(Integer.parseInt(amount)<=0) {
+            sendAmount.requestFocus();
+            sendAmount.setError(getString(R.string.error_amount_invalid));
+        } else {
+            ApiClient.getInterface()
+                    .sendByEmail(new SendAssetRequest(selectedAsset.getAssetId(), Integer.parseInt(amount), emails))
+                    .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
+                        @Override
+                        public void onResponse(BaseResponse response) {
+                            ((BaseActivity)getActivity()).showAlert(R.string.send_success);
+                            setupDrawer();
+                        }
+
+                        @Override
+                        public void onFailure(String message) {
+
+                        }
+                    }));
+        }
     }
 }

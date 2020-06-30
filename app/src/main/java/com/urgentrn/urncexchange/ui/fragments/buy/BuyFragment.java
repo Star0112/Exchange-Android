@@ -97,8 +97,8 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         assetBalance.setHasFixedSize(true);
         assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        setupDrawer();
-        updateView();
+        spinnerDrawer();
+        balanceDrawer();
     }
 
     @Override
@@ -113,11 +113,16 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
-    private void setupDrawer() {
+    private void balanceDrawer() {
+        assetBalanceData.clear();
         ApiClient.getInterface()
                 .getAssetBalance()
                 .enqueue(new AppCallback<AssetResponse>(this));
+    }
 
+    private void spinnerDrawer() {
+        symbolsName.clear();
+        symbolsName.clear();
         ApiClient.getInterface()
                 .getMarketInfo()
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
@@ -150,6 +155,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                         @Override
                         public void onResponse(BaseResponse response) {
                             ((BaseActivity)getActivity()).showAlert(R.string.buy_success);
+                            balanceDrawer();
                         }
 
                         @Override

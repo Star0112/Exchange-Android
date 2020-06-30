@@ -38,10 +38,9 @@ public class BuyHistoryDialog extends BaseDialog implements ApiCallback {
     RecyclerView recyclerBuyHistory;
 
 
-
-
     @AfterViews
     protected void init() {
+        histories.clear();
         coinName = getArguments().getString("coin");
         recyclerBuyHistory.setHasFixedSize(true);
         recyclerBuyHistory.setLayoutManager(new LinearLayoutManager((getContext())));
@@ -70,14 +69,15 @@ public class BuyHistoryDialog extends BaseDialog implements ApiCallback {
                 for (BuyHistory buyHistory : data) {
                     histories.add(buyHistory);
                 }
-                if(data.size() != 0) {
-                    offset += (limit * 2);
+                if(data.size() == 20) {
+                    offset += limit;
                     setupDrawer(offset, limit);
                 }
             }
-            if(offset == 0 || data.size() == 0) {
+            if(offset == 0 || data.size() < 20) {
                 adapter = new BuyHistoryAdapter(histories);
                 recyclerBuyHistory.setAdapter(adapter);
+
             }
         }
     }

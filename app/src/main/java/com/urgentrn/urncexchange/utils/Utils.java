@@ -115,6 +115,11 @@ public class Utils {
         return dateToString(stringToDate(dateTime, null), "MMM dd, yyyy - hh:mm a");
     }
 
+    public static String formattedNumber(int number) {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        return formatter.format(number);
+    }
+
     public static String formattedNumber(double number) {
         return formattedNumber(number, 2, 8);
     }
