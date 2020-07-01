@@ -11,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.gson.JsonObject;
 import com.neovisionaries.ws.client.WebSocket;
 import com.neovisionaries.ws.client.WebSocketAdapter;
 import com.neovisionaries.ws.client.WebSocketFactory;
@@ -38,6 +37,7 @@ import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -64,10 +64,11 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     @ViewById
     TabHost tabHost;
 
-    private List<String> symbols = new ArrayList<>();
+    private List<String> symbolsName = new ArrayList<>();
     private List<MarketInfo> marketInfos = new ArrayList<>();
-
     private int selectedNumber = 0;
+    WebSocketFactory factory;
+    WebSocket ws;
 
     @AfterViews
     protected void init() {
@@ -87,6 +88,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedNumber = position;
                 buyPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
+                sellPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
+                ws.sendText("{\"id\": 1022, \"method\": \"depth_price.subscribe\", \"params\": [\"" + symbolsName.get(selectedNumber) + "\"]}");
             }
 
             @Override
@@ -113,26 +116,19 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
     private void initSocket() {
         try {
-            WebSocketFactory factory = new WebSocketFactory().setConnectionTimeout(Constants.SOCKET_TIMEOUT);
-            WebSocket ws = factory.createSocket(Constants.SOCKET_URI);
+            factory = new WebSocketFactory().setConnectionTimeout(Constants.SOCKET_TIMEOUT);
+            ws = factory.createSocket(Constants.SOCKET_URI);
             ws.connectAsynchronously();
 
             ws.addListener(new WebSocketAdapter() {
                 @Override
                 public void onConnected(WebSocket websocket, Map<String, List<String>> headers) throws Exception {
                     Log.i("Socket", "onConnected: success");
-                    ws.sendText("{\"id\": 1022, \"method\": \"depth_price.subscribe\", \"params\": [\"" + "URNCBTC" + "\"]}");
                 }
 
                 @Override
                 public void onTextMessage(WebSocket websocket, String text) throws Exception {
-                    JSONObject object = new JSONObject(text);
-                    String method = "depth_price.update";
-                    if(object.getString("method").equals(method)) {
-                        JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
-                        bidAmount.setText(temp.getString("bid")+ " X " + temp.getString("bid_price"));
-                        askAmount.setText(temp.getString("ask")+ " X " + temp.getString("ask_price"));
-                    }
+                    onReceiveMessage(text);
                 }
 
                 @Override
@@ -142,6 +138,16 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             });
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void onReceiveMessage(String message) throws JSONException {
+        JSONObject object = new JSONObject(message);
+        String method = "depth_price.update";
+        if(object.getString("method").equals(method)) {
+            JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
+//            bidAmount.setText(temp.getString("bid") + " X " + temp.getString("bid_price"));
+            askAmount.setText(temp.getString("ask") + " X " + temp.getString("ask_price"));
         }
     }
 
@@ -180,7 +186,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             buyPrice.requestFocus();
             buyPrice.setError(getString(R.string.error_amount_invalid));
         } else {
-            onOrderCoin(symbols.get(selectedNumber), 1, Integer.parseInt(amount), Float.parseFloat(price), "limit");
+            onOrderCoin(symbolsName.get(selectedNumber), 1, Integer.parseInt(amount), Float.parseFloat(price), "limit");
         }
     }
 
@@ -203,7 +209,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             sellPrice.requestFocus();
             sellPrice.setError(getString(R.string.error_amount_invalid));
         } else {
-            onOrderCoin(symbols.get(selectedNumber), 1, Integer.parseInt(amount), Float.parseFloat(price), "limit");
+            onOrderCoin(symbolsName.get(selectedNumber), 1, Integer.parseInt(amount), Float.parseFloat(price), "limit");
         }
     }
 
@@ -238,10 +244,10 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             if(data != null) {
                 for (MarketInfo marketInfo : data) {
                     marketInfos.add(marketInfo);
-                    symbols.add(marketInfo.getName());
+                    symbolsName.add(marketInfo.getName());
                 }
             }
-            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbols);
+            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbolsName);
             spinner.setAdapter(spinnerAdapter);
         }
     }
