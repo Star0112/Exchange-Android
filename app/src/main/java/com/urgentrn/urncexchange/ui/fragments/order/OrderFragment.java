@@ -2,6 +2,7 @@ package com.urgentrn.urncexchange.ui.fragments.order;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,11 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.gson.JsonObject;
+import com.neovisionaries.ws.client.WebSocket;
+import com.neovisionaries.ws.client.WebSocketAdapter;
+import com.neovisionaries.ws.client.WebSocketFactory;
+import com.neovisionaries.ws.client.WebSocketFrame;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
@@ -22,6 +28,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.utils.Constants;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -31,16 +38,22 @@ import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @EFragment(R.layout.fragment_order)
 public class OrderFragment extends BaseFragment implements ApiCallback {
 
     @ViewById(R.id.newHeader)
     TextView newHeader;
+
+    @ViewById
+    TextView bidAmount, askAmount;
 
     @ViewById(R.id.selectCoin)
     Spinner spinner;
@@ -81,7 +94,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             }
         });
 
-        initView();
+        initSocket();
         updateView();
         setupDrawer();
     }
@@ -98,7 +111,39 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
-    private void initView() {}
+    private void initSocket() {
+        try {
+            WebSocketFactory factory = new WebSocketFactory().setConnectionTimeout(Constants.SOCKET_TIMEOUT);
+            WebSocket ws = factory.createSocket(Constants.SOCKET_URI);
+            ws.connectAsynchronously();
+
+            ws.addListener(new WebSocketAdapter() {
+                @Override
+                public void onConnected(WebSocket websocket, Map<String, List<String>> headers) throws Exception {
+                    Log.i("Socket", "onConnected: success");
+                    ws.sendText("{\"id\": 1022, \"method\": \"depth_price.subscribe\", \"params\": [\"" + "URNCBTC" + "\"]}");
+                }
+
+                @Override
+                public void onTextMessage(WebSocket websocket, String text) throws Exception {
+                    JSONObject object = new JSONObject(text);
+                    String method = "depth_price.update";
+                    if(object.getString("method").equals(method)) {
+                        JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
+                        bidAmount.setText(temp.getString("bid")+ " X " + temp.getString("bid_price"));
+                        askAmount.setText(temp.getString("ask")+ " X " + temp.getString("ask_price"));
+                    }
+                }
+
+                @Override
+                public void onDisconnected(WebSocket websocket, WebSocketFrame serverCloseFrame, WebSocketFrame clientCloseFrame, boolean closedByServer) throws Exception {
+                    Log.i("Socket", "onConnected: disconnect");
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void updateView() {

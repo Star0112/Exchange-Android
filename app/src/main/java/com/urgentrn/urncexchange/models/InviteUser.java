@@ -15,4 +15,11 @@ public class InviteUser implements Serializable {
     private String refereeEmail;
     private String createdAt;
     private String updatedAt;
+
+    public String getRefereeEmail() {
+        return this.refereeEmail;
+    }
+    public String getDate() {
+        return this.updatedAt;
+    }
 }

@@ -31,27 +31,25 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/txtEmail"
-                    style="@style/DepositText.Title"
                     android:layout_height="wrap_content"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_weight="1"
+                    android:layout_centerVertical="true"
                     android:textAlignment="viewStart"
                     android:text="@string/URNC"/>
-                <Button
+                <TextView
                     android:id="@+id/confirmStatus"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_centerVertical="true"
                     android:text="@string/date"
-                    android:layout_marginVertical="@dimen/default_padding"
-                    android:textAlignment="center"/>
-            </LinearLayout>
+                    android:textAlignment="viewEnd"/>
+            </RelativeLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

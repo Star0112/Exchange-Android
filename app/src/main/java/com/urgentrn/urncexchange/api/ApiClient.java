@@ -41,14 +41,14 @@ public class ApiClient {
                     .readTimeout(timeout, TimeUnit.SECONDS)
                     .connectTimeout(timeout, TimeUnit.SECONDS);
 
-            httpClient.certificatePinner(new CertificatePinner.Builder()
-                    .add(apiUrl.replace("https://", "").replace("/api/", ""),
-                            "sha256/7MekSxGGmfbaVwRu7fjtBkWMgaTp9mvvn79TDkFrCBQ=",
-                            "sha256/EMQHKJCimj0DX6wDD06hilqoSU30bitTgiiKTeW/Dm8=",
-                            "sha256/3kcNJzkUJ1RqMXJzFX4Zxux5WfETK+uL6Viq9lJNn4o=",
-                            "sha256/Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o="
-                    )
-                    .build());
+//            httpClient.certificatePinner(new CertificatePinner.Builder()
+//                    .add(apiUrl.replace("https://", "").replace("/api/", ""),
+//                            "sha256/7MekSxGGmfbaVwRu7fjtBkWMgaTp9mvvn79TDkFrCBQ=",
+//                            "sha256/EMQHKJCimj0DX6wDD06hilqoSU30bitTgiiKTeW/Dm8=",
+//                            "sha256/3kcNJzkUJ1RqMXJzFX4Zxux5WfETK+uL6Viq9lJNn4o=",
+//                            "sha256/Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o="
+//                    )
+//                    .build());
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(apiUrl)

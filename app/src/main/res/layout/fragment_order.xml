@@ -66,6 +66,7 @@
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
+                            android:id="@+id/bidAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0 X 0"
@@ -93,6 +94,7 @@
                             android:textColor="@color/textColorBlue">
                         </TextView>
                         <TextView
+                            android:id="@+id/askAmount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0 X 0"

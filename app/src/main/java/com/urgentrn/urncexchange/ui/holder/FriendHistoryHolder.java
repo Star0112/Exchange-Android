@@ -9,15 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.models.InviteUser;
 
+import static com.urgentrn.urncexchange.utils.Utils.formattedDateTime;
+
 public class FriendHistoryHolder extends RecyclerView.ViewHolder {
-    TextView txtEmail;
+    TextView txtEmail, confirmStatus;
 
     public FriendHistoryHolder(@NonNull View itemView) {
         super(itemView);
         txtEmail = itemView.findViewById(R.id.txtEmail);
+        confirmStatus = itemView.findViewById(R.id.confirmStatus);
     }
 
     public void UpdateView(InviteUser data, int position) {
-//        txtAsset.setText(data.getAsset());
+        txtEmail.setText(data.getRefereeEmail());
+        confirmStatus.setText(formattedDateTime(data.getDate()));
     }
 }

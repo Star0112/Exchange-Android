@@ -98,8 +98,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setActiveTab(R.id.navigation_dash);
-
-        onCreateSocket();
     }
 
     private void updateTabIcons(int itemId) { // not recommended but because of bad icon designs. it should use opacity instead of color
@@ -159,33 +157,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
             if (fragment != null) {
                 fragment.onBackPressed();
             }
-        }
-    }
-
-    public void onCreateSocket() {
-
-        try {
-            WebSocketFactory factory = new WebSocketFactory().setConnectionTimeout(Constants.SOCKET_TIMEOUT);
-            WebSocket ws = factory.createSocket(Constants.SOCKET_URI);
-
-            ws.addListener(new WebSocketAdapter() {
-                @Override
-                public void onConnected(WebSocket websocket, Map<String, List<String>> headers) throws Exception {
-                    super.onConnected(websocket, headers);
-                }
-
-                @Override
-                public void onTextMessage(WebSocket websocket, String text) throws Exception {
-                    super.onTextMessage(websocket, text);
-                    String a = text;
-                }
-            });
-
-            ws.connectAsynchronously();
-            ws.sendText("{\"id\": 1021, \"method\": \"price.subscribe\", \"params\": [\"URNCBTC\", \"URNCETH\", \"URNCUSD\", \"COINBTC\", \"COINETH\", \"COINUSD\" ]}");
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

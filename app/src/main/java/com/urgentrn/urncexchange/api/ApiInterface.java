@@ -1,6 +1,5 @@
 package com.urgentrn.urncexchange.api;
 
-import com.urgentrn.urncexchange.models.InviteUser;
 import com.urgentrn.urncexchange.models.request.BuyCoinRequest;
 import com.urgentrn.urncexchange.models.request.InviteUserRequest;
 import com.urgentrn.urncexchange.models.request.LoginRequest;
@@ -21,7 +20,6 @@ import com.urgentrn.urncexchange.models.response.MembershipResponse;
 import com.urgentrn.urncexchange.models.response.PurchaseStatusResponse;
 import com.urgentrn.urncexchange.models.response.SendHistoryResponse;
 
-import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

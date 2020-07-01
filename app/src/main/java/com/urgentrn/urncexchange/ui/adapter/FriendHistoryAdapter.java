@@ -29,7 +29,7 @@ public class FriendHistoryAdapter extends RecyclerView.Adapter<FriendHistoryHold
     public FriendHistoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.item_buy_history, parent, false);
+                .inflate(R.layout.item_friend_history, parent, false);
         return new FriendHistoryHolder(v);
     }
 
