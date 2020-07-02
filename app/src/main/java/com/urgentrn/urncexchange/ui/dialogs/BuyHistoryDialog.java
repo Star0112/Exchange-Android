@@ -66,9 +66,7 @@ public class BuyHistoryDialog extends BaseDialog implements ApiCallback {
         if(response instanceof BuyHistoryResponse) {
             final List<BuyHistory> data = ((BuyHistoryResponse)response).getData();
             if(data != null) {
-                for (BuyHistory buyHistory : data) {
-                    histories.add(buyHistory);
-                }
+                histories.addAll(data);
                 if(data.size() == 20) {
                     offset += limit;
                     setupDrawer(offset, limit);

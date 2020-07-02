@@ -2,6 +2,7 @@ package com.urgentrn.urncexchange.ui.fragments.order;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,6 +49,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
 
@@ -94,11 +96,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if(tabId.equals("tag1")) {
-                    isBuy = true;
-                } else {
-                    isBuy = false;
-                }
+                isBuy = tabId.equals("tag1");
                 setMyBalance();
             }
         });
@@ -156,9 +154,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     public void updateView(List<AssetBalance> data) {
         if(data != null) {
             assetBalanceData.clear();
-            for (AssetBalance assetBalance : data) {
-                assetBalanceData.add(assetBalance);
-            }
+            assetBalanceData.addAll(data);
         }
         setMyBalance();
     }
@@ -168,8 +164,16 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         try {
             if(object.getString("method").equals(method)) {
                 JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
-                bidAmount.setText(temp.getString("bid") + " X " + temp.getString("bid_price"));
-                askAmount.setText(temp.getString("ask") + " X " + temp.getString("ask_price"));
+                String bid = temp.getString("bid") + " X " + temp.getString("bid_price");
+                String ask = temp.getString("ask") + " X " + temp.getString("ask_price");
+
+                bidAmount.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        bidAmount.setText(bid);
+                        askAmount.setText(ask);
+                    }
+                });
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -334,7 +338,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                     symbolsName.add(marketInfo.getName());
                 }
             }
-            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbolsName);
+            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), R.layout.item_spinner, symbolsName);
             spinner.setAdapter(spinnerAdapter);
         } else if(response instanceof AssetResponse) {
             final List<AssetBalance> data = ((AssetResponse)response).getData();

@@ -122,9 +122,7 @@ public class InviteFragment extends BaseFragment implements ApiCallback {
         } else if(response instanceof FriendHistoryResponse) {
             final List<InviteUser> data = ((FriendHistoryResponse)response).getData();
             if(data != null) {
-                for(InviteUser inviteUser : data) {
-                    userList.add(inviteUser);
-                }
+                userList.addAll(data);
                 if(data.size() == 20) {
                     offset += limit;
                     setupDrawer(offset, limit);

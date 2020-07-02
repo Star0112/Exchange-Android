@@ -86,10 +86,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     public void updateView(List<AssetBalance> data) {
         if(data != null) {
             assetBalances.clear();
-            for (AssetBalance assetBalance : data) {
-                assetBalances.add(assetBalance);
-
-            }
+            assetBalances.addAll(data);
         }
         adapterAsset = new CoinDepositAdapter(getParentFragment(), pos -> assetBalances.get(pos));
         adapterAsset.setData(assetBalances);
@@ -109,9 +106,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         if(response instanceof DepositHistoryResponse) {
             final List<DepositHistory> data = ((DepositHistoryResponse) response).getData();
             if(data != null) {
-                for (DepositHistory depositHistory : data) {
-                    depositHistories.add(depositHistory);
-                }
+                depositHistories.addAll(data);
                 if(data.size() == 20) {
                     offset += limit;
                     setupDrawer(offset, limit);

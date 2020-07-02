@@ -127,9 +127,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     public void updateView(List<AssetBalance> data) {
         if(data != null) {
             assetBalanceData.clear();
-            for (AssetBalance assetBalance : data) {
-                assetBalanceData.add(assetBalance);
-            }
+            assetBalanceData.addAll(data);
         }
         adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos ->assetBalanceData.get(pos));
         adapterCoin.setData(assetBalanceData);

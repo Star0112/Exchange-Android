@@ -69,9 +69,7 @@ public class SendHistoryDialog extends BaseDialog implements ApiCallback {
         if(response instanceof SendHistoryResponse) {
             final List<SendHistory> data = ((SendHistoryResponse)response).getData();
             if(data != null) {
-                for (SendHistory sendHistory : data) {
-                    histories.add(sendHistory);
-                }
+                histories.addAll(data);
                 if(data.size() != 0) {
                     offset += limit;
                     setupDrawer(offset, limit);
