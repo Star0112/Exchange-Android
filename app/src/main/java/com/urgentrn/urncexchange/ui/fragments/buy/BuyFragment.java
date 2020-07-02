@@ -69,12 +69,13 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     private CoinBalanceAdapter adapterCoin;
     private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
     private List<MarketInfo> marketInfoData = new ArrayList<>();
-
     private MarketInfo selectedAsset;
+    private int selectedNum = 0;
 
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_buy);
+        buyAmount.setText("1");
         btnSend = toolBar.getMenu()
                 .add(R.string.title_send)
                 .setIcon(R.mipmap.ic_send_inactive)
@@ -83,6 +84,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedNum = position;
                 selectedAsset = marketInfoData.get(position);
                 buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
             }
@@ -112,6 +114,19 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateView(List<AssetBalance> data) {
+        if(data != null) {
+            assetBalanceData.clear();
+            for (AssetBalance assetBalance : data) {
+                assetBalanceData.add(assetBalance);
+            }
+        }
+        adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos ->assetBalanceData.get(pos));
+        adapterCoin.setData(assetBalanceData);
+        assetBalance.setAdapter(adapterCoin);
+    }
+
     private void getAssetBalance() {
         ApiClient.getInterface()
                 .getAssetBalance()
@@ -136,6 +151,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         } else if (Integer.parseInt(amount)<=0) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_invalid));
+        } else if(Double.parseDouble(amount) * selectedAsset.getPrice() > Double.parseDouble(assetBalanceData.get(selectedNum).getAvailable()) ) {
+            buyAmount.requestFocus();
+            buyAmount.setError(getString(R.string.error_amount_limited));
         } else {
             ApiClient.getInterface()
                     .buyCoin(new BuyCoinRequest(this.selectedAsset.getPair(), this.selectedAsset.getId(), Integer.parseInt(amount)))
@@ -150,19 +168,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                         }
                     }));
         }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(List<AssetBalance> data) {
-        if(data != null) {
-            assetBalanceData.clear();
-            for (AssetBalance assetBalance : data) {
-                assetBalanceData.add(assetBalance);
-            }
-        }
-        adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos ->assetBalanceData.get(pos));
-        adapterCoin.setData(assetBalanceData);
-        assetBalance.setAdapter(adapterCoin);
     }
 
     @Override

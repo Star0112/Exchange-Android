@@ -33,6 +33,7 @@
     <string name="error_email_empty">Email is empty</string>
     <string name="error_email_invalid">Email is invalid</string>
     <string name="error_amount_invalid">Amount is invalid</string>
+    <string name="error_amount_limited">Your amount is more than your balance</string>
     <string name="error_name_invalid">User name is invalid</string>
     <string name="error_email_not_match">Email doesn\'t match</string>
     <string name="error_username_empty">Username is empty</string>

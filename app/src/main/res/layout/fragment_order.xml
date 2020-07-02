@@ -37,6 +37,7 @@
                     android:text="@string/balance"
                     style="@style/Default.White" />
                 <TextView
+                    android:id="@+id/myBalance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.00"
@@ -146,12 +147,9 @@
                                     android:layout_height="match_parent"
                                     android:text="@string/total_price"
                                     style="@style/Input.Blue.Description"/>
-                                <EditText
+                                <TextView
                                     android:id="@+id/buyTotalPrice"
                                     android:layout_width="match_parent"
-                                    android:imeActionLabel="@string/button_next"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="numberDecimal"
                                     android:hint="@string/price"
                                     android:textAlignment="viewEnd"
                                     android:layout_marginHorizontal="@dimen/default_margin"
@@ -204,12 +202,9 @@
                                     android:layout_height="match_parent"
                                     android:text="@string/total_price"
                                     style="@style/Input.Blue.Description"/>
-                                <EditText
+                                <TextView
                                     android:id="@+id/sellTotalPrice"
                                     android:layout_width="match_parent"
-                                    android:imeActionLabel="@string/button_next"
-                                    android:imeOptions="actionNext"
-                                    android:inputType="numberDecimal"
                                     android:hint="@string/price"
                                     android:textAlignment="viewEnd"
                                     android:layout_marginHorizontal="@dimen/default_margin"

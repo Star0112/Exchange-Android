@@ -21,7 +21,6 @@ import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
-import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
@@ -30,22 +29,24 @@ import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.utils.Constants;
 
+import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.EditorAction;
+import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.intellij.lang.annotations.JdkConstants;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
 
 @EFragment(R.layout.fragment_order)
 public class OrderFragment extends BaseFragment implements ApiCallback {
@@ -54,7 +55,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     TextView newHeader;
 
     @ViewById
-    TextView bidAmount, askAmount;
+    TextView bidAmount, askAmount, buyTotalPrice, sellTotalPrice, myBalance;
 
     @ViewById(R.id.selectCoin)
     Spinner spinner;
@@ -65,15 +66,18 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     @ViewById
     TabHost tabHost;
 
+    private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
     private List<String> symbolsName = new ArrayList<>();
     private List<MarketInfo> marketInfos = new ArrayList<>();
     private int selectedNumber = 0;
-    WebSocketFactory factory;
-    WebSocket ws;
+    private boolean isBuy = true;
+    private WebSocketFactory factory;
+    private WebSocket ws;
 
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_order);
+
         tabHost.setup();
         TabHost.TabSpec spec = tabHost.newTabSpec("tag1");
         spec.setContent(R.id.tab1);
@@ -83,6 +87,17 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         spec.setContent(R.id.tab2);
         spec.setIndicator("SELL");
         tabHost.addTab(spec);
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if(tabId.equals("tag1")) {
+                    isBuy = true;
+                } else {
+                    isBuy = false;
+                }
+                setMyBalance();
+            }
+        });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -90,6 +105,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                 selectedNumber = position;
                 buyPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
                 sellPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
+                setMyBalance();
                 ws.sendText("{\"id\": 1022, \"method\": \"depth_price.subscribe\", \"params\": [\"" + symbolsName.get(selectedNumber) + "\"]}");
             }
 
@@ -103,6 +119,20 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         setupDrawer();
     }
 
+    private void setMyBalance() {
+        if(isBuy) {
+            for (AssetBalance assetBalance : assetBalanceData) {
+                if(marketInfos.get(selectedNumber).getBase().equals(assetBalance.getCoin()))
+                    myBalance.setText(formattedNumber(Double.parseDouble(assetBalance.getAvailable())));
+            }
+        } else {
+            for (AssetBalance assetBalance : assetBalanceData) {
+                if(marketInfos.get(selectedNumber).getPair().equals(assetBalance.getCoin()))
+                    myBalance.setText(formattedNumber(Double.parseDouble(assetBalance.getAvailable())));
+            }
+        }
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -113,6 +143,16 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateView(List<AssetBalance> data) {
+        if(data != null) {
+            assetBalanceData.clear();
+            for (AssetBalance assetBalance : data) {
+                assetBalanceData.add(assetBalance);
+            }
+        }
     }
 
     private void initSocket() {
@@ -129,7 +169,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
                 @Override
                 public void onTextMessage(WebSocket websocket, String text) throws Exception {
-                    onReceiveMessage(text);
+
                 }
 
                 @Override
@@ -142,30 +182,52 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         }
     }
 
-    private void onReceiveMessage(String message) throws JSONException {
-        JSONObject object = new JSONObject(message);
-        String method = "depth_price.update";
-        if(object.getString("method").equals(method)) {
-            JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
-//            bidAmount.setText(temp.getString("bid") + " X " + temp.getString("bid_price"));
-            askAmount.setText(temp.getString("ask") + " X " + temp.getString("ask_price"));
-        }
-    }
+//    private void onReceiveMessage(String message) throws JSONException {
+//        JSONObject object = new JSONObject(message);
+//        String method = "depth_price.update";
+//        if(object.getString("method").equals(method)) {
+//            JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
+////            bidAmount.setText(temp.getString("bid") + " X " + temp.getString("bid_price"));
+////            askAmount.setText(temp.getString("ask") + " X " + temp.getString("ask_price"));
+//        }
+//    }
 
-    @Override
-    public void updateView() {
-
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(List<AssetBalance> data) {
-        List<AssetBalance> a = data;
-    }
 
     private void setupDrawer() {
         ApiClient.getInterface()
                 .getMarketInfo()
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
+    }
+
+    void aa(){
+
+    }
+    @TextChange(R.id.buyAmount)
+    void onBuyChange1(CharSequence s) {
+        setBuyTotalPrice();
+    }
+    @TextChange(R.id.buyPrice)
+    void onBuyChange2(CharSequence s) {
+        setBuyTotalPrice();
+    }
+    private void setBuyTotalPrice() {
+        double price = !buyPrice.getText().toString().isEmpty()? Double.parseDouble(buyPrice.getText().toString()) : 0;
+        int amount = !buyAmount.getText().toString().isEmpty()? Integer.parseInt(buyAmount.getText().toString()) : 0;
+        buyTotalPrice.setText(formattedNumber(price * amount));
+    }
+
+    @TextChange(R.id.sellAmount)
+    void onSellChange1(CharSequence s) {
+        setSellTotalPrice();
+    }
+    @TextChange(R.id.sellPrice)
+    void onSellChange2(CharSequence s) {
+        setSellTotalPrice();
+    }
+    private void setSellTotalPrice() {
+        double price = !sellPrice.getText().toString().isEmpty()? Double.parseDouble(sellPrice.getText().toString()) : 0;
+        int amount = !sellAmount.getText().toString().isEmpty()? Integer.parseInt(sellAmount.getText().toString()) : 0;
+        sellTotalPrice.setText(formattedNumber(price * amount));
     }
 
     @EditorAction(R.id.buyAmount)

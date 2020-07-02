@@ -68,7 +68,8 @@ public abstract class BaseDialog extends BottomSheetDialogFragment {
     protected void showProgressBar() {
         if (getView() != null) {
             final View view = getView().findViewById(R.id.progressBar);
-            if (view != null) view.setVisibility(View.VISIBLE);
+            if (view != null)
+                view.setVisibility(View.VISIBLE);
         }
     }
 
