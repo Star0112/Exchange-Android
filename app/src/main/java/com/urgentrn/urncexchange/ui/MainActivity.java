@@ -18,7 +18,13 @@ import com.neovisionaries.ws.client.WebSocketListener;
 import com.neovisionaries.ws.client.WebSocketState;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
+import com.urgentrn.urncexchange.api.ApiClient;
+import com.urgentrn.urncexchange.api.AppCallback;
+import com.urgentrn.urncexchange.models.AppData;
+import com.urgentrn.urncexchange.models.AssetBalance;
+import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.ui.fragments.buy.BuyContainerFragment_;
@@ -98,14 +104,8 @@ public class MainActivity extends BaseActivity implements ApiCallback {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setActiveTab(R.id.navigation_dash);
-    }
 
-    private void updateTabIcons(int itemId) { // not recommended but because of bad icon designs. it should use opacity instead of color
-        navigation.getMenu().findItem(R.id.navigation_dash).setIcon(itemId == R.id.navigation_dash ? R.mipmap.ic_tab_dashboard : R.mipmap.ic_tab_dashboard_inactive);
-        navigation.getMenu().findItem(R.id.navigation_deposit).setIcon(itemId == R.id.navigation_deposit ? R.mipmap.ic_tab_deposit : R.mipmap.ic_tab_deposit_inactive);
-        navigation.getMenu().findItem(R.id.navigation_buy).setIcon(itemId == R.id.navigation_buy ? R.mipmap.ic_tab_buy : R.mipmap.ic_tab_buy_inactive);
-        navigation.getMenu().findItem(R.id.navigation_order).setIcon(itemId == R.id.navigation_order ? R.mipmap.ic_tab_order : R.mipmap.ic_tab_order_inactive);
-        navigation.getMenu().findItem(R.id.navigation_setting).setIcon(itemId == R.id.navigation_setting ? R.mipmap.ic_tab_setting : R.mipmap.ic_tab_setting_inactive);
+        getAssetBalance();
     }
 
     @Override
@@ -116,17 +116,27 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     @Override
     protected void onStop() {
         super.onStop();
-
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
         setIntent(intent);
-
     }
 
+    private void getAssetBalance() {
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<AssetResponse>(this, this));
+    }
+
+    private void updateTabIcons(int itemId) { // not recommended but because of bad icon designs. it should use opacity instead of color
+        navigation.getMenu().findItem(R.id.navigation_dash).setIcon(itemId == R.id.navigation_dash ? R.mipmap.ic_tab_dashboard : R.mipmap.ic_tab_dashboard_inactive);
+        navigation.getMenu().findItem(R.id.navigation_deposit).setIcon(itemId == R.id.navigation_deposit ? R.mipmap.ic_tab_deposit : R.mipmap.ic_tab_deposit_inactive);
+        navigation.getMenu().findItem(R.id.navigation_buy).setIcon(itemId == R.id.navigation_buy ? R.mipmap.ic_tab_buy : R.mipmap.ic_tab_buy_inactive);
+        navigation.getMenu().findItem(R.id.navigation_order).setIcon(itemId == R.id.navigation_order ? R.mipmap.ic_tab_order : R.mipmap.ic_tab_order_inactive);
+        navigation.getMenu().findItem(R.id.navigation_setting).setIcon(itemId == R.id.navigation_setting ? R.mipmap.ic_tab_setting : R.mipmap.ic_tab_setting_inactive);
+    }
 
     public boolean isActiveFragment(BaseFragment fragment) {
         return active == fragment;
@@ -137,10 +147,12 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
     }
 
-
-
     @Override
     public void onResponse(BaseResponse response) {
+        if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
+        }
     }
 
     @Override

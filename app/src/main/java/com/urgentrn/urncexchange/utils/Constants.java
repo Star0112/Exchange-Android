@@ -2,7 +2,7 @@ package com.urgentrn.urncexchange.utils;
 
 public class Constants {
 
-    public static String API_URL = "http://192.168.1.117:3000";
+    public static String API_URL = "http://192.168.1.166:3000";
     public static String SOCKET_URI = "wss://urnptesten.urnbe.com/";
     public static final int CONNECT_TIMEOUT = 90;
 

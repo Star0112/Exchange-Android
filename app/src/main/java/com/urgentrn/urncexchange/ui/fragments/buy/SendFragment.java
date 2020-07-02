@@ -93,7 +93,7 @@ public class SendFragment extends BaseFragment implements ApiCallback {
     private void getAssetBalance() {
         ApiClient.getInterface()
                 .getAssetBalance()
-                .enqueue(new AppCallback<AssetResponse>(this));
+                .enqueue(new AppCallback<AssetResponse>(getContext(),this));
     }
 
     @EditorAction(R.id.sendAmount)

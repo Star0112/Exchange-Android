@@ -54,6 +54,7 @@ public class InviteFragment extends BaseFragment implements ApiCallback {
         setToolBar(true);
         friendList.setHasFixedSize(true);
         friendList.setLayoutManager(new LinearLayoutManager((getContext())));
+        userList.clear();
         setupDrawer(offset, limit);
     }
 
@@ -70,7 +71,6 @@ public class InviteFragment extends BaseFragment implements ApiCallback {
     }
 
     private void setupDrawer(int offset, int limit) {
-        userList.clear();
         ApiClient.getInterface()
                 .getReferral(offset, limit)
                 .enqueue(new AppCallback<FriendHistoryResponse>(this));

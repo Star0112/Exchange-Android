@@ -182,7 +182,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     public void onResponse(BaseResponse response) {
         if(response instanceof MarketInfoResponse) {
             final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
-            AppData.getInstance().setMarketInfoData(data);
             if(data != null) {
                 for (MarketInfo marketInfo : data) {
                     marketInfoData.add(marketInfo);

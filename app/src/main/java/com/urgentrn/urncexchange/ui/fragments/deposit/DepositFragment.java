@@ -43,6 +43,9 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     @ViewById
     RecyclerView recyclerDepositCoins, depositHistory;
 
+    private int limit = 20;
+    private int offset = 0;
+
     private CoinDepositAdapter adapterAsset;
     private DepositHistoryAdapter adapterTransaction;
 
@@ -58,8 +61,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         depositHistory.setHasFixedSize(true);
         depositHistory.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        setupDrawer();
-
+        setupDrawer(offset, limit);
     }
 
     @Override
@@ -74,9 +76,9 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
-    private void setupDrawer() {
+    private void setupDrawer(int offset, int limit) {
         ApiClient.getInterface()
-                .getDepositHistory(0,30)
+                .getDepositHistory(offset, limit)
                 .enqueue(new AppCallback<DepositHistoryResponse>(this));
     }
 
@@ -110,9 +112,15 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
                 for (DepositHistory depositHistory : data) {
                     depositHistories.add(depositHistory);
                 }
+                if(data.size() == 20) {
+                    offset += limit;
+                    setupDrawer(offset, limit);
+                }
             }
-            adapterTransaction = new DepositHistoryAdapter(depositHistories);
-            depositHistory.setAdapter(adapterTransaction);
+            if(offset == 0 || data.size() < 20) {
+                adapterTransaction = new DepositHistoryAdapter(depositHistories);
+                depositHistory.setAdapter(adapterTransaction);
+            }
         }
     }
 
