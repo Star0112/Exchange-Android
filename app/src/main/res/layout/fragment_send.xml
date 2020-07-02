@@ -45,6 +45,7 @@
                 <EditText
                     android:id="@+id/sendAmount"
                     android:layout_width="match_parent"
+                    android:maxLength="10"
                     android:imeActionLabel="@string/button_go"
                     android:imeOptions="actionGo"
                     android:hint="@string/amount"

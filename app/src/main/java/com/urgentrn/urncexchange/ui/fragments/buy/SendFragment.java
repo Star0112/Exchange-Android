@@ -116,6 +116,9 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         } else if(Integer.parseInt(amount)<=0) {
             sendAmount.requestFocus();
             sendAmount.setError(getString(R.string.error_amount_invalid));
+        } else if(Integer.parseInt(amount) > Double.parseDouble(selectedAsset.getAvailable())) {
+            sendAmount.requestFocus();
+            sendAmount.setError(getString(R.string.error_amount_limited));
         } else {
             ApiClient.getInterface()
                     .sendByEmail(new SendAssetRequest(selectedAsset.getAssetId(), Integer.parseInt(amount), emails))
