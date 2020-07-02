@@ -46,6 +46,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
+
 @EFragment(R.layout.fragment_buy)
 public class BuyFragment extends BaseFragment implements ApiCallback {
     @ViewById(R.id.toolBar)
@@ -70,6 +72,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
     private List<MarketInfo> marketInfoData = new ArrayList<>();
     private MarketInfo selectedAsset;
+    private double myBalanceData;
     private int selectedNum = 0;
 
     @AfterViews
@@ -87,6 +90,12 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                 selectedNum = position;
                 selectedAsset = marketInfoData.get(position);
                 buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
+                for (AssetBalance assetBalance : assetBalanceData) {
+                    if(marketInfoData.get(selectedNum).getBase().equals(assetBalance.getCoin())) {
+                        myBalanceData = Double.parseDouble(assetBalance.getAvailable());
+                    }
+                }
+
             }
 
             @Override
@@ -151,7 +160,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         } else if (Integer.parseInt(amount)<=0) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_invalid));
-        } else if(Double.parseDouble(amount) * selectedAsset.getPrice() > Double.parseDouble(assetBalanceData.get(selectedNum).getAvailable()) ) {
+        } else if(Double.parseDouble(amount) * selectedAsset.getPrice() > myBalanceData ) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_limited));
         } else {

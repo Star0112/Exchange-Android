@@ -71,10 +71,10 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
     private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
     private List<String> symbolsName = new ArrayList<>();
-    private List<MarketInfo> marketInfos = new ArrayList<>();
+    private List<MarketInfo> marketInfoData = new ArrayList<>();
     private int selectedNumber = 0;
     private boolean isBuy = true;
-    private double mybalanceData = 0;
+    private double myBalanceData = 0;
     private WebSocketFactory factory;
     private WebSocket ws;
 
@@ -107,8 +107,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedNumber = position;
-                buyPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
-                sellPrice.setText(String.valueOf(marketInfos.get(selectedNumber).getPrice()));
+                buyPrice.setText(String.valueOf(marketInfoData.get(selectedNumber).getPrice()));
+                sellPrice.setText(String.valueOf(marketInfoData.get(selectedNumber).getPrice()));
                 setMyBalance();
                 ws.sendText("{\"id\": 1022, \"method\": \"depth_price.subscribe\", \"params\": [\"" + symbolsName.get(selectedNumber) + "\"]}");
             }
@@ -125,16 +125,16 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     private void setMyBalance() {
         if(isBuy) {
             for (AssetBalance assetBalance : assetBalanceData) {
-                if(marketInfos.get(selectedNumber).getBase().equals(assetBalance.getCoin())) {
-                    mybalanceData = Double.parseDouble(assetBalance.getAvailable());
-                    myBalance.setText(formattedNumber(mybalanceData));
+                if(marketInfoData.get(selectedNumber).getBase().equals(assetBalance.getCoin())) {
+                    myBalanceData = Double.parseDouble(assetBalance.getAvailable());
+                    myBalance.setText(formattedNumber(myBalanceData));
                 }
             }
         } else {
             for (AssetBalance assetBalance : assetBalanceData) {
-                if(marketInfos.get(selectedNumber).getPair().equals(assetBalance.getCoin())) {
-                    mybalanceData = Double.parseDouble(assetBalance.getAvailable());
-                    myBalance.setText(formattedNumber(mybalanceData));
+                if(marketInfoData.get(selectedNumber).getPair().equals(assetBalance.getCoin())) {
+                    myBalanceData = Double.parseDouble(assetBalance.getAvailable());
+                    myBalance.setText(formattedNumber(myBalanceData));
                 }
             }
         }
@@ -160,6 +160,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                 assetBalanceData.add(assetBalance);
             }
         }
+        setMyBalance();
     }
 
     private void updateAskBid(JSONObject object) {
@@ -263,7 +264,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         } else if (Float.parseFloat(price) <= 0) {
             buyPrice.requestFocus();
             buyPrice.setError(getString(R.string.error_amount_invalid));
-        } else if(Double.parseDouble(amount) * Double.parseDouble(price) > mybalanceData) {
+        } else if(Double.parseDouble(amount) * Double.parseDouble(price) > myBalanceData) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_limited));
         } else
@@ -290,7 +291,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         } else if (Float.parseFloat(price) <= 0) {
             sellPrice.requestFocus();
             sellPrice.setError(getString(R.string.error_amount_invalid));
-        } else if(Double.parseDouble(amount) > mybalanceData) {
+        } else if(Double.parseDouble(amount) > myBalanceData) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_limited));
         } else {
@@ -329,7 +330,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             AppData.getInstance().setMarketInfoData(data);
             if(data != null) {
                 for (MarketInfo marketInfo : data) {
-                    marketInfos.add(marketInfo);
+                    marketInfoData.add(marketInfo);
                     symbolsName.add(marketInfo.getName());
                 }
             }
