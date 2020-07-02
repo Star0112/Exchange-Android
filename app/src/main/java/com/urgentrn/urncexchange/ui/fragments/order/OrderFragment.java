@@ -23,6 +23,7 @@ import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
+import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
@@ -40,6 +41,8 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.intellij.lang.annotations.JdkConstants;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -159,6 +162,19 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         }
     }
 
+    private void updateAskBid(JSONObject object) {
+        String method = "depth_price.update";
+        try {
+            if(object.getString("method").equals(method)) {
+                JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
+                bidAmount.setText(temp.getString("bid") + " X " + temp.getString("bid_price"));
+                askAmount.setText(temp.getString("ask") + " X " + temp.getString("ask_price"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void initSocket() {
         try {
             factory = new WebSocketFactory().setConnectionTimeout(Constants.SOCKET_TIMEOUT);
@@ -173,7 +189,10 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
 
                 @Override
                 public void onTextMessage(WebSocket websocket, String text) throws Exception {
-
+                    JSONObject object = new JSONObject(text);
+                    if(!object.getString("method").isEmpty()) {
+                        updateAskBid(object);
+                    }
                 }
 
                 @Override
@@ -186,21 +205,16 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
         }
     }
 
-//    private void onReceiveMessage(String message) throws JSONException {
-//        JSONObject object = new JSONObject(message);
-//        String method = "depth_price.update";
-//        if(object.getString("method").equals(method)) {
-//            JSONObject temp = new JSONObject(object.getJSONArray("params").get(2).toString());
-////            bidAmount.setText(temp.getString("bid") + " X " + temp.getString("bid_price"));
-////            askAmount.setText(temp.getString("ask") + " X " + temp.getString("ask_price"));
-//        }
-//    }
-
-
     private void setupDrawer() {
         ApiClient.getInterface()
                 .getMarketInfo()
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
+    }
+
+    private void getAssetBalance() {
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<AssetResponse>(this));
     }
 
     @TextChange(R.id.buyAmount)
@@ -290,6 +304,7 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<BaseResponse>( getContext(), new ApiCallback() {
                     @Override
                     public void onResponse(BaseResponse response) {
+                        getAssetBalance();
                         ((BaseActivity)getActivity()).showAlert(R.string.order_success);
                     }
 
@@ -320,6 +335,9 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             }
             final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbolsName);
             spinner.setAdapter(spinnerAdapter);
+        } else if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
         }
     }
 

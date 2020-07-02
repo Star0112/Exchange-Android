@@ -1,6 +1,7 @@
 package com.urgentrn.urncexchange.models;
 
 import org.greenrobot.eventbus.EventBus;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
