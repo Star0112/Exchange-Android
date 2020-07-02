@@ -98,7 +98,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
 
         spinnerDrawer();
-        balanceDrawer();
     }
 
     @Override
@@ -113,8 +112,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
-    private void balanceDrawer() {
-        assetBalanceData.clear();
+    private void getAssetBalance() {
         ApiClient.getInterface()
                 .getAssetBalance()
                 .enqueue(new AppCallback<AssetResponse>(this));
@@ -128,20 +126,10 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
     }
 
-    public void updateCoin(AssetBalance coin){
-
-    }
-
-    @Override
-    public void updateView() {
-
-    }
-
     @EditorAction(R.id.buyAmount)
     @Click(R.id.btnBuy)
     void onBuy() {
         final String amount = buyAmount.getText().toString();
-
         if (amount.isEmpty()) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_empty));
@@ -154,10 +142,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
-                            balanceDrawer();
+                            getAssetBalance();
                             ((BaseActivity)getActivity()).showAlert(R.string.buy_success);
                         }
-
                         @Override
                         public void onFailure(String message) {
                         }
@@ -166,8 +153,16 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(HashMap<String, ExchangeData> data) {
-        return;
+    public void updateView(List<AssetBalance> data) {
+        if(data != null) {
+            assetBalanceData.clear();
+            for (AssetBalance assetBalance : data) {
+                assetBalanceData.add(assetBalance);
+            }
+        }
+        adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos ->assetBalanceData.get(pos));
+        adapterCoin.setData(assetBalanceData);
+        assetBalance.setAdapter(adapterCoin);
     }
 
     @Override
@@ -199,14 +194,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         } else if(response instanceof AssetResponse) {
             final List<AssetBalance> data = ((AssetResponse)response).getData();
             AppData.getInstance().setAssetBalanceData(data);
-            if(data != null) {
-                for (AssetBalance assetBalance : data) {
-                    assetBalanceData.add(assetBalance);
-                }
-            }
-            adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos -> updateCoin(assetBalanceData.get(pos)));
-            adapterCoin.setData(assetBalanceData);
-            assetBalance.setAdapter(adapterCoin);
         }
     }
 

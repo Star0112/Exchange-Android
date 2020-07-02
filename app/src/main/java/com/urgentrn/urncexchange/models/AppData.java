@@ -1,5 +1,7 @@
 package com.urgentrn.urncexchange.models;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +24,7 @@ public class AppData {
     // For URNC
     public void setAssetBalanceData(List<AssetBalance> assetBalance) {
         this.assetBalance = assetBalance;
+        EventBus.getDefault().post(assetBalance);
     }
 
     public void setMarketInfoData(List<MarketInfo> marketInfo) {

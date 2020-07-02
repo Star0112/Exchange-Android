@@ -20,6 +20,7 @@ import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
+import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.request.OrderRequest;
@@ -157,8 +158,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(HashMap<String, ExchangeData> data) {
-
+    public void updateView(List<AssetBalance> data) {
+        List<AssetBalance> a = data;
     }
 
     private void setupDrawer() {

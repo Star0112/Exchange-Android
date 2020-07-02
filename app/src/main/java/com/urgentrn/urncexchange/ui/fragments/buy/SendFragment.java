@@ -63,7 +63,6 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         setToolBar(true);
         assetBalance.setHasFixedSize(true);
         assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
-        setupDrawer();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -75,14 +74,8 @@ public class SendFragment extends BaseFragment implements ApiCallback {
             }
 
         });
-    }
 
-    private void setupDrawer() {
-        assetBalanceData.clear();
-        assetsName.clear();
-        ApiClient.getInterface()
-                .getAssetBalance()
-                .enqueue(new AppCallback<AssetResponse>(this));
+        getAssetBalance();
     }
 
     @Override
@@ -97,47 +90,10 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
-    @Override
-    public void updateView() {
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(HashMap<String, ExchangeData> data) {
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK && data != null) {}
-        else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    @Override
-    public void onResponse(BaseResponse response) {
-        if(response instanceof AssetResponse) {
-            final List<AssetBalance> data = ((AssetResponse)response).getData();
-            AppData.getInstance().setAssetBalanceData(data);
-            if(data != null) {
-                for (AssetBalance assetBalance : data) {
-                    assetBalanceData.add(assetBalance);
-                    assetsName.add(assetBalance.getCoin());
-                }
-            }
-            adapterCoin = new SendCoinBalanceAdapter(getChildFragmentManager(), pos -> assetBalanceData.get(pos));
-            adapterCoin.setData(assetBalanceData);
-            assetBalance.setAdapter(adapterCoin);
-
-            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, assetsName);
-            spinner.setAdapter(spinnerAdapter);
-        }
-
-    }
-
-    @Override
-    public void onFailure(String message) {
-
+    private void getAssetBalance() {
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<AssetResponse>(this));
     }
 
     @EditorAction(R.id.sendAmount)
@@ -166,15 +122,53 @@ public class SendFragment extends BaseFragment implements ApiCallback {
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
-                            setupDrawer();
+                            getAssetBalance();
                             ((BaseActivity)getActivity()).showAlert(R.string.send_success);
                         }
-
                         @Override
                         public void onFailure(String message) {
 
                         }
                     }));
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateView(List<AssetBalance> data) {
+        if(data != null) {
+            assetBalanceData.clear();
+            assetsName.clear();
+            for (AssetBalance assetBalance : data) {
+                assetBalanceData.add(assetBalance);
+                assetsName.add(assetBalance.getCoin());
+            }
+        }
+        adapterCoin = new SendCoinBalanceAdapter(getChildFragmentManager(), pos -> assetBalanceData.get(pos));
+        adapterCoin.setData(assetBalanceData);
+        assetBalance.setAdapter(adapterCoin);
+
+        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, assetsName);
+        spinner.setAdapter(spinnerAdapter);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && data != null) {}
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
+    public void onResponse(BaseResponse response) {
+        if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
+        }
+    }
+
+    @Override
+    public void onFailure(String message) {
+
     }
 }
