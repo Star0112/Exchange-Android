@@ -103,13 +103,10 @@ dependencies {
 
     implementation project(':cameraview')
     implementation project(':ccp')
-    implementation project(':circleimageview')
     implementation project(':fingerprint')
     implementation project(':keyboardvisibilityevent')
-//    implementation project(':marqetakit')
     implementation project(':numpad')
     implementation project(':otpview')
-    implementation project(':ultimaterecyclerview')
 }
 
 apply plugin: 'com.google.gms.google-services'

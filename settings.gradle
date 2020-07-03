@@ -1,1 +1,1 @@
-include ':app', ':cameraview', ':ultimaterecyclerview', ':numpad', ':circleimageview', ':fingerprint', ':otpview', ':ccp', ':keyboardvisibilityevent'
+include ':app', ':cameraview', ':numpad', ':fingerprint', ':otpview', ':ccp', ':keyboardvisibilityevent'
