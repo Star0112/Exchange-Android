@@ -1,11 +1,11 @@
-# Swipe Wallet Android Application
+# URNC Android Application
 
-This is a Swipe Wallet Android App README to guide how to generate signed apk.
+This is a URNC Android App README to guide how to generate signed apk.
 
 ## Installation
 Clone this repository and import into **Android Studio**
 ```bash
-git clone https://github.com/SwipeWallet/swipe-wallet-android
+git clone
 ```
 
 ## Prerequisites
@@ -17,8 +17,6 @@ Android Studio 3.4.2 or newer
 - `buildToolsVersion: 28.0.3`
 
 ## Build variants
-Use the Android Studio *Build Variants* button to choose between **development** (sandbox) and **production** flavors combined with debug and release build types
-
 
 ## Generating signed APK
 From Android Studio:
