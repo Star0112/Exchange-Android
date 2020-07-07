@@ -35,7 +35,7 @@ public class EditableItemView extends LinearLayout implements View.OnClickListen
         mDeleteText = attributes.getString(R.styleable.EditableItemView_textDelete);
         mHintText = attributes.getString(R.styleable.EditableItemView_textHint);
         mnAddIcon = attributes.getResourceId(R.styleable.EditableItemView_iconAdd, R.mipmap.ic_add_green);
-        mDeleteIcon = attributes.getResourceId(R.styleable.EditableItemView_iconDelete, R.mipmap.ic_delete);
+        mDeleteIcon = attributes.getResourceId(R.styleable.EditableItemView_iconDelete, R.mipmap.ic_launcher);
 
         init();
     }

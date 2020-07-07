@@ -12,8 +12,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center">
             <TextView
                 style="@style/TitleText.White"
                 android:text="@string/add_card"/>
@@ -50,29 +50,29 @@
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="@string/price"
-                        style="@style/Input.White.Description"/>
+                        style="@style/Input.White.Horizontal.Description"/>
                     <EditText
                         android:id="@+id/price"
                         android:layout_width="0dp"
                         android:layout_weight="2"
                         android:inputType="numberDecimal"
-                        style="@style/Input.White.Center"/>
+                        style="@style/Input.White.Horizontal.Center"/>
                 </LinearLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margin"
-                    android:layout_marginStart="@dimen/default_margin_2x"
-                    android:layout_marginEnd="@dimen/default_margin_2x"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@mipmap/bg_input">
 
                     <com.stripe.android.view.CardInputWidget
                         android:id="@+id/cardInputWidget"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/default_margin"
-                        android:layout_marginEnd="@dimen/default_margin"
+                        android:layout_marginStart="@dimen/default_padding"
+                        android:layout_marginEnd="@dimen/default_padding"
                         android:visibility="visible" />
                 </FrameLayout>
 

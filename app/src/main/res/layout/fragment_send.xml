@@ -12,56 +12,54 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center">
             <TextView
                 style="@style/TitleText.White"
                 android:text="@string/title_send"/>
         </androidx.appcompat.widget.Toolbar>
-        <ScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2">
-            <LinearLayout
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center">
+            <Spinner
+                android:id="@+id/selectCoin"
+                android:background="@drawable/button_dropdown"
+                android:layout_gravity="center_horizontal"
+                android:spinnerMode="dialog"
+                style="@style/SpinnerInput"/>
+
+            <EditText
+                android:id="@+id/sendEmail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <Spinner
-                    android:id="@+id/selectCoin"
-                    android:background="@drawable/button_dropdown"
-                    android:layout_gravity="center_horizontal"
-                    android:spinnerMode="dialog"
-                    style="@style/SpinnerInput"/>
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                android:layout_marginStart="@dimen/default_margin_2x"
+                style="@style/Input.White.Horizontal.Center"/>
 
-                <EditText
-                    android:id="@+id/sendEmail"
-                    android:layout_width="match_parent"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/email"
-                    android:layout_marginStart="@dimen/default_margin_2x"
-                    style="@style/Input.White.Center"/>
+            <EditText
+                android:id="@+id/sendAmount"
+                android:layout_width="match_parent"
+                android:maxLength="10"
+                android:imeActionLabel="@string/button_go"
+                android:imeOptions="actionGo"
+                android:hint="@string/amount"
+                android:inputType="number"
+                android:layout_marginStart="@dimen/default_margin_2x"
+                style="@style/Input.White.Horizontal.Center" />
 
-                <EditText
-                    android:id="@+id/sendAmount"
-                    android:layout_width="match_parent"
-                    android:maxLength="10"
-                    android:imeActionLabel="@string/button_go"
-                    android:imeOptions="actionGo"
-                    android:hint="@string/amount"
-                    android:inputType="number"
-                    android:layout_marginStart="@dimen/default_margin_2x"
-                    style="@style/Input.White.Center" />
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="@dimen/button_width"
+                android:layout_marginTop="@dimen/default_margin_small"
+                android:text="@string/title_send"
+                android:layout_height="@dimen/tab_height_small"
+                style="@style/DefaultButton.White"/>
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/btnSend"
-                    android:layout_width="@dimen/button_width"
-                    android:layout_marginTop="@dimen/default_margin"
-                    android:text="@string/title_send"
-                    android:layout_height="@dimen/tab_height_small"
-                    style="@style/DefaultButton.White"/>
-            </LinearLayout>
-        </ScrollView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

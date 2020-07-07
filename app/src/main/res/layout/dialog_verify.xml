@@ -30,7 +30,7 @@
             android:layout_width="@dimen/tab_with_icon_width"
             android:layout_height="@dimen/tab_with_icon_width"
             android:layout_marginTop="@dimen/default_margin_large"
-            android:src="@mipmap/user"/>
+            android:src="@mipmap/ic_launcher"/>
         <TextView
             android:id="@+id/txtSubtitle"
             android:layout_marginTop="@dimen/default_padding_small"

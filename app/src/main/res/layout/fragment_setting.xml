@@ -48,7 +48,7 @@
                                 <TextView
                                     style="@style/Text.Black"
                                     android:layout_marginStart="@dimen/default_margin_2x"
-                                    android:text="@string/user_profile" />
+                                    android:text="@string/account_setting" />
                             </LinearLayout>
 
                             <ImageView

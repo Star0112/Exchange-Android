@@ -194,22 +194,18 @@
     <string name="available_balance">Available</string>
     <string name="address">Address</string>
     <string name="address_copy">Copy</string>
+    <!-- Add card -->
+    <string name="price">Price</string>
     <string name="date">Date</string>
     <string name="pay">Pay</string>
-
     <string name="add_card">Add Card</string>
-    <string name="full_name">Full Name</string>
-    <string name="card_number">Card Number</string>
-    <string name="mm_yy">MM/YY</string>
-    <string name="cvv">CVV</string>
-    <string name="zipcode">Zip Code</string>
     <!-- Send -->
     <string name="title_send">Send</string>
     <string name="send_history">Send History</string>
     <string name="send_success">You have sent successfully.</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
-    <string name="price">Price</string>
+    <string name="price_fix">Price (fixed)</string>
     <string name="coin_balance">Coin Balance</string>
     <string name="buy_history">Buy History</string>
     <string name="amount">Amount</string>
@@ -220,28 +216,36 @@
     <string name="title_order">Order</string>
     <string name="balance">Balance</string>
     <string name="total_price">Total Price</string>
+
     <!-- Setting -->
     <string name="title_setting">Setting</string>
-    <!-- Profile -->
-    <string name="title_profile">Profile</string>
+    <!-- Account -->
+    <string name="account_setting">Account Setting</string>
     <string name="user_profile">User Profile</string>
+    <string name="save">Save</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="user_kyc">KYC</string>
+    <!-- Membership -->
     <string name="membership">Membership</string>
-    <string name="invite">Invite</string>
-    <string name="invite_description">Invite your friends to get rewards.</string>
-    <string name="invite_success">Invitation has been sent successfully.</string>
-    <string name="friend_email">Enter your friends email</string>
-    <string name="friend_list">Friends List</string>
     <string name="basic">BASIC</string>
     <string name="year">year</string>
     <string name="membership_description">It\'s possible to trade by purchasing.</string>
     <string name="purchase">Purchase</string>
     <string name="purchase_success">You have already purchased.</string>
     <string name="purchase_date">Your membership will be expired\n on&#160;</string>
-    <string name="message">Messages</string>
+    <!-- Invite -->
+    <string name="invite">Invite</string>
+    <string name="invite_description">Invite your friends to get rewards.</string>
+    <string name="invite_success">Invitation has been sent successfully.</string>
+    <string name="friend_email">Enter your friends email</string>
+    <string name="friend_list">Friends List</string>
+    <!-- Passcode -->
     <string name="passcode">Passcode</string>
+    <!-- Biometrics -->
     <string name="biometrics">Biometrics</string>
+
+    <string name="message">Messages</string>
     <string name="help">Help</string>
     <string name="live_chat">Live Chat</string>
     <string name="logout">Logout</string>
-    <string name="save">Save</string>
 </resources>

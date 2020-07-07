@@ -27,8 +27,8 @@ import java.util.HashMap;
 
 import me.aflak.libraries.dialog.FingerprintDialog;
 
-@EFragment(R.layout.fragment_setting)
-public class SettingFragment extends BaseFragment implements ApiCallback {
+@EFragment(R.layout.fragment_account)
+public class AccountFragment extends BaseFragment implements ApiCallback {
 
     @ViewById(R.id.newHeader)
     TextView newHeader;
@@ -67,7 +67,7 @@ public class SettingFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.userProfile)
     void onUserProfileClicked() {
-        ((BaseFragment)getParentFragment()).replaceFragment(new AccountFragment_(), false);
+        ((BaseFragment)getParentFragment()).replaceFragment(new UserProfileFragment_(), false);
     }
 
     @Click(R.id.membership)

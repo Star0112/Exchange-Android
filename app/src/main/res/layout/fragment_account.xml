@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/background">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+            <TextView
+                style="@style/TitleText.White"
+                android:text="@string/account_setting"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_dialog"
+            android:layout_marginTop="@dimen/default_margin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_margin_xlarge">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/userProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fab_size"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center|start"
+                            android:layout_height="match_parent"
+                            >
+
+                            <ImageView
+                                android:layout_width="@dimen/bank_icon_size"
+                                android:layout_height="@dimen/bank_icon_size"
+                                android:src="@mipmap/ic_user" />
+
+                            <TextView
+                                style="@style/Text.Black"
+                                android:layout_marginStart="@dimen/default_margin_2x"
+                                android:text="@string/user_profile" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/back_icon_size"
+                            android:layout_height="@dimen/back_icon_size"
+                            android:src="@mipmap/ic_next" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="@dimen/default_margin"
+                        android:background="@color/colorDivider" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/resetPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fab_size"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center|start"
+                            android:layout_height="match_parent"
+                            >
+
+                            <ImageView
+                                android:layout_width="@dimen/bank_icon_size"
+                                android:layout_height="@dimen/bank_icon_size"
+                                android:src="@mipmap/ic_member" />
+
+                            <TextView
+                                style="@style/Text.Black"
+                                android:layout_marginStart="@dimen/default_margin_2x"
+                                android:text="@string/reset_password" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/back_icon_size"
+                            android:layout_height="@dimen/back_icon_size"
+                            android:src="@mipmap/ic_next" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="@dimen/default_margin"
+                        android:background="@color/colorDivider" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/userKYC"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/fab_size"
+                        style="@style/SettingButton">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center|start"
+                            android:layout_height="match_parent"
+                            >
+
+                            <ImageView
+                                android:layout_width="@dimen/bank_icon_size"
+                                android:layout_height="@dimen/bank_icon_size"
+                                android:src="@mipmap/ic_invite" />
+
+                            <TextView
+                                style="@style/Text.Black"
+                                android:layout_marginStart="@dimen/default_margin_2x"
+                                android:text="@string/user_kyc" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/back_icon_size"
+                            android:layout_height="@dimen/back_icon_size"
+                            android:src="@mipmap/ic_next" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="@dimen/default_margin"
+                        android:background="@color/colorDivider" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
