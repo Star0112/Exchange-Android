@@ -381,19 +381,36 @@
 
     </style>
 
-    <style name="DefaultButton.Blue.Full">
-<!--        <item name="android:background">@drawable/bg_button_blue</item>-->
-<!--        <item name="android:textColor">@color/textColorWhite</item>-->
-<!--        <item name="android:layout_gravity">center</item>-->
-
-    </style>
-
     <style name="SpinnerInput" parent="DefaultInput">
         <item name="android:layout_height">@dimen/tab_height_small</item>
         <item name="android:layout_width">@dimen/button_width_2x</item>
         <item name="android:layout_marginBottom">@dimen/default_padding</item>
         <item name="android:textSize">@dimen/text_item_title</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+
+    <!-- KYC -->
+    <style name="TitleText.Dark">
+        <item name="android:textColor">@color/textColorWhite</item>
+    </style>
+
+    <style name="ActionButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/action_button_height</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:fontFamily">@font/codec_pro_bold</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/text_button</item>
+    </style>
+
+    <style name="ActionButtonDark" parent="ActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+        <item name="android:paddingStart">@dimen/default_padding_3x</item>
+        <item name="android:paddingEnd">@dimen/default_padding_3x</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
 </resources>

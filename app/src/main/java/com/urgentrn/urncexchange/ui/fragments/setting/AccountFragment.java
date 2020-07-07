@@ -7,6 +7,8 @@ import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.ui.kyc.DocUploadActivity;
+import com.urgentrn.urncexchange.ui.kyc.DocUploadActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -63,7 +65,8 @@ public class AccountFragment extends BaseFragment implements ApiCallback {
 
     @Click(R.id.userKYC)
     void onKycClicked() {
-
+        if (getUser() == null) return;
+        startActivity(new Intent(getContext(), DocUploadActivity_.class));
     }
 
     @Override

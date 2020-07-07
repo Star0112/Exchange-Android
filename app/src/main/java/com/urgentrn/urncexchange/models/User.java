@@ -15,6 +15,7 @@ public class User implements Serializable {
     private String firstname;
     private String lastname;
     private String country;
+    private int tierLevel;
     private Boolean notifyWithdrawals;
     private Boolean notifyDeposits;
     private Boolean notifyLimitOrderExecution;
@@ -50,6 +51,8 @@ public class User implements Serializable {
     public String getAccessToken() { return accessToken; }
 
     public String getSocketToken() { return socketToken; }
+
+    public int getTierLevel() { return tierLevel; }
 
     public User(String email, String username, String firstname, String lastname, String phonenumber, String country) {
         this.email = email;

@@ -142,6 +142,25 @@
     <string name="sign_out">Sign out</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="verify_information">Please verify your information</string>
+    <string name="verify_identity">Financial regulations require us to collect this\ninformation to verify your identity.</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="choose_birth">Choose date of birth</string>
+    <string name="select_type">Select type</string>
+    <string-array name="nin_types">
+        <item>Passport</item>
+        <item>Driver License</item>
+        <item>SSN</item>
+        <item>NIN</item>
+    </string-array>
+    <string name="ssn_nin">TIN #</string>
+    <string name="choose_expiry_date">Choose date of expiry</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="province">Province</string>
+    <string name="zipcode">Zip Code</string>
+    <string name="postal_code">Postal Code</string>
     <!-- Verify Dialog -->
     <string name="verify_account_description">To access this feature\nplease verify your account</string>
     <string name="verify_now">Verify Now</string>
@@ -248,4 +267,76 @@
     <string name="help">Help</string>
     <string name="live_chat">Live Chat</string>
     <string name="logout">Logout</string>
+
+    <!-- Account -->
+    <string name="account_verification">Account Verification</string>
+
+    <!-- KYC -->
+    <string name="doc_upload">Doc Upload</string>
+    <string name="step1">Level 1.</string>
+    <string name="step2">Level 2.</string>
+    <string name="document0">Financial regulations require us to collect personal information to verify your identify prior to opening on account at URNC. You will first be required to provide:</string>
+    <string name="document0_1">Full Name</string>
+    <string name="document0_2">Address</string>
+    <string name="document0_3">Date of Birth</string>
+    <string name="document0_4">Social Security Number</string>
+    <string name="document0_5">Identification Number</string>
+    <string name="document1_1">A clear and legible picture of the account holders picture ID. Acceptable forms of an ID’s include one of the following:</string>
+    <string name="document1_1_1">Passport</string>
+    <string name="document1_1_2">Government issued Identity Card</string>
+    <string name="document1_1_3">Driver License</string>
+    <string name="document2_">Please take a picture of your face that will match to Document. You must adhere to the following guidelines:</string>
+    <string name="document2_1">Your face must not be covered by anything</string>
+    <string name="document2_2">Do not wear any facial items such as: reading glasses, sunglasses, scarfs, masks, etc.</string>
+    <string name="document2_3">The selfie must be a live photo</string>
+    <string name="document3_">Please take a picture of a utility bill or bank statement that proves your residence. You must adhere to the following guidelines:</string>
+    <string name="document3_1">The bill/statement must be no older than 60 days from today’s date</string>
+    <string name="document3_2">The address must match your address on your account</string>
+    <string name="document3_3">The name must match your name on the account</string>
+    <string name="get_started">Get Started</string>
+    <string name="kyc_success_title">Congrats!</string>
+    <string name="kyc_success_message">You have been approved for Tier 1</string>
+    <string name="kyc_failure_title">Sorry!</string>
+    <string name="kyc_failure_message">Your KYC details have been declined.</string>
+    <string name="kyc_continue">Continue to Tier 2</string>
+    <string name="kyc_skip">Complete Later</string>
+    <string name="contact_support">Contact Support</string>
+    <string name="permission_camera_rationale">The app needs camera permission to upload scanned image</string>
+    <!-- Step 1 -->
+    <string name="scan_driver_license_front">Scan Driver License Front</string>
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="front_card">Front Card</string>
+    <string name="select_document">Select Document</string>
+    <string-array name="document_types">
+        <item>Passport</item>
+        <item>Driving License</item>
+        <item>National Identity Card</item>
+        <!--        <item>Voter Id</item>-->
+        <!--        <item>Work Permit</item>-->
+    </string-array>
+    <string name="scan_hint1">Place your document within the frame until all 4 edges are aligned and it is shown in the animation above. Then press the white button below.\n\nEnsure that all data is readable and avoid reflections.</string>
+    <string name="scan_hint2">Make sure all data on your document is fully visible, glare free and not blurred.</string>
+    <string name="check_readability">Check readability</string>
+    <string name="retake">Retake</string>
+    <string name="readable">Readable</string>
+    <!-- Step 2 -->
+    <string name="scan_driver_license_back">Scan Driver License Back</string>
+    <string name="back_card">Back Card</string>
+    <string name="document">Document</string>
+    <string name="scan_hint3">Place the barcode in front of the camera as it is shown in the picture above. Then press the blue button above.</string>
+    <!-- Step 3 -->
+    <string name="take_selfie">Take a Selfie</string>
+    <string name="instructions">Instructions</string>
+    <string name="scan_hint4">Take a selfie without anything blocking your face.</string>
+    <string name="selfie_photo">Selfie Photo</string>
+    <string name="scan_hint5">Put your face in the frame to proceed.</string>
+    <string name="scan_hint6">Please ensure that your face is visible and both your ID/Passport and piece of paper are visible.</string>
+    <!-- Step 4 -->
+    <string name="scan_hint7">Take a picture of your utility bill or bank statement which must be from the last 60 days.\n\nPlease note, documents over 60 days old will not be accepted.</string>
+    <string name="scan_hint8">Put your bill into the frame to proceed.</string>
+    <string name="proof_of_address">Proof of Address</string>
+    <string name="scan_hint9">Please ensure that your bill is visible and all four corners are within the frame.</string>
+    <string name="tier2_verify_pending">We have received all of your\nverification documents and will\nprocess them within 3 business\ndays.</string>
+
+
 </resources>

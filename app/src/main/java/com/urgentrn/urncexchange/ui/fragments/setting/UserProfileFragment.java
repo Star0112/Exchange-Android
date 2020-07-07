@@ -62,7 +62,7 @@ public class UserProfileFragment extends BaseFragment implements ApiCallback {
     }
 
     private void initView() {
-       user = ExchangeApplication.getApp().getUser();
+       user = getUser();
        userName.setText(user.getUsername());
        email.setText(user.getEmail());
        firstName.setText(user.getFirstname());
