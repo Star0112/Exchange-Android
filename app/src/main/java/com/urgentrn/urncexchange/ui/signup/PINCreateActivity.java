@@ -39,6 +39,7 @@ public class PINCreateActivity extends BaseActivity {
         final Intent intent = new Intent(this, PINConfirmActivity_.class);
         intent.putExtra("passcode", passcode);
         startActivity(intent);
+        finish();
     }
 
     @Override

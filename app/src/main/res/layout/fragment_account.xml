@@ -10,6 +10,7 @@
         android:orientation="vertical"
         android:background="@mipmap/background">
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:gravity="center">

@@ -9,6 +9,7 @@ import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -47,6 +48,21 @@ public class AccountFragment extends BaseFragment implements ApiCallback {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void updateView(HashMap<String, ExchangeData> data) {
+
+    }
+
+    @Click(R.id.userProfile)
+    void onUserProfileClicked() {
+        ((BaseFragment)getParentFragment()).replaceFragment(new UserProfileFragment_(), false);
+    }
+
+    @Click(R.id.resetPassword)
+    void onResetPasswordClicked() {
+
+    }
+
+    @Click(R.id.userKYC)
+    void onKycClicked() {
 
     }
 
