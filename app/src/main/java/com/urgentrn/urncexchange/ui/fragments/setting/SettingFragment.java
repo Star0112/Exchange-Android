@@ -65,7 +65,7 @@ public class SettingFragment extends BaseFragment implements ApiCallback {
 
     }
 
-    @Click(R.id.userProfile)
+    @Click(R.id.accountSetting)
     void onUserProfileClicked() {
         ((BaseFragment)getParentFragment()).replaceFragment(new AccountFragment_(), false);
     }

@@ -37,9 +37,6 @@ import static com.urgentrn.urncexchange.utils.Utils.stringToDate;
 public class MembershipFragment extends BaseFragment implements ApiCallback {
 
     @ViewById
-    Toolbar toolbar;
-
-    @ViewById
     TextView txtPurchase, datePurchase;
 
     @ViewById

@@ -28,7 +28,7 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/userProfile"
+                            android:id="@+id/accountSetting"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/fab_size"
                             style="@style/SettingButton">
@@ -235,7 +235,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -277,7 +276,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -318,7 +316,6 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
