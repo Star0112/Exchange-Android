@@ -40,7 +40,7 @@
                             android:layout_width="match_parent"
                             android:inputType="numberDecimal"
                             android:enabled="false"
-                            style="@style/Input.White.Vertical.Center"/>
+                            style="@style/Input.Disable.Vertical.Center"/>
                     </LinearLayout>
 
                     <LinearLayout
