@@ -360,7 +360,7 @@
                         android:id="@+id/logout"
                         style="@style/DefaultButton.Blue"
                         android:layout_width="@dimen/button_width"
-                        android:layout_marginVertical="@dimen/default_margin_xxxlarge"
+                        android:layout_marginTop="@dimen/default_margin_large"
                         android:text="@string/logout" />
                 </LinearLayout>
         </LinearLayout>
