@@ -103,7 +103,7 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         final String amount = sendAmount.getText().toString();
         String[] emails = new String[1];
         emails[0] = email;
-
+        sendAmount.setText(String.valueOf(Integer.parseInt(amount)));
         if(email.isEmpty()) {
             sendEmail.requestFocus();
             sendEmail.setError(getString(R.string.error_email_empty));

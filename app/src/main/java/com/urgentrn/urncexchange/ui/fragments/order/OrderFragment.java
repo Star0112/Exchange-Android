@@ -83,7 +83,6 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_order);
-
         tabHost.setup();
         TabHost.TabSpec spec = tabHost.newTabSpec("tag1");
         spec.setContent(R.id.tab1);
@@ -115,7 +114,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
-
+        buyAmount.setText("1");
+        sellAmount.setText("1");
         initSocket();
         setupDrawer();
     }
@@ -255,7 +255,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     void onBuy() {
         final String amount = buyAmount.getText().toString();
         final String price = buyPrice.getText().toString();
-
+        buyAmount.setText(String.valueOf(Integer.parseInt(amount)));
+        buyPrice.setText(String.valueOf(Double.parseDouble(price)));
         if (amount.isEmpty()) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_empty));
@@ -282,7 +283,8 @@ public class OrderFragment extends BaseFragment implements ApiCallback {
     void onSell() {
         final String amount = sellAmount.getText().toString();
         final String price = sellPrice.getText().toString();
-
+        sellAmount.setText(String.valueOf(Integer.parseInt(amount)));
+        sellPrice.setText(String.valueOf(Double.parseDouble(price)));
         if (amount.isEmpty()) {
             sellAmount.requestFocus();
             sellAmount.setError(getString(R.string.error_amount_empty));

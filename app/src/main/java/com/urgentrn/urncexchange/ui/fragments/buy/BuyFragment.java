@@ -152,6 +152,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     @Click(R.id.btnBuy)
     void onBuy() {
         final String amount = buyAmount.getText().toString();
+        buyAmount.setText(String.valueOf(Integer.parseInt(amount)));
         if (amount.isEmpty()) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_empty));
