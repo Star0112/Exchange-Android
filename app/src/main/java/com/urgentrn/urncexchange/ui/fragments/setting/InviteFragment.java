@@ -44,14 +44,16 @@ public class InviteFragment extends BaseFragment implements ApiCallback {
     @ViewById
     RecyclerView friendList;
 
-    private int limit = 20;
-    private int offset = 0;
+    private int limit;
+    private int offset;
     private List<InviteUser> userList = new ArrayList<>();
     private FriendHistoryAdapter adapter;
 
     @AfterViews
     protected void init() {
         setToolBar(true);
+        limit = 20;
+        offset = 0;
         friendList.setHasFixedSize(true);
         friendList.setLayoutManager(new LinearLayoutManager((getContext())));
         userList.clear();

@@ -198,6 +198,7 @@
 
     <!-- Dashboard -->
     <string name="title_dashboard">Dashboard</string>
+    <string name="no_data">No Data</string>
     <!-- Deposit -->
     <string name="title_deposit">Deposit</string>
     <string name="deposit">Deposit</string>

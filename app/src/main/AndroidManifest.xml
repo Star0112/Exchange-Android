@@ -102,7 +102,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Black"/>
         <activity
-            android:name="com.urgentrn.wallet.ui.kyc.SelfieActivity_"
+            android:name="com.urgentrn.urncexchange.ui.kyc.SelfieActivity_"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Black"/>
 

@@ -10,5 +10,27 @@
         android:orientation="vertical"
         android:background="@mipmap/background">
         <include  layout="@layout/activity_main_header"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/default_padding"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardPreventCornerOverlap="false"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="20dp">
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chartView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

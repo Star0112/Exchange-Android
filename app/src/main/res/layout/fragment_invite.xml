@@ -40,7 +40,7 @@
                     android:id="@+id/editEmail"
                     android:imeActionLabel="@string/button_go"
                     android:imeOptions="actionGo"
-                    android:inputType="textPassword"
+                    android:inputType="textEmailAddress"
                     android:layout_marginVertical="@dimen/default_padding_small"
                     android:hint="@string/friend_email"
                     android:layout_height="@dimen/setting_item_height"

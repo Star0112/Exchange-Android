@@ -29,8 +29,8 @@ import java.util.List;
 @EFragment(R.layout.dialog_send_history)
 public class SendHistoryDialog extends BaseDialog implements ApiCallback {
 
-    private int limit = 20;
-    private int offset = 0;
+    private int limit;
+    private int offset;
     private String coinName;
     private List<SendHistory> histories = new ArrayList<>();
     private SendHistoryAdapter adapter;
@@ -44,6 +44,8 @@ public class SendHistoryDialog extends BaseDialog implements ApiCallback {
     @AfterViews
     protected void init() {
         histories.clear();
+        offset = 0;
+        limit = 20;
         coinName = getArguments().getString("coin");
         recyclerBuyHistory.setHasFixedSize(true);
         recyclerBuyHistory.setLayoutManager(new LinearLayoutManager((getContext())));
