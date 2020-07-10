@@ -105,7 +105,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
         setActiveTab(R.id.navigation_dash);
 
-        getAssetBalance();
     }
 
     @Override
@@ -122,12 +121,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-    }
-
-    private void getAssetBalance() {
-        ApiClient.getInterface()
-                .getAssetBalance()
-                .enqueue(new AppCallback<AssetResponse>(this, this));
     }
 
     private void updateTabIcons(int itemId) { // not recommended but because of bad icon designs. it should use opacity instead of color
@@ -149,10 +142,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
-        if(response instanceof AssetResponse) {
-            final List<AssetBalance> data = ((AssetResponse)response).getData();
-            AppData.getInstance().setAssetBalanceData(data);
-        }
+
     }
 
     @Override

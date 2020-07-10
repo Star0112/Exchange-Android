@@ -10,6 +10,7 @@ import com.urgentrn.urncexchange.models.request.SendAssetRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.BuyHistoryResponse;
+import com.urgentrn.urncexchange.models.response.ChartDataResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.models.response.FriendHistoryResponse;
 import com.urgentrn.urncexchange.models.response.GetUserResponse;
@@ -36,6 +37,9 @@ public interface ApiInterface {
     @POST("api/m/v1/auth/login")
         // Login Simple Flow
     Call<LoginResponse> login(@Body LoginRequest request);
+
+    @GET("api/m/v1/market/kline") //Get Chart Data
+    Call<ChartDataResponse> getChartData(@Query("market") String market, @Query("start") String start, @Query("end") String end, @Query("interval") int interval);
 
     @GET("api/m/v1/asset/info")
         // Get Deposit Balance

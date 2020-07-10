@@ -423,4 +423,7 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <!-- Dashboard -->
+
+
 </resources>

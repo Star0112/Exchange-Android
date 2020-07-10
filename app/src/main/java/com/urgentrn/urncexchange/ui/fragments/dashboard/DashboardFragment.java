@@ -2,9 +2,9 @@ package com.urgentrn.urncexchange.ui.fragments.dashboard;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -18,8 +18,10 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
+import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
+import com.urgentrn.urncexchange.models.response.ChartDataResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.ui.view.ImageLineChartRenderer;
 
@@ -43,11 +45,13 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     @ViewById(R.id.chartView)
     LineChart chart;
 
+    @ViewById
+    TextView currentPrice;
+
     @AfterViews
     protected void init() {
         newHeader.setText(R.string.title_dashboard);
         initGraph();
-        updateChartView();
         updatePriceView();
     }
 
@@ -91,14 +95,16 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     }
 
     private void updatePriceView() {
-//        ApiClient.getInterface()
-
+        ApiClient.getInterface()
+                .getChartData("URNCBTC", "1", "15770190907847", 3600)
+                .enqueue(new AppCallback<ChartDataResponse>(getContext(), this));
     }
 
-    private void updateChartView() {
+    private void updateChartView(List<List<String>> chartData) {
+        if (chartData == null) return;
         List<Entry> entries = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            entries.add(new Entry(i, i));
+        for (int i = 0; i < chartData.size(); i++) {
+            entries.add(new Entry(i, Float.parseFloat(chartData.get(i).get(2))));
         }
         final LineDataSet dataSet = new LineDataSet(entries, "");
         LineData lineData = new LineData(dataSet);
@@ -122,23 +128,24 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-
+                currentPrice.setText(String.valueOf(e.getY()));
+                currentPrice.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onNothingSelected() {
-
+                currentPrice.setVisibility(View.INVISIBLE);
             }
         });
         chart.setOnChartGestureListener(new OnChartGestureListener() {
             @Override
             public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-
+                chart.getData().setHighlightEnabled(true);
             }
 
             @Override
             public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-
+                chart.getData().setHighlightEnabled(false);
             }
 
             @Override
@@ -184,7 +191,10 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
 
     @Override
     public void onResponse(BaseResponse response) {
-
+        if(response instanceof ChartDataResponse) {
+            final List<List<String>> data = ((ChartDataResponse)response).getData();
+            updateChartView(data);
+        }
     }
 
     @Override

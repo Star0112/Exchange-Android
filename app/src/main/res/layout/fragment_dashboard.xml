@@ -20,6 +20,14 @@
             app:cardPreventCornerOverlap="false"
             app:cardElevation="0dp"
             app:cardCornerRadius="20dp">
+            <TextView
+                android:id="@+id/currentPrice"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_small"
+                android:gravity="center|bottom"
+                android:textSize="@dimen/text_title_large"
+                android:text="50"/>
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chartView"
                 android:layout_width="match_parent"

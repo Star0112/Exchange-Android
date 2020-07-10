@@ -61,6 +61,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         depositHistory.setHasFixedSize(true);
         depositHistory.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        getAssetBalance();
         setupDrawer(offset, limit);
     }
 
@@ -80,6 +81,12 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         ApiClient.getInterface()
                 .getDepositHistory(offset, limit)
                 .enqueue(new AppCallback<DepositHistoryResponse>(this));
+    }
+
+    private void getAssetBalance() {
+        ApiClient.getInterface()
+                .getAssetBalance()
+                .enqueue(new AppCallback<AssetResponse>(this));
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -116,6 +123,9 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
                 adapterTransaction = new DepositHistoryAdapter(depositHistories);
                 depositHistory.setAdapter(adapterTransaction);
             }
+        } else if(response instanceof AssetResponse) {
+            final List<AssetBalance> data = ((AssetResponse)response).getData();
+            AppData.getInstance().setAssetBalanceData(data);
         }
     }
 
