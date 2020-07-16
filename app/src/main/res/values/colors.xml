@@ -1,50 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorTransparent">@android:color/transparent</color>
+
     <color name="colorPrimary">#09428F</color>
-    <color name="colorPrimaryTransparent">#3f09428F</color>
     <color name="colorPrimaryDark">#253B97</color>
     <color name="colorAccent">#253B97</color>
-    <color name="colorBackground">#f6f8fa</color>
-    <color name="colorBackground2">#fffbfa</color>
+    <color name="textColorBlue">#09428F</color>
 
-    <color name="colorBlack">#000</color>
-    <color name="colorBlackMoreTransparent">#2d000000</color>
-    <color name="colorBlackTransparent">#b3000000</color>
     <color name="colorBlue">#007dc6</color>
     <color name="colorBlueLight">#0290fd</color>
-    <color name="colorBorder">#e5e6e8</color>
-    <color name="colorCardBackground1">#fdeded</color>
-    <color name="colorCardBackground2">#e5e5e5</color>
-    <color name="colorCardBackground3">#ffeede</color>
-    <color name="colorCardBackground4">#fff5fd</color>
-    <color name="colorComplete">#22b25b</color>
-    <color name="colorDivider">#8F8FB6DD</color>
-    <color name="colorError">#f6607d</color>
-    <color name="colorEye">#78828a</color>
-    <color name="colorGradient">#253B97</color>
+    <color name="textColorPrimary">#277ee6</color>
+
+    <color name="colorBackground">#f6f8fa</color>
+
+    <color name="chart">#FF0000</color>
+
+    <color name="colorBlack">#000</color>
+    <color name="textColorDefault">#000</color>
+    <color name="textColorBlack">#000</color>
+    <color name="colorBlackTransparent">#b3000000</color>
+    <color name="colorBlackMoreTransparent">#2d000000</color>
+    <color name="colorDarkTransparent">#5f000000</color>
+
     <color name="colorGray">#555</color>
     <color name="colorGrayLight">#aaa</color>
     <color name="colorGrayLight2">#bebebe</color>
-    <color name="colorGreen">#59cd90</color>
-    <color name="colorGreenTransparent">#1a59cd90</color>
-    <color name="colorListBackground">#f6f7f8</color>
-    <color name="colorPaleGrey">#e5e9ec</color>
-    <color name="colorPending">#ef9f26</color>
-    <color name="colorPendingLight">#f8cf47</color>
-    <color name="colorPendingTransparent">#1aef9f26</color>
-    <color name="colorSearchBackground">#ececee</color>
-    <color name="colorTransparent">@android:color/transparent</color>
-    <color name="colorWhite">#fff</color>
-    <color name="colorWhiteTransparent">#55ffffff</color>
-    <color name="colorDarkTransparent">#5f000000</color>
-    <color name="colorYellow">#ffd8a0</color>
-
-    <color name="textColorDefault">#000</color>
-    <color name="textColorTransparent">#33172c3d</color>
-    <color name="textColorTransparent2">#66172c3d</color>
-    <color name="textColorBlack">#000</color>
-    <color name="textColorBlack1">#424242</color>
-    <color name="textColorDarkGreyBlue">#2c4253</color>
     <color name="textColorGray">#8d979e</color>
     <color name="textColorGray1">#3d3d3d</color>
     <color name="textColorGray2">#666666</color>
@@ -52,17 +32,33 @@
     <color name="textColorGray4">#444a4e</color>
     <color name="textColorGray5">#979ea3</color>
     <color name="textColorGray6">#F6F6F6</color>
-    <color name="textColorGreen">#26b200</color>
-    <color name="textColorGreenDark">#6b851b</color>
-    <color name="textColorWhite">#fff</color>
-    <color name="textColorPrimary">#277ee6</color>
-    <color name="numberColor">#27F0CC</color>
-    <color name="historyDividerColor">#ACCFF5</color>
 
+    <color name="colorWhite">#fff</color>
+    <color name="colorWhiteTransparent">#55ffffff</color>
+    <color name="textColorWhite">#fff</color>
+    <color name="colorBorder">#e5e6e8</color>
+    <color name="colorCardBackground1">#fdeded</color>
+    <color name="colorCardBackground2">#e5e5e5</color>
+    <color name="colorCardBackground3">#ffeede</color>
+    <color name="colorSearchBackground">#ececee</color>
+
+    <color name="colorDivider">#8F8FB6DD</color>
+    <color name="historyDividerColor">#ACCFF5</color>
     <color name="historyDateColor">#B8B8B8</color>
+
+
+    <color name="colorGreen">#59cd90</color>
+    <color name="numberColor">#27F0CC</color>
+
+    <color name="colorPending">#ef9f26</color>
+    <color name="colorPendingLight">#f8cf47</color>
+
+    <color name="colorYellow">#ffd8a0</color>
+    <color name="textColorBlack1">#424242</color>
+
     <color name="textColorSecondary">#783d38</color>
     <color name="colorSalmon">#fb8a75</color>
-    
-    <color name="textColorBlue">#09428F</color>
+    <color name="colorError">#f6607d</color>
+
 
 </resources>

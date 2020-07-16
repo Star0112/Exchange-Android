@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_deposit"
         android:icon="@mipmap/ic_tab_deposit"
-        android:title="@string/title_deposit" />
+        android:title="@string/deposit" />
 
     <item
         android:id="@+id/navigation_buy"

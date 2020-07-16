@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/default_margin_2x"
             style="@style/TitleText"
             android:textColor="#ff8e2d"
-            android:textSize="@dimen/text_sub_title"/>
+            android:textSize="@dimen/text_title"/>
         <TextView
             android:id="@+id/txtMessage"
             android:gravity="center"

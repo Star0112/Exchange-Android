@@ -14,7 +14,7 @@
             android:centerColor="@color/colorPrimary"
             android:centerY="0.50"
             android:endColor="@color/colorBlueLight"
-            android:startColor="@color/colorGradient"
+            android:startColor="@color/colorAccent"
             android:type="sweep"
             android:useLevel="false" />
     </shape>

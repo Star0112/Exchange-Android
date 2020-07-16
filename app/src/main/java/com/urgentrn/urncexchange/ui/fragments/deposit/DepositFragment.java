@@ -54,7 +54,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
-        newHeader.setText(R.string.title_deposit);
+        newHeader.setText(R.string.deposit);
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
 

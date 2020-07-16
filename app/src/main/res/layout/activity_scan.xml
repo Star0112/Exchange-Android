@@ -46,7 +46,7 @@
                     android:id="@+id/txtSubtitle"
                     style="@style/TitleText.Dark"
                     android:text="@string/front_card"
-                    android:textSize="@dimen/text_sub_title" />
+                    android:textSize="@dimen/text_title" />
 
                 <FrameLayout
                     android:layout_width="match_parent"

@@ -35,7 +35,7 @@
     </style>
 
     <style name="GradientTheme" parent="AppTheme.NoActionBar">
-        <item name="android:navigationBarColor">@color/colorGradient</item>
+        <item name="android:navigationBarColor">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorWhite</item>
         <item name="android:windowBackground">@drawable/bg_gradient</item>
     </style>
@@ -130,7 +130,7 @@
     <style name="NewTitleText" parent="DefaultText">
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:fontFamily">@font/codec_pro_extrabold</item>
-        <item name="android:textSize">@dimen/text_title_large</item>
+        <item name="android:textSize">@dimen/text_main_title</item>
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 

@@ -9,31 +9,72 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@mipmap/background">
-        <include  layout="@layout/activity_main_header"/>
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/newHeader"
+                    android:text="@string/title_dashboard"
+                    android:layout_alignParentLeft="true"
+                    style="@style/NewTitleText" />
+                <LinearLayout
+                    android:id="@+id/llRefresh"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/default_margin"
+                    android:gravity="center|right">
+                    <ImageView
+                        android:id="@+id/imgRefresh"
+                        android:layout_width="@dimen/text_default"
+                        android:layout_height="@dimen/text_default"
+                        android:background="@mipmap/ic_refresh" />
+                    <TextView
+                        android:id="@+id/txtRefresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_default"
+                        android:textColor="@drawable/text_white_color"
+                        android:text="06/18/2020 10:42:44"
+                        android:layout_marginStart="@dimen/default_padding_small"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/llChart"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="0dp"
             android:layout_margin="@dimen/default_padding"
-            app:cardBackgroundColor="@color/colorWhite"
-            app:cardPreventCornerOverlap="false"
-            app:cardElevation="0dp"
-            app:cardCornerRadius="20dp">
+            android:orientation="vertical">
+            <Spinner
+                android:id="@+id/selectCoin"
+                android:background="@drawable/button_dropdown"
+                android:layout_gravity="center_horizontal"
+                android:spinnerMode="dialog"
+                style="@style/SpinnerInput"/>
             <TextView
-                android:id="@+id/currentPrice"
+                android:id="@+id/txtPrice"
                 android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height_small"
                 android:gravity="center|bottom"
-                android:textSize="@dimen/text_title_large"
+                android:textSize="@dimen/text_main_title"
+                android:textColor="@color/colorWhite"
                 android:text="50"/>
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chartView"
+                android:visibility="invisible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+        </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

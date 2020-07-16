@@ -200,7 +200,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="no_data">No Data</string>
     <!-- Deposit -->
-    <string name="title_deposit">Deposit</string>
     <string name="deposit">Deposit</string>
     <string name="deposit_history">Deposit history</string>
     <string name="save_address">Your address is saved in clipboard.</string>

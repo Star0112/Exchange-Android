@@ -16,11 +16,9 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.urgentrn.urncexchange.BuildConfig;
 import com.urgentrn.urncexchange.ExchangeApplication;
-import com.urgentrn.urncexchange.models.Link;
 
 import java.lang.reflect.Field;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,16 +29,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils {
-
-    public static String getTermLink(String type) {
-        if (ExchangeApplication.getApp().getConfig() == null) return "";
-        for (Link link : ExchangeApplication.getApp().getConfig().getLinks()) {
-            if (link.getType().equals(type)) {
-                return link.getUrl();
-            }
-        }
-        return "";
-    }
 
     /**
      * method is used for checking valid email id format.
@@ -212,14 +200,6 @@ public class Utils {
         }
     }
 
-    public static int getTransparentColor(String color) {
-        return Color.parseColor(color.replace("#", "#99"));
-    }
-
-    public static int getMoreTransparentColor(String color) {
-        return Color.parseColor(color.replace("#", "#2f"));
-    }
-
     public static String getDeviceCountryCode(Context context) {
         String countryCode;
         final TelephonyManager tm = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -263,7 +243,7 @@ public class Utils {
     public static void sendMail(Activity activity) {
         final Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:help@exchange.io"));
+        intent.setData(Uri.parse("@urgentrn.com"));
         intent.putExtra(Intent.EXTRA_TEXT, getDeviceInfo());
         if (activity != null) {
             activity.startActivity(Intent.createChooser(intent, "Send mail"));
@@ -275,5 +255,14 @@ public class Utils {
 
     public static boolean isFromSplash(Intent intent) {
         return intent.getBooleanExtra("from_splash", false);
+    }
+
+    public static String addChar(String str, char ch, int position) {
+        int len = str.length();
+        char[] updatedArr = new char[len + 1];
+        str.getChars(0, position, updatedArr, 0);
+        updatedArr[position] = ch;
+        str.getChars(position, len, updatedArr, position + 1);
+        return new String(updatedArr);
     }
 }
