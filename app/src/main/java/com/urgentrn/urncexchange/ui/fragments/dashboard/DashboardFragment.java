@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -46,18 +47,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.urgentrn.urncexchange.utils.Utils.addChar;
+import static com.urgentrn.urncexchange.utils.Utils.getCurrentTime;
+import static com.urgentrn.urncexchange.utils.Utils.timestampToDateString;
 
 @EFragment(R.layout.fragment_dashboard)
 public class DashboardFragment extends BaseFragment implements ApiCallback {
 
     @ViewById
-    LinearLayout llRefresh;
+    TextView txtPrice, txtDate;
 
     @ViewById
-    ImageView imgRefresh;
-
-    @ViewById
-    TextView txtRefresh, txtPrice;
+    Button btnRefresh;
 
     @ViewById(R.id.selectCoin)
     Spinner spinner;
@@ -71,7 +71,6 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
-        txtRefresh.setClickable(true);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -144,7 +143,7 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         if (chartData == null) return;
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < chartData.size(); i++) {
-            entries.add(new Entry(i, Float.parseFloat(chartData.get(i).get(2))));
+            entries.add(new Entry(i, Float.parseFloat(chartData.get(i).get(1))));
         }
         final LineDataSet dataSet = new LineDataSet(entries, "");
         LineData lineData = new LineData(dataSet);
@@ -169,6 +168,7 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 txtPrice.setText(String.valueOf(e.getY()));
+                txtDate.setText(timestampToDateString(chartData.get(entries.indexOf(e)).get(0)));
             }
 
             @Override
@@ -179,12 +179,14 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             @Override
             public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
                 chart.getData().setHighlightEnabled(true);
+                txtDate.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
                 chart.getData().setHighlightEnabled(false);
-                txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(2)));
+                txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
+                txtDate.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -218,12 +220,15 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             }
         });
         chart.invalidate();
-        txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(2)));
+        spinner.setVisibility(View.VISIBLE);
+        txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
         chart.setVisibility(View.VISIBLE);
         txtPrice.setVisibility(View.VISIBLE);
+        btnRefresh.setText(getCurrentTime());
+        btnRefresh.setVisibility(View.VISIBLE);
     }
 
-    @Click(R.id.txtRefresh)
+    @Click(R.id.btnRefresh)
     void onRefresh() {
         updatePriceView(symbolsName.get(selectedNum));
     }

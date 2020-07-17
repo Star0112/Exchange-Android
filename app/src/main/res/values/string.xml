@@ -199,6 +199,7 @@
     <!-- Dashboard -->
     <string name="title_dashboard">Dashboard</string>
     <string name="no_data">No Data</string>
+    <string name="select_symbol">Select Symbol</string>
     <!-- Deposit -->
     <string name="deposit">Deposit</string>
     <string name="deposit_history">Deposit history</string>

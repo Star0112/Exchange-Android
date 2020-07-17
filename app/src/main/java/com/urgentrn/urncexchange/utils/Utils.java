@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -66,6 +67,19 @@ public class Utils {
         InputMethodManager imm = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm == null || view == null) return;
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static String getCurrentTime() {
+        Date currentTime = Calendar.getInstance().getTime();
+        String date = DateFormat.format("MM/dd/yyyy hh:mm:ss", currentTime).toString();
+        return date;
+    }
+
+    public static String timestampToDateString(String timestamp) {
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(Long.parseLong(timestamp) * 1000L);
+        String date = DateFormat.format("MM/dd/yyyy hh:mm:ss", cal).toString();
+        return date;
     }
 
     public static Date stringToDate(String dateString, String format) {

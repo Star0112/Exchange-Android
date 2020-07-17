@@ -4,5 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/setting_item_height"
     android:gravity="center"
-    style="@style/DefaultText"
-    android:text="Fraud"/>
+    android:shadowRadius="@integer/short_anim_time"
+    android:textColor="@drawable/text_white_color"
+    android:text="BTC/USD"/>
