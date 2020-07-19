@@ -200,6 +200,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="no_data">No Data</string>
     <string name="select_symbol">Select Symbol</string>
+    <string name="timeline_1d">1d</string>
+    <string name="timeline_1w">1w</string>
+    <string name="timeline_1m">1m</string>
+    <string name="timeline_3m">3m</string>
+    <string name="timeline_6m">6m</string>
+    <string name="timeline_1y">1y</string>
     <!-- Deposit -->
     <string name="deposit">Deposit</string>
     <string name="deposit_history">Deposit history</string>

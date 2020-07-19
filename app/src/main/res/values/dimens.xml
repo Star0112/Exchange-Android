@@ -55,7 +55,7 @@
     <dimen name="button_width">160dp</dimen>
     <dimen name="button_width_2x">200dp</dimen>
     <!-- Height -->
-    <dimen name="banner_height">288dp</dimen>
+    <dimen name="tiny_height">1dp</dimen>
     <dimen name="text_height">21dp</dimen>
     <dimen name="period_button_height">24dp</dimen>
     <dimen name="status_height">25dp</dimen>
@@ -80,6 +80,7 @@
     <dimen name="gift_height">180dp</dimen>
     <dimen name="card_height">216dp</dimen>
     <dimen name="peek_height">260dp</dimen>
+    <dimen name="banner_height">288dp</dimen>
     <dimen name="card_height_2x">320dp</dimen>
     <dimen name="dialog_list_height">316dp</dimen>
     <dimen name="dialog_list">600dp</dimen>

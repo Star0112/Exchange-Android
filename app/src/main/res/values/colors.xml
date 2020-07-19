@@ -59,6 +59,7 @@
     <color name="textColorSecondary">#783d38</color>
     <color name="colorSalmon">#fb8a75</color>
     <color name="colorError">#f6607d</color>
+    <color name="colorRed">#ef4c4c</color>
 
 
 </resources>

@@ -33,6 +33,7 @@ import com.urgentrn.urncexchange.models.response.ChartDataResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.ui.view.ImageLineChartRenderer;
+import com.urgentrn.urncexchange.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -45,6 +46,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import static com.urgentrn.urncexchange.utils.Utils.addChar;
 import static com.urgentrn.urncexchange.utils.Utils.getCurrentTime;
@@ -54,10 +56,16 @@ import static com.urgentrn.urncexchange.utils.Utils.timestampToDateString;
 public class DashboardFragment extends BaseFragment implements ApiCallback {
 
     @ViewById
-    TextView txtPrice, txtDate;
+    TextView txtPrice, txtDate, txtPriceChange;
+
+    @ViewById
+    ImageView imgPriceChange;
 
     @ViewById
     Button btnRefresh;
+
+    @ViewById
+    LinearLayout llPriceChange;
 
     @ViewById(R.id.selectCoin)
     Spinner spinner;
@@ -179,6 +187,7 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             @Override
             public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
                 chart.getData().setHighlightEnabled(true);
+                llPriceChange.setVisibility(View.GONE);
                 txtDate.setVisibility(View.VISIBLE);
             }
 
@@ -186,7 +195,16 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
                 chart.getData().setHighlightEnabled(false);
                 txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
-                txtDate.setVisibility(View.INVISIBLE);
+                double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).get(1)) - Double.parseDouble(chartData.get(0).get(1));
+                double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).get(1));
+                imgPriceChange.setImageResource(changedPrice > 0? R.mipmap.arrow_up: R.mipmap.arrow_down);
+                txtPriceChange.setText(String.format(Locale.US, " %s (%s%%)",
+                        Utils.formattedNumber(Math.abs(changedPrice), 0, 4),
+                        Utils.formattedNumber(Math.abs(changedPricePercent), 0, 2)
+                ));
+                txtDate.setVisibility(View.GONE);
+                txtPriceChange.setTextColor(getResources().getColor(changedPrice > 0? R.color.colorGreen: R.color.colorRed));
+                llPriceChange.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -222,8 +240,17 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         chart.invalidate();
         spinner.setVisibility(View.VISIBLE);
         txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
+        double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).get(1)) - Double.parseDouble(chartData.get(0).get(1));
+        double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).get(1));
+        imgPriceChange.setImageResource(changedPrice > 0? R.mipmap.arrow_up: R.mipmap.arrow_down);
+        txtPriceChange.setText(String.format(Locale.US, " %s (%s%%)",
+                Utils.formattedNumber(Math.abs(changedPrice), 0, 4),
+                Utils.formattedNumber(Math.abs(changedPricePercent), 0, 2)
+        ));
+        txtPriceChange.setTextColor(getResources().getColor(changedPrice > 0? R.color.colorGreen: R.color.colorRed));
         chart.setVisibility(View.VISIBLE);
         txtPrice.setVisibility(View.VISIBLE);
+        llPriceChange.setVisibility(View.VISIBLE);
         btnRefresh.setText(getCurrentTime());
         btnRefresh.setVisibility(View.VISIBLE);
     }
