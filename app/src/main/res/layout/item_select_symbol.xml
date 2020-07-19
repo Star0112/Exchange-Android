@@ -4,102 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="80dp">
     <LinearLayout
-        android:id="@+id/coinBalance"
+        android:id="@+id/llSelectSymbol"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_margin="@dimen/default_padding"
         android:layout_gravity="center">
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/colorWhite"
-            app:cardPreventCornerOverlap="false">
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/imgToCoin"
+                android:layout_width="@dimen/circle_size_small"
+                android:layout_height="@dimen/circle_size_small"
+                android:src="@mipmap/ic_launcher_round" />
+            <TextView
+                android:id="@+id/txtToCoin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center">
-                <ImageView
-                    android:id="@+id/coinIcon"
-                    android:layout_width="@dimen/menu_button_size"
-                    android:layout_height="@dimen/menu_button_size"
-                    android:src="@mipmap/ic_launcher_round" />
-                <TextView
-                    android:id="@+id/coinName"
-                    style="@style/CoinText"
-                    android:text="@string/BTC"
-                    android:textSize="@dimen/text_button"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/colorWhite"
-            app:cardPreventCornerOverlap="false">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/default_padding"
-                    android:layout_marginBottom="@dimen/default_padding"
-                    android:background="@color/colorBlackMoreTransparent" />
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        style="@style/DepositText.Title"
-                        android:layout_weight="1"
-                        android:layout_height="0dp"
-                        android:layout_width="match_parent"
-                        android:text="@string/total_balance"
-                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
-                    <TextView
-                        android:id="@+id/txtTotalBalance"
-                        style="@style/DepositText.Value"
-                        android:layout_weight="1"
-                        android:layout_height="0dp"
-                        android:layout_width="match_parent"
-                        android:text="10400,00"
-                        android:textSize="@dimen/text_default"
-                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
-                </LinearLayout>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/default_padding"
-                    android:layout_marginBottom="@dimen/default_padding"
-                    android:background="@color/colorBlackMoreTransparent" />
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        style="@style/DepositText.Title"
-                        android:layout_weight="1"
-                        android:layout_height="0dp"
-                        android:layout_width="match_parent"
-                        android:text="@string/available_balance"
-                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
-                    <TextView
-                        android:id="@+id/txtAvailableBalance"
-                        style="@style/DepositText.Value"
-                        android:layout_height="0dp"
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:text="980,00"
-                        android:textSize="@dimen/text_default"
-                        app:autoSizeMinTextSize="@dimen/text_item_small"/>
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:text="@string/BTC"
+                android:textSize="@dimen/text_title_default"/>
+            <TextView
+                android:id="@+id/txtFromCoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BTC"
+                android:textSize="@dimen/text_title_default"/>
+            <ImageView
+                android:id="@+id/imgFromCoin"
+                android:layout_width="@dimen/circle_size_small"
+                android:layout_height="@dimen/circle_size_small"
+                android:src="@mipmap/ic_launcher_round" />
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>

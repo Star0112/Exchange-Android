@@ -34,55 +34,55 @@ public interface ApiInterface {
         // Get user info / profile
     Call<GetUserResponse> getUser();
 
-    @POST("api/m/v1/auth/login")
+    @POST("auth/login")
         // Login Simple Flow
     Call<LoginResponse> login(@Body LoginRequest request);
 
-    @GET("api/m/v1/market/kline") //Get Chart Data
+    @GET("market/kline") //Get Chart Data
     Call<ChartDataResponse> getChartData(@Query("market") String market, @Query("start") String start, @Query("end") String end, @Query("interval") int interval);
 
-    @GET("api/m/v1/asset/info")
+    @GET("asset/info")
         // Get Deposit Balance
     Call<AssetResponse> getAssetBalance();
 
-    @GET("api/m/v1/asset/depositHistory")
+    @GET("asset/depositHistory")
         // Get Deposit History
     Call<DepositHistoryResponse> getDepositHistory(@Query("offset") int offset, @Query("limit") int limit);
 
-    @GET("api/m/v1/market/price")
+    @GET("market/price")
         // Get Market Info
     Call<MarketInfoResponse> getMarketInfo();
 
-    @POST("api/m/v1/buy/coin")
+    @POST("buy/coin")
         // Buy Coin
     Call<BaseResponse> buyCoin(@Body BuyCoinRequest request);
 
-    @POST("api/m/v1/order/create")
+    @POST("order/create")
         // Order Coin
     Call<BaseResponse> orderCoin(@Body OrderRequest request);
 
-    @POST("api/m/v1/user/profile/update")
+    @POST("user/profile/update")
         // Update User Profile
     Call<LoginResponse> updateProfile(@Body ProfileUpdateRequest request);
 
-    @POST("api/m/v1/membership/purchase")// Purchase
+    @POST("membership/purchase")// Purchase
     Call<MembershipResponse> purchase(@Body MembershipRequest request);
 
-    @GET("api/m/v1/membership/status") //Purchase status
+    @GET("membership/status") //Purchase status
     Call<PurchaseStatusResponse> getPurchaseStatus();
 
-    @POST("api/m/v1/user/referrals")
+    @POST("user/referrals")
     Call<InviteUserResponse> inviteUser(@Body InviteUserRequest request);
 
-    @GET("api/m/v1/user/referrals")
+    @GET("user/referrals")
     Call<FriendHistoryResponse> getReferral(@Query("offset") int offset, @Query("limit") int limit);
 
-    @GET("api/m/v1/buy/history")
+    @GET("buy/history")
     Call<BuyHistoryResponse> getBuyHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);
 
-    @GET("api/m/v1/asset/sendhistory")
+    @GET("asset/sendhistory")
     Call<SendHistoryResponse> getSendHistory(@Query("search") String search, @Query("offset") int offset, @Query("limit") int limit);
 
-    @POST("api/m/v1/send/byemail")
+    @POST("send/byemail")
     Call<BaseResponse> sendByEmail(@Body SendAssetRequest request);
 }

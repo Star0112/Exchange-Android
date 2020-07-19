@@ -1,7 +1,9 @@
 package com.urgentrn.urncexchange.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -60,7 +62,8 @@ public class MainActivity extends BaseActivity implements ApiCallback {
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
-
+        Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vb.vibrate(50);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         switch (item.getItemId()) {
             case R.id.navigation_dash:
