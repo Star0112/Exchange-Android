@@ -4,6 +4,7 @@
     <dimen name="default_padding_small">4dp</dimen>
     <dimen name="default_padding">8dp</dimen>
     <dimen name="default_margin_small">10dp</dimen>
+    <dimen name="default_padding_2x">12dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="default_margin_2x">24dp</dimen>
     <dimen name="default_margin_3x">32dp</dimen>
@@ -11,7 +12,6 @@
     <dimen name="default_margin_xlarge">48dp</dimen>
     <dimen name="default_margin_xxlarge">56dp</dimen>
     <dimen name="default_margin_xxxlarge">64dp</dimen>
-    <dimen name="default_padding_2x">12dp</dimen>
     <dimen name="default_padding_3x">20dp</dimen>
     <dimen name="item_vertical_padding">10dp</dimen>
     <dimen name="item_horizontal_spacing">21dp</dimen>
@@ -49,9 +49,9 @@
     <dimen name="status_text_width">64dp</dimen>
     <dimen name="tab_with_icon_width">70dp</dimen>
     <dimen name="percent_button_width">80dp</dimen>
-    <dimen name="card_width">80dp</dimen>
     <dimen name="item_title_width">90dp</dimen>
     <dimen name="card_small_width">120dp</dimen>
+    <dimen name="card_width">150dp</dimen>
     <dimen name="button_width">160dp</dimen>
     <dimen name="button_width_2x">200dp</dimen>
     <!-- Height -->
@@ -78,7 +78,7 @@
     <dimen name="item_exchange_height">150dp</dimen>
     <dimen name="mask_height">160dp</dimen>
     <dimen name="gift_height">180dp</dimen>
-    <dimen name="card_height">216dp</dimen>
+    <dimen name="card_height">187dp</dimen>
     <dimen name="peek_height">260dp</dimen>
     <dimen name="banner_height">288dp</dimen>
     <dimen name="card_height_2x">320dp</dimen>

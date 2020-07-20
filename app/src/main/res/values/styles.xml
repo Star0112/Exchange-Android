@@ -114,6 +114,7 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:textSize">@dimen/text_title_default</item>
     </style>
+
     <style name="CoinText" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_bold</item>
         <item name="android:gravity">center</item>
@@ -231,6 +232,16 @@
         <item name="android:textSize">@dimen/text_button</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="BuyText.Title" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:textColor">@color/colorDarkTransparent</item>
+    </style>
+    <style name="BuyText.Value" parent="DefaultText">
+        <item name="android:fontFamily">@font/codec_pro_regular</item>
+        <item name="android:textColor">@color/textColorBlue</item>
+    </style>
+
     <style name="TransactionHistory.Green" parent="DefaultText">
         <item name="android:fontFamily">@font/codec_pro_regular</item>
         <item name="android:textColor">@color/numberColor</item>

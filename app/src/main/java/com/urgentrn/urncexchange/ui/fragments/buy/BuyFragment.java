@@ -65,7 +65,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     EditText buyPrice, buyAmount;
 
     @ViewById
-    RecyclerView assetBalance;
+    RecyclerView recyclerAssetBalance;
 
     private List<String> symbolsName = new ArrayList<>();
     private CoinBalanceAdapter adapterCoin;
@@ -105,8 +105,8 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         });
 
 
-        assetBalance.setHasFixedSize(true);
-        assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerAssetBalance.setHasFixedSize(true);
+        recyclerAssetBalance.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         spinnerDrawer();
     }
@@ -131,7 +131,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         }
         adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos ->assetBalanceData.get(pos));
         adapterCoin.setData(assetBalanceData);
-        assetBalance.setAdapter(adapterCoin);
+        recyclerAssetBalance.setAdapter(adapterCoin);
     }
 
     private void getAssetBalance() {
