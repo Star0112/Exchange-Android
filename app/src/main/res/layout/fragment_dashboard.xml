@@ -49,19 +49,21 @@
 
         <LinearLayout
             android:id="@+id/llChart"
+            android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="@dimen/default_padding"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/selectCoin"
+            <Button
+                android:id="@+id/btnSelectSymbol"
                 style="@style/SpinnerInput"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/button_dropdown"
-                android:spinnerMode="dialog"
-                android:visibility="invisible" />
+                android:textSize="@dimen/spinner_size"
+                android:textColor="@drawable/text_white_color"
+                android:spinnerMode="dialog"/>
 
             <TextView
                 android:id="@+id/txtPrice"
@@ -70,12 +72,10 @@
                 android:gravity="center"
                 android:text="50"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/text_main_title"
-                android:visibility="invisible" />
+                android:textSize="@dimen/text_main_title"/>
 
             <LinearLayout
                 android:id="@+id/llPriceChange"
-                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,7 +83,7 @@
                 <ImageView
                     android:id="@+id/imgPriceChange"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/txtPriceChange"
                     android:layout_width="wrap_content"
@@ -106,8 +106,7 @@
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chartView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible" />
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 

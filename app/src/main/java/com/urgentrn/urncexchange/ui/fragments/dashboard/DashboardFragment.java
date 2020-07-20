@@ -28,12 +28,15 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
+import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.ChartDataResponse;
 import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.ui.dialogs.SelectSymbolDialog;
+import com.urgentrn.urncexchange.ui.dialogs.SelectSymbolDialog_;
 import com.urgentrn.urncexchange.ui.view.ImageLineChartRenderer;
 import com.urgentrn.urncexchange.utils.Utils;
 
@@ -67,40 +70,25 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     ImageView imgPriceChange;
 
     @ViewById
-    Button btnRefresh;
+    Button btnRefresh, btnSelectSymbol;
 
     @ViewById
     View viewTimeline1d, viewTimeline1w, viewTimeline1m, viewTimeline3m, viewTimeline6m, viewTimeline1y;
 
     @ViewById
-    LinearLayout llPriceChange;
-
-    @ViewById(R.id.selectCoin)
-    Spinner spinner;
+    LinearLayout llPriceChange, llChart;
 
     @ViewById(R.id.chartView)
     LineChart chart;
 
+    private final SelectSymbolDialog symbolDialog = new SelectSymbolDialog_();
+
     private List<String> symbolsName = new ArrayList<>();
-    private List<String> displaySymbolsName = new ArrayList<>();
     private int selectedSymbol = 0;
     private int selectedTimeline = 0;
 
     @AfterViews
     protected void init() {
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedSymbol = position;
-                updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-
-        });
-
         loadMarketInfo();
         initGraph();
     }
@@ -241,20 +229,17 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             }
         });
         chart.invalidate();
-        spinner.setVisibility(View.VISIBLE);
         txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
         double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).get(1)) - Double.parseDouble(chartData.get(0).get(1));
         double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).get(1));
         imgPriceChange.setImageResource(changedPrice > 0? R.mipmap.arrow_up: R.mipmap.arrow_down);
         txtPriceChange.setText(String.format(Locale.US, " %s (%s%%)",
-                Utils.formattedNumber(Math.abs(changedPrice), 0, 4),
+                Utils.formattedNumber(Math.abs(changedPrice), 0, 6),
                 Utils.formattedNumber(Math.abs(changedPricePercent), 0, 2)
         ));
         txtPriceChange.setTextColor(getResources().getColor(changedPrice > 0? R.color.colorGreen: R.color.colorRed));
-        chart.setVisibility(View.VISIBLE);
-        txtPrice.setVisibility(View.VISIBLE);
-        llPriceChange.setVisibility(View.VISIBLE);
         btnRefresh.setText(getCurrentTime());
+        llChart.setVisibility(View.VISIBLE);
         btnRefresh.setVisibility(View.VISIBLE);
     }
 
@@ -363,6 +348,23 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
     }
 
+    @Click(R.id.btnSelectSymbol)
+    void onShowSelectSymbol() {
+        showSelectSymbol();
+    }
+
+    private void showSelectSymbol() {
+        if (symbolDialog.getDialog() != null && symbolDialog.getDialog().isShowing()) return;
+        symbolDialog.setOnDialogDismissListener(isSuccess -> {
+            if (selectedSymbol != symbolDialog.getSelectedPosition()) {
+                selectedSymbol = symbolDialog.getSelectedPosition();
+                btnSelectSymbol.setText(addChar(symbolsName.get(selectedSymbol),'/',4));
+                updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+            }
+        });
+        symbolDialog.show(getChildFragmentManager(), "selSymbol");
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK && data != null) {}
@@ -379,13 +381,13 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         } else if(response instanceof MarketInfoResponse) {
             final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
             if(data != null) {
+                AppData.getInstance().setMarketInfoData(data);
                 for (MarketInfo marketInfo : data) {
                     symbolsName.add(marketInfo.getName());
-                    displaySymbolsName.add(addChar(marketInfo.getName(), '/', 4));
                 }
+                btnSelectSymbol.setText(addChar(symbolsName.get(selectedSymbol), '/', 4));
+                updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
             }
-            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, displaySymbolsName);
-            spinner.setAdapter(spinnerAdapter);
         }
     }
 

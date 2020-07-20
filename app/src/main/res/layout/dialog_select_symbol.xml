@@ -26,7 +26,7 @@
             android:textSize="@dimen/text_title_default"
             android:layout_marginHorizontal="@dimen/default_margin"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerBuyHistory"
+            android:id="@+id/recyclerSymbol"
             android:layout_width="match_parent"
             android:layout_height="@dimen/card_height_2x"
             android:padding="@dimen/default_padding" />
