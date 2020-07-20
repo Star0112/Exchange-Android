@@ -75,9 +75,9 @@ public class Utils {
         return date;
     }
 
-    public static String timestampToDateString(String timestamp) {
+    public static String timestampToDateString(long timestamp) {
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
-        cal.setTimeInMillis(Long.parseLong(timestamp) * 1000L);
+        cal.setTimeInMillis(timestamp * 1000L);
         String date = DateFormat.format("MM/dd/yyyy hh:mm:ss", cal).toString();
         return date;
     }

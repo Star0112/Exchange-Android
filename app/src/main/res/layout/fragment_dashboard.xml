@@ -30,7 +30,7 @@
                     android:id="@+id/llRefresh"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="@dimen/default_margin"
+                    android:layout_marginRight="@dimen/default_padding_2x"
                     android:gravity="center|right">
                     <Button
                         android:id="@+id/btnRefresh"
@@ -41,7 +41,7 @@
                         android:drawablePadding="@dimen/default_padding_small"
                         android:text="06/18/2020 10:42:44"
                         android:textColor="@drawable/text_white_color"
-                        android:textSize="@dimen/text_default"
+                        android:textSize="@dimen/text_item"
                         android:visibility="invisible" />
                 </LinearLayout>
             </LinearLayout>
@@ -72,7 +72,7 @@
                 android:gravity="center"
                 android:text="50"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/text_main_title"/>
+                android:textSize="@dimen/text_item_title"/>
 
             <LinearLayout
                 android:id="@+id/llPriceChange"
@@ -89,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/numberColor"
-                    android:textSize="@dimen/text_default"
+                    android:textSize="@dimen/text_item"
                     android:text="$1.00 (10.08%)"/>
             </LinearLayout>
 
@@ -100,7 +100,7 @@
                 android:gravity="center"
                 android:text="20/1/2020 00:00:00"
                 android:textColor="@color/numberColor"
-                android:textSize="@dimen/text_default"
+                android:textSize="@dimen/text_item"
                 android:visibility="gone" />
 
             <com.github.mikephil.charting.charts.LineChart
@@ -139,6 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1d"
+                        android:textSize="@dimen/text_item"
                         android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
@@ -160,6 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1w"
+                        android:textSize="@dimen/text_item"
                         android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
@@ -181,6 +183,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1m"
+                        android:textSize="@dimen/text_item"
                         android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
@@ -202,6 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_3m"
+                        android:textSize="@dimen/text_item"
                         android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
@@ -223,6 +227,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_6m"
+                        android:textSize="@dimen/text_item"
                         android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
@@ -244,6 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1y"
+                        android:textSize="@dimen/text_item"
                         android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>

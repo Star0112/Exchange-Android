@@ -30,6 +30,7 @@ import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.ExchangeData;
+import com.urgentrn.urncexchange.models.KlineData;
 import com.urgentrn.urncexchange.models.MarketInfo;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.ChartDataResponse;
@@ -138,11 +139,11 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
     }
 
-    private void updateChartView(List<List<String>> chartData) {
+    private void updateChartView(List<KlineData> chartData) {
         if (chartData == null) return;
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < chartData.size(); i++) {
-            entries.add(new Entry(i, Float.parseFloat(chartData.get(i).get(1))));
+            entries.add(new Entry(i, Float.parseFloat(chartData.get(i).getOpen())));
         }
         final LineDataSet dataSet = new LineDataSet(entries, "");
         LineData lineData = new LineData(dataSet);
@@ -167,7 +168,7 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
                 txtPrice.setText(String.valueOf(e.getY()));
-                txtDate.setText(timestampToDateString(chartData.get(entries.indexOf(e)).get(0)));
+                txtDate.setText(timestampToDateString(chartData.get(entries.indexOf(e)).getTimestamp()));
             }
 
             @Override
@@ -185,13 +186,13 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             @Override
             public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
                 chart.getData().setHighlightEnabled(false);
-                txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
-                double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).get(1)) - Double.parseDouble(chartData.get(0).get(1));
-                double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).get(1));
+                txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).getOpen()));
+                double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).getOpen()) - Double.parseDouble(chartData.get(0).getOpen());
+                double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).getOpen());
                 imgPriceChange.setImageResource(changedPrice > 0? R.mipmap.arrow_up: R.mipmap.arrow_down);
                 txtPriceChange.setText(String.format(Locale.US, " %s (%s%%)",
                         Utils.formattedNumber(Math.abs(changedPrice), 0, 4),
-                        Utils.formattedNumber(Math.abs(changedPricePercent), 0, 2)
+                        Utils.formattedNumber(changedPricePercent, 0, 2)
                 ));
                 txtDate.setVisibility(View.GONE);
                 txtPriceChange.setTextColor(getResources().getColor(changedPrice > 0? R.color.colorGreen: R.color.colorRed));
@@ -229,9 +230,9 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
             }
         });
         chart.invalidate();
-        txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).get(1)));
-        double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).get(1)) - Double.parseDouble(chartData.get(0).get(1));
-        double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).get(1));
+        txtPrice.setText(String.valueOf(chartData.get(chartData.size() - 1).getOpen()));
+        double changedPrice = Double.parseDouble(chartData.get(chartData.size() - 1).getOpen()) - Double.parseDouble(chartData.get(0).getOpen());
+        double changedPricePercent = 100*changedPrice/Double.parseDouble(chartData.get(0).getOpen());
         imgPriceChange.setImageResource(changedPrice > 0? R.mipmap.arrow_up: R.mipmap.arrow_down);
         txtPriceChange.setText(String.format(Locale.US, " %s (%s%%)",
                 Utils.formattedNumber(Math.abs(changedPrice), 0, 6),
@@ -376,7 +377,7 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     @Override
     public void onResponse(BaseResponse response) {
         if(response instanceof ChartDataResponse) {
-            final List<List<String>> data = ((ChartDataResponse)response).getData();
+            final List<KlineData> data = ((ChartDataResponse)response).getData();
             updateChartView(data);
         } else if(response instanceof MarketInfoResponse) {
             final List<MarketInfo> data = ((MarketInfoResponse)response).getData();
