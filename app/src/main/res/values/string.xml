@@ -217,6 +217,8 @@
     <string name="bid_amount">BID X AMOUNT</string>
     <string name="ask_amount">ASK X AMOUNT</string>
     <string name="total_balance">TOTAL BALANCE</string>
+    <string name="total">Total</string>
+    <string name="available">Available</string>
     <string name="available_balance">AVAILABLE BALANCE</string>
     <string name="address">Address</string>
     <string name="address_copy">Copy</string>

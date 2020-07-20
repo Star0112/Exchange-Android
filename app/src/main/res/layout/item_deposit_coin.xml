@@ -2,18 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="80dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/default_padding"
-        android:layout_gravity="center">
+        android:layout_marginVertical="@dimen/default_padding_small"
+        android:layout_marginHorizontal="@dimen/default_padding">
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             app:cardBackgroundColor="@color/colorWhite"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="8dp"
             app:cardPreventCornerOverlap="false">
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
             android:layout_weight="4"
             android:layout_height="match_parent"
             app:cardBackgroundColor="@color/colorWhite"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="8dp"
             app:cardPreventCornerOverlap="false">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                         android:layout_weight="1"
                         android:layout_height="0dp"
                         android:layout_width="match_parent"
-                        android:text="@string/total_balance"
+                        android:text="@string/total"
                         app:autoSizeMinTextSize="@dimen/text_item_small"/>
                     <TextView
                         android:id="@+id/txtTotalBalance"
@@ -81,7 +81,7 @@
                         android:layout_weight="1"
                         android:layout_height="0dp"
                         android:layout_width="match_parent"
-                        android:text="@string/available_balance"
+                        android:text="@string/available"
                         app:autoSizeMinTextSize="@dimen/text_item_small"/>
                     <TextView
                         android:id="@+id/txtAvailableBalance"
