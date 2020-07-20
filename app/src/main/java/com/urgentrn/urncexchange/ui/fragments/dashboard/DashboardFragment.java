@@ -1,9 +1,11 @@
 package com.urgentrn.urncexchange.ui.fragments.dashboard;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,12 +40,15 @@ import com.urgentrn.urncexchange.utils.Utils;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.SeekBarTouchStart;
+import org.androidannotations.annotations.Touch;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -65,6 +70,9 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
     Button btnRefresh;
 
     @ViewById
+    View viewTimeline1d, viewTimeline1w, viewTimeline1m, viewTimeline3m, viewTimeline6m, viewTimeline1y;
+
+    @ViewById
     LinearLayout llPriceChange;
 
     @ViewById(R.id.selectCoin)
@@ -75,15 +83,16 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
 
     private List<String> symbolsName = new ArrayList<>();
     private List<String> displaySymbolsName = new ArrayList<>();
-    private int selectedNum = 0;
+    private int selectedSymbol = 0;
+    private int selectedTimeline = 0;
 
     @AfterViews
     protected void init() {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedNum = position;
-                updatePriceView(symbolsName.get(selectedNum));
+                selectedSymbol = position;
+                updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
             }
 
             @Override
@@ -139,12 +148,6 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         ApiClient.getInterface()
                 .getMarketInfo()
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
-    }
-
-    private void updatePriceView(String symbol) {
-        ApiClient.getInterface()
-                .getChartData(symbol, "1", "15770190907847", 3600)
-                .enqueue(new AppCallback<ChartDataResponse>(getContext(), this));
     }
 
     private void updateChartView(List<List<String>> chartData) {
@@ -255,9 +258,109 @@ public class DashboardFragment extends BaseFragment implements ApiCallback {
         btnRefresh.setVisibility(View.VISIBLE);
     }
 
+    private void updatePriceView(String symbol, int selectedTimeline) {
+        long currentTimestamp = Calendar.getInstance().getTime().getTime()/1000L;
+        long startTimestamp = 0L;
+        int interval = 0;
+        if (selectedTimeline == 0) {
+            startTimestamp = currentTimestamp - 3600 * 24;
+            interval = 1800;
+        } else if ( selectedTimeline == 1) {
+            startTimestamp = currentTimestamp - 3600 * 24 * 7;
+            interval = 3600;
+        } else if ( selectedTimeline == 2) {
+            startTimestamp = currentTimestamp - 3600 * 24 * 30;
+            interval = 3600 * 12;
+        } else if ( selectedTimeline == 3) {
+            startTimestamp = currentTimestamp - 3600 * 24 * 90;
+            interval = 3600 * 24;
+        } else if ( selectedTimeline == 4) {
+            startTimestamp = currentTimestamp - 3600 * 24 * 180;
+            interval = 3600 * 24;
+        } else {
+            startTimestamp = currentTimestamp - 3600 * 24 * 365;
+            interval = 3600 * 24;
+        }
+        ApiClient.getInterface()
+                .getChartData(symbol, String.valueOf(startTimestamp), String.valueOf(currentTimestamp), interval)
+                .enqueue(new AppCallback<ChartDataResponse>(getContext(), this));
+    }
+
     @Click(R.id.btnRefresh)
     void onRefresh() {
-        updatePriceView(symbolsName.get(selectedNum));
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+    }
+
+    @Click(R.id.llTimeline1d)
+    void onChangeTimeline1d() {
+        viewTimeline1d.setVisibility(View.VISIBLE);
+        viewTimeline1w.setVisibility(View.INVISIBLE);
+        viewTimeline1m.setVisibility(View.INVISIBLE);
+        viewTimeline3m.setVisibility(View.INVISIBLE);
+        viewTimeline6m.setVisibility(View.INVISIBLE);
+        viewTimeline1y.setVisibility(View.INVISIBLE);
+        selectedTimeline = 0;
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+    }
+
+    @Click(R.id.llTimeline1w)
+    void onChangeTimeline1w() {
+        viewTimeline1d.setVisibility(View.INVISIBLE);
+        viewTimeline1w.setVisibility(View.VISIBLE);
+        viewTimeline1m.setVisibility(View.INVISIBLE);
+        viewTimeline3m.setVisibility(View.INVISIBLE);
+        viewTimeline6m.setVisibility(View.INVISIBLE);
+        viewTimeline1y.setVisibility(View.INVISIBLE);
+        selectedTimeline = 1;
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+    }
+
+    @Click(R.id.llTimeline1m)
+    void onChangeTimeline1m() {
+        viewTimeline1d.setVisibility(View.INVISIBLE);
+        viewTimeline1w.setVisibility(View.INVISIBLE);
+        viewTimeline1m.setVisibility(View.VISIBLE);
+        viewTimeline3m.setVisibility(View.INVISIBLE);
+        viewTimeline6m.setVisibility(View.INVISIBLE);
+        viewTimeline1y.setVisibility(View.INVISIBLE);
+        selectedTimeline = 2;
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+    }
+
+    @Click(R.id.llTimeline3m)
+    void onChangeTimeline3m() {
+        viewTimeline1d.setVisibility(View.INVISIBLE);
+        viewTimeline1w.setVisibility(View.INVISIBLE);
+        viewTimeline1m.setVisibility(View.INVISIBLE);
+        viewTimeline3m.setVisibility(View.VISIBLE);
+        viewTimeline6m.setVisibility(View.INVISIBLE);
+        viewTimeline1y.setVisibility(View.INVISIBLE);
+        selectedTimeline = 3;
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+    }
+
+    @Click(R.id.llTimeline6m)
+    void onChangeTimeline6m() {
+        viewTimeline1d.setVisibility(View.INVISIBLE);
+        viewTimeline1w.setVisibility(View.INVISIBLE);
+        viewTimeline1m.setVisibility(View.INVISIBLE);
+        viewTimeline3m.setVisibility(View.INVISIBLE);
+        viewTimeline6m.setVisibility(View.VISIBLE);
+        viewTimeline1y.setVisibility(View.INVISIBLE);
+        selectedTimeline = 4;
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
+    }
+
+    @Click(R.id.llTimeline1y)
+    void onChangeTimeline1y() {
+        viewTimeline1d.setVisibility(View.INVISIBLE);
+        viewTimeline1w.setVisibility(View.INVISIBLE);
+        viewTimeline1m.setVisibility(View.INVISIBLE);
+        viewTimeline3m.setVisibility(View.INVISIBLE);
+        viewTimeline6m.setVisibility(View.INVISIBLE);
+        viewTimeline1y.setVisibility(View.VISIBLE);
+        selectedTimeline = 5;
+        updatePriceView(symbolsName.get(selectedSymbol), selectedTimeline);
     }
 
     @Override

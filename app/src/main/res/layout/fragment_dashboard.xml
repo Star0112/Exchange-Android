@@ -123,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/llTimeline1d"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -138,9 +139,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1d"
+                        android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/llTimeline1w"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -155,10 +158,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/timeline_1m"
+                        android:text="@string/timeline_1w"
+                        android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/llTimeline1m"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -174,9 +179,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1m"
+                        android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/llTimeline3m"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -192,9 +199,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_3m"
+                        android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/llTimeline6m"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -210,9 +219,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_6m"
+                        android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/llTimeline1y"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -228,6 +239,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/timeline_1y"
+                        android:layout_margin="@dimen/default_padding_small"
                         android:textColor="@drawable/text_white_color" />
                 </LinearLayout>
             </LinearLayout>
