@@ -127,6 +127,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
                     <View
@@ -147,6 +148,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
                     <View
@@ -167,6 +169,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
                     <View
@@ -187,6 +190,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
                     <View
@@ -207,6 +211,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
                     <View
@@ -227,6 +232,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
                     <View
