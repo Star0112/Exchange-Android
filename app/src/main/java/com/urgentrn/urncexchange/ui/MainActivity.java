@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity implements ApiCallback {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         Vibrator vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         vb.vibrate(50);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         switch (item.getItemId()) {
             case R.id.navigation_dash:
                 fm.beginTransaction().hide(active).show(fragment1).commitAllowingStateLoss();
@@ -84,7 +84,6 @@ public class MainActivity extends BaseActivity implements ApiCallback {
                 break;
             case R.id.navigation_setting:
                 fm.beginTransaction().hide(active).show(fragment5).commitAllowingStateLoss();
-                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
                 active = fragment5;
                 break;
             default:

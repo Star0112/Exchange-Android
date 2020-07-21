@@ -75,7 +75,7 @@
             android:name="com.urgentrn.urncexchange.ui.MainActivity_"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing">
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
