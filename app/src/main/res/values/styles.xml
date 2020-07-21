@@ -397,7 +397,7 @@
     <!--  Button  -->
     <style name="DefaultButton.Blue">
         <item name="android:background">@drawable/bg_button_blue</item>
-        <item name="android:textColor">@color/textColorWhite</item>
+        <item name="android:textColor">@drawable/text_white_color</item>
         <item name="android:layout_gravity">center</item>
 
     </style>

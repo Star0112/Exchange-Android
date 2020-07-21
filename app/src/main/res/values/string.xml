@@ -240,6 +240,7 @@
     <string name="buy_success">You have bought successfully.</string>
     <string name="order_success">Your oder is success.</string>
     <string name="buy_failed">Operation are failed.</string>
+    <string name="balance_">Balance:</string>
     <!-- Order -->
     <string name="title_order">Order</string>
     <string name="balance">Balance</string>

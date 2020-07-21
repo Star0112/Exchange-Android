@@ -19,6 +19,7 @@
     <color name="colorBlack">#000</color>
     <color name="textColorDefault">#000</color>
     <color name="textColorBlack">#000</color>
+    <color name="AssetNameColor">#323232</color>
     <color name="colorBlackTransparent">#b3000000</color>
     <color name="colorBlackMoreTransparent">#2d000000</color>
     <color name="colorDarkTransparent">#5f000000</color>

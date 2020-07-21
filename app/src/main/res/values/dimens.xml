@@ -6,15 +6,14 @@
     <dimen name="default_margin_small">10dp</dimen>
     <dimen name="default_padding_2x">12dp</dimen>
     <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_padding_3x">20dp</dimen>
+    <dimen name="item_horizontal_spacing">21dp</dimen>
     <dimen name="default_margin_2x">24dp</dimen>
     <dimen name="default_margin_3x">32dp</dimen>
     <dimen name="default_margin_large">40dp</dimen>
     <dimen name="default_margin_xlarge">48dp</dimen>
     <dimen name="default_margin_xxlarge">56dp</dimen>
     <dimen name="default_margin_xxxlarge">64dp</dimen>
-    <dimen name="default_padding_3x">20dp</dimen>
-    <dimen name="item_vertical_padding">10dp</dimen>
-    <dimen name="item_horizontal_spacing">21dp</dimen>
     <dimen name="scroll_marge">180dp</dimen>
 
     <!-- Size -->
@@ -54,6 +53,7 @@
     <dimen name="card_width">150dp</dimen>
     <dimen name="button_width">160dp</dimen>
     <dimen name="button_width_2x">200dp</dimen>
+    <dimen name="button_width_3x">310dp</dimen>
     <!-- Height -->
     <dimen name="tiny_height">1dp</dimen>
     <dimen name="text_height">21dp</dimen>
