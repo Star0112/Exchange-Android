@@ -10,6 +10,7 @@
     <color name="colorBlue">#007dc6</color>
     <color name="colorBlueLight">#0290fd</color>
     <color name="textColorPrimary">#277ee6</color>
+    <color name="dropdownButton">#3A76D8</color>
 
     <color name="colorBackground">#f6f8fa</color>
 

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ import com.urgentrn.urncexchange.models.response.MarketInfoResponse;
 import com.urgentrn.urncexchange.ui.adapter.CoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.ui.dialogs.SelectSymbolDialog;
+import com.urgentrn.urncexchange.ui.dialogs.SelectSymbolDialog_;
 import com.urgentrn.urncexchange.utils.Utils;
 
 import org.androidannotations.annotations.AfterViews;
@@ -46,10 +49,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.urgentrn.urncexchange.utils.Utils.addChar;
 import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
 
 @EFragment(R.layout.fragment_buy)
 public class BuyFragment extends BaseFragment implements ApiCallback {
+
     @ViewById(R.id.toolBar)
     Toolbar toolBar;
 
@@ -58,22 +63,23 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     @ViewById(R.id.newHeader)
     TextView newHeader;
 
-    @ViewById(R.id.selectCoin)
-    Spinner spinner;
-
     @ViewById
     EditText buyPrice, buyAmount;
 
     @ViewById
+    Button btnSelectSymbol;
+
+    @ViewById
     RecyclerView recyclerAssetBalance;
 
-    private List<String> symbolsName = new ArrayList<>();
+    private final SelectSymbolDialog symbolDialog = new SelectSymbolDialog_();
+
     private CoinBalanceAdapter adapterCoin;
     private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
     private List<MarketInfo> marketInfoData = new ArrayList<>();
     private MarketInfo selectedAsset;
     private double myBalanceData;
-    private int selectedNum = 0;
+    private int selectedSymbol = 0;
 
     @AfterViews
     protected void init() {
@@ -84,31 +90,10 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                 .setIcon(R.mipmap.ic_send_inactive)
                 .setOnMenuItemClickListener(item -> onSend());
         btnSend.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedNum = position;
-                selectedAsset = marketInfoData.get(position);
-                buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
-                for (AssetBalance assetBalance : assetBalanceData) {
-                    if(marketInfoData.get(selectedNum).getBase().equals(assetBalance.getCoin())) {
-                        myBalanceData = Double.parseDouble(assetBalance.getAvailable());
-                    }
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-
-        });
-
 
         recyclerAssetBalance.setHasFixedSize(true);
         recyclerAssetBalance.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-
-        spinnerDrawer();
+        getMargetData();
     }
 
     @Override
@@ -140,9 +125,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<AssetResponse>(this));
     }
 
-    private void spinnerDrawer() {
-        symbolsName.clear();
-        symbolsName.clear();
+    private void getMargetData() {
         ApiClient.getInterface()
                 .getMarketInfo()
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
@@ -191,6 +174,33 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         return true;
     }
 
+    @Click(R.id.btnSelectSymbol)
+    void onShowSelectSymbol() {
+        showSelectSymbol();
+    }
+
+    private void showSelectSymbol() {
+        if (symbolDialog.getDialog() != null && symbolDialog.getDialog().isShowing()) return;
+        symbolDialog.setOnDialogDismissListener(isSuccess -> {
+            if (selectedSymbol != symbolDialog.getSelectedPosition()) {
+                selectedSymbol = symbolDialog.getSelectedPosition();
+                updateData();
+            }
+        });
+        symbolDialog.show(getChildFragmentManager(), "selSymbol");
+    }
+
+    private void updateData() {
+        selectedAsset = marketInfoData.get(selectedSymbol);
+        buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
+        for (AssetBalance assetBalance : assetBalanceData) {
+            if(marketInfoData.get(selectedSymbol).getBase().equals(assetBalance.getCoin())) {
+                myBalanceData = Double.parseDouble(assetBalance.getAvailable());
+            }
+        }
+        btnSelectSymbol.setText(addChar(selectedAsset.getName(),'/',4));
+    }
+
     @Override
     public void onResponse(BaseResponse response) {
         if(response instanceof MarketInfoResponse) {
@@ -198,11 +208,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
             if(data != null) {
                 for (MarketInfo marketInfo : data) {
                     marketInfoData.add(marketInfo);
-                    symbolsName.add(marketInfo.getName());
                 }
             }
-            final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, symbolsName);
-            spinner.setAdapter(spinnerAdapter);
+            updateData();
         } else if(response instanceof AssetResponse) {
             final List<AssetBalance> data = ((AssetResponse)response).getData();
             AppData.getInstance().setAssetBalanceData(data);

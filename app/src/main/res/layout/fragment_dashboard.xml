@@ -62,8 +62,9 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/button_dropdown"
                 android:textSize="@dimen/spinner_size"
+                android:drawableRight="@mipmap/ic_drop"
                 android:textColor="@drawable/text_white_color"
-                android:spinnerMode="dialog"/>
+                android:paddingRight="@dimen/default_margin"/>
 
             <TextView
                 android:id="@+id/txtPrice"
