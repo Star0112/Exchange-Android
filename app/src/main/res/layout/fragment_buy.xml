@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:background="@drawable/bg_dialog_gray"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginTop="@dimen/bank_icon_size"
                 android:orientation="vertical"
                 android:gravity="center">
 
@@ -80,16 +80,16 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_height="@dimen/item_height_small"
+                android:gravity="top|center">
                 <Button
                     android:id="@+id/btnSelectSymbol"
                     style="@style/SpinnerInput"
-                    android:layout_gravity="center"
-                    android:elevation="10dp"
                     android:background="@drawable/button_dropdown"
+                    android:drawableRight="@mipmap/ic_drop"
                     android:textSize="@dimen/spinner_size"
-                    android:textColor="@drawable/text_white_color"/>
+                    android:textColor="@drawable/text_white_color"
+                    android:paddingRight="@dimen/default_margin"/>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
