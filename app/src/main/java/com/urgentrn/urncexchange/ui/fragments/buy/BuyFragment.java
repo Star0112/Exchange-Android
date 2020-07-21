@@ -45,11 +45,6 @@ import static com.urgentrn.urncexchange.utils.Utils.addChar;
 @EFragment(R.layout.fragment_buy)
 public class BuyFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById(R.id.toolBar)
-    Toolbar toolBar;
-
-    private MenuItem btnSend;
-
     @ViewById(R.id.newHeader)
     TextView newHeader;
 
@@ -75,11 +70,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     protected void init() {
         newHeader.setText(R.string.title_buy);
         buyAmount.setText("1");
-        btnSend = toolBar.getMenu()
-                .add(R.string.title_send)
-                .setIcon(R.mipmap.ic_send_inactive)
-                .setOnMenuItemClickListener(item -> onSend());
-        btnSend.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         recyclerAssetBalance.setHasFixedSize(true);
         recyclerAssetBalance.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -159,9 +149,9 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         }
     }
 
-    private boolean onSend() {
+    @Click(R.id.btnSend)
+    void onSend() {
         ((BaseFragment)getParentFragment()).replaceFragment(new SendFragment_(), false);
-        return true;
     }
 
     @Click(R.id.btnSelectSymbol)
