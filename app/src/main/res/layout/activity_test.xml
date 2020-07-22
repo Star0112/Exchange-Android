@@ -1,0 +1,58 @@
+<com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/mRootView"
+    android:background="#000000"
+    tools:context=".ui.TestActivity">
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_marginTop="@dimen/abc_action_bar_default_height_material"
+        android:layout_height="220dp"
+        android:background="@color/colorPrimary"
+        android:id="@+id/mImageView"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_round"
+        android:cropToPadding="true"
+        >
+     </ImageView>
+
+    <FrameLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/slidingtab_layout"
+        android:id="@+id/mPagerContainer"
+        >
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/mPager"
+            >
+        </androidx.viewpager.widget.ViewPager>
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="fill_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/mToolbar"
+        android:background="@color/colorPrimary"
+        app:elevation="6dp"
+        android:elevation="10dp"
+        >
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.urgentrn.urncexchange.layout.StarSlidingTabLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        android:layout_below="@+id/mImageView"
+        android:id="@+id/mSlidingTabLayout"
+        android:elevation="10dp"
+        android:background="@color/colorPrimary"
+        >
+    </com.urgentrn.urncexchange.layout.StarSlidingTabLayout>
+</com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView>
