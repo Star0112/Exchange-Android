@@ -2,12 +2,10 @@ package com.urgentrn.urncexchange.ui.fragments.buy;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +30,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.EditorAction;
+import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -39,14 +38,16 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.urgentrn.urncexchange.utils.Utils.addChar;
+import static com.urgentrn.urncexchange.utils.Utils.formattedNumber;
 
 @EFragment(R.layout.fragment_buy)
 public class BuyFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById(R.id.newHeader)
-    TextView newHeader;
+    @ViewById
+    TextView txtQuoteAsset, txtBaseAsset, txtQuoteAssetName, txtBaseAssetName, txtQuoteAssetBalance, txtBaseAssetBalance, txtBuyPrice;
 
     @ViewById
     EditText buyPrice, buyAmount;
@@ -63,12 +64,10 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
     private ArrayList<AssetBalance> assetBalanceData = new ArrayList<>();
     private List<MarketInfo> marketInfoData = new ArrayList<>();
     private MarketInfo selectedAsset;
-    private double myBalanceData;
     private int selectedSymbol = 0;
 
     @AfterViews
     protected void init() {
-        newHeader.setText(R.string.title_buy);
         buyAmount.setText("1");
 
         recyclerAssetBalance.setHasFixedSize(true);
@@ -97,9 +96,10 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         adapterCoin = new CoinBalanceAdapter(getChildFragmentManager(), pos ->assetBalanceData.get(pos));
         adapterCoin.setData(assetBalanceData);
         recyclerAssetBalance.setAdapter(adapterCoin);
+        updateUI();
     }
 
-    private void getAssetBalance() {
+    private void getAssetBalanceData() {
         ApiClient.getInterface()
                 .getAssetBalance()
                 .enqueue(new AppCallback<AssetResponse>(this));
@@ -111,18 +111,28 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                 .enqueue(new AppCallback<MarketInfoResponse>(this));
     }
 
+    @TextChange(R.id.buyAmount)
+    void onBuyChange(CharSequence s) {
+        int amount = !buyAmount.getText().toString().isEmpty()? Integer.parseInt(buyAmount.getText().toString()) : 0;
+        double price = selectedAsset == null? 0 : selectedAsset.getPrice();
+        buyPrice.setText(formattedNumber( price * amount));
+    }
+
     @EditorAction(R.id.buyAmount)
     @Click(R.id.btnBuy)
     void onBuy() {
         final String amount = buyAmount.getText().toString();
-        buyAmount.setText(String.valueOf(Integer.parseInt(amount)));
+        if (amount.length() != 0) {
+            buyAmount.setText(String.valueOf(Integer.parseInt(amount)));
+        }
+
         if (amount.isEmpty()) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_empty));
         } else if (Integer.parseInt(amount)<=0) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_invalid));
-        } else if(Double.parseDouble(amount) * selectedAsset.getPrice() > myBalanceData ) {
+        } else if(Double.parseDouble(amount) * selectedAsset.getPrice() > getMyAssetBalance(selectedAsset.getBase()) ) {
             buyAmount.requestFocus();
             buyAmount.setError(getString(R.string.error_amount_limited));
         } else {
@@ -131,7 +141,7 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
-                            getAssetBalance();
+                            getAssetBalanceData();
                             ((BaseActivity)getActivity()).showAlert(R.string.buy_success);
                         }
                         @Override
@@ -164,21 +174,37 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         symbolDialog.setOnDialogDismissListener(isSuccess -> {
             if (selectedSymbol != symbolDialog.getSelectedPosition()) {
                 selectedSymbol = symbolDialog.getSelectedPosition();
-                updateData();
+                updateUI();
             }
         });
         symbolDialog.show(getChildFragmentManager(), "selSymbol");
     }
 
-    private void updateData() {
+    private void updateUI() {
         selectedAsset = marketInfoData.get(selectedSymbol);
-        buyPrice.setText(String.valueOf(selectedAsset.getPrice()));
+        txtBaseAsset.setText(selectedAsset.getBase());
+        txtQuoteAsset.setText(selectedAsset.getPair());
+        txtBaseAssetName.setText(selectedAsset.getBase());
+        txtQuoteAssetName.setText(selectedAsset.getPair());
+        txtBuyPrice.setText(String.format(Locale.US, "1%s = %s%s",
+                selectedAsset.getPair(),
+                selectedAsset.getPrice(),
+                selectedAsset.getBase()
+        ));
+        btnSelectSymbol.setText(addChar(selectedAsset.getName(),'/',4));
+        txtBaseAssetBalance.setText(formattedNumber(getMyAssetBalance(selectedAsset.getBase())));
+        txtQuoteAssetBalance.setText(formattedNumber(getMyAssetBalance(selectedAsset.getPair())));
+
+        onBuyChange("");
+    }
+
+    private double getMyAssetBalance(String asset) {
         for (AssetBalance assetBalance : assetBalanceData) {
-            if(marketInfoData.get(selectedSymbol).getBase().equals(assetBalance.getCoin())) {
-                myBalanceData = Double.parseDouble(assetBalance.getAvailable());
+            if(asset.equals(assetBalance.getCoin())) {
+                return Double.parseDouble(assetBalance.getAvailable());
             }
         }
-        btnSelectSymbol.setText(addChar(selectedAsset.getName(),'/',4));
+        return 0;
     }
 
     @Override
@@ -189,8 +215,8 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
                 for (MarketInfo marketInfo : data) {
                     marketInfoData.add(marketInfo);
                 }
+                updateUI();
             }
-            updateData();
         } else if(response instanceof AssetResponse) {
             final List<AssetBalance> data = ((AssetResponse)response).getData();
             AppData.getInstance().setAssetBalanceData(data);
