@@ -8,6 +8,6 @@
     android:singleLine="true"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:textColor="@android:color/white"
+    android:textColor="@drawable/text_primary_color"
     android:textStyle="bold"
     android:textSize="14sp" />

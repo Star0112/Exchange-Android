@@ -162,7 +162,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
     public void setupViewPager() {
         mPager.setAdapter(mAdapter);
         mSlidingTabLayout.setCustomTabView(R.layout.layout_tab_indicator, android.R.id.text1);
-        mSlidingTabLayout.setSelectedIndicatorColors(Color.parseColor("#ffffff"));
+        mSlidingTabLayout.setSelectedIndicatorColors(Color.parseColor("#09428F"));
         mSlidingTabLayout.setViewPager(mPager);
     }
 

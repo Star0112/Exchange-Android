@@ -267,7 +267,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/abc_action_bar_default_height_material"
         android:layout_below="@id/llHeader"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/bg_dialog"
         android:elevation="10dp"
         >
     </com.urgentrn.urncexchange.layout.StarSlidingTabLayout>
@@ -276,7 +276,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/slidingtab_layout"
+        android:layout_below="@+id/mSlidingTabLayout"
         android:id="@+id/mPagerContainer"
         >
 

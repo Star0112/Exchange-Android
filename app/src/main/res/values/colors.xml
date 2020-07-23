@@ -3,6 +3,7 @@
     <color name="colorTransparent">@android:color/transparent</color>
 
     <color name="colorPrimary">#09428F</color>
+    <color name="colorPrimaryTransparent">#3f09428F</color>
     <color name="colorPrimaryDark">#253B97</color>
     <color name="colorAccent">#253B97</color>
     <color name="textColorBlue">#09428F</color>
