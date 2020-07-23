@@ -2,54 +2,32 @@ package com.urgentrn.urncexchange.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.Vibrator;
-import android.util.Log;
-import android.view.WindowManager;
 
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.neovisionaries.ws.client.ThreadType;
-import com.neovisionaries.ws.client.WebSocket;
-import com.neovisionaries.ws.client.WebSocketAdapter;
-import com.neovisionaries.ws.client.WebSocketException;
-import com.neovisionaries.ws.client.WebSocketFactory;
-import com.neovisionaries.ws.client.WebSocketFrame;
-import com.neovisionaries.ws.client.WebSocketListener;
-import com.neovisionaries.ws.client.WebSocketState;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
-import com.urgentrn.urncexchange.api.ApiClient;
-import com.urgentrn.urncexchange.api.AppCallback;
-import com.urgentrn.urncexchange.models.AppData;
-import com.urgentrn.urncexchange.models.AssetBalance;
-import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
-import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 import com.urgentrn.urncexchange.ui.fragments.buy.BuyContainerFragment_;
-import com.urgentrn.urncexchange.ui.fragments.buy.BuyFragment_;
 import com.urgentrn.urncexchange.ui.fragments.deposit.DepositContainerFragment_;
 import com.urgentrn.urncexchange.ui.fragments.dashboard.DashboardFragment_;
 import com.urgentrn.urncexchange.ui.fragments.order.OrderFragment_;
 import com.urgentrn.urncexchange.ui.fragments.setting.SettingContainerFragment_;
-import com.urgentrn.urncexchange.utils.Constants;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity implements ApiCallback {
 
     @ViewById(R.id.navigation)
     BottomNavigationView navigation;
+
 
     private final DashboardFragment_ fragment1 = new DashboardFragment_();
     private final DepositContainerFragment_ fragment2 = new DepositContainerFragment_();

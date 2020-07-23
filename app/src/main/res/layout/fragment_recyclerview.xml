@@ -9,5 +9,4 @@
     android:clipToPadding="false"
     android:scrollbars="vertical"
     android:fadeScrollbars="true"
-    tools:context=".ui.TestActivity"
     />
