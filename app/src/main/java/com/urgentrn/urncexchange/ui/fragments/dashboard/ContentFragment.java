@@ -1,4 +1,4 @@
-package com.urgentrn.urncexchange.layout;
+package com.urgentrn.urncexchange.ui.fragments.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

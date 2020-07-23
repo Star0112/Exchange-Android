@@ -264,15 +264,16 @@
 
     <com.urgentrn.urncexchange.layout.StarSlidingTabLayout
         android:id="@+id/mSlidingTabLayout"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/abc_action_bar_default_height_material"
         android:layout_below="@id/llHeader"
+        android:background="@color/colorPrimary"
         android:elevation="10dp"
         >
     </com.urgentrn.urncexchange.layout.StarSlidingTabLayout>
 
     <FrameLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/slidingtab_layout"
@@ -280,7 +281,7 @@
         >
 
         <androidx.viewpager.widget.ViewPager
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:id="@+id/mPager"
             >

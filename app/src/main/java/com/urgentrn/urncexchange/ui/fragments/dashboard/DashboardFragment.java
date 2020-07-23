@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -34,8 +33,6 @@ import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
-import com.urgentrn.urncexchange.layout.ContentFragment;
-import com.urgentrn.urncexchange.layout.RecyclerViewFragment;
 import com.urgentrn.urncexchange.layout.StarSlidingTabLayout;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.ExchangeData;
@@ -107,7 +104,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
     @ViewById(R.id.chartView)
     LineChart chart;
 
-    FragmentStatePagerAdapter mAdapter;
+    MyPagerAdapter mAdapter;
 
     private final SelectSymbolDialog symbolDialog = new SelectSymbolDialog_();
 
@@ -167,6 +164,10 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
         mSlidingTabLayout.setCustomTabView(R.layout.layout_tab_indicator, android.R.id.text1);
         mSlidingTabLayout.setSelectedIndicatorColors(Color.parseColor("#ffffff"));
         mSlidingTabLayout.setViewPager(mPager);
+    }
+
+    public void updateFragmentInstance(ContentFragment fragment, int position) {
+        mAdapter.updateInstance(fragment, position);
     }
 
     @Override
@@ -451,101 +452,60 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
     }
 
     @Override
-    public ViewPagerSlidingHeaderRootView getRootView() {
-        return null;
-    }
-
-    @Override
     public boolean shouldDrawerMove() {
-        return false;
+        return mAdapter.shouldDrawerMove();
     }
 
     @Override
     public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float vely) {
-
+        mAdapter.dispatchFling(ev1, ev2, velx, vely);
     }
 
-    //    @Override
-//    public boolean shouldDrawerMove() {
-//        return mAdapter.shouldDrawerMove();
-//    }
-//
-//    @Override
-//    public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float vely) {
-//        mAdapter.dispatchFling(ev1, ev2, velx, vely);
-//    }
-//
-//    @Override
-//    public ViewPagerSlidingHeaderRootView getRootView() {
-//        return mRootView;
-//    }
+    @Override
+    public ViewPagerSlidingHeaderRootView getRootView() {
+        return mRootView;
+    }
 
-    public static class MyPagerAdapter extends FragmentStatePagerAdapter {
-        private static int NUM_ITEMS = 3;
 
-        public MyPagerAdapter(@NonNull FragmentManager fm) {
+    public class MyPagerAdapter extends FragmentStatePagerAdapter {
+        public String[] mTitles = {"scrollView", "recyclerView"};
+        Fragment[] mFragments = new Fragment[mTitles.length];
+
+        public MyPagerAdapter(FragmentManager fm) {
             super(fm);
+            mFragments[0] = ContentFragment.newInstance(0);
+            mFragments[1] = ContentFragment.newInstance(1);
+        }
+
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
         }
 
         @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return FirstFragment.newInstance(0, "A");
-                case 1:
-                    return FirstFragment.newInstance(0, "B");
-                case 2:
-                    return FirstFragment.newInstance(0, "C");
-                default:
-                    return null;
-            }
+        public Fragment getItem(int i) {
+            return mFragments[i];
+        }
+
+        public void updateInstance(Fragment fragment, int position) {
+            mFragments[position] = fragment;
+        }
+
+        public boolean shouldDrawerMove() {
+            return ((SlidingHeaderCallbacks)mFragments[mPager.getCurrentItem()]).shouldDrawerMove();
+        }
+
+        public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float vely) {
+            ((SlidingHeaderCallbacks)mFragments[mPager.getCurrentItem()]).dispatchFling(ev1, ev2, velx, vely);
         }
 
         @Override
         public int getCount() {
-            return NUM_ITEMS;
+            return mTitles.length;
         }
-    }
 
-//    public class MyAdapter extends FragmentStatePagerAdapter {
-//        public String[] mTitles = {"scrollView", "recyclerView"};
-//        Fragment[] mFragments = new Fragment[mTitles.length];
-//
-//        public MyAdapter(FragmentManager fm) {
-//            super(fm);
-//            mFragments[0] = ContentFragment.newInstance(0);
-//            mFragments[1] = RecyclerViewFragment.newInstance();
-//        }
-//
-//
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return mTitles[position];
-//        }
-//
-//        @Override
-//        public Fragment getItem(int i) {
-//            return mFragments[i];
-//        }
-//
-//        public void updateInstance(Fragment fragment, int position) {
-//            mFragments[position] = fragment;
-//        }
-//
-//        public boolean shouldDrawerMove() {
-//            return ((SlidingHeaderCallbacks)mFragments[mPager.getCurrentItem()]).shouldDrawerMove();
-//        }
-//
-//        public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float vely) {
-//            ((SlidingHeaderCallbacks)mFragments[mPager.getCurrentItem()]).dispatchFling(ev1, ev2, velx, vely);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return mTitles.length;
-//        }
-//
-//    }
+    }
 
 
 }
