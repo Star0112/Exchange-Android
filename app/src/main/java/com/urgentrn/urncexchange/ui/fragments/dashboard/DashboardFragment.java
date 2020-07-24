@@ -117,6 +117,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
         loadMarketInfo();
         initGraph();
 
+        mRootView.setBackgroundResource(R.mipmap.background);
         mAdapter = new MyPagerAdapter(getChildFragmentManager());
         mPager.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
         mRootView.registerCallbacks(this);
