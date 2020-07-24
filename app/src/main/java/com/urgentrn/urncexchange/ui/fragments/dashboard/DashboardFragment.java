@@ -119,7 +119,6 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
 
         mRootView.setBackgroundResource(R.mipmap.background);
         mAdapter = new MyPagerAdapter(getChildFragmentManager());
-        mPager.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
         mRootView.registerCallbacks(this);
 
         setupViewPager();
@@ -167,7 +166,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
         mSlidingTabLayout.setViewPager(mPager);
     }
 
-    public void updateFragmentInstance(ContentFragment fragment, int position) {
+    public void updateFragmentInstance(StatisticsFragment fragment, int position) {
         mAdapter.updateInstance(fragment, position);
     }
 
@@ -469,13 +468,13 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
 
 
     public class MyPagerAdapter extends FragmentStatePagerAdapter {
-        public String[] mTitles = {"scrollView", "recyclerView"};
+        public String[] mTitles = {"Statistics", "Orderbook"};
         Fragment[] mFragments = new Fragment[mTitles.length];
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
-            mFragments[0] = ContentFragment.newInstance(0);
-            mFragments[1] = ContentFragment.newInstance(1);
+            mFragments[0] = StatisticsFragment.newInstance();
+            mFragments[1] = RecyclerViewFragment_.newInstance();
         }
 
 

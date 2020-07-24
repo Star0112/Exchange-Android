@@ -58,7 +58,7 @@ public interface ApiInterface {
     Call<BaseResponse> buyCoin(@Body BuyCoinRequest request);
 
     @POST("order/create")
-        // Order Coin
+        // OrderData Coin
     Call<BaseResponse> orderCoin(@Body OrderRequest request);
 
     @POST("user/profile/update")

@@ -206,6 +206,10 @@
     <string name="timeline_3m">3m</string>
     <string name="timeline_6m">6m</string>
     <string name="timeline_1y">1y</string>
+    <string name="bid_amount">Bid Amount</string>
+    <string name="bid_price">Bid Price</string>
+    <string name="ask_amount">Ask Amount</string>
+    <string name="ask_price">Ask Price</string>
     <!-- Deposit -->
     <string name="deposit">Deposit</string>
     <string name="deposit_history">Deposit history</string>
@@ -214,8 +218,8 @@
     <string name="BTC">BTC</string>
     <string name="ETH">ETH</string>
     <string name="USD">USD</string>
-    <string name="bid_amount">BID X AMOUNT</string>
-    <string name="ask_amount">ASK X AMOUNT</string>
+    <string name="bid_x_amount">BID X AMOUNT</string>
+    <string name="ask_x_amount">ASK X AMOUNT</string>
     <string name="total_balance">TOTAL BALANCE</string>
     <string name="total">Total</string>
     <string name="available">Available</string>
@@ -241,7 +245,7 @@
     <string name="order_success">Your oder is success.</string>
     <string name="buy_failed">Operation are failed.</string>
     <string name="balance_">Balance:</string>
-    <!-- Order -->
+    <!-- OrderData -->
     <string name="title_order">Order</string>
     <string name="balance">Balance</string>
     <string name="total_price">Total Price</string>
