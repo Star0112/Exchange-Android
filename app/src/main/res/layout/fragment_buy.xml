@@ -179,19 +179,24 @@
                             </LinearLayout>
                         </LinearLayout>
                         <LinearLayout
-                            android:layout_width="@dimen/card_height"
-                            android:layout_height="@dimen/indicator_height"
-                            android:layout_centerInParent="true"
-                            android:elevation="3dp"
-                            android:background="@drawable/bg_textview_white"
-                            android:gravity="center">
-                            <TextView
-                                android:id="@+id/txtBuyPrice"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/text_title_default"
-                                android:text="1URNC = 1BTC"
-                                android:textColor="@color/textColorBlue"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+                            <LinearLayout
+                                android:layout_width="@dimen/peek_height"
+                                android:layout_height="@dimen/indicator_height"
+                                android:layout_margin="@dimen/default_padding"
+                                android:elevation="@dimen/default_padding_small"
+                                android:background="@drawable/bg_textview_white"
+                                android:gravity="center">
+                                <TextView
+                                    android:id="@+id/txtBuyPrice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_title_default"
+                                    android:text="1URNC = 1BTC"
+                                    android:textColor="@color/textColorBlue"/>
+                            </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
                     <View

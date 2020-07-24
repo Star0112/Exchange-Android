@@ -210,6 +210,15 @@
     <string name="bid_price">Bid Price</string>
     <string name="ask_amount">Ask Amount</string>
     <string name="ask_price">Ask Price</string>
+    <string name="last_price">Last Price</string>
+    <string name="change">Change</string>
+    <string name="change_">Change %</string>
+    <string name="volume">Volume</string>
+    <string name="bid_size">Bid size x amount(price)</string>
+    <string name="ask_size">Ask size x amount(price)</string>
+    <string name="high">High (day)</string>
+    <string name="low">Low (day)</string>
+    <string name="open_price">Open price</string>
     <!-- Deposit -->
     <string name="deposit">Deposit</string>
     <string name="deposit_history">Deposit history</string>

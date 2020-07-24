@@ -78,7 +78,7 @@
     <dimen name="item_exchange_height">150dp</dimen>
     <dimen name="mask_height">160dp</dimen>
     <dimen name="gift_height">180dp</dimen>
-    <dimen name="card_height">187dp</dimen>
+    <dimen name="card_height">195dp</dimen>
     <dimen name="peek_height">260dp</dimen>
     <dimen name="banner_height">288dp</dimen>
     <dimen name="card_height_2x">320dp</dimen>
