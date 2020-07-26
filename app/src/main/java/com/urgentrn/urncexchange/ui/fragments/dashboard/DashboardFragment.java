@@ -149,7 +149,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
     }
 
     private void prepareViewPagerSlidingHeader() {
-        mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingTabLayout, mPagerContainer);
+        mRootView.initHeaderViewPager(null, llHeader, mSlidingTabLayout, mPagerContainer);
         mRootView.setParallaxFactor(4);
         mRootView.registerHeaderListener(new ViewPagerSlidingHeaderRootView.HeaderSlideListener() {
             @Override
@@ -195,7 +195,15 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
     }
 
     private void updateChartView(List<KlineData> chartData) {
-        if (chartData == null) return;
+        if (chartData == null || chartData.size() == 0) {
+            chart.invalidate();
+            txtPrice.setText("");
+            txtPriceChange.setText("");
+            btnRefresh.setText(getCurrentTime());
+            llChart.setVisibility(View.VISIBLE);
+            btnRefresh.setVisibility(View.VISIBLE);
+            return;
+        }
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < chartData.size(); i++) {
             entries.add(new Entry(i, Float.parseFloat(chartData.get(i).getOpen())));

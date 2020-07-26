@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     private SlidingHeaderCallbacks mCallbacks;
-    private StarPagerSlidingHeaderRootView.HeaderSlideListener mHeaderListener;
+    private HeaderSlideListener mHeaderListener;
     private float prevY = 0;
     private float mTranslationYUpperBoundActionBar;
     private float mTranslationYLowerBoundActionBar;
@@ -45,8 +45,8 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     public static enum DrawerState {OPEN, CLOSED, CLOSING, OPENING};
     public static enum ActionBarState {OPEN, CLOSED, CLOSING, OPENING};
 
-    private StarPagerSlidingHeaderRootView.DrawerState mDrawerState;
-    private StarPagerSlidingHeaderRootView.ActionBarState mActionBarState;
+    private DrawerState mDrawerState;
+    private ActionBarState mActionBarState;
 
     public float getParallaxFactor() {
         return mParallaxFactor;
@@ -77,7 +77,7 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         mCallbacks = callbacks;
     }
 
-    public void registerHeaderListener(StarPagerSlidingHeaderRootView.HeaderSlideListener listener) {
+    public void registerHeaderListener(HeaderSlideListener listener) {
         mHeaderListener = listener;
         mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
     }
@@ -101,8 +101,8 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     int mInterruptInterception = 0;
 
     public void initHeaderViewPager(View actionBarView, View headerView, View tabView, View pager) {
-        mDrawerState = StarPagerSlidingHeaderRootView.DrawerState.OPEN;
-        mActionBarState = StarPagerSlidingHeaderRootView.ActionBarState.OPEN;
+        mDrawerState = DrawerState.OPEN;
+        mActionBarState = ActionBarState.OPEN;
         mSlidingTabLayout = tabView;
         mToolbar = actionBarView;
         mHeaderView = headerView;
@@ -158,7 +158,7 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         });
     }
 
-    public StarPagerSlidingHeaderRootView.ActionBarState getActionBarState() {
+    public ActionBarState getActionBarState() {
         return mActionBarState;
     }
 
@@ -212,7 +212,7 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         return super.onInterceptTouchEvent(ev);
     }
 
-    StarPagerSlidingHeaderRootView.MyGestureListener mMyGestureListener = new StarPagerSlidingHeaderRootView.MyGestureListener(getContext());
+    MyGestureListener mMyGestureListener = new MyGestureListener(getContext());
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -367,12 +367,12 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
     public boolean moveContents(float dy) {
         //awesomeness :) ;)
-        if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPEN
-                || mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPENING
-                || mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSING) {
+        if (mDrawerState == DrawerState.OPEN
+                || mDrawerState == DrawerState.OPENING
+                || mDrawerState == DrawerState.CLOSING) {
             return moveHeader(dy);
         }
-        if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSED && mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.OPEN && dy > 0) {
+        if (mDrawerState == DrawerState.CLOSED && mActionBarState == ActionBarState.OPEN && dy > 0) {
             if (mCallbacks.shouldDrawerMove()) {
                 return moveHeader(dy);
             } else {
@@ -392,9 +392,9 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
     public boolean moveHeader(float dy) {
         if (dy > 0) {
-            mDrawerState = StarPagerSlidingHeaderRootView.DrawerState.OPENING;
+            mDrawerState = DrawerState.OPENING;
         } else if (dy < 0) {
-            mDrawerState = StarPagerSlidingHeaderRootView.DrawerState.CLOSING;
+            mDrawerState = DrawerState.CLOSING;
         }
         float translationY = (mSlidingTabLayout.getTranslationY() + dy);
         translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBound, mTranslationYUpperBound);
@@ -408,14 +408,14 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         mPager.setTranslationY(getPagerDeviation() + translationY);
 
         if (translationY == mTranslationYLowerBound) {
-            mDrawerState = StarPagerSlidingHeaderRootView.DrawerState.CLOSED;
+            mDrawerState = DrawerState.CLOSED;
             if (isActionBarSlidingEnabled()) {
                 mInterruptInterception = 5;
             }
             return false;
         }
         if (translationY == mTranslationYUpperBound) {
-            mDrawerState = StarPagerSlidingHeaderRootView.DrawerState.OPEN;
+            mDrawerState = DrawerState.OPEN;
             return false;
         }
         return true;
@@ -426,9 +426,9 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
             return false;
         }
         if (dy > 0) {
-            mActionBarState = StarPagerSlidingHeaderRootView.ActionBarState.OPENING;
+            mActionBarState = ActionBarState.OPENING;
         } else if (dy < 0) {
-            mActionBarState = StarPagerSlidingHeaderRootView.ActionBarState.CLOSING;
+            mActionBarState = ActionBarState.CLOSING;
         }
 
         float translationY = (mSlidingTabLayout.getTranslationY() + dy);
@@ -444,11 +444,11 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         mPager.setTranslationY(getPagerDeviation() + translationY);
 
         if (translationY == mTranslationYLowerBoundActionBar) {
-            mActionBarState = StarPagerSlidingHeaderRootView.ActionBarState.CLOSED;
+            mActionBarState = ActionBarState.CLOSED;
             return false;
         }
         if (translationY == mTranslationYUpperBoundActionBar) {
-            mActionBarState = StarPagerSlidingHeaderRootView.ActionBarState.OPEN;
+            mActionBarState = ActionBarState.OPEN;
             return false;
         }
         return true;
@@ -456,13 +456,13 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
 
     public void settleContents() {
-        if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPENING
-                || mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSING) {
+        if (mDrawerState == DrawerState.OPENING
+                || mDrawerState == DrawerState.CLOSING) {
             closeDrawer();
             return;
         }
-        if (mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.OPENING ||
-                mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.CLOSING) {
+        if (mActionBarState == ActionBarState.OPENING ||
+                mActionBarState == ActionBarState.CLOSING) {
             closeActionBar();
             return;
         }
@@ -472,13 +472,13 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         if (dy <= 0) {
             //sliding up
 
-            if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPEN || mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSING || mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPENING) {
+            if (mDrawerState == DrawerState.OPEN || mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
                 //drawer is open or is in midway
                 return true;
             }
             //drawer closed
 
-            if (mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.OPEN || mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.OPENING || mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.CLOSING) {
+            if (mActionBarState == ActionBarState.OPEN || mActionBarState == ActionBarState.OPENING || mActionBarState == ActionBarState.CLOSING) {
                 //action bar is open or is in midway
 
                 if (mToolbar != null) {
@@ -495,18 +495,18 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         if (dy > 0) {
             //sliding down
 
-            if (mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.CLOSED || mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.OPENING || mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.CLOSING) {
+            if (mActionBarState == ActionBarState.CLOSED || mActionBarState == ActionBarState.OPENING || mActionBarState == ActionBarState.CLOSING) {
                 //action bar closed or in midway
                 return true;
             }
             //action bar open
 
-            if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSED) {
+            if (mDrawerState == DrawerState.CLOSED) {
                 //drawer closed
                 return mCallbacks.shouldDrawerMove();
             }
 
-            if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSING || mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPENING) {
+            if (mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
                 //drawer midway
                 return true;
             }
@@ -521,22 +521,22 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         long animationDuration = 200;
         float translationY = 0;
         int pagerNewHeight = mPager.getHeight();
-        StarPagerSlidingHeaderRootView.DrawerState drawerState = StarPagerSlidingHeaderRootView.DrawerState.OPEN;
+        DrawerState drawerState = DrawerState.OPEN;
         float alpha = 0f;
 
-        if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.CLOSING) {
+        if (mDrawerState == DrawerState.CLOSING) {
             translationY = mTranslationYLowerBound;
-            drawerState = StarPagerSlidingHeaderRootView.DrawerState.CLOSED;
+            drawerState = DrawerState.CLOSED;
             alpha = 0f;
         }
 
-        if (mDrawerState == StarPagerSlidingHeaderRootView.DrawerState.OPENING) {
+        if (mDrawerState == DrawerState.OPENING) {
             translationY = mTranslationYUpperBound;
-            drawerState = StarPagerSlidingHeaderRootView.DrawerState.OPEN;
+            drawerState = DrawerState.OPEN;
             alpha = 1f;
         }
 
-        final StarPagerSlidingHeaderRootView.DrawerState finalDrawerState = drawerState;
+        final DrawerState finalDrawerState = drawerState;
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
                 "translationY",
@@ -597,21 +597,21 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         float translationY = 0;
         float translationYActionBar = 0;
         int pagerNewHeight = mPager.getHeight();
-        StarPagerSlidingHeaderRootView.ActionBarState drawerState = StarPagerSlidingHeaderRootView.ActionBarState.OPEN;
+        ActionBarState drawerState = ActionBarState.OPEN;
 
-        if (mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.CLOSING) {
+        if (mActionBarState == ActionBarState.CLOSING) {
             translationY = mTranslationYLowerBoundActionBar;
             translationYActionBar = -getActionBarHeight();
-            drawerState = StarPagerSlidingHeaderRootView.ActionBarState.CLOSED;
+            drawerState = ActionBarState.CLOSED;
         }
 
-        if (mActionBarState == StarPagerSlidingHeaderRootView.ActionBarState.OPENING) {
+        if (mActionBarState == ActionBarState.OPENING) {
             translationY = mTranslationYUpperBoundActionBar;
             translationYActionBar = 0f;
-            drawerState = StarPagerSlidingHeaderRootView.ActionBarState.OPEN;
+            drawerState = ActionBarState.OPEN;
         }
 
-        final StarPagerSlidingHeaderRootView.ActionBarState finalDrawerState = drawerState;
+        final ActionBarState finalDrawerState = drawerState;
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
                 "translationY",
@@ -667,9 +667,9 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     }
 
     public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float vely) {
-        if (mDrawerState != StarPagerSlidingHeaderRootView.DrawerState.CLOSING
-                && mActionBarState != StarPagerSlidingHeaderRootView.ActionBarState.CLOSING
-                && mActionBarState != StarPagerSlidingHeaderRootView.ActionBarState.OPENING) {
+        if (mDrawerState != DrawerState.CLOSING
+                && mActionBarState != ActionBarState.CLOSING
+                && mActionBarState != ActionBarState.OPENING) {
             mCallbacks.dispatchFling(ev1, ev2, velx, vely);
         }
     }

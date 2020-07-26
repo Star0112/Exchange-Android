@@ -47,7 +47,7 @@
     </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/mSlidingTabLayout"
+        android:id="@+id/mSlidingLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/llHeader"
@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/mSlidingTabLayout"
+        android:layout_below="@id/mSlidingLayout"
         >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/depositHistory"

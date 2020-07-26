@@ -54,7 +54,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     FrameLayout mPagerContainer;
 
     @ViewById
-    LinearLayout mSlidingTabLayout;
+    LinearLayout mSlidingLayout;
 
     @ViewById
     FrameLayout llHeader;
@@ -91,15 +91,8 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void prepareViewPagerSlidingHeader() {
-        mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingTabLayout, mPagerContainer);
+        mRootView.initHeaderViewPager(null, llHeader, mSlidingLayout, mPagerContainer);
         mRootView.setParallaxFactor(4);
-        mRootView.registerHeaderListener(new StarPagerSlidingHeaderRootView.HeaderSlideListener() {
-            @Override
-            public void onOpenPercentChanged(int openPercent, float translationY) {
-//                L.d("openPercent = " + openPercent);
-//                L.d("translation = " + translationY);
-            }
-        });
     }
 
     @Override
