@@ -3,19 +3,26 @@ package com.urgentrn.urncexchange.ui.fragments.deposit;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gauravbhola.viewpagerslidingheader.SlidingHeaderActivityCallbacks;
+import com.gauravbhola.viewpagerslidingheader.SlidingHeaderCallbacks;
+import com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
+import com.urgentrn.urncexchange.layout.StarPagerSlidingHeaderRootView;
+import com.urgentrn.urncexchange.layout.StarSlidingTabLayout;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.DepositHistory;
-import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.models.response.DepositHistoryResponse;
@@ -24,6 +31,7 @@ import com.urgentrn.urncexchange.ui.adapter.DepositHistoryAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 import org.greenrobot.eventbus.EventBus;
@@ -31,14 +39,25 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @EFragment(R.layout.fragment_deposit)
 public class DepositFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById(R.id.newHeader)
-    TextView newHeader;
+    @ViewById
+    StarPagerSlidingHeaderRootView mRootView;
+
+    @ViewById
+    Toolbar mToolBar;
+
+    @ViewById
+    FrameLayout mPagerContainer;
+
+    @ViewById
+    LinearLayout mSlidingTabLayout;
+
+    @ViewById
+    FrameLayout llHeader;
 
     @ViewById
     RecyclerView recyclerDepositCoins, depositHistory;
@@ -54,15 +73,33 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
-        newHeader.setText(R.string.deposit);
+        mRootView.setBackgroundResource(R.mipmap.background);
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
-
         depositHistory.setHasFixedSize(true);
         depositHistory.setLayoutManager(new LinearLayoutManager(getContext()));
 
         getAssetBalance();
         setupDrawer(offset, limit);
+
+        setupViewPager();
+        prepareViewPagerSlidingHeader();
+    }
+
+    private void setupViewPager() {
+
+    }
+
+    private void prepareViewPagerSlidingHeader() {
+        mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingTabLayout, mPagerContainer);
+        mRootView.setParallaxFactor(4);
+        mRootView.registerHeaderListener(new StarPagerSlidingHeaderRootView.HeaderSlideListener() {
+            @Override
+            public void onOpenPercentChanged(int openPercent, float translationY) {
+//                L.d("openPercent = " + openPercent);
+//                L.d("translation = " + translationY);
+            }
+        });
     }
 
     @Override
@@ -108,6 +145,11 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
         }
     }
 
+    @Click(R.id.btnSend)
+    void onSend() {
+        ((BaseFragment)getParentFragment()).replaceFragment(new SendFragment_(), false);
+    }
+
     @Override
     public void onResponse(BaseResponse response) {
         if(response instanceof DepositHistoryResponse) {
@@ -133,4 +175,5 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     public void onFailure(String message) {
 
     }
+
 }

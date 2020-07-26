@@ -1,4 +1,4 @@
-package com.urgentrn.urncexchange.ui.fragments.buy;
+package com.urgentrn.urncexchange.ui.fragments.deposit;
 
 import android.app.Activity;
 import android.content.Intent;

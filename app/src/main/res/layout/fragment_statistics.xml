@@ -18,8 +18,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dialog_header_height"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin_3x"
                 app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="@dimen/default_padding_small"
@@ -79,8 +78,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dialog_header_height"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_padding_2x"
                 app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="@dimen/default_padding_small"
@@ -140,8 +138,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dialog_header_height"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_padding_2x"
                 app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="@dimen/default_padding_small"
@@ -201,8 +198,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dialog_header_height"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_padding_2x"
                 app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="@dimen/default_padding_small"
@@ -262,10 +258,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dialog_header_height"
-                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginHorizontal="@dimen/default_margin"
                 android:layout_marginRight="@dimen/default_margin"
-                android:layout_marginTop="@dimen/default_padding_2x"
-                android:layout_marginBottom="@dimen/default_padding_2x"
+                android:layout_marginVertical="@dimen/default_padding_2x"
                 app:cardBackgroundColor="@color/colorWhite"
                 app:cardElevation="@dimen/default_padding_small"
                 app:cardCornerRadius="@dimen/button_border_radius">

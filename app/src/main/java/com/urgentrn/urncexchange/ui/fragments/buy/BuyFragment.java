@@ -159,11 +159,6 @@ public class BuyFragment extends BaseFragment implements ApiCallback {
         }
     }
 
-    @Click(R.id.btnSend)
-    void onSend() {
-        ((BaseFragment)getParentFragment()).replaceFragment(new SendFragment_(), false);
-    }
-
     @Click(R.id.btnSelectSymbol)
     void onShowSelectSymbol() {
         showSelectSymbol();

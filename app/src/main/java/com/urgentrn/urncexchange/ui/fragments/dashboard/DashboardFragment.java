@@ -68,6 +68,10 @@ import static com.urgentrn.urncexchange.utils.Utils.timestampToDateString;
 @EFragment(R.layout.fragment_dashboard)
 public class DashboardFragment extends BaseFragment implements SlidingHeaderCallbacks, SlidingHeaderActivityCallbacks, ApiCallback {
 
+
+    @ViewById
+    ViewPagerSlidingHeaderRootView mRootView;
+
     @ViewById
     Toolbar mToolBar;
 
@@ -82,9 +86,6 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
 
     @ViewById
     LinearLayout llHeader;
-
-    @ViewById
-    ViewPagerSlidingHeaderRootView mRootView;
 
     @ViewById
     TextView txtPrice, txtDate, txtPriceChange;
@@ -114,10 +115,10 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
 
     @AfterViews
     protected void init() {
+        mRootView.setBackgroundResource(R.mipmap.background);
         loadMarketInfo();
         initGraph();
 
-        mRootView.setBackgroundResource(R.mipmap.background);
         mAdapter = new MyPagerAdapter(getChildFragmentManager());
         mRootView.registerCallbacks(this);
 
@@ -147,7 +148,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
         chart.setNoDataText(getString(R.string.no_data));
     }
 
-    void prepareViewPagerSlidingHeader() {
+    private void prepareViewPagerSlidingHeader() {
         mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingTabLayout, mPagerContainer);
         mRootView.setParallaxFactor(4);
         mRootView.registerHeaderListener(new ViewPagerSlidingHeaderRootView.HeaderSlideListener() {
@@ -159,7 +160,7 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
         });
     }
 
-    public void setupViewPager() {
+    private void setupViewPager() {
         mPager.setAdapter(mAdapter);
         mSlidingTabLayout.setCustomTabView(R.layout.layout_tab_indicator, android.R.id.text1);
         mSlidingTabLayout.setSelectedIndicatorColors(Color.parseColor("#09428F"));

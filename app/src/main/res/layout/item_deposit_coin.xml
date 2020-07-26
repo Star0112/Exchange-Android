@@ -5,16 +5,16 @@
     android:layout_height="80dp">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="@dimen/default_padding_small"
-        android:layout_marginHorizontal="@dimen/default_padding">
+        android:layout_height="match_parent">
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/default_padding_small"
+            android:layout_marginStart="@dimen/default_padding"
             app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="8dp"
-            app:cardPreventCornerOverlap="false">
+            app:cardElevation="@dimen/default_padding_small">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,9 +37,11 @@
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/default_padding_small"
+            android:layout_marginEnd="@dimen/default_padding"
             app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="8dp"
-            app:cardPreventCornerOverlap="false">
+            app:cardElevation="@dimen/default_padding_small">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
