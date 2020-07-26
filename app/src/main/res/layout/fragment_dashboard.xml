@@ -6,7 +6,43 @@
     android:background="@mipmap/background"
     android:id="@+id/mRootView">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/mToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/newHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/NewTitleText"
+                android:layout_alignParentLeft="true"
+                android:text="@string/title_dashboard" />
+
+            <LinearLayout
+                android:id="@+id/llRefresh"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/default_padding_2x"
+                android:gravity="center|right">
+                <Button
+                    android:id="@+id/btnRefresh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorTransparent"
+                    android:drawableLeft="@mipmap/ic_refresh"
+                    android:drawablePadding="@dimen/default_padding_small"
+                    android:text="06/18/2020 10:42:44"
+                    android:textColor="@drawable/text_white_color"
+                    android:textSize="@dimen/text_item"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/llHeader"
@@ -14,43 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/mToolBar"
         android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mToolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="center_vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/newHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/NewTitleText"
-                    android:layout_alignParentLeft="true"
-                    android:text="@string/title_dashboard" />
-
-                <LinearLayout
-                    android:id="@+id/llRefresh"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="@dimen/default_padding_2x"
-                    android:gravity="center|right">
-                    <Button
-                        android:id="@+id/btnRefresh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorTransparent"
-                        android:drawableLeft="@mipmap/ic_refresh"
-                        android:drawablePadding="@dimen/default_padding_small"
-                        android:text="06/18/2020 10:42:44"
-                        android:textColor="@drawable/text_white_color"
-                        android:textSize="@dimen/text_item"
-                        android:visibility="invisible" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
         <LinearLayout
             android:id="@+id/llChart"
             android:visibility="invisible"

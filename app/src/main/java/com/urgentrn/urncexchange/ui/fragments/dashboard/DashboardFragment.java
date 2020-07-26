@@ -149,8 +149,8 @@ public class DashboardFragment extends BaseFragment implements SlidingHeaderCall
     }
 
     private void prepareViewPagerSlidingHeader() {
-        mRootView.initHeaderViewPager(null, llHeader, mSlidingTabLayout, mPagerContainer);
-        mRootView.setParallaxFactor(4);
+        mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingTabLayout, mPagerContainer);
+        mRootView.setParallaxFactor(1000000000);
         mRootView.registerHeaderListener(new ViewPagerSlidingHeaderRootView.HeaderSlideListener() {
             @Override
             public void onOpenPercentChanged(int openPercent, float translationY) {
