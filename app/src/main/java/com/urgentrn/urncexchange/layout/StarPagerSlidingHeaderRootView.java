@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     private SlidingHeaderCallbacks mCallbacks;
-    private HeaderSlideListener mHeaderListener;
+//    private HeaderSlideListener mHeaderListener;
 
     private float prevY = 0;
     private float mTranslationYLowerBound;
@@ -45,25 +45,22 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     private DrawerState mDrawerState;
 
 
-    public static abstract class HeaderSlideListener {
-        //goes from 100 to 0 when the header closes or is in midway
-        private int openPercent;
-        private View mSlidingTabLayout;
-
-        private int getOpenPercent() {
-            return openPercent;
-        }
-
-        public void setOpenPercent(int openPercent) {
-            this.openPercent = openPercent;
-            onOpenPercentChanged(openPercent, (mSlidingTabLayout == null) ? 0 : mSlidingTabLayout.getTranslationY());
-        }
-
-        public abstract void onOpenPercentChanged(int openPercent, float slidingTabTranslation);
-    }
-    public void registerCallbacks(SlidingHeaderCallbacks callbacks) {
-        mCallbacks = callbacks;
-    }
+//    public static abstract class HeaderSlideListener {
+//        //goes from 100 to 0 when the header closes or is in midway
+//        private int openPercent;
+//        private View mSlidingTabLayout;
+//
+//        private int getOpenPercent() {
+//            return openPercent;
+//        }
+//
+//        public void setOpenPercent(int openPercent) {
+//            this.openPercent = openPercent;
+//            onOpenPercentChanged(openPercent, (mSlidingTabLayout == null) ? 0 : mSlidingTabLayout.getTranslationY());
+//        }
+//
+//        public abstract void onOpenPercentChanged(int openPercent, float slidingTabTranslation);
+//    }
 
     public StarPagerSlidingHeaderRootView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -77,9 +74,9 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         mHeaderView = headerView;
         mPager = pager;
 
-        if (mHeaderListener != null) {
-            mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
-        }
+//        if (mHeaderListener != null) {
+//            mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
+//        }
 
         mSlidingTabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -122,7 +119,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     }
 
     private boolean mIntercepting;
-    private MotionEvent mPendingDownMotionEvent;
 
     MyGestureListener mMyGestureListener = new MyGestureListener(getContext());
 
@@ -137,20 +133,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         public MyGestureListener(Context context) {
             this.context = context;
         }
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            // if we dont have a lower bound on dy, the list flings unnecessarily
-            if (Math.abs(mTouchDy) < 5) {
-                velocityY = velocityY/5;
-            } else if (Math.abs(mTouchDy) < 7) {
-                velocityY = velocityY/3;
-            } else if (Math.abs(mTouchDy) < 10) {
-                velocityY = velocityY/2;
-            }
-            return super.onFling(e1, e2, velocityX, velocityY);
-        }
-
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -179,63 +161,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         }
     }
 
-    private MotionEvent obtainMotionEvent(MotionEvent base, int action) {
-        MotionEvent ev = MotionEvent.obtainNoHistory(base);
-        ev.setAction(action);
-        return ev;
-    }
-
-    private void duplicateTouchEventForChildren(MotionEvent ev, MotionEvent... pendingEvents) {
-        if (ev == null) {
-            return;
-        }
-        for (int i = getChildCount() - 1; 0 <= i; i--) {
-            View childView = getChildAt(i);
-            //only duplicating the events if the child is a ViewPager
-            if (childView != null && childView == mPager) {
-                MotionEvent event = MotionEvent.obtainNoHistory(ev);
-                float offsetX = -childView.getLeft();
-                float offsetY = -childView.getTop();
-                boolean consumed = false;
-                if (pendingEvents != null) {
-                    for (MotionEvent pe : pendingEvents) {
-                        if (pe != null) {
-                            MotionEvent peAdjusted = MotionEvent.obtainNoHistory(pe);
-                            peAdjusted.offsetLocation(offsetX, offsetY);
-                            try {
-                                consumed |= childView.dispatchTouchEvent(peAdjusted);
-                            } catch (IllegalArgumentException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-                event.offsetLocation(offsetX, offsetY);
-                try {
-                    consumed |= childView.dispatchTouchEvent(event);
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                }
-                if (consumed) {
-                    break;
-                }
-            }
-        }
-    }
-
-
-    public boolean moveContents(float dy) {
-        //awesomeness :) ;)
-        if (mDrawerState == DrawerState.OPEN
-                || mDrawerState == DrawerState.OPENING
-                || mDrawerState == DrawerState.CLOSING
-                || mDrawerState == DrawerState.CLOSED
-        ) {
-            return moveHeader(dy);
-        }
-         return true;
-    }
-
     public int getPagerDeviation() {
         if (mToolbar == null) {
             return mHeaderView.getHeight();
@@ -249,6 +174,18 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
             return mToolbar.getHeight();
         }
         return 0;
+    }
+
+    public boolean moveContents(float dy) {
+        //awesomeness :) ;)
+        if (mDrawerState == DrawerState.OPEN
+                || mDrawerState == DrawerState.OPENING
+                || mDrawerState == DrawerState.CLOSING
+                || mDrawerState == DrawerState.CLOSED
+        ) {
+            return moveHeader(dy);
+        }
+        return true;
     }
 
     public boolean moveHeader(float dy) {
@@ -282,42 +219,23 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
             closeDrawer();
             return;
         }
-//        if (mActionBarState == ActionBarState.OPENING ||
-//                mActionBarState == ActionBarState.CLOSING) {
-//            closeActionBar();
-//            return;
-//        }
     }
 
     public boolean shouldInterceptTouchEvents(int dy) {  //First touch
         if (dy <= 0) {
             //sliding up
-
-            if (mDrawerState == DrawerState.OPEN || mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
+            if (mDrawerState == DrawerState.OPEN || mDrawerState == DrawerState.CLOSED || mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
                 //drawer is open or is in midway
                 return true;
             }
-            //drawer closed
-            if (mDrawerState == DrawerState.CLOSED) {
-                //drawer closed
-                return true;
-            }
-
             return false;
         }
         if (dy > 0) {
             //sliding down
-
-            if (mDrawerState == DrawerState.CLOSED) {
-                //drawer closed
-                return true;
-            }
-
-            if (mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
+            if (mDrawerState == DrawerState.CLOSED || mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
                 //drawer midway
                 return true;
             }
-
             //drawer open
             return false;
         }
@@ -327,7 +245,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     private void closeDrawer() {
         long animationDuration = 200;
         float translationY = 0;
-        int pagerNewHeight = mPager.getHeight();
         DrawerState drawerState = DrawerState.OPEN;
         float alpha = 0f;
 
@@ -368,12 +285,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         arrayListObjectAnimators.add(2, animator2);
         arrayListObjectAnimators.add(3, animator3);
 
-        if (mHeaderListener != null) {
-            ObjectAnimator animator5 = ObjectAnimator.ofInt(mHeaderListener,
-                    "openPercent",
-                    mHeaderListener.getOpenPercent(), (int)(alpha)*100);
-            arrayListObjectAnimators.add(2, animator5);
-        }
 
         ObjectAnimator[] objectAnimators = arrayListObjectAnimators.toArray(new ObjectAnimator[arrayListObjectAnimators.size()]);
         AnimatorSet animSetXY = new AnimatorSet();
