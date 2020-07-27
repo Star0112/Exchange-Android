@@ -56,6 +56,7 @@
     <dimen name="button_width_3x">310dp</dimen>
     <!-- Height -->
     <dimen name="tiny_height">1dp</dimen>
+    <dimen name="line_height">15dp</dimen>
     <dimen name="text_height">21dp</dimen>
     <dimen name="period_button_height">24dp</dimen>
     <dimen name="status_height">25dp</dimen>

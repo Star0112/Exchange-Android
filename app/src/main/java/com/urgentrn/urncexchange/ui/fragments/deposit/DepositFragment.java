@@ -3,7 +3,6 @@ package com.urgentrn.urncexchange.ui.fragments.deposit;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -11,15 +10,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gauravbhola.viewpagerslidingheader.SlidingHeaderActivityCallbacks;
-import com.gauravbhola.viewpagerslidingheader.SlidingHeaderCallbacks;
-import com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView;
 import com.urgentrn.urncexchange.R;
 import com.urgentrn.urncexchange.api.ApiCallback;
 import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
-import com.urgentrn.urncexchange.layout.StarPagerSlidingHeaderRootView;
-import com.urgentrn.urncexchange.layout.StarSlidingTabLayout;
+import com.urgentrn.urncexchange.layout.StarScrollHeaderRootView;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
 import com.urgentrn.urncexchange.models.DepositHistory;
@@ -45,7 +40,7 @@ import java.util.List;
 public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @ViewById
-    StarPagerSlidingHeaderRootView mRootView;
+    StarScrollHeaderRootView mRootView;
 
     @ViewById
     Toolbar mToolBar;
@@ -54,7 +49,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     FrameLayout mPagerContainer;
 
     @ViewById
-    LinearLayout mSlidingLayout;
+    LinearLayout mTabLayout;
 
     @ViewById
     FrameLayout llHeader;
@@ -93,7 +88,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void prepareViewPagerSlidingHeader() {
-        mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingLayout, mPagerContainer);
+        mRootView.initHeaderViewPager(mToolBar, llHeader, mTabLayout, mPagerContainer);
     }
 
     @Override

@@ -19,66 +19,36 @@ import com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView;
 
 import java.util.ArrayList;
 
-public class StarPagerSlidingHeaderRootView extends RelativeLayout {
-    private SlidingHeaderCallbacks mCallbacks;
-//    private HeaderSlideListener mHeaderListener;
+public class StarScrollHeaderRootView extends RelativeLayout {
 
     private float prevY = 0;
     private float mTranslationYLowerBound;
     private float mTranslationYUpperBound;
 
-    int mPrevYintercepted;
-    int mPrevXintercepted;
-
     float mTouchDy;
 
-    boolean mScrollMode = false;
-    private int mTouchSlop;
-
     private View mToolbar;
-    private View mSlidingTabLayout;
+    private View mTabLayout;
     private View mHeaderView;
-    private View mPager;
+    private View mPagerContainer;
 
     public static enum DrawerState {OPEN, CLOSED, CLOSING, OPENING};
 
     private DrawerState mDrawerState;
 
-
-//    public static abstract class HeaderSlideListener {
-//        //goes from 100 to 0 when the header closes or is in midway
-//        private int openPercent;
-//        private View mSlidingTabLayout;
-//
-//        private int getOpenPercent() {
-//            return openPercent;
-//        }
-//
-//        public void setOpenPercent(int openPercent) {
-//            this.openPercent = openPercent;
-//            onOpenPercentChanged(openPercent, (mSlidingTabLayout == null) ? 0 : mSlidingTabLayout.getTranslationY());
-//        }
-//
-//        public abstract void onOpenPercentChanged(int openPercent, float slidingTabTranslation);
-//    }
-
-    public StarPagerSlidingHeaderRootView(Context context, AttributeSet attrs) {
+    public StarScrollHeaderRootView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
     }
 
     public void initHeaderViewPager(View toolbar, View headerView, View tabView, View pager) {
         mDrawerState = DrawerState.OPEN;
         mToolbar = toolbar;
-        mSlidingTabLayout = tabView;
+        mTabLayout = tabView;
         mHeaderView = headerView;
-        mPager = pager;
+        mPagerContainer = pager;
 
-//        if (mHeaderListener != null) {
-//            mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
-//        }
 
-        mSlidingTabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        mTabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 mTranslationYLowerBound = -(mHeaderView.getHeight() + mToolbar.getHeight());
@@ -86,7 +56,7 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
             }
         });
 
-        mPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        mPagerContainer.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
 
@@ -96,23 +66,23 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
                 int height = 0;
                 if (mToolbar == null) {
-                    height = mPager.getHeight() + mHeaderView.getHeight();
+                    height = mPagerContainer.getHeight() + mHeaderView.getHeight();
                 } else {
-                    height = getHeight() - mSlidingTabLayout.getHeight();
+                    height = getHeight() - mTabLayout.getHeight();
                 }
 
-                int viewPagerWidth = mPager.getWidth();
+                int viewPagerWidth = mPagerContainer.getWidth();
 
                 if(height != 0 && viewPagerWidth != 0) {
                     layoutParams.width = viewPagerWidth;
                     layoutParams.height = height;
                     layoutParams.addRule(ALIGN_PARENT_BOTTOM);
-                    mPager.setLayoutParams(layoutParams);
-                    mPager.getViewTreeObserver()
+                    mPagerContainer.setLayoutParams(layoutParams);
+                    mPagerContainer.getViewTreeObserver()
                             .removeGlobalOnLayoutListener(this);
                     //mPager.measure(viewPagerWidth, height);
-                    mPager.setTranslationY(getPagerDeviation());
-                    mPager.requestLayout();
+                    mPagerContainer.setTranslationY(getPagerDeviation());
+                    mPagerContainer.requestLayout();
                 }
             }
         });
@@ -194,13 +164,13 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         } else if (dy < 0) {
             mDrawerState = DrawerState.CLOSING;
         }
-        float translationY = (mSlidingTabLayout.getTranslationY() + dy);
+        float translationY = (mTabLayout.getTranslationY() + dy);
         translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBound, mTranslationYUpperBound);
 
         mToolbar.setTranslationY(translationY);
-        mSlidingTabLayout.setTranslationY(translationY);
+        mTabLayout.setTranslationY(translationY);
         mHeaderView.setTranslationY(translationY);
-        mPager.setTranslationY(getPagerDeviation() + translationY);
+        mPagerContainer.setTranslationY(getPagerDeviation() + translationY);
 
         if (translationY == mTranslationYLowerBound) {
             mDrawerState = DrawerState.CLOSED;
@@ -270,13 +240,13 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
                 "translationY",
                 mToolbar.getTranslationY(), translationY);
 
-        ObjectAnimator animator2 = ObjectAnimator.ofFloat(mSlidingTabLayout,
+        ObjectAnimator animator2 = ObjectAnimator.ofFloat(mTabLayout,
                 "translationY",
-                mSlidingTabLayout.getTranslationY(), translationY);
+                mTabLayout.getTranslationY(), translationY);
 
-        ObjectAnimator animator3 = ObjectAnimator.ofFloat(mPager,
+        ObjectAnimator animator3 = ObjectAnimator.ofFloat(mPagerContainer,
                 "translationY",
-                mPager.getTranslationY(), getPagerDeviation() + translationY);
+                mPagerContainer.getTranslationY(), getPagerDeviation() + translationY);
 
 
         ArrayList<ObjectAnimator> arrayListObjectAnimators = new ArrayList<ObjectAnimator>(); //ArrayList of ObjectAnimators
