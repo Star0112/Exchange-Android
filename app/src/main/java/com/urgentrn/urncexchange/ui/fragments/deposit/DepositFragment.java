@@ -91,8 +91,7 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
     }
 
     private void prepareViewPagerSlidingHeader() {
-        mRootView.initHeaderViewPager(null, llHeader, mSlidingLayout, mPagerContainer);
-        mRootView.setParallaxFactor(4);
+        mRootView.initHeaderViewPager(mToolBar, llHeader, mSlidingLayout, mPagerContainer);
     }
 
     @Override

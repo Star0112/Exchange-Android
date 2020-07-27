@@ -15,46 +15,35 @@ import android.widget.RelativeLayout;
 
 import com.gauravbhola.viewpagerslidingheader.ScrollUtils;
 import com.gauravbhola.viewpagerslidingheader.SlidingHeaderCallbacks;
+import com.gauravbhola.viewpagerslidingheader.ViewPagerSlidingHeaderRootView;
 
 import java.util.ArrayList;
 
 public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     private SlidingHeaderCallbacks mCallbacks;
     private HeaderSlideListener mHeaderListener;
+
     private float prevY = 0;
-    private float mTranslationYUpperBoundActionBar;
-    private float mTranslationYLowerBoundActionBar;
-    private float mTranslationYUpperBound;
     private float mTranslationYLowerBound;
-    private float mParallaxFactor = 1;
+    private float mTranslationYUpperBound;
+
     int mPrevYintercepted;
     int mPrevXintercepted;
 
     float mTouchDy;
-    boolean mChildrenEventsCanceled = false;
-    boolean mDownMotionEventPended = true;
 
     boolean mScrollMode = false;
     private int mTouchSlop;
 
-    private View mSlidingTabLayout;
     private View mToolbar;
+    private View mSlidingTabLayout;
     private View mHeaderView;
     private View mPager;
 
     public static enum DrawerState {OPEN, CLOSED, CLOSING, OPENING};
-    public static enum ActionBarState {OPEN, CLOSED, CLOSING, OPENING};
 
     private DrawerState mDrawerState;
-    private ActionBarState mActionBarState;
 
-    public float getParallaxFactor() {
-        return mParallaxFactor;
-    }
-
-    public void setParallaxFactor(float parallaxFactor) {
-        mParallaxFactor = parallaxFactor;
-    }
 
     public static abstract class HeaderSlideListener {
         //goes from 100 to 0 when the header closes or is in midway
@@ -72,14 +61,8 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
         public abstract void onOpenPercentChanged(int openPercent, float slidingTabTranslation);
     }
-
     public void registerCallbacks(SlidingHeaderCallbacks callbacks) {
         mCallbacks = callbacks;
-    }
-
-    public void registerHeaderListener(HeaderSlideListener listener) {
-        mHeaderListener = listener;
-        mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
     }
 
     public StarPagerSlidingHeaderRootView(Context context, AttributeSet attrs) {
@@ -87,44 +70,26 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
     }
 
-    private int getActionBarHeight() {
-        if (mToolbar != null) {
-            return mToolbar.getHeight();
-        }
-        return 0;
-    }
-
-    public boolean isActionBarSlidingEnabled() {
-        return mToolbar != null;
-    }
-
-    int mInterruptInterception = 0;
-
-    public void initHeaderViewPager(View actionBarView, View headerView, View tabView, View pager) {
+    public void initHeaderViewPager(View toolbar, View headerView, View tabView, View pager) {
         mDrawerState = DrawerState.OPEN;
-        mActionBarState = ActionBarState.OPEN;
+        mToolbar = toolbar;
         mSlidingTabLayout = tabView;
-        mToolbar = actionBarView;
         mHeaderView = headerView;
         mPager = pager;
+
         if (mHeaderListener != null) {
             mHeaderListener.mSlidingTabLayout = mSlidingTabLayout;
         }
 
-
-        mHeaderView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        mSlidingTabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                mTranslationYLowerBound = -mHeaderView.getHeight();
+                mTranslationYLowerBound = -(mHeaderView.getHeight() + mToolbar.getHeight());
                 mTranslationYUpperBound = 0;
-
-                mTranslationYLowerBoundActionBar = -mHeaderView.getHeight() - getActionBarHeight();
-                mTranslationYUpperBoundActionBar = mTranslationYLowerBound;
             }
         });
 
-        ViewTreeObserver viewTreeObserver = mPager.getViewTreeObserver();
-        viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        mPager.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
 
@@ -140,77 +105,24 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
                 }
 
                 int viewPagerWidth = mPager.getWidth();
-                //float viewPagerHeight = (float) (viewPagerWidth * FEATURED_IMAGE_RATIO);
 
-                layoutParams.width = viewPagerWidth;
-                layoutParams.height = height;
-                layoutParams.addRule(ALIGN_PARENT_BOTTOM);
-                //layoutParams.addRule(RelativeLayout.BELOW, mSlidingTabLayout.getId());
-
-                mPager.setLayoutParams(layoutParams);
-
-                mPager.getViewTreeObserver()
-                        .removeGlobalOnLayoutListener(this);
-                //mPager.measure(viewPagerWidth, height);
-                mPager.setTranslationY(getPagerDeviation());
-                mPager.requestLayout();
+                if(height != 0 && viewPagerWidth != 0) {
+                    layoutParams.width = viewPagerWidth;
+                    layoutParams.height = height;
+                    layoutParams.addRule(ALIGN_PARENT_BOTTOM);
+                    mPager.setLayoutParams(layoutParams);
+                    mPager.getViewTreeObserver()
+                            .removeGlobalOnLayoutListener(this);
+                    //mPager.measure(viewPagerWidth, height);
+                    mPager.setTranslationY(getPagerDeviation());
+                    mPager.requestLayout();
+                }
             }
         });
     }
 
-    public ActionBarState getActionBarState() {
-        return mActionBarState;
-    }
-
-    public void parentShouldStartIntercepting() {
-    }
-
-    public void interceptTouchEvent(boolean intercept) {
-        mIntercepting = intercept;
-        requestDisallowInterceptTouchEvent(!intercept);
-    }
-
     private boolean mIntercepting;
     private MotionEvent mPendingDownMotionEvent;
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (mCallbacks == null) {
-            return false;
-        }
-
-        switch (ev.getActionMasked()) {
-            case MotionEvent.ACTION_DOWN:
-                mPrevYintercepted = (int) ev.getY();
-                mPrevXintercepted = (int) ev.getX();
-                mPendingDownMotionEvent = MotionEvent.obtainNoHistory(ev);
-                mDownMotionEventPended = true;
-                mChildrenEventsCanceled = false;
-                return false;
-
-            case MotionEvent.ACTION_MOVE:
-                int dy = (int) ev.getY() - mPrevYintercepted;
-                int dx = (int) ev.getX() - mPrevXintercepted;
-
-                if (Math.abs(dx) > mTouchSlop) {
-                    int i = 2;
-                    return super.onInterceptTouchEvent(ev);
-                }
-
-                if (Math.abs(dy) < 15) {
-                    return super.onInterceptTouchEvent(ev);
-                }
-
-                mIntercepting = shouldInterceptTouchEvents(dy);
-                prevY = ev.getY();
-                mPrevYintercepted = (int) ev.getY();
-                return mIntercepting;
-
-            case MotionEvent.ACTION_UP:
-                return false;
-        }
-        return super.onInterceptTouchEvent(ev);
-    }
 
     MyGestureListener mMyGestureListener = new MyGestureListener(getContext());
 
@@ -220,25 +132,11 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
     }
 
     private class MyGestureListener extends GestureDetector.SimpleOnGestureListener implements OnTouchListener {
-        public GestureDetector gDetector;
         Context context;
 
-        public MyGestureListener() {
-            super();
-        }
-
         public MyGestureListener(Context context) {
-            this(context, null);
-        }
-
-        public MyGestureListener(Context context, GestureDetector gDetector) {
-            if (gDetector == null)
-                gDetector = new GestureDetector(context, this);
-
             this.context = context;
-            this.gDetector = gDetector;
         }
-
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
@@ -250,7 +148,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
             } else if (Math.abs(mTouchDy) < 10) {
                 velocityY = velocityY/2;
             }
-            dispatchFling(e1, e2, velocityX, velocityY);
             return super.onFling(e1, e2, velocityX, velocityY);
         }
 
@@ -263,44 +160,22 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
                 prevY = y;
 
                 mIntercepting = shouldInterceptTouchEvents((int)mTouchDy);
-                if (mInterruptInterception > 0) {
-                    //if there is a need to interrupt, then do it now
-                    mInterruptInterception--;
-                    return false;
-                }
+
                 if (mIntercepting) {
                     moveContents(mTouchDy);
-                    if (!mChildrenEventsCanceled) {
-                        mChildrenEventsCanceled = true;
-                        //cancel the children events
-                        duplicateTouchEventForChildren(obtainMotionEvent(event, MotionEvent.ACTION_CANCEL));
-                    }
-                    mDownMotionEventPended = true;
                     return true;
-                } else {
-                    //send a down motion event to the children first, then start duplicating the events as is
-                    if (mDownMotionEventPended) {
-                        mDownMotionEventPended = false;
-                        MotionEvent mev = MotionEvent.obtainNoHistory(mPendingDownMotionEvent);
-                        mev.setLocation(event.getX(), event.getY());
-                        duplicateTouchEventForChildren(event, mev);
-                    } else {
-                        duplicateTouchEventForChildren(event);
-                    }
-                    mChildrenEventsCanceled = false;
-                    return gDetector.onTouchEvent(event);
                 }
             }
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 settleContents();
-                return gDetector.onTouchEvent(event);
+                return true;
                 //return false;
             }
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 prevY = event.getY();
                 return true;
             }
-            return gDetector.onTouchEvent(event);
+            return true;
         }
     }
 
@@ -310,15 +185,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         return ev;
     }
 
-    /**
-     * Duplicate touch events to child ViewPager views.
-     * We want to dispatch a down motion event and the move events to
-     * child views, but calling dispatchTouchEvent() causes StackOverflowError.
-     * Therefore we do it manually.
-     *
-     * @param ev            motion event to be passed to children(viewpager)
-     * @param pendingEvents pending events like ACTION_DOWN. This will be passed to the children before ev
-     */
     private void duplicateTouchEventForChildren(MotionEvent ev, MotionEvent... pendingEvents) {
         if (ev == null) {
             return;
@@ -328,13 +194,6 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
             //only duplicating the events if the child is a ViewPager
             if (childView != null && childView == mPager) {
                 MotionEvent event = MotionEvent.obtainNoHistory(ev);
-                //doesnt matter whether this touch lies in the child rect or not
-                /*
-                Rect childRect = new Rect();
-                childView.getHitRect(childRect);
-                if (!childRect.contains((int) event.getX(), (int) event.getY())) {
-                    continue;
-                }*/
                 float offsetX = -childView.getLeft();
                 float offsetY = -childView.getTop();
                 boolean consumed = false;
@@ -369,17 +228,12 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         //awesomeness :) ;)
         if (mDrawerState == DrawerState.OPEN
                 || mDrawerState == DrawerState.OPENING
-                || mDrawerState == DrawerState.CLOSING) {
+                || mDrawerState == DrawerState.CLOSING
+                || mDrawerState == DrawerState.CLOSED
+        ) {
             return moveHeader(dy);
         }
-        if (mDrawerState == DrawerState.CLOSED && mActionBarState == ActionBarState.OPEN && dy > 0) {
-            if (mCallbacks.shouldDrawerMove()) {
-                return moveHeader(dy);
-            } else {
-                requestDisallowInterceptTouchEvent(true);
-            }
-        }
-        return moveActionBar(dy);
+         return true;
     }
 
     public int getPagerDeviation() {
@@ -388,6 +242,13 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         } else {
             return getActionBarHeight() + mHeaderView.getHeight();
         }
+    }
+
+    private int getActionBarHeight() {
+        if (mToolbar != null) {
+            return mToolbar.getHeight();
+        }
+        return 0;
     }
 
     public boolean moveHeader(float dy) {
@@ -399,19 +260,13 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         float translationY = (mSlidingTabLayout.getTranslationY() + dy);
         translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBound, mTranslationYUpperBound);
 
+        mToolbar.setTranslationY(translationY);
         mSlidingTabLayout.setTranslationY(translationY);
-        if (mHeaderListener != null) {
-            mHeaderListener.setOpenPercent((int) (100 - 100 * (translationY / mTranslationYLowerBound)));
-        }
-        mHeaderView.setTranslationY(translationY / mParallaxFactor);
-        mHeaderView.requestLayout();
+        mHeaderView.setTranslationY(translationY);
         mPager.setTranslationY(getPagerDeviation() + translationY);
 
         if (translationY == mTranslationYLowerBound) {
             mDrawerState = DrawerState.CLOSED;
-            if (isActionBarSlidingEnabled()) {
-                mInterruptInterception = 5;
-            }
             return false;
         }
         if (translationY == mTranslationYUpperBound) {
@@ -421,54 +276,20 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         return true;
     }
 
-    public boolean moveActionBar(float dy) {
-        if (mToolbar == null) {
-            return false;
-        }
-        if (dy > 0) {
-            mActionBarState = ActionBarState.OPENING;
-        } else if (dy < 0) {
-            mActionBarState = ActionBarState.CLOSING;
-        }
-
-        float translationY = (mSlidingTabLayout.getTranslationY() + dy);
-        translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBoundActionBar, mTranslationYUpperBoundActionBar);
-        mSlidingTabLayout.setTranslationY(translationY);
-        mHeaderView.setTranslationY(translationY / mParallaxFactor);
-
-        if (mToolbar != null) {
-            float translationYActionbar = ScrollUtils.getFloat(mToolbar.getTranslationY() + dy, -getActionBarHeight(), 0);
-            mToolbar.setTranslationY(translationYActionbar);
-        }
-
-        mPager.setTranslationY(getPagerDeviation() + translationY);
-
-        if (translationY == mTranslationYLowerBoundActionBar) {
-            mActionBarState = ActionBarState.CLOSED;
-            return false;
-        }
-        if (translationY == mTranslationYUpperBoundActionBar) {
-            mActionBarState = ActionBarState.OPEN;
-            return false;
-        }
-        return true;
-    }
-
-
     public void settleContents() {
         if (mDrawerState == DrawerState.OPENING
                 || mDrawerState == DrawerState.CLOSING) {
             closeDrawer();
             return;
         }
-        if (mActionBarState == ActionBarState.OPENING ||
-                mActionBarState == ActionBarState.CLOSING) {
-            closeActionBar();
-            return;
-        }
+//        if (mActionBarState == ActionBarState.OPENING ||
+//                mActionBarState == ActionBarState.CLOSING) {
+//            closeActionBar();
+//            return;
+//        }
     }
 
-    public boolean shouldInterceptTouchEvents(int dy) {
+    public boolean shouldInterceptTouchEvents(int dy) {  //First touch
         if (dy <= 0) {
             //sliding up
 
@@ -477,33 +298,19 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
                 return true;
             }
             //drawer closed
-
-            if (mActionBarState == ActionBarState.OPEN || mActionBarState == ActionBarState.OPENING || mActionBarState == ActionBarState.CLOSING) {
-                //action bar is open or is in midway
-
-                if (mToolbar != null) {
-                    //action bar sliding is supported
-                    return true;
-                } else {
-                    return false;
-                }
+            if (mDrawerState == DrawerState.CLOSED) {
+                //drawer closed
+                return true;
             }
-            //actionbar closed
 
             return false;
         }
         if (dy > 0) {
             //sliding down
 
-            if (mActionBarState == ActionBarState.CLOSED || mActionBarState == ActionBarState.OPENING || mActionBarState == ActionBarState.CLOSING) {
-                //action bar closed or in midway
-                return true;
-            }
-            //action bar open
-
             if (mDrawerState == DrawerState.CLOSED) {
                 //drawer closed
-                return mCallbacks.shouldDrawerMove();
+                return true;
             }
 
             if (mDrawerState == DrawerState.CLOSING || mDrawerState == DrawerState.OPENING) {
@@ -540,7 +347,11 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
                 "translationY",
-                mHeaderView.getTranslationY(), translationY / mParallaxFactor);
+                mHeaderView.getTranslationY(), translationY);
+
+        ObjectAnimator animator1 = ObjectAnimator.ofFloat(mToolbar,
+                "translationY",
+                mToolbar.getTranslationY(), translationY);
 
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(mSlidingTabLayout,
                 "translationY",
@@ -553,14 +364,15 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
 
         ArrayList<ObjectAnimator> arrayListObjectAnimators = new ArrayList<ObjectAnimator>(); //ArrayList of ObjectAnimators
         arrayListObjectAnimators.add(0, animator);
-        arrayListObjectAnimators.add(1, animator2);
-        arrayListObjectAnimators.add(2, animator3);
+        arrayListObjectAnimators.add(1, animator1);
+        arrayListObjectAnimators.add(2, animator2);
+        arrayListObjectAnimators.add(3, animator3);
 
         if (mHeaderListener != null) {
             ObjectAnimator animator5 = ObjectAnimator.ofInt(mHeaderListener,
                     "openPercent",
                     mHeaderListener.getOpenPercent(), (int)(alpha)*100);
-            arrayListObjectAnimators.add(3, animator5);
+            arrayListObjectAnimators.add(2, animator5);
         }
 
         ObjectAnimator[] objectAnimators = arrayListObjectAnimators.toArray(new ObjectAnimator[arrayListObjectAnimators.size()]);
@@ -591,87 +403,4 @@ public class StarPagerSlidingHeaderRootView extends RelativeLayout {
         });
         animSetXY.start();
     }
-
-    private void closeActionBar() {
-        long animationDuration = 200;
-        float translationY = 0;
-        float translationYActionBar = 0;
-        int pagerNewHeight = mPager.getHeight();
-        ActionBarState drawerState = ActionBarState.OPEN;
-
-        if (mActionBarState == ActionBarState.CLOSING) {
-            translationY = mTranslationYLowerBoundActionBar;
-            translationYActionBar = -getActionBarHeight();
-            drawerState = ActionBarState.CLOSED;
-        }
-
-        if (mActionBarState == ActionBarState.OPENING) {
-            translationY = mTranslationYUpperBoundActionBar;
-            translationYActionBar = 0f;
-            drawerState = ActionBarState.OPEN;
-        }
-
-        final ActionBarState finalDrawerState = drawerState;
-
-        ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
-                "translationY",
-                mHeaderView.getTranslationY(), translationY / mParallaxFactor);
-
-        ObjectAnimator animator2 = ObjectAnimator.ofFloat(mSlidingTabLayout,
-                "translationY",
-                mSlidingTabLayout.getTranslationY(), translationY);
-
-        ObjectAnimator animator3 = ObjectAnimator.ofFloat(mPager,
-                "translationY",
-                mPager.getTranslationY(), getPagerDeviation() + translationY);
-
-
-        ArrayList<ObjectAnimator> arrayListObjectAnimators = new ArrayList<ObjectAnimator>(); //ArrayList of ObjectAnimators
-        arrayListObjectAnimators.add(0, animator);
-        arrayListObjectAnimators.add(1, animator2);
-        arrayListObjectAnimators.add(2, animator3);
-
-        if (mToolbar != null) {
-            ObjectAnimator animator4 = ObjectAnimator.ofFloat(mToolbar,
-                    "translationY",
-                    mToolbar.getTranslationY(), translationYActionBar);
-            arrayListObjectAnimators.add(3, animator4);
-        }
-
-        ObjectAnimator[] objectAnimators = arrayListObjectAnimators.toArray(new ObjectAnimator[arrayListObjectAnimators.size()]);
-        AnimatorSet animSetXY = new AnimatorSet();
-        animSetXY.setInterpolator(new DecelerateInterpolator());
-        animSetXY.playTogether(objectAnimators);
-        animSetXY.setDuration(animationDuration);//1sec
-        animSetXY.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                mActionBarState = finalDrawerState;
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
-        animSetXY.start();
-    }
-
-    public void dispatchFling(MotionEvent ev1, MotionEvent ev2, float velx, float vely) {
-        if (mDrawerState != DrawerState.CLOSING
-                && mActionBarState != ActionBarState.CLOSING
-                && mActionBarState != ActionBarState.OPENING) {
-            mCallbacks.dispatchFling(ev1, ev2, velx, vely);
-        }
-    }
-
 }
