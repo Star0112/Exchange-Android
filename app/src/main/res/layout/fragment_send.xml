@@ -25,12 +25,14 @@
             android:layout_weight="2"
             android:orientation="vertical"
             android:gravity="center">
-            <Spinner
-                android:id="@+id/selectCoin"
+            <Button
+                android:id="@+id/btnSelectSymbol"
+                style="@style/SpinnerInput"
                 android:background="@drawable/button_dropdown"
-                android:layout_gravity="center_horizontal"
-                android:spinnerMode="dialog"
-                style="@style/SpinnerInput"/>
+                android:drawableRight="@mipmap/ic_drop"
+                android:textSize="@dimen/spinner_size"
+                android:textColor="@drawable/text_white_color"
+                android:paddingRight="@dimen/default_margin"/>
 
             <EditText
                 android:id="@+id/sendEmail"

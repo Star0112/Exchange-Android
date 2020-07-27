@@ -31,24 +31,12 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
-    /**
-     * method is used for checking valid email id format.
-     *
-     * @param email
-     * @return boolean true for valid false for invalid
-     */
     public static boolean isEmailValid(String email) {
         Pattern pattern = true ? Patterns.EMAIL_ADDRESS : Pattern.compile("^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    /**
-     * method is used for checking valid password strength
-     *
-     * @param password
-     * @return boolean true for valid, false for invalid
-     */
     public static boolean isPasswordValid(String password) {
         return password.length() >= Constants.MINIMUM_LENGTH_PASSWORD;
     }
@@ -278,5 +266,33 @@ public class Utils {
         updatedArr[position] = ch;
         str.getChars(position, len, updatedArr, position + 1);
         return new String(updatedArr);
+    }
+
+    public static double[][] doubleArraySort(double[][] dataArray) {
+        double[] temp = {0.0, 0.0};
+        for (int i = 0; i < dataArray.length; i++) {
+            for (int j = i + 1; j < dataArray.length; j++) {
+                if (dataArray[i][0] == 0 || dataArray[i][0] > dataArray[j][0]) {
+                    temp = dataArray[i];
+                    dataArray[i] = dataArray[j];
+                    dataArray[j] = temp;
+                }
+            }
+        }
+        return dataArray;
+    }
+
+    public static double[][] doubleArraySortReverse(double[][] dataArray) {
+        double[] temp = {0.0, 0.0};
+        for (int i = 0; i < dataArray.length; i++) {
+            for (int j = i + 1; j < dataArray.length; j++) {
+                if (dataArray[i][0] == 0 || dataArray[i][0] < dataArray[j][0]) {
+                    temp = dataArray[i];
+                    dataArray[i] = dataArray[j];
+                    dataArray[j] = temp;
+                }
+            }
+        }
+        return dataArray;
     }
 }

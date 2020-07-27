@@ -2,11 +2,8 @@ package com.urgentrn.urncexchange.ui.fragments.deposit;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,13 +14,14 @@ import com.urgentrn.urncexchange.api.ApiClient;
 import com.urgentrn.urncexchange.api.AppCallback;
 import com.urgentrn.urncexchange.models.AppData;
 import com.urgentrn.urncexchange.models.AssetBalance;
-import com.urgentrn.urncexchange.models.ExchangeData;
 import com.urgentrn.urncexchange.models.request.SendAssetRequest;
 import com.urgentrn.urncexchange.models.response.AssetResponse;
 import com.urgentrn.urncexchange.models.response.BaseResponse;
 import com.urgentrn.urncexchange.ui.adapter.SendCoinBalanceAdapter;
 import com.urgentrn.urncexchange.ui.base.BaseActivity;
 import com.urgentrn.urncexchange.ui.base.BaseFragment;
+import com.urgentrn.urncexchange.ui.dialogs.SelectAssetDialog;
+import com.urgentrn.urncexchange.ui.dialogs.SelectAssetDialog_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -35,7 +33,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import static com.urgentrn.urncexchange.utils.Utils.isPasswordValid;
@@ -43,8 +40,8 @@ import static com.urgentrn.urncexchange.utils.Utils.isPasswordValid;
 @EFragment(R.layout.fragment_send)
 public class SendFragment extends BaseFragment implements ApiCallback {
 
-    @ViewById(R.id.selectCoin)
-    Spinner spinner;
+    @ViewById
+    Button btnSelectSymbol;
 
     @ViewById
     RecyclerView assetBalance;
@@ -52,10 +49,11 @@ public class SendFragment extends BaseFragment implements ApiCallback {
     @ViewById
     EditText sendEmail, sendAmount;
 
+    private final SelectAssetDialog symbolDialog = new SelectAssetDialog_();
 
     private List<String> assetsName = new ArrayList<>();
     private List<AssetBalance> assetBalanceData = new ArrayList<>();
-    private AssetBalance selectedAsset;
+    private int selectedAsset = 0;
     private SendCoinBalanceAdapter adapterCoin;
 
     @AfterViews
@@ -63,17 +61,6 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         setToolBar(true);
         assetBalance.setHasFixedSize(true);
         assetBalance.setLayoutManager(new LinearLayoutManager(getContext()));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedAsset = assetBalanceData.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-
-        });
 
         getAssetBalance();
     }
@@ -116,12 +103,12 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         } else if(Integer.parseInt(amount)<=0) {
             sendAmount.requestFocus();
             sendAmount.setError(getString(R.string.error_amount_invalid));
-        } else if(Integer.parseInt(amount) > Double.parseDouble(selectedAsset.getAvailable())) {
+        } else if(Integer.parseInt(amount) > Double.parseDouble(assetBalanceData.get(selectedAsset).getAvailable())) {
             sendAmount.requestFocus();
             sendAmount.setError(getString(R.string.error_amount_limited));
         } else {
             ApiClient.getInterface()
-                    .sendByEmail(new SendAssetRequest(selectedAsset.getAssetId(), Integer.parseInt(amount), emails))
+                    .sendByEmail(new SendAssetRequest(assetBalanceData.get(selectedAsset).getAssetId(), Integer.parseInt(amount), emails))
                     .enqueue(new AppCallback<BaseResponse>(getContext(), new ApiCallback() {
                         @Override
                         public void onResponse(BaseResponse response) {
@@ -146,12 +133,6 @@ public class SendFragment extends BaseFragment implements ApiCallback {
                 assetsName.add(assetBalance.getCoin());
             }
         }
-        adapterCoin = new SendCoinBalanceAdapter(getChildFragmentManager(), pos -> assetBalanceData.get(pos));
-        adapterCoin.setData(assetBalanceData);
-        assetBalance.setAdapter(adapterCoin);
-
-        final ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, assetsName);
-        spinner.setAdapter(spinnerAdapter);
     }
 
     @Override
@@ -160,6 +141,22 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Click(R.id.btnSelectSymbol)
+    void onShowSelectAsset() {
+        showSelectAsset();
+    }
+
+    private void showSelectAsset() {
+        if (symbolDialog.getDialog() != null && symbolDialog.getDialog().isShowing()) return;
+        symbolDialog.setOnDialogDismissListener(isSuccess -> {
+            if (selectedAsset != symbolDialog.getSelectedPosition()) {
+                selectedAsset = symbolDialog.getSelectedPosition();
+//                updateUI();
+            }
+        });
+        symbolDialog.show(getChildFragmentManager(), "selSymbol");
     }
 
     @Override

@@ -52,6 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/llHeader"
+        android:foreground="?android:attr/selectableItemBackground"
         android:background="@drawable/bg_dialog"
         android:orientation="vertical">
         <LinearLayout
@@ -78,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite"
         android:layout_below="@id/mSlidingLayout"
         >
         <androidx.recyclerview.widget.RecyclerView

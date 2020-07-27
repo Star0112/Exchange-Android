@@ -73,6 +73,8 @@ public class DepositFragment extends BaseFragment implements ApiCallback {
 
     @AfterViews
     protected void init() {
+        mPagerContainer.setBackgroundColor(getResources().getColor(android.R.color.white));
+        depositHistory.setBackgroundColor(getResources().getColor(android.R.color.white));
         mRootView.setBackgroundResource(R.mipmap.background);
         recyclerDepositCoins.setHasFixedSize(true);
         recyclerDepositCoins.setLayoutManager(new LinearLayoutManager(getContext()));
