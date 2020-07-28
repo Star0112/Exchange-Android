@@ -261,11 +261,6 @@
         <item name="android:textSize">@dimen/text_item_small</item>
         <item name="android:layout_gravity">bottom</item>
     </style>
-    <style name="DefaultButton.White">
-        <item name="android:background">@drawable/bg_button_white</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:layout_gravity">center</item>
-    </style>
 
     <style name="LoginInput" parent="DefaultInput">
         <item name="android:layout_height">@dimen/button_height_small</item>
@@ -307,14 +302,11 @@
         <item name="android:gravity">center|start</item>
     </style>
     <style name="Input.White.Horizontal.Center" parent="DefaultInput">
-        <item name="android:layout_height">@dimen/tab_height_small</item>
-        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:layout_height">@dimen/setting_item_height</item>
+        <item name="android:background">@drawable/bg_input_20</item>
         <item name="android:elevation">3dp</item>
-        <item name="android:layout_marginEnd">@dimen/default_margin_2x</item>
-        <item name="android:layout_marginTop">@dimen/default_padding</item>
-        <item name="android:layout_marginBottom">@dimen/default_padding</item>
-        <item name="android:textSize">@dimen/text_default</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">@dimen/text_title_default</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="Input.White.Vertical.Description" parent="DefaultInput">
@@ -395,14 +387,21 @@
     </style>
 
     <!--  Button  -->
+    <style name="DefaultButton.White">
+        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="DefaultButton.Blue">
+        <item name="android:layout_width">@dimen/button_width_3x</item>
+        <item name="android:layout_height">@dimen/tab_height</item>
         <item name="android:background">@drawable/bg_button_blue</item>
         <item name="android:textColor">@drawable/text_white_color</item>
         <item name="android:layout_gravity">center</item>
-
     </style>
 
-    <style name="SpinnerInput" parent="DefaultInput">
+    <style name="DropDownButton" parent="DefaultInput">
         <item name="android:layout_height">@dimen/setting_item_height</item>
         <item name="android:layout_width">@dimen/button_width_2x</item>
         <item name="android:textAlignment">center</item>

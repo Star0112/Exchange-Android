@@ -60,7 +60,7 @@
 
             <Button
                 android:id="@+id/btnSelectSymbol"
-                style="@style/SpinnerInput"
+                style="@style/DropDownButton"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/button_dropdown"
                 android:textSize="@dimen/spinner_size"

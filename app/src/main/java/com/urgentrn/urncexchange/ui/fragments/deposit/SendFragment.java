@@ -51,7 +51,6 @@ public class SendFragment extends BaseFragment implements ApiCallback {
 
     private final SelectAssetDialog symbolDialog = new SelectAssetDialog_();
 
-    private List<String> assetsName = new ArrayList<>();
     private List<AssetBalance> assetBalanceData = new ArrayList<>();
     private int selectedAsset = 0;
     private SendCoinBalanceAdapter adapterCoin;
@@ -77,10 +76,32 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         EventBus.getDefault().unregister(this);
     }
 
+    private void updateUI() {
+        btnSelectSymbol.setText(assetBalanceData.get(selectedAsset).getCoin());
+    }
+
     private void getAssetBalance() {
         ApiClient.getInterface()
                 .getAssetBalance()
                 .enqueue(new AppCallback<AssetResponse>(getContext(),this));
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateView(List<AssetBalance> data) {
+        if(data != null) {
+            assetBalanceData.clear();
+            assetBalanceData.addAll(data);
+            updateUI();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && data != null) {}
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @EditorAction(R.id.sendAmount)
@@ -123,26 +144,6 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateView(List<AssetBalance> data) {
-        if(data != null) {
-            assetBalanceData.clear();
-            assetsName.clear();
-            for (AssetBalance assetBalance : data) {
-                assetBalanceData.add(assetBalance);
-                assetsName.add(assetBalance.getCoin());
-            }
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK && data != null) {}
-        else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
     @Click(R.id.btnSelectSymbol)
     void onShowSelectAsset() {
         showSelectAsset();
@@ -153,7 +154,7 @@ public class SendFragment extends BaseFragment implements ApiCallback {
         symbolDialog.setOnDialogDismissListener(isSuccess -> {
             if (selectedAsset != symbolDialog.getSelectedPosition()) {
                 selectedAsset = symbolDialog.getSelectedPosition();
-//                updateUI();
+                updateUI();
             }
         });
         symbolDialog.show(getChildFragmentManager(), "selSymbol");

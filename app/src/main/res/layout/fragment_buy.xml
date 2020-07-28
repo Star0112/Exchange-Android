@@ -197,8 +197,6 @@
                         android:orientation="vertical">
                         <Button
                             android:id="@+id/btnBuy"
-                            android:layout_width="@dimen/button_width_3x"
-                            android:layout_height="@dimen/tab_height"
                             android:layout_marginTop="@dimen/default_margin"
                             android:text="@string/buy"
                             android:textSize="@dimen/text_title_default"
@@ -212,7 +210,7 @@
                     android:gravity="top|center">
                     <Button
                         android:id="@+id/btnSelectSymbol"
-                        style="@style/SpinnerInput"
+                        style="@style/DropDownButton"
                         android:background="@drawable/button_dropdown"
                         android:drawableRight="@mipmap/ic_drop"
                         android:textSize="@dimen/spinner_size"

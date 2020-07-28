@@ -245,6 +245,7 @@
     <string name="send_history">Send History</string>
     <string name="send_success">You have sent successfully.</string>
     <string name="select_asset">Select Coin</string>
+    <string name="who_to_send">Who to send?</string>
     <!-- Buy -->
     <string name="title_buy">Buy</string>
     <string name="price_fix">Price (fixed)</string>

@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@mipmap/background">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
@@ -21,25 +22,34 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dialog_gray"
+            android:paddingTop="@dimen/default_margin_large"
+            android:paddingHorizontal="@dimen/default_margin"
             android:orientation="vertical"
             android:gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/who_to_send"
+                android:textSize="@dimen/text_default"
+                android:textColor="@color/colorPrimary"/>
             <Button
                 android:id="@+id/btnSelectSymbol"
-                style="@style/SpinnerInput"
+                style="@style/DropDownButton"
                 android:background="@drawable/button_dropdown"
                 android:drawableRight="@mipmap/ic_drop"
                 android:textSize="@dimen/spinner_size"
                 android:textColor="@drawable/text_white_color"
-                android:paddingRight="@dimen/default_margin"/>
+                android:layout_marginTop="@dimen/default_margin_medium"
+                android:paddingHorizontal="@dimen/default_margin"/>
 
             <EditText
                 android:id="@+id/sendEmail"
                 android:layout_width="match_parent"
                 android:inputType="textEmailAddress"
                 android:hint="@string/email"
-                android:layout_marginStart="@dimen/default_margin_2x"
+                android:layout_marginTop="@dimen/default_margin_medium"
                 style="@style/Input.White.Horizontal.Center"/>
 
             <EditText
@@ -50,23 +60,20 @@
                 android:imeOptions="actionGo"
                 android:hint="@string/amount"
                 android:inputType="number"
-                android:layout_marginStart="@dimen/default_margin_2x"
+                android:layout_marginTop="@dimen/default_margin"
                 style="@style/Input.White.Horizontal.Center" />
 
             <Button
                 android:id="@+id/btnSend"
-                android:layout_width="@dimen/button_width"
-                android:layout_marginTop="@dimen/default_margin_small"
+                android:layout_marginVertical="@dimen/default_margin_large"
                 android:text="@string/title_send"
                 android:layout_height="@dimen/tab_height_small"
-                style="@style/DefaultButton.White"/>
+                style="@style/DefaultButton.Blue"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:background="@drawable/bg_dialog"
+            android:layout_height="fill_parent"
             android:orientation="vertical">
 
             <TextView
