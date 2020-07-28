@@ -51,7 +51,7 @@ public class StarScrollHeaderRootView extends RelativeLayout {
         mTabLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                mTranslationYLowerBound = -(mHeaderView.getHeight() + mToolbar.getHeight());
+                mTranslationYLowerBound = -(mHeaderView.getHeight());
                 mTranslationYUpperBound = 0;
             }
         });
@@ -60,20 +60,13 @@ public class StarScrollHeaderRootView extends RelativeLayout {
             @Override
             public void onGlobalLayout() {
 
-                LayoutParams layoutParams = new LayoutParams(
-                        LayoutParams.WRAP_CONTENT,
-                        LayoutParams.WRAP_CONTENT);
-
-                int height = 0;
-                if (mToolbar == null) {
-                    height = mPagerContainer.getHeight() + mHeaderView.getHeight();
-                } else {
-                    height = getHeight() - mTabLayout.getHeight();
-                }
-
                 int viewPagerWidth = mPagerContainer.getWidth();
 
-                if(height != 0 && viewPagerWidth != 0) {
+                if(viewPagerWidth != 0) {
+                    LayoutParams layoutParams = new LayoutParams(
+                            LayoutParams.WRAP_CONTENT,
+                            LayoutParams.WRAP_CONTENT);
+                    int height = mPagerContainer.getHeight() + mHeaderView.getHeight();
                     layoutParams.width = viewPagerWidth;
                     layoutParams.height = height;
                     layoutParams.addRule(ALIGN_PARENT_BOTTOM);
@@ -132,19 +125,9 @@ public class StarScrollHeaderRootView extends RelativeLayout {
     }
 
     public int getPagerDeviation() {
-        if (mToolbar == null) {
-            return mHeaderView.getHeight();
-        } else {
-            return getActionBarHeight() + mHeaderView.getHeight();
-        }
+        return mHeaderView.getHeight();
     }
 
-    private int getActionBarHeight() {
-        if (mToolbar != null) {
-            return mToolbar.getHeight();
-        }
-        return 0;
-    }
 
     public boolean moveContents(float dy) {
         //awesomeness :) ;)
@@ -167,9 +150,8 @@ public class StarScrollHeaderRootView extends RelativeLayout {
         float translationY = (mTabLayout.getTranslationY() + dy);
         translationY = ScrollUtils.getFloat(translationY, mTranslationYLowerBound, mTranslationYUpperBound);
 
-        mToolbar.setTranslationY(translationY);
         mTabLayout.setTranslationY(translationY);
-        mHeaderView.setTranslationY(translationY);
+        mHeaderView.setTranslationY(-translationY/5);
         mPagerContainer.setTranslationY(getPagerDeviation() + translationY);
 
         if (translationY == mTranslationYLowerBound) {
@@ -198,7 +180,6 @@ public class StarScrollHeaderRootView extends RelativeLayout {
                 //drawer is open or is in midway
                 return true;
             }
-            return false;
         }
         if (dy > 0) {
             //sliding down
@@ -206,8 +187,6 @@ public class StarScrollHeaderRootView extends RelativeLayout {
                 //drawer midway
                 return true;
             }
-            //drawer open
-            return false;
         }
         return false;
     }
@@ -216,29 +195,22 @@ public class StarScrollHeaderRootView extends RelativeLayout {
         long animationDuration = 200;
         float translationY = 0;
         DrawerState drawerState = DrawerState.OPEN;
-        float alpha = 0f;
 
         if (mDrawerState == DrawerState.CLOSING) {
             translationY = mTranslationYLowerBound;
             drawerState = DrawerState.CLOSED;
-            alpha = 0f;
         }
 
         if (mDrawerState == DrawerState.OPENING) {
             translationY = mTranslationYUpperBound;
             drawerState = DrawerState.OPEN;
-            alpha = 1f;
         }
 
         final DrawerState finalDrawerState = drawerState;
 
         ObjectAnimator animator = ObjectAnimator.ofFloat(mHeaderView,
                 "translationY",
-                mHeaderView.getTranslationY(), translationY);
-
-        ObjectAnimator animator1 = ObjectAnimator.ofFloat(mToolbar,
-                "translationY",
-                mToolbar.getTranslationY(), translationY);
+                mHeaderView.getTranslationY(), -translationY/5);
 
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(mTabLayout,
                 "translationY",
@@ -251,9 +223,8 @@ public class StarScrollHeaderRootView extends RelativeLayout {
 
         ArrayList<ObjectAnimator> arrayListObjectAnimators = new ArrayList<ObjectAnimator>(); //ArrayList of ObjectAnimators
         arrayListObjectAnimators.add(0, animator);
-        arrayListObjectAnimators.add(1, animator1);
-        arrayListObjectAnimators.add(2, animator2);
-        arrayListObjectAnimators.add(3, animator3);
+        arrayListObjectAnimators.add(1, animator2);
+        arrayListObjectAnimators.add(2, animator3);
 
 
         ObjectAnimator[] objectAnimators = arrayListObjectAnimators.toArray(new ObjectAnimator[arrayListObjectAnimators.size()]);

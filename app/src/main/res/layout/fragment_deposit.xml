@@ -86,6 +86,12 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/mTabLayout"
+        android:background="@color/colorWhite"/>
+
     <FrameLayout
         android:id="@+id/mPagerContainer"
         android:layout_width="match_parent"
