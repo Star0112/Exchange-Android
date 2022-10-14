@@ -1,6 +1,6 @@
-# URNC Android Application
+# Android Application
 
-This is a URNC Android App README to guide how to generate signed apk.
+This is a Android App README to guide how to generate signed apk.
 
 ## Installation
 Clone this repository and import into **Android Studio**
